@@ -23,7 +23,7 @@
 Finnish accounts charts
 ==================================
 A Finnish accounts charts localization for OpenERP.
-Based on 'Liikekirjurit' account chart (http://www.kirjurituote.fi/)
+Based on 'Liikekirjurit' account chart (http://www.kirjurituote.fi/) version 7.0.
 -------------------------------------------------------------------------------------
 """,
     'depends': ['base_iban', 'base_vat', 'account_chart'],
@@ -35,5 +35,5 @@ Based on 'Liikekirjurit' account chart (http://www.kirjurituote.fi/)
         'data/account.tax.template.csv',
     ],
     'installable': 'True',
-    'images': ['images/config_chart_l10n_uk.jpeg','images/l10n_uk_chart.jpeg'],
+    'images': [],
 }
