@@ -13,7 +13,7 @@
 #
 ##############################################################################
 {
-    'name': 'FI - Accounting',
+    'name': 'Finland - Accounting',
     'category': 'Localization/Account Charts',
     'version': '1.0',
     'author': 'Vizucom Oy',
