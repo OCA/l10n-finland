@@ -250,7 +250,7 @@
 "account_account_250",1757,"Muut lähipiirilainat","account_account_245","False","Receivable","account.data_account_type_asset"
 "account_account_251",1759,"Muut lainasaamiset","account_account_245","False","Receivable","account.data_account_type_asset"
 "account_account_252","TAVVVV18500","Laskennalliset verosaamiset","account_account_218","False","View","account.data_account_type_asset_view1"
-"account_account_253",1851,"Laskennalliset verosaamiset","account_account_252","False","Receivable","account.data_account_type_asset"
+"account_account_253",1851,"Laskennalliset verosaamiset","account_account_252","False","Regular","account.data_account_type_asset"
 "account_account_254","TAVVVV17600","Muut saamiset","account_account_218","False","View","account.data_account_type_asset_view1"
 "account_account_255",1761,"Verosaamiset","account_account_254","False","Receivable","account.data_account_type_asset"
 "account_account_256",1762,"Verotilisaamiset","account_account_254","False","Receivable","account.data_account_type_asset"
