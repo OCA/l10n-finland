@@ -15,7 +15,7 @@
 {
     'name': 'Finland - Accounting',
     'category': 'Localization/Account Charts',
-    'version': '1.0',
+    'version': '1.1',
     'author': 'Vizucom Oy',
     'website': 'http://www.vizucom.com',
     'depends': ['sale_stock','report_webkit','account'],
