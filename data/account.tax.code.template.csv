@@ -1,6 +1,6 @@
 "id","code","sign","info","notprintable","parent_id/id","name"
 "__export__.account_tax_code_1",,1,,"False",,"Company"
-"__export__.account_tax_code_2",,1,,"False","__export__.account_tax_code_1","ALV saldo"
+"__export__.account_tax_code_2",,1,,"False","__export__.account_tax_code_1","Maksettava vero / Palautukseen oikeuttava vero (-)"
 "__export__.account_tax_code_3",,1,,"False","__export__.account_tax_code_1","Veroperuste"
 "__export__.account_tax_code_4",,1,,"False","__export__.account_tax_code_2","Saadut verot"
 "__export__.account_tax_code_5",,1,,"False","__export__.account_tax_code_2","Maksetut verot"
