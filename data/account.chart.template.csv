@@ -1,2 +1,2 @@
 "id","name","account_root_id:id","tax_code_root_id:id","bank_account_view_id:id","property_account_receivable:id","property_account_payable:id","property_account_expense_categ:id","property_account_income_categ:id"
-"l10n_fi_generic","Finnish Tax and Account Chart Template","account_account_2","__export__.account_tax_code_1",1910,1701,2871,4000,3000
+"l10n_fi","Finnish Tax and Account Chart Template","TASE","account_tax_code_1",1910,1701,2871,4000,3000
