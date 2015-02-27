@@ -1,4 +1,4 @@
-"id","code","name","parent_id:id","reconcile","type","user_type/id"
+"id","code","name","parent_id/id","reconcile","type","user_type/id"
 "FI0","Yritys","Yritys",,"False","View","account.data_account_type_view"
 "TASE","TASE","TASE","FI0","False","View","account.data_account_type_asset_view1"
 "TAVV","TAVV","V a s t a a v a a","TASE","False","View","account.data_account_type_asset_view1"
