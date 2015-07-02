@@ -257,7 +257,7 @@
 "account_account_1763",1763,"Arvonlisäverosaamiset","TAVVVV17600","False","Receivable","account.data_account_type_asset"
 "account_account_1764",1764,"Anotut arvonlisäveropalautukset","TAVVVV17600","False","Receivable","account.data_account_type_asset"
 "account_account_1765",1765,"Vakuustalletukset","TAVVVV17600","False","Receivable","account.data_account_type_asset"
-"account_account_1767",1767,"Maksetut vuokravakuudet","TAVVVV17600","False","Receivable","account.data_account_type_asset"
+"account_account_1767",1767,"Maksetut vuokravakuudet","TAVVVV17600","False","Regular","account.data_account_type_asset"
 "account_account_1769",1769,"Kuluennakot työntekijöille","TAVVVV17600","False","Receivable","account.data_account_type_asset"
 "account_account_1771",1771,"Vahingonkorvaussaamiset","TAVVVV17600","False","Receivable","account.data_account_type_asset"
 "account_account_1777",1777,"Selvittelytili","TAVVVV17600","False","Receivable","account.data_account_type_asset"
