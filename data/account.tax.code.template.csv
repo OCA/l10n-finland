@@ -1,39 +1,39 @@
-"id","code","sign","info","notprintable","parent_id/id","name"
-"account_tax_code_1",,1,,"False",,"Company"
-"account_tax_code_2",,1,,"False",,"Myynti"
-"account_tax_code_3","309",1,,"False","account_tax_code_2","0-verokannan alainen liikevaihto"
-"account_tax_code_4",,1,,"False","account_tax_code_2","Veroton osto (peruste)"
-"account_tax_code_5","303.2",1,,"False","account_tax_code_2","Myynti ALV 10%"
-"account_tax_code_6","302.2",1,,"False","account_tax_code_2","Myynti ALV 14%"
-"account_tax_code_7","301.2",1,,"False","account_tax_code_2","Myynti ALV 24%"
-"account_tax_code_8","312",1,,"False","account_tax_code_2","Palveluiden myynnit muihin EU-maihin"
-"account_tax_code_9","319",1,,"False","account_tax_code_2","Rakentamispalveluiden myynnit (käännetty verovelvollisuus)"
-"account_tax_code_10","311",1,,"False","account_tax_code_2","Tavaroiden myynnit muihin EU-maihin"
-"account_tax_code_11","309.1",1,,"False","account_tax_code_3","Myynti ALV 0%"
-"account_tax_code_12","309.2",1,,"False","account_tax_code_3","Myynti ei-yhteisö 0%"
-"account_tax_code_13",308,1,,"False","account_tax_code_4","Maksettava vero / Palautukseen oikeuttava vero (-)"
-"account_tax_code_14",,1,,"False","account_tax_code_4","Osto ALV 0%"
-"account_tax_code_15",,1,,"False","account_tax_code_4","Osto ei-yhteisö 0%"
-"account_tax_code_16",,1,,"False","account_tax_code_4","Verojen perusteet"
-"account_tax_code_17",307,1,,"False","account_tax_code_13","Kohdekuukauden vähennettävä vero"
-"account_tax_code_18",,1,,"False","account_tax_code_13","Myynnin verot"
-"account_tax_code_19","307.27",1,,"False","account_tax_code_17","Käännetty verovelvollisuus 24% osto"
-"account_tax_code_20","307.28",1,,"False","account_tax_code_17","Käänteinen vero, rakentamispalvelut, osto"
-"account_tax_code_21","307.22",1,,"False","account_tax_code_17","Ostojen verot alv 10%"
-"account_tax_code_22","307.21",1,,"False","account_tax_code_17","Ostojen verot alv 14%"
-"account_tax_code_23","307.2",1,,"False","account_tax_code_17","Ostojen verot alv 24%"
-"account_tax_code_24","307.23",1,,"False","account_tax_code_17","Ostojen verot yhteisö"
-"account_tax_code_25","303",1,,"False","account_tax_code_18","10 %:n vero"
-"account_tax_code_26",302,1,,"False","account_tax_code_18","14%:n vero"
-"account_tax_code_27",301,1,,"False","account_tax_code_18","24 %:n vero"
-"account_tax_code_28","306",1,,"False","account_tax_code_18","Vero palveluostoista muista EU-maista"
-"account_tax_code_29","318",1,,"False","account_tax_code_18","Vero rakentamispalvelun ostoista (käännetty verovelvollisuus)"
-"account_tax_code_30","305",1,,"False","account_tax_code_18","Vero tavaraostoista muista EU-maista"
-"account_tax_code_31","301.10",1,,"False","account_tax_code_27","Käännetty verovelvollisuus"
-"account_tax_code_32",,1,,"False","account_tax_code_16","Ostot yhteensä"
-"account_tax_code_33","307.12",1,,"False","account_tax_code_32","Ostot alv 10%"
-"account_tax_code_34","307.11",1,,"False","account_tax_code_32","Ostot alv 14%"
-"account_tax_code_35","307.10",1,,"False","account_tax_code_32","Ostot alv 24%"
-"account_tax_code_36","314",1,,"False","account_tax_code_32","Palveluostot muista EU-maista"
-"account_tax_code_37","320",1,,"False","account_tax_code_32","Rakentamispalvelun ostot"
-"account_tax_code_38","313",1,,"False","account_tax_code_32","Tavaraostot muista EU-maista"
+"id","code","sign","info","notprintable","parent_id/id","name","sequence"
+"account_tax_code_1",,1,,"False",,"Company",1
+"account_tax_code_2",,1,,"False",,"Myynti",
+"account_tax_code_3","309",1,,"False","account_tax_code_2","0-verokannan alainen liikevaihto",
+"account_tax_code_4",,1,,"False","account_tax_code_2","Veroton osto (peruste)",
+"account_tax_code_5","303.2",1,,"False","account_tax_code_2","Myynti ALV 10%",
+"account_tax_code_6","302.2",1,,"False","account_tax_code_2","Myynti ALV 14%",
+"account_tax_code_7","301.2",1,,"False","account_tax_code_2","Myynti ALV 24%",
+"account_tax_code_8","312",1,,"False","account_tax_code_2","Palveluiden myynnit muihin EU-maihin",
+"account_tax_code_9","319",1,,"False","account_tax_code_2","Rakentamispalveluiden myynnit (käännetty verovelvollisuus)",
+"account_tax_code_10","311",1,,"False","account_tax_code_2","Tavaroiden myynnit muihin EU-maihin",
+"account_tax_code_11","309.1",1,,"False","account_tax_code_3","Myynti ALV 0%",
+"account_tax_code_12","309.2",1,,"False","account_tax_code_3","Myynti ei-yhteisö 0%",
+"account_tax_code_13",308,1,,"False","account_tax_code_4","Maksettava vero / Palautukseen oikeuttava vero (-)",2
+"account_tax_code_14",,1,,"False","account_tax_code_4","Osto ALV 0%",
+"account_tax_code_15",,1,,"False","account_tax_code_4","Osto ei-yhteisö 0%",
+"account_tax_code_16",,1,,"False","account_tax_code_4","Verojen perusteet",3
+"account_tax_code_17",307,1,,"False","account_tax_code_13","Kohdekuukauden vähennettävä vero",5
+"account_tax_code_18",,1,,"False","account_tax_code_13","Myynnin verot",4
+"account_tax_code_19","307.27",1,,"False","account_tax_code_17","Käännetty verovelvollisuus 24% osto",
+"account_tax_code_20","307.28",1,,"False","account_tax_code_17","Käänteinen vero, rakentamispalvelut, osto",
+"account_tax_code_21","307.22",1,,"False","account_tax_code_17","Ostojen verot alv 10%",
+"account_tax_code_22","307.21",1,,"False","account_tax_code_17","Ostojen verot alv 14%",
+"account_tax_code_23","307.2",1,,"False","account_tax_code_17","Ostojen verot alv 24%",
+"account_tax_code_24","307.23",1,,"False","account_tax_code_17","Ostojen verot yhteisö",
+"account_tax_code_25","303",1,,"False","account_tax_code_18","10 %:n vero",
+"account_tax_code_26",302,1,,"False","account_tax_code_18","14%:n vero",
+"account_tax_code_27",301,1,,"False","account_tax_code_18","24 %:n vero",
+"account_tax_code_28","306",1,,"False","account_tax_code_18","Vero palveluostoista muista EU-maista",
+"account_tax_code_29","318",1,,"False","account_tax_code_18","Vero rakentamispalvelun ostoista (käännetty verovelvollisuus)",
+"account_tax_code_30","305",1,,"False","account_tax_code_18","Vero tavaraostoista muista EU-maista",
+"account_tax_code_31","301.10",1,,"False","account_tax_code_27","Käännetty verovelvollisuus",
+"account_tax_code_32",,1,,"False","account_tax_code_16","Ostot yhteensä",
+"account_tax_code_33","307.12",1,,"False","account_tax_code_32","Ostot alv 10%",
+"account_tax_code_34","307.11",1,,"False","account_tax_code_32","Ostot alv 14%",
+"account_tax_code_35","307.10",1,,"False","account_tax_code_32","Ostot alv 24%",
+"account_tax_code_36","314",1,,"False","account_tax_code_32","Palveluostot muista EU-maista",
+"account_tax_code_37","320",1,,"False","account_tax_code_32","Rakentamispalvelun ostot",
+"account_tax_code_38","313",1,,"False","account_tax_code_32","Tavaraostot muista EU-maista",
