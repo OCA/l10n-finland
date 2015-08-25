@@ -12,6 +12,11 @@ The number of accounts is approx. 950.
 The number of headers is approx. 300.
 
 
+Installation
+============
+-
+
+
 Credits
 =======
 
