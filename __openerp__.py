@@ -20,11 +20,11 @@
     'website': 'http://www.vizucom.com, http://www.tawasta.com',
     'depends': ['sale_stock', 'report_webkit', 'account'],
     'description': """
-Finnish accounts charts
-==================================
+Odoo Finnish Localization (l10n_fi)
+===================================
 
-A Finnish accounts charts localization for Odoo.
-Based on 'Liikekirjurit' account chart version 7.0.
+A Finnish chart of accounts and tax localization for Odoo.
+Based on 'Liikekirjurit' accounts chart version 7.0
 (http://www.kirjurituote.fi/tuotteet/liikekirjuri/)
 
 This is the comprehensive version of the accounts chart,
