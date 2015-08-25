@@ -8,8 +8,8 @@ Based on 'Liikekirjurit' accounts chart version 7.0
 This is the comprehensive version of the accounts chart,
 and should be sufficient for all industries and company types.
 
-The number of accounts is approx. 950
-The number of headers is approx. 300
+The number of accounts is approx. 950.
+The number of headers is approx. 300.
 
 
 Credits
