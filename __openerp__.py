@@ -16,7 +16,8 @@
     'name': 'Finland - Accounting',
     'category': 'Localization/Account Charts',
     'version': '1.2',
-    'author': 'Vizucom Oy, Oy Tawasta OS Technologies Ltd.',
+    'author': 'Vizucom Oy, Oy Tawasta OS Technologies Ltd., Odoo Community Association (OCA)',
+    'license': 'AGPL-3',
     'website': 'http://www.vizucom.com, http://www.tawasta.com',
     'depends': ['sale_stock', 'report_webkit', 'account'],
     'description': """
