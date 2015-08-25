@@ -20,6 +20,11 @@ Contributors
 
 * Jarmo Kortetjärvi <jarmo.kortetjarvi@tawasta.fi>
 
+Images
+------
+
+* Module icon from Open Icon Library (http://sourceforge.net/projects/openiconlibrary/files/)
+
 Maintainer
 ----------
 
