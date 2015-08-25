@@ -19,3 +19,8 @@ Contributors
 ------------
 
 * Jarmo Kortetjärvi <jarmo.kortetjarvi@tawasta.fi>
+
+Maintainer
+----------
+
+-
