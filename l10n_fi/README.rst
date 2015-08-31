@@ -1,5 +1,5 @@
-Odoo Finnish Localization (l10n_fi)
-===================================
+Finnish Chart of Accounts and Tax Localization
+==============================================
 
 A Finnish chart of accounts and tax localization for Odoo.
 Based on 'Liikekirjurit' accounts chart version 7.0
