@@ -25,7 +25,7 @@
     'version': '1.2',
     'author': 'Vizucom Oy, Oy Tawasta OS Technologies Ltd., Odoo Community Association (OCA)',
     'license': 'AGPL-3',
-    'website': 'http://www.vizucom.com, http://www.tawasta.com',
+    'website': 'https://github.com/OCA/l10n-finland',
     'depends': [
         'account',
         'account_chart',
