@@ -28,7 +28,7 @@
     'website': 'http://www.vizucom.com, http://www.tawasta.com',
     'depends': ['sale_stock', 'report_webkit', 'account'],
     'description': """
-Odoo Finnish Localization (l10n_fi)
+Odoo Finnish Localization (l10n_fi_liikekirjuri)
 ===================================
 
 A Finnish chart of accounts and tax localization for Odoo.
