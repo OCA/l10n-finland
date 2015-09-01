@@ -40,5 +40,4 @@
         'data/account.tax.template.csv',
     ],
     'installable': 'True',
-    'images': [],
 }
