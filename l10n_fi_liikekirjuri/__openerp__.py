@@ -26,7 +26,12 @@
     'author': 'Vizucom Oy, Oy Tawasta OS Technologies Ltd., Odoo Community Association (OCA)',
     'license': 'AGPL-3',
     'website': 'http://www.vizucom.com, http://www.tawasta.com',
-    'depends': ['sale_stock', 'report_webkit', 'account'],
+    'depends': [
+        'account',
+        'account_chart',
+        'base_vat',
+        'base_iban'
+    ],
     'description': """
 Odoo Finnish Localization (l10n_fi_liikekirjuri)
 ===================================
@@ -41,7 +46,6 @@ and should be sufficient for all industries and company types.
 The number of accounts is approx. 950
 The number of headers is approx. 300
 """,
-    'depends': ['base_iban', 'base_vat', 'account_chart'],
     'data': [
         'data/account.account.type.csv',
         'data/account.account.template.csv',
