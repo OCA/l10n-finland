@@ -20,7 +20,7 @@
 #
 ##############################################################################
 {
-    'name': 'Finland - Accounting',
+    'name': 'Finland - Accounting (Liikekirjuri)',
     'category': 'Localization/Account Charts',
     'version': '8.0.1.2.0',
     'author': '''
