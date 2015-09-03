@@ -23,7 +23,8 @@
     'name': 'Finland - Accounting',
     'category': 'Localization/Account Charts',
     'version': '8.0.1.2.0',
-    'author': 'Vizucom Oy, Oy Tawasta OS Technologies Ltd., Odoo Community Association (OCA)',
+    'author': 'Vizucom Oy, Oy Tawasta OS Technologies Ltd.\
+    , Odoo Community Association (OCA)',
     'license': 'AGPL-3',
     'website': 'https://github.com/OCA/l10n-finland',
     'depends': [
