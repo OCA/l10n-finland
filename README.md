@@ -1,1 +1,4 @@
-# Finnish accounting localization (l10n_fi)
+Odoo Finnish Localization
+=========================
+
+Finnish localization modules.
