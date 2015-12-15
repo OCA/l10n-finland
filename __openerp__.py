@@ -15,7 +15,7 @@
 {
     'name': 'Partner Edicode Fields',
     'category': 'CRM',
-    'version': '0.1',
+    'version': '8.0.0.2.0',
     'author': 'Vizucom Oy',
     'website': 'http://www.vizucom.com',
     'depends': [],
