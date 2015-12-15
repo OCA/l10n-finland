@@ -15,7 +15,7 @@
 {
     'name': 'Partner Edicode Fields',
     'category': 'CRM',
-    'version': '8.0.0.3.1',
+    'version': '8.0.0.3.2',
     'author': 'Vizucom Oy',
     'website': 'http://www.vizucom.com',
     'depends': [],
@@ -23,5 +23,7 @@
         'view/res_partner.xml',
 
         'data/res_partner_operator_einvoice.xml',
+
+        'security/ir.model.access.csv',
     ],
 }
