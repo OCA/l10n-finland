@@ -15,15 +15,10 @@
 {
     'name': 'Partner Edicode Fields',
     'category': 'CRM',
-    'version': '8.0.0.2.0',
+    'version': '8.0.0.3.0',
     'author': 'Vizucom Oy',
     'website': 'http://www.vizucom.com',
     'depends': [],
-    'description': """
-Partner Edicode Fields
-======================
-* Adds new fields to partner for edicode, eInvoice operator and the operator's identifier
-""",
     'data': [
         'view/res_partner.xml',
     ],

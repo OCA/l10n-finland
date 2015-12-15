@@ -21,7 +21,7 @@ class ResPartnerOperatorEinvoice(models.Model):
 
     # 2. Fields declaration
     name = fields.Char("Operator")
-    code = fields.Char("Identifier")
+    identifier = fields.Char("Identifier")
 
     # 3. Default methods
 
