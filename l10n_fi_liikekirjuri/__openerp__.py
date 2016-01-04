@@ -22,7 +22,7 @@
 {
     'name': 'Finland - Accounting (Liikekirjuri)',
     'category': 'Localization/Account Charts',
-    'version': '8.0.1.2.3',
+    'version': '8.0.1.3.0',
     'author': '''
 Vizucom Oy,
 Oy Tawasta OS Technologies Ltd.,
