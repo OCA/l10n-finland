@@ -22,7 +22,7 @@
 {
     'name': 'Finnish Payment Terms',
     'summary': 'Common Finnish invoice payment terms',
-    'version': '8.0.0.3.0',
+    'version': '8.0.0.3.1',
     'category': 'Localization',
     'website': 'https://odoo-community.org/',
     'author': 'Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)',
