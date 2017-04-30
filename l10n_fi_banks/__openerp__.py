@@ -22,7 +22,7 @@
 {
     'name': 'Finnish Banks',
     'summary': 'Finnish banks and their addresses',
-    'version': '8.0.0.4.0',
+    'version': '8.0.1.0.0',
     'category': 'Localization',
     'website': 'https://odoo-community.org/',
     'author': 'Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)',

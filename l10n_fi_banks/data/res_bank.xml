@@ -4,15 +4,7 @@
 
         <!-- Finnish banks -->
 
-        <!-- TODO: Add main branch address information -->
         <!-- TODO: Add branches? -->
-
-        <!-- Disable the Reserve-account -->
-        <!-- We could also delete this, but there is always a chance
-          someone modified this to be an actual account -->
-        <record id="base.res_bank_1" model="res.bank">
-            <field name="active" eval="0" />
-        </record>
 
         <!-- Please maintain the alphabetical order when doing additions -->
 
