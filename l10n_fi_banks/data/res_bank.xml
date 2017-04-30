@@ -65,6 +65,17 @@
             <field name="phone">010 444 11</field>
         </record>
 
+        <!-- Holvi Payment Services Oy -->
+        <record id="res_bank_HOLVFIHH" model="res.bank">
+            <field name="name">Holvi</field>
+            <field name="bic">HOLVFIHH</field>
+            <field name="street">Lapinlahdenpolku 8 E</field>
+            <field name="zip">00180</field>
+            <field name="city">HELSINKI</field>
+            <field name="country" ref="base.fi" />
+            <field name="phone">+358 753 252935</field>
+        </record>
+
         <!-- Nordea -->
         <record id="res_bank_NDEAFIHH" model="res.bank">
             <field name="name">Nordea</field>
