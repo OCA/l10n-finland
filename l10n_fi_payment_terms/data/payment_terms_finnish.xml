@@ -6,11 +6,6 @@
         	Payment terms
         -->
         
-        <!-- Delete the defaults -->
-        <delete model="account.payment.term" id="account.account_payment_term_immediate"/>
-        <delete model="account.payment.term" id="account.account_payment_term_15days"/>
-        <delete model="account.payment.term" id="account.account_payment_term_net"/>
-        
         <!-- Add new payment terms -->
         
         <!-- Immediate payment -->
