@@ -1,1 +1,1 @@
-import payment_term
+from . import payment_term
