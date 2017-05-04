@@ -2,11 +2,7 @@
 <openerp>
     <data noupdate="1">
 
-        <!--
-        	Payment terms
-        -->
-
-        <!-- Add new payment terms -->
+        <!-- Add Finnish payment terms -->
 
         <!-- Immediate payment -->
         <record id="account_payment_term_immediate" model="account.payment.term">
