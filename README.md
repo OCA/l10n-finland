@@ -7,6 +7,13 @@ Finnish localisation
 ...
 
 [//]: # (addons)
+
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[l10n_fi_banks](l10n_fi_banks/) | 8.0.1.0.0 | Finnish banks and their addresses
+
 [//]: # (end addons)
 
 Translation Status
