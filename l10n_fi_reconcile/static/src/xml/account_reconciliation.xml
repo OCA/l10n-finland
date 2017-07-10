@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-extend="bank_statement_reconciliation_line">
+        <t t-jquery=".cell_label" t-operation="before">
+            <td>
+                <t t-if="line.ref" t-esc="line.ref"/>
+            </td>
+        </t>
+    </t>
+
+    <t t-extend="reconciliation_line_open_balance">
+        <t t-jquery=".cell_label" t-operation="before">
+            <td />
+        </t>
+    </t>
+
+    <t t-extend="reconciliation_move_line">
+        <t t-jquery=".cell_label" t-operation="before">
+            <td>
+                <t t-esc="line.payment_reference"/>
+            </td>
+        </t>
+    </t>
+
+</templates>
