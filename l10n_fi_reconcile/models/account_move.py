@@ -33,15 +33,8 @@ class AccountMoveLine(models.Model):
 
     @api.multi
     def prepare_move_lines_for_reconciliation_widget(self, target_currency=False, target_date=False):
-
-        def get_lines(l):
-            ids = []
-            for d in l:
-                ids.append(d['id'])
-            return self.search([('id', 'in', ids)])
-
         res = super(AccountMoveLine, self).prepare_move_lines_for_reconciliation_widget(target_currency, target_date)
-        lines = get_lines(res)
+        lines = self.browse([d['id'] for d in res])
         for line_dict in res:
             line = lines.filtered(lambda r: r.id == line_dict['id'])
             line_dict['payment_reference'] = line.payment_reference or '-'
