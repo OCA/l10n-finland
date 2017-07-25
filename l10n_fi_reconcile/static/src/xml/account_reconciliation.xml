@@ -7,11 +7,15 @@
             <td>
                 <t t-if="line.ref" t-esc="line.ref"/>
             </td>
+            <td>
+                <t t-if="line.partner_note" t-esc="line.partner_note" />
+            </td>
         </t>
     </t>
 
     <t t-extend="reconciliation_line_open_balance">
         <t t-jquery=".cell_label" t-operation="before">
+            <td />
             <td />
         </t>
     </t>
@@ -19,8 +23,11 @@
     <t t-extend="reconciliation_move_line">
         <t t-jquery=".cell_label" t-operation="before">
             <td>
-                <t t-esc="line.payment_reference"/>
+                <t t-if="line.payment_reference" t-esc="line.payment_reference"/>
             </td>
+        </t>
+        <t t-jquery=".cell_debit" t-operation="before">
+            <td />
         </t>
     </t>
 

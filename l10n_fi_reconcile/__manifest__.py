@@ -33,12 +33,13 @@
         'l10n_fi',
     ],
     'data': [
+        "views/account_view.xml",
 
     ],
     'demo': [
 
     ],
-    "qweb": [
+    'qweb': [
         'static/src/xml/account_reconciliation.xml',
     ],
 }
