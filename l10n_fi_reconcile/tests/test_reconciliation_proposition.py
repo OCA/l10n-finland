@@ -74,9 +74,9 @@ class ReconciliationPropositionTestCase(TransactionCase):
         })
 
         # We need a payment_method to assign to payments. This is how account.invoice
-        # gets payment_method when creating payments
+        # gets payment_method when creating payments.
         payment_method = self.env.ref('account.account_payment_method_manual_in')
-        self.assertTrue(payment_method)
+
         # We need to create move lines at the same time so the journal stays in balance,
         # so create a list of tuples with dicts that hold the values and pass them to the account.move
         # line_ids which will then link and create them all at once.

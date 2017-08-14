@@ -85,7 +85,22 @@ class AccountBankStatementLine(models.Model):
     def get_statement_line_for_reconciliation_widget(self):
         res = super(AccountBankStatementLine, self).get_statement_line_for_reconciliation_widget()
 
-        # partner_name key is already in use so use something else
+        # The partner_name key holds a name of an actual res.partner connected to the bank statement.
+        # If we can find an existing res.partner on an invoice that matches to the bank statement line's
+        # payment_reference, we use that.
+        #
+        # The bank statement line's partner_name field is used by bank statement importer to store
+        # bank statement's field's `partner`-column that has some sort of description of the other party of the
+        # payment. This might be just a name, name and description of the transaction or something else.
+        # The `self.partner_name`-field has a slightly misleading name because of the way the importer uses it.
+        #  We are showing this field as a separate column on the reconciliation view since it often contains
+        # the most descriptive information about the payment.
+        #
+        # The dict is returned to a Qweb view and not to create any records, so the keys' names don't
+        # have to match any existing fields. Since `partner_name` is used to store the name of
+        # an actual partner, we create a new key `partner_note` that contains the bank statement line's
+        # partner_name -field.
+
         if self.partner_name:
             res['partner_note'] = self.partner_name
 
