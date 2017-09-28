@@ -7,11 +7,20 @@ Finnish localisation
 ...
 
 [//]: # (addons)
+
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[l10n_fi_banks](l10n_fi_banks/) | 10.0.1.0.0 | Finnish banks and their addresses
+[l10n_fi_payment_terms](l10n_fi_payment_terms/) | 10.0.1.0.0 | Common Finnish invoice payment terms
+
 [//]: # (end addons)
 
 Translation Status
 ------------------
 [![Transifex Status](https://www.transifex.com/projects/p/OCA-l10n-finland-10-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-l10n-finland-10-0)
+
 
 ----
 
