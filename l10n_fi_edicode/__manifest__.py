@@ -22,7 +22,7 @@
 {
     'name': 'Finnish EDI code',
     'summary': 'Finnish Electronic Data Interchange code',
-    'version': '10.0.0.3.3',
+    'version': '10.0.0.3.4',
     'category': 'CRM',
     'website': 'https://github.com/Tawasta/l10n-finland/',
     'author': 'Vizucom Oy, Oy Tawasta Technologies Ltd.',
