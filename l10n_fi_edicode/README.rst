@@ -2,16 +2,12 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-======================
-Partner Edicode Fields
-======================
+================
+Finnish EDI code
+================
 
-Adds new fields to partner for edicode, eInvoice operator and the operator's identifier.
-
-Installation
-============
-
-Install the module form Settings->Local Modules
+Adds new fields to partner for EDI code (Electronic Data Interchange code),
+eInvoice operator and the operator's identifier.
 
 Configuration
 =============
@@ -37,4 +33,8 @@ Contributors
 Maintainer
 ----------
 
-This module is maintained by Vizucom Oy
+.. image:: http://tawasta.fi/templates/tawastrap/images/logo.png
+   :alt: Oy Tawasta OS Technologies Ltd.
+   :target: http://tawasta.fi/
+
+This module is maintained by Oy Tawasta OS Technologies Ltd.
