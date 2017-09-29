@@ -18,9 +18,9 @@
 #    along with this program. If not, see http://www.gnu.org/licenses/agpl.html
 #
 {
-    "name": "Partner business code",
+    "name": "Partner business code (business id)",
     "summary": "Adds a business code (business id) for partners",
-    "version": "10.0.1.1.0",
+    "version": "10.0.1.1.1",
     "category": "CRM",
     "website": "https://odoo-community.org/",
     "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",

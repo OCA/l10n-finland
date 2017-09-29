@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=====================
-Partner business code
-=====================
+===================================
+Partner business code (business id)
+===================================
 
 Adds a business code (business id) for partners
 
