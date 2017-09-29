@@ -13,7 +13,7 @@
 
 				<xpath expr="//h1[1]" position="after">
 					<h2 attrs="{'invisible': [('is_company', '=', False)]}">
-						<field name="business_id" placeholder="Business id"/>
+						<field name="business_id" placeholder="Business ID"/>
 					</h2>
 				</xpath>
 
