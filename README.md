@@ -12,18 +12,6 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[l10n_fi_banks](l10n_fi_banks/) | 10.0.1.0.0 | Finnish banks and their addresses
-[l10n_fi_payment_terms](l10n_fi_payment_terms/) | 10.0.1.0.0 | Common Finnish invoice payment terms
-
-[//]: # (end addons)
-
-Translation Status
-------------------
-[![Transifex Status](https://www.transifex.com/projects/p/OCA-l10n-finland-10-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-l10n-finland-10-0)
-
-
-----
-
-OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit organization whose
-mission is to support the collaborative development of Odoo features and
-promote its widespread use.
+[l10n_fi_banks](l10n_fi_banks/) | 10.0.1.0.0 | Finnish banks and their addresses
+[l10n_fi_edicode](l10n_fi_edicode/) | 10.0.0.3.6 | Finnish Electronic Data Interchange code
+[l10n_fi_payment_terms](l10n_fi_payment_terms/) | 10.0.1.0.0 | Common Finnish invoice payment terms
