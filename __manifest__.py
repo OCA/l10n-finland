@@ -20,7 +20,7 @@
 {
     "name": "Partner business code",
     "summary": "Adds a business code (business id) for partners",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.1.0",
     "category": "CRM",
     "website": "https://odoo-community.org/",
     "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
@@ -32,9 +32,10 @@
         "bin": [],
     },
     "depends": [
-        "base",
+        "partner_identification",
     ],
     "data": [
+        'data/res_partner_id_category.xml',
         'views/res_partner.xml',
     ],
     "demo": [
