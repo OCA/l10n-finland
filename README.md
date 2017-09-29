@@ -13,5 +13,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [l10n_fi_banks](l10n_fi_banks/) | 10.0.1.0.0 | Finnish banks and their addresses
+[l10n_fi_business_code](l10n_fi_business_code/) | Unknown | 
+[l10n_fi_business_code_validate](l10n_fi_business_code_validate/) | Unknown | 
 [l10n_fi_edicode](l10n_fi_edicode/) | 10.0.0.3.6 | Finnish Electronic Data Interchange code
 [l10n_fi_payment_terms](l10n_fi_payment_terms/) | 10.0.1.0.0 | Common Finnish invoice payment terms
