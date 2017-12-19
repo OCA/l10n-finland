@@ -4,6 +4,7 @@
 
 import re
 from odoo import models, fields, api
+from odoo import _
 from odoo.exceptions import ValidationError
 
 
@@ -43,7 +44,8 @@ class ResPartnerIdCategory(models.Model):
 
         # Validate business id formal format
         if not re.match('^[0-9]{7}[-][0-9]{1}$', business_id):
-            raise ValidationError("Your business id is invalid. Please use format 1234567-1")
+            msg = _('Your business id is invalid. Please use format 1234567-1')
+            raise ValidationError(msg)
 
         # The formal format is ok, check the validation number
         multipliers = [7, 9, 10, 5, 8, 4, 2]  # Number-space specific multipliers
@@ -66,7 +68,8 @@ class ResPartnerIdCategory(models.Model):
 
         if int(modulo) != int(validation_bit):
             # The validation bit doesn't match
-            raise ValidationError("Your business id validation number is invalid. Please check the given business id")
+            msg = _('Your business id validation number is invalid. Please check the given business id')
+            raise ValidationError(msg)
 
     # Finnish (FI) business id formatter
     def _business_id_update_format_fi(self, partner):
