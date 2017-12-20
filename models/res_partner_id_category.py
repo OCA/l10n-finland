@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import re
-from odoo import models, fields, api
+from odoo import models
 from odoo import _
 from odoo.exceptions import ValidationError
 
@@ -22,8 +22,10 @@ class ResPartnerIdCategory(models.Model):
         if partner.country_id:
             # Try to find a validator function by partner country code
 
-            # The method name should be '_business_id_validate_{lowercase_country_code}'
-            validator_method_name = '_business_id_validate_%s' % partner.country_id.code.lower()
+            # The method name should be
+            # '_business_id_validate_{lowercase_country_code}'
+            validator_method_name = '_business_id_validate_%s' % \
+                                    partner.country_id.code.lower()
 
             # Check if the method exists
             if hasattr(self, validator_method_name):
@@ -39,7 +41,8 @@ class ResPartnerIdCategory(models.Model):
         business_id = partner.business_id
 
         if re.match('^[0-9]{3}[.][0-9]{3}$', business_id):
-            # Registered association(rekisteröity yhdistys, ry / r.y.). Format 123.456
+            # Registered association (rekisteröity yhdistys, ry / r.y.).
+            # Format 123.456
             return True
 
         # Validate business id formal format
@@ -48,11 +51,14 @@ class ResPartnerIdCategory(models.Model):
             raise ValidationError(msg)
 
         # The formal format is ok, check the validation number
-        multipliers = [7, 9, 10, 5, 8, 4, 2]  # Number-space specific multipliers
+        multipliers = [7, 9, 10, 5, 8, 4,
+                       2]  # Number-space specific multipliers
         validation_multiplier = 0  # Initial multiplier
         number_index = 0  # The index of the number we are parsing
 
-        business_id_number = re.sub("[^0-9]", "", business_id)  # business id without "-" for validation
+        # business id without "-" for validation
+        business_id_number = re.sub("[^0-9]", "",
+                                    business_id)
         validation_bit = business_id_number[7:8]
 
         # Test the validation bit
@@ -68,11 +74,14 @@ class ResPartnerIdCategory(models.Model):
 
         if int(modulo) != int(validation_bit):
             # The validation bit doesn't match
-            msg = _('Your business id validation number is invalid. Please check the given business id')
+            msg = _('Your business id validation number is invalid.')
+            msg += ('Please check the given business id')
             raise ValidationError(msg)
 
     # Finnish (FI) business id formatter
     def _business_id_update_format_fi(self, partner):
         # Reformat business id from 12345671 to 1234567-1
-        if isinstance(partner.business_id, basestring) and re.match('^[0-9]{8}$', partner.business_id):
-            partner.business_id = partner.business_id[:7] + '-' + partner.business_id[7:]
+        if isinstance(partner.business_id, basestring) and re.match(
+                '^[0-9]{8}$', partner.business_id):
+            partner.business_id = partner.business_id[
+                                  :7] + '-' + partner.business_id[7:]
