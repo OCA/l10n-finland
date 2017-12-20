@@ -20,7 +20,7 @@
 {
     "name": "Partner business code validate",
     "summary": "Adds validation for partner_business_code",
-    "version": "10.0.1.2.1",
+    "version": "10.0.1.2.2",
     "category": "CRM",
     "website": "https://odoo-community.org/",
     "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
