@@ -81,7 +81,8 @@ class ResPartnerIdCategory(models.Model):
     # Finnish (FI) business id formatter
     def _business_id_update_format_fi(self, partner):
         # Reformat business id from 12345671 to 1234567-1
-        if isinstance(partner.business_id, basestring) and re.match(
-                '^[0-9]{8}$', partner.business_id):
-            partner.business_id = partner.business_id[
-                                  :7] + '-' + partner.business_id[7:]
+        if isinstance(partner.business_id, basestring) \
+                and re.match('^[0-9]{8}$', partner.business_id):
+
+            partner.business_id = \
+                partner.business_id[:7] + '-' + partner.business_id[7:]
