@@ -35,7 +35,8 @@
         "crm",
     ],
     "data": [
-        'data/res_partner_id_category.xml',
+        'data/res_partner_operator_einvoice.xml',
+        'view/res_partner.xml',
     ],
     "demo": [
     ],
