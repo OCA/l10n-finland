@@ -7,7 +7,9 @@ class ResPartnerOperatorEinvoice(models.Model):
 
     name = fields.Char(
         string='Operator',
+        required=True,
     )
     identifier = fields.Char(
         string='Identifier',
+        required=True,
     )
