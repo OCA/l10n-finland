@@ -30,16 +30,6 @@
         <field name="identifier">DNBAFIHX</field>
     </record>
 
-    <record id="operator_einvoice_enfo" model="res.partner.operator.einvoice">
-        <field name="name">Enfo Zender Oy</field>
-        <field name="identifier">003714377140</field>
-    </record>
-
-    <record id="operator_einvoice_handelsbanken" model="res.partner.operator.einvoice">
-        <field name="name">Handelsbanken</field>
-        <field name="identifier">HANDFIHH</field>
-    </record>
-
     <record id="operator_einvoice_handelsbanken" model="res.partner.operator.einvoice">
         <field name="name">Handelsbanken</field>
         <field name="identifier">HANDFIHH</field>
@@ -55,6 +45,11 @@
         <field name="identifier">INEXCHANGE</field>
     </record>
 
+    <record id="operator_einvoice_lexmark" model="res.partner.operator.einvoice">
+        <field name="name">Lexmark Expert Systems AB</field>
+        <field name="identifier">EXPSYS</field>
+    </record>
+
     <record id="operator_einvoice_liaison" model="res.partner.operator.einvoice">
         <field name="name">Liaison Technologies Oy</field>
         <field name="identifier">003708599126</field>
@@ -63,6 +58,11 @@
     <record id="operator_einvoice_maventa" model="res.partner.operator.einvoice">
         <field name="name">Maventa</field>
         <field name="identifier">003721291126</field>
+    </record>
+
+    <record id="operator_einvoice_netbox" model="res.partner.operator.einvoice">
+        <field name="name">Netbox Finland Oy</field>
+        <field name="identifier">003726044706</field>
     </record>
 
     <record id="operator_einvoice_nordea" model="res.partner.operator.einvoice">
@@ -76,7 +76,7 @@
     </record>
 
     <record id="operator_einvoice_op" model="res.partner.operator.einvoice">
-        <field name="name">OP-Pohjola-ryhmä</field>
+        <field name="name">OP-ryhmä</field>
         <field name="identifier">OKOYFIHH</field>
     </record>
 
@@ -90,9 +90,24 @@
         <field name="identifier">003723609900</field>
     </record>
 
+    <record id="operator_einvoice_palette" model="res.partner.operator.einvoice">
+        <field name="name">Palette Software</field>
+        <field name="identifier">PALETTE</field>
+    </record>
+
     <record id="operator_einvoice_pop" model="res.partner.operator.einvoice">
-        <field name="name">Paikallisosuuspankit</field>
+        <field name="name">POP Pankit</field>
         <field name="identifier">POPFFI22</field>
+    </record>
+
+    <record id="operator_einvoice_postnord" model="res.partner.operator.einvoice">
+        <field name="name">PostNord Strålfors Oy</field>
+        <field name="identifier">003701150617</field>
+    </record>
+
+    <record id="operator_einvoice_ropo" model="res.partner.operator.einvoice">
+        <field name="name">Ropo Capital Oy</field>
+        <field name="identifier">003714377140</field>
     </record>
 
     <record id="operator_einvoice_spankki" model="res.partner.operator.einvoice">
@@ -100,18 +115,13 @@
         <field name="identifier">SBANFIHH</field>
     </record>
 
-    <record id="operator_einvoice_stralfors" model="res.partner.operator.einvoice">
-        <field name="name">Strålfors Oy</field>
-        <field name="identifier">003701150617</field>
-    </record>
-
     <record id="operator_einvoice_sp" model="res.partner.operator.einvoice">
         <field name="name">Säästöpankit</field>
         <field name="identifier">ITELFIHH</field>
     </record>
 
-    <record id="operator_einvoice_teliasonera" model="res.partner.operator.einvoice">
-        <field name="name">TeliaSonera Finland Oyj</field>
+    <record id="operator_einvoice_telia" model="res.partner.operator.einvoice">
+        <field name="name">Telia Finland Oyj</field>
         <field name="identifier">003703575029</field>
     </record>
 
