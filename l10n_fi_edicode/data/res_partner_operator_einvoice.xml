@@ -20,7 +20,7 @@
 
     <record id="operator_einvoice_003703575029"
             model="res.partner.operator.einvoice">
-        <field name="name">CGI</field>
+        <field name="name">CGI / Telia Finland Oyj</field>
         <field name="identifier">003703575029</field>
     </record>
 
@@ -144,11 +144,13 @@
         <field name="identifier">ITELFIHH</field>
     </record>
 
+    <!-- Telia Finland Oyj uses CGI as operator
     <record id="operator_einvoice_003703575029"
             model="res.partner.operator.einvoice">
         <field name="name">Telia Finland Oyj</field>
         <field name="identifier">003703575029</field>
     </record>
+    -->
 
     <record id="operator_einvoice_003701011385"
             model="res.partner.operator.einvoice">
