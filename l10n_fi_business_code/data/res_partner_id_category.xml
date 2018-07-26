@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Business ID -->
+    <record id="res_partner_id_category_business_id" model="res.partner.id_category">
+        <field name="code">business_id</field>
+        <field name="name">Business ID</field>
+    </record>
+</odoo>
