@@ -1,7 +1,7 @@
 # Copyright 2017 Oy Tawasta OS Technologies Ltd.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -23,8 +23,15 @@ class ResPartner(models.Model):
 
     @api.constrains('id_numbers')
     def _check_if_single_business_id(self):
-        business_category_id = self.env.ref('l10n_fi_business_code.res_partner_id_category_business_id')
+        business_category_id = self.env.ref(
+            'l10n_fi_business_code.res_partner_id_category_business_id'
+        )
         for partner in self:
-            id_numbers = partner.id_numbers.filtered(lambda r: r.category_id == business_category_id)
+            id_numbers = partner.id_numbers.filtered(
+                lambda r: r.category_id == business_category_id
+            )
             if len(id_numbers) > 1:
-                raise ValidationError('Partner can only have 1 ID number of category ' + business_category_id.name)
+                raise ValidationError(
+                    _('Partner can only have 1 ID number of category {}')
+                    .format(business_category_id.name)
+                )
