@@ -4,9 +4,10 @@ from odoo.exceptions import ValidationError
 
 
 class TestBusinessIdValidate(TransactionCase):
+    # Test partner business id validation
 
     def setUp(self):
-        # Test partner business id validation
+        # Set up Finnish and Swedish partners
         super(TestBusinessIdValidate, self).setUp()
 
         self.ResPartner = self.env['res.partner']
@@ -42,9 +43,9 @@ class TestBusinessIdValidate(TransactionCase):
             self.partner_fi.business_id = business_id
 
     def test_invalid_swedish_business_id(self):
-        # Only Finnish business id has a validation so far,
+        # Only Finnish business ids have a validation so far,
         # so this shouldn't raise an error
-        # (Swedish) VAT-numbers should generally got to the vat-field
+        # (Swedish) VAT-numbers should generally go to the VAT-field
 
         business_id = 'SE123456-7890'
 
