@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo10-addon-l10n_fi_banks',
+        'odoo10-addon-l10n_fi_edicode',
         'odoo10-addon-l10n_fi_payment_terms',
     ],
     classifiers=[
