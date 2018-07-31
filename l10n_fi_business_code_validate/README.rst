@@ -9,7 +9,9 @@ Partner business code validate
 Adds a business code validation and format checks for business id
 
 Supported countries:
+
 - Finland
+   - https://www.vero.fi/contentassets/38c6e70f10b342cdba4716e904c3edbf/tarkistusmerkin-laskenta.pdf
 
 
 Installation

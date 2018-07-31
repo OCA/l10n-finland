@@ -11,6 +11,9 @@ from odoo.exceptions import ValidationError
 class ResPartnerIdCategory(models.Model):
     _inherit = 'res.partner.id_category'
 
+    # Number-space specific multipliers
+    FINNISH_ID_DIGIT_MULTIPLIERS = [7, 9, 10, 5, 8, 4, 2]
+
     # Business id validator
     def validate_business_id(self, id_number):
         if not id_number:
@@ -51,10 +54,8 @@ class ResPartnerIdCategory(models.Model):
             raise ValidationError(msg)
 
         # The formal format is ok, check the validation number
-        multipliers = [7, 9, 10, 5, 8, 4,
-                       2]  # Number-space specific multipliers
+        multipliers = self.FINNISH_ID_DIGIT_MULTIPLIERS
         validation_multiplier = 0  # Initial multiplier
-        number_index = 0  # The index of the number we are parsing
 
         # business id without "-" for validation
         business_id_number = re.sub("[^0-9]", "",
@@ -62,10 +63,8 @@ class ResPartnerIdCategory(models.Model):
         validation_bit = business_id_number[7:8]
 
         # Test the validation bit
-        for number in business_id_number[0:7]:
-            validation_multiplier += multipliers[number_index] * int(number)
-            number_index += 1
-
+        for number, multiplier in zip(business_id_number[0:7], multipliers):
+            validation_multiplier += multiplier * int(number)
         modulo = validation_multiplier % 11
 
         # Get the final modulo
@@ -74,8 +73,10 @@ class ResPartnerIdCategory(models.Model):
 
         if int(modulo) != int(validation_bit):
             # The validation bit doesn't match
-            msg = _('Your business id validation number is invalid.')
-            msg += ('Please check the given business id')
+            msg = '%s %s' % (
+                _('Your business id validation number is invalid.'),
+                _('Please check the given business id.'),
+            )
             raise ValidationError(msg)
 
     # Finnish (FI) business id formatter
