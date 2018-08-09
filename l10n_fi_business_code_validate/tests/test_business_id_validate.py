@@ -22,6 +22,11 @@ class TestBusinessIdValidate(TransactionCase):
             country_id=self.env.ref('base.se').id
         ))
 
+    def test_empty_business_id(self):
+        # An empty business id (not set, unset)
+        self.partner_fi.business_id = False
+        self.assertEqual(self.partner_fi.business_id, False)
+
     def test_valid_finnish_business_id(self):
         # A valid business id. This should be saved without error
         business_id = '1234567-1'
@@ -35,9 +40,16 @@ class TestBusinessIdValidate(TransactionCase):
         self.partner_fi.business_id = business_id
         self.assertEqual(self.partner_fi.business_id, business_id)
 
-    def test_invalid_finnish_business_id(self):
+    def test_invalid_finnish_business_id_validation_bit(self):
         # An invalid validation bit. This should throw a ValidationError
         business_id = '1234567-2'
+
+        with self.assertRaises(ValidationError):
+            self.partner_fi.business_id = business_id
+
+    def test_invalid_finnish_business_id_format(self):
+        # An invalid format. This should throw a ValidationError
+        business_id = 'FI12345671'
 
         with self.assertRaises(ValidationError):
             self.partner_fi.business_id = business_id
