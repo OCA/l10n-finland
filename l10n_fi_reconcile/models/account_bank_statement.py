@@ -111,7 +111,7 @@ class AccountBankStatementLine(models.Model):
         invoice = invoice_model.search([
             ('state', '=', 'open'),
             '|', ('payment_reference', '=', reference), ('reference', '=', reference)
-        ], limit=1)
+        ], limit=1) if reference else False
 
         if invoice:
             res['partner_name'] = invoice.partner_id.name
