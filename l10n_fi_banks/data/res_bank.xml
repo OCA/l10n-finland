@@ -13,7 +13,6 @@
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">010 247 5000</field>
-        <field name="fax">010 247 6356</field>
     </record>
 
     <!-- Citibank -->
@@ -31,12 +30,12 @@
     <record id="res_bank_DABAFIHH" model="res.bank">
         <field name="name">Danske Bank</field>
         <field name="bic">DABAFIHH</field>
-        <field name="street">Hiililaiturinkuja 2</field>
-        <field name="zip">00180</field>
-        <field name="city">HELSINKI</field>
+        <field name="street">Televisiokatu 1</field>
+        <field name="street2">PL 1243</field>
+        <field name="zip">00075</field>
+        <field name="city">Danske bank</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">010 546 0000</field>
-        <field name="fax">010 546 2457</field>
     </record>
 
     <!-- DNB Bank Finnish branch -->
@@ -52,11 +51,11 @@
 
     <!-- Handelsbanken -->
     <record id="res_bank_HANDFIHH" model="res.bank">
-        <field name="name">Handelsbanken</field>
+        <field name="name">Handelsbanken Suomi</field>
         <field name="bic">HANDFIHH</field>
-        <field name="street">Aleksanterinkatu 11</field>
-        <field name="zip">00100</field>
-        <field name="city">HELSINKI</field>
+        <field name="street">Itämerenkatu 11-13</field>
+        <field name="zip">00180</field>
+        <field name="city">Helsinki</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">010 444 11</field>
     </record>
@@ -65,8 +64,8 @@
     <record id="res_bank_HOLVFIHH" model="res.bank">
         <field name="name">Holvi</field>
         <field name="bic">HOLVFIHH</field>
-        <field name="street">Lapinlahdenpolku 8 E</field>
-        <field name="zip">00180</field>
+        <field name="street">Hämeentie 11</field>
+        <field name="zip">00530</field>
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">+358 753 252935</field>
@@ -81,20 +80,19 @@
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">09 1651</field>
-        <field name="fax">09 165 56163</field>
     </record>
 
     <!-- Osuuspankki -->
     <record id="res_bank_OKOYFIHH" model="res.bank">
         <field name="name">Osuuspankki (OP)</field>
         <field name="bic">OKOYFIHH</field>
-        <field name="street">MIKONKATU 13 A</field>
+        <field name="street">Mikonkatu 13 A</field>
+        <field name="street2">PL 670</field>
         <field name="zip">00101</field>
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="email">helsingin@op.fi</field>
         <field name="phone">010 255 9015</field>
-        <field name="fax"></field>
     </record>
 
     <!-- POP Pankki -->
@@ -106,7 +104,6 @@
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">020 749 5325</field>
-        <field name="fax"></field>
     </record>
 
     <!-- S-Pankki -->
@@ -118,19 +115,17 @@
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">010 768 011</field>
-        <field name="fax"></field>
     </record>
 
     <!-- Skandinaviska Enskilda Banken -->
     <record id="res_bank_SEBESSEFIHX" model="res.bank">
         <field name="name">Skandinaviska Enskilda Banken (SEB)</field>
         <field name="bic">SEBESSEFIHX</field>
-        <field name="street">Unionsgatan 30</field>
-        <field name="zip">00100</field>
+        <field name="street">Eteläesplanadi 18</field>
+        <field name="zip">00130</field>
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="phone"></field>
-        <field name="fax"></field>
     </record>
 
     <!-- Swedbank -->
@@ -142,20 +137,18 @@
         <field name="city">HELSINKI</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">+358 20 746 9100</field>
-        <field name="fax">+358 20 746 9101</field>
     </record>
 
     <!-- Säästöpankki -->
     <record id="res_bank_ITELFIHH" model="res.bank">
         <field name="name">Säästöpankki (SP)</field>
         <field name="bic">ITELFIHH</field>
-        <field name="street">Valtakatu 32</field>
-        <field name="zip">53100</field>
-        <field name="city">LAPPEENRANTA</field>
+        <field name="street">Teollisuuskatu 33</field>
+        <field name="zip">00510</field>
+        <field name="city">Helsinki</field>
         <field name="country" ref="base.fi"/>
         <field name="email">omasp@omasp.fi</field>
         <field name="phone">045 657 5506</field>
-        <field name="fax"></field>
     </record>
 
     <!-- Ålandsbanken -->
@@ -167,6 +160,5 @@
         <field name="city">MARIEHAMN</field>
         <field name="country" ref="base.fi"/>
         <field name="phone">020 429 011</field>
-        <field name="fax">020 429 1228</field>
     </record>
 </odoo>
