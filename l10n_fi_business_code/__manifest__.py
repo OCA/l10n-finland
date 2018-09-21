@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    Author: Oy Tawasta OS Technologies Ltd.
@@ -20,7 +19,7 @@
 {
     "name": "Partner business code (business id)",
     "summary": "Adds a business code (business id) for partners",
-    "version": "10.0.1.2.0",
+    "version": "11.0.1.0.0",
     "category": "CRM",
     "website": "https://odoo-community.org/",
     "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
