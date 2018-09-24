@@ -7,16 +7,14 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
-                <data>
 
-                    <field name="date_due" position="after">
-                        <field name="payment_reference_type" invisible="True"/>
-                        <field name="payment_reference"
-                               attrs="{'readonly': ['|', ('state', '!=', 'draft'), ('payment_reference_type', '!=', 'none')],
-                               'invisible': [('type', '!=', 'out_invoice')]}"/>
-                    </field>
+                <field name="date_due" position="after">
+                    <field name="payment_reference_type" invisible="True"/>
+                    <field name="payment_reference"
+                           attrs="{'readonly': ['|', ('state', '!=', 'draft'), ('payment_reference_type', '!=', 'none')],
+                           'invisible': [('type', '!=', 'out_invoice')]}"/>
+                </field>
 
-                </data>
             </field>
         </record>
 
@@ -26,14 +24,12 @@
             <field name="model">account.invoice</field>
             <field name="inherit_id" ref="account.invoice_supplier_form"/>
             <field name="arch" type="xml">
-                <data>
 
-                    <field name="date_due" position="after">
-                        <field name="payment_reference"
-                               attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('type', '!=', 'in_invoice')]}"/>
-                    </field>
+                <field name="date_due" position="after">
+                    <field name="payment_reference"
+                           attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('type', '!=', 'in_invoice')]}"/>
+                </field>
 
-                </data>
             </field>
         </record>
 
