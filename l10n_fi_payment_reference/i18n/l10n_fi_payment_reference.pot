@@ -1,0 +1,82 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* l10n_fi_payment_reference
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-19 11:46+0000\n"
+"PO-Revision-Date: 2018-09-19 11:46+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_fi_payment_reference
+#: model:ir.ui.view,arch_db:l10n_fi_payment_reference.view_account_config_settings_finnish
+msgid "Choose the type of payment reference used on customer invoices"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.model,name:l10n_fi_payment_reference.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: selection:res.company,payment_reference_type:0
+msgid "Creditor Reference (RF)"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: selection:res.company,payment_reference_type:0
+msgid "Finnish Standard Reference"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: selection:res.company,payment_reference_type:0
+msgid "Free Reference"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.model,name:l10n_fi_payment_reference.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: code:addons/l10n_fi_payment_reference/models/account_invoice.py:15
+#, python-format
+msgid "Invoice number must contain numeric characters"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.ui.view,arch_db:l10n_fi_payment_reference.view_account_config_settings_finnish
+msgid "Payment Reference"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.model.fields,field_description:l10n_fi_payment_reference.field_account_invoice_payment_reference
+msgid "Payment Reference Number"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.model.fields,field_description:l10n_fi_payment_reference.field_account_invoice_payment_reference_type
+#: model:ir.model.fields,field_description:l10n_fi_payment_reference.field_res_company_payment_reference_type
+#: model:ir.model.fields,field_description:l10n_fi_payment_reference.field_res_config_settings_payment_reference_type
+msgid "Payment Reference Type"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.model.fields,help:l10n_fi_payment_reference.field_account_invoice_payment_reference_type
+#: model:ir.model.fields,help:l10n_fi_payment_reference.field_res_company_payment_reference_type
+#: model:ir.model.fields,help:l10n_fi_payment_reference.field_res_config_settings_payment_reference_type
+msgid "The default payment reference for sales invoices"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.model,name:l10n_fi_payment_reference.model_res_config_settings
+msgid "res.config.settings"
+msgstr ""
+
