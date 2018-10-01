@@ -10,19 +10,24 @@ Finnish Sales Invoice Payment Reference
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
-    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
-    :alt: License: LGPL-3
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fl10n--finland-lightgray.png?logo=github
     :target: https://github.com/OCA/l10n-finland/tree/11.0/l10n_fi_payment_reference
     :alt: OCA/l10n-finland
-.. |badge4| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
+.. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
+    :target: https://translation.odoo-community.org/projects/l10n-finland-11-0/l10n-finland-11-0-l10n_fi_payment_reference
+    :alt: Translate me on Weblate
+.. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
     :target: https://runbot.odoo-community.org/runbot/178/11.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| 
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 The module allows users to generate a valid invoice payment reference for sales invoices.
+
+**Table of contents**
 
 .. contents::
    :local:
@@ -30,7 +35,7 @@ The module allows users to generate a valid invoice payment reference for sales 
 Configuration
 =============
 
-Payment Reference Type can be selected from Account Settings.
+Payment Reference Type can be selected from Accounting Settings.
 
 Usage
 =====
@@ -42,7 +47,8 @@ Bug Tracker
 
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/l10n-finland/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
-If you spotted it first, help us smashing it by providing a detailed and welcomed feedback.
+If you spotted it first, help us smashing it by providing a detailed and welcomed
+`feedback <https://github.com/OCA/l10n-finland/issues/new?body=module:%20l10n_fi_payment_reference%0Aversion:%2011.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
