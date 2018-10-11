@@ -8,6 +8,8 @@ setuptools.setup(
     description="Meta package for oca-l10n-finland Odoo addons",
     version=version,
     install_requires=[
+        'odoo11-addon-l10n_fi_business_code',
+        'odoo11-addon-l10n_fi_business_code_validate',
         'odoo11-addon-l10n_fi_payment_reference',
     ],
     classifiers=[
