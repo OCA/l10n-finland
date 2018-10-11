@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -14,19 +14,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: l10n_fi_business_code_validate
-#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:74
+#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:73
 #, python-format
 msgid "Please check the given business id."
 msgstr ""
 
 #. module: l10n_fi_business_code_validate
-#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:49
+#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:48
 #, python-format
 msgid "Your business id is invalid. Please use format 1234567-1"
 msgstr ""
 
 #. module: l10n_fi_business_code_validate
-#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:73
+#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:72
 #, python-format
 msgid "Your business id validation number is invalid."
 msgstr ""
