@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Business ID -->
+    <record id="l10n_fi_business_code.res_partner_id_category_business_id" model="res.partner.id_category">
+        <field name="validation_code">self.validate_business_id(id_number)</field>
+    </record>
+</odoo>
