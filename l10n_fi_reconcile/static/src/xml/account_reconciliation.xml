@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-extend="reconciliation.line">
+        <t t-jquery=".cell_label" t-operation="before">
+            <td>
+                <t t-if="line.ref" t-esc="line.ref"/>
+            </td>
+            <!-- partner_note is not a field on account.bank.statement.line that actually
+                 exists by that name. This Qweb doesn't actually access the record's fields
+                 directly but keys of a dict that is returned to it. We needed to return two different values
+                 that both would've required the use of partner_name-key so we named one of them partner_note.
+                 partner_note contains the value of account.bank.statement's partner_name. -->
+            <td>
+                <t t-if="line.partner_note" t-esc="line.partner_note" />
+            </td>
+        </t>
+    </t>
+
+    <t t-extend="reconciliation.line.balance">
+        <t t-jquery=".cell_label" t-operation="before">
+            <td />
+            <td />
+        </t>
+    </t>
+
+    <t t-extend="reconciliation.line.mv_line">
+        <t t-jquery=".cell_label" t-operation="before">
+            <td>
+                <t t-if="line.payment_reference" t-esc="line.payment_reference"/>
+            </td>
+        </t>
+        <t t-jquery=".cell_left" t-operation="before">
+            <td />
+        </t>
+    </t>
+
+</templates>
