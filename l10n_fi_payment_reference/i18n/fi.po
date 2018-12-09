@@ -8,14 +8,14 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 11:46+0000\n"
 "PO-Revision-Date: 2018-09-19 14:50+0300\n"
+"Last-Translator: Miku Laitinen <miku@avoin.systems>\n"
 "Language-Team: \n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.6\n"
-"Last-Translator: Miku Laitinen <miku@avoin.systems>\n"
-"Language: fi\n"
 
 #. module: l10n_fi_payment_reference
 #: model:ir.ui.view,arch_db:l10n_fi_payment_reference.view_account_config_settings_finnish
@@ -69,6 +69,12 @@ msgstr "Maksuviite"
 #: model:ir.model.fields,field_description:l10n_fi_payment_reference.field_res_config_settings_payment_reference_type
 msgid "Payment Reference Type"
 msgstr "Maksuviitteen tyyppi"
+
+#. module: l10n_fi_payment_reference
+#: code:addons/l10n_fi_payment_reference/models/account_invoice.py:98
+#, python-format
+msgid "Payment reference type {} doesn't havea compute method"
+msgstr ""
 
 #. module: l10n_fi_payment_reference
 #: model:ir.model.fields,help:l10n_fi_payment_reference.field_account_invoice_payment_reference_type
