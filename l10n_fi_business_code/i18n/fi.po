@@ -27,5 +27,8 @@ msgstr "Y-tunnus"
 
 #. module: l10n_fi_business_code
 #: model:ir.model,name:l10n_fi_business_code.model_res_partner
-msgid "Partner"
-msgstr "Kumppani"
+msgid "Contact"
+msgstr ""
+
+#~ msgid "Partner"
+#~ msgstr "Kumppani"
