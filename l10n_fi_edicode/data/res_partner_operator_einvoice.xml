@@ -96,11 +96,11 @@
         <field name="identifier">OKOYFIHH</field>
     </record>
 
-    <record id="operator_einvoice_003710948874"
+    <record id="operator_einvoice_E204503"
             model="res.partner.operator.einvoice">
-        <field name="name">OpusCapita Group Oy</field>
-        <field name="identifier">003710948874</field>
-    </record>
+        <field name="name">OpusCapita Solutions Oy</field>
+        <field name="identifier">E204503</field>
+</record>
 
     <record id="operator_einvoice_003723609900"
             model="res.partner.operator.einvoice">

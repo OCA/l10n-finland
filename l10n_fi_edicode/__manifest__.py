@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    Author: Oy Tawasta OS Technologies Ltd.
@@ -20,7 +19,7 @@
 {
     "name": "Partner EDI code",
     "summary": "Adds EDI code field and operators",
-    "version": "10.0.1.1.2",
+    "version": "12.0.1.0.0",
     "category": "CRM",
     "website": "https://odoo-community.org/",
     "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
@@ -32,7 +31,7 @@
         "bin": [],
     },
     "depends": [
-        "crm",
+        "base",
     ],
     "data": [
         'data/res_partner_operator_einvoice.xml',
