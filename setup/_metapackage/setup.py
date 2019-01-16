@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo12-addon-l10n_fi_business_code',
         'odoo12-addon-l10n_fi_business_code_validate',
+        'odoo12-addon-l10n_fi_edicode',
     ],
     classifiers=[
         'Programming Language :: Python',
