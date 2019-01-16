@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -14,75 +14,75 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_create_uid
-msgid "Created by"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_create_date
-msgid "Created on"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_users_edicode
-msgid "Edicode"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_id
-msgid "ID"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_identifier
-msgid "Identifier"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice___last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_write_uid
-msgid "Last Updated by"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_write_date
-msgid "Last Updated on"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice_name
-msgid "Operator"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_einvoice_operator_identifier
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_users_einvoice_operator_identifier
-msgid "Operator ID"
+#: model:ir.model,name:l10n_fi_edicode.model_res_partner_operator_einvoice
+msgid "Adds operator name and identifier fields"
 msgstr ""
 
 #. module: l10n_fi_edicode
 #: model:ir.model,name:l10n_fi_edicode.model_res_partner
-msgid "Partner"
+msgid "Contact"
 msgstr ""
 
 #. module: l10n_fi_edicode
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_einvoice_operator
-#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_users_einvoice_operator
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner__edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_users__edicode
+msgid "Edicode"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__identifier
+msgid "Identifier"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner_operator_einvoice__name
+msgid "Operator"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner__einvoice_operator_identifier
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_users__einvoice_operator_identifier
+msgid "Operator ID"
+msgstr ""
+
+#. module: l10n_fi_edicode
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_partner__einvoice_operator
+#: model:ir.model.fields,field_description:l10n_fi_edicode.field_res_users__einvoice_operator
 msgid "eInvoice Operator"
-msgstr ""
-
-#. module: l10n_fi_edicode
-#: model:ir.model,name:l10n_fi_edicode.model_res_partner_operator_einvoice
-msgid "res.partner.operator.einvoice"
 msgstr ""
 
