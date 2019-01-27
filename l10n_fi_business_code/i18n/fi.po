@@ -18,14 +18,17 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 
 #. module: l10n_fi_business_code
-#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner_business_id
-#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_users_business_id
-#: model:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__business_id
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_users__business_id
+#: model_terms:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
 #: model:res.partner.id_category,name:l10n_fi_business_code.res_partner_id_category_business_id
 msgid "Business ID"
 msgstr "Y-tunnus"
 
 #. module: l10n_fi_business_code
 #: model:ir.model,name:l10n_fi_business_code.model_res_partner
-msgid "Partner"
-msgstr "Kumppani"
+msgid "Contact"
+msgstr ""
+
+#~ msgid "Partner"
+#~ msgstr "Kumppani"
