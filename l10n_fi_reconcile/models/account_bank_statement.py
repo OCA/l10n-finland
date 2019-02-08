@@ -31,32 +31,13 @@ _logger = logging.getLogger(__name__)
 class AccountBankStatementLine(models.Model):
     _inherit = 'account.bank.statement.line'
 
-    def _get_common_sql_query_foo(self, overlook_partner=False, excluded_ids=None, split=False):
-        acc_type = "acc.internal_type IN ('payable', 'receivable')" if (
-                    self.partner_id or overlook_partner) else "acc.reconcile = true"
-        select_clause = "SELECT aml.id "
-        from_clause = "FROM account_move_line aml JOIN account_account acc ON acc.id = aml.account_id "
-        account_clause = ''
-        if self.journal_id.default_credit_account_id and self.journal_id.default_debit_account_id:
-            account_clause = "(aml.statement_id IS NULL AND aml.account_id IN %(account_payable_receivable)s AND aml.payment_id IS NOT NULL) OR"
-        where_clause = """WHERE aml.company_id = %(company_id)s
-                          AND (
-                                    """ + account_clause + """
-                                    (""" + acc_type + """ AND aml.reconciled = false)
-                          )"""
-        where_clause = where_clause + ' AND aml.partner_id = %(partner_id)s' if self.partner_id else where_clause
-        where_clause = where_clause + ' AND aml.id NOT IN %(excluded_ids)s' if excluded_ids else where_clause
-        if split:
-            return select_clause, from_clause, where_clause
-        return select_clause + from_clause + where_clause
-
     @api.multi
     def auto_reconcile(self):
         """
-        Try to automatically reconcile the statement.line
-        return the counterpart journal entry/ies if the automatic reconciliation succeeded, False otherwise.
-        Copied with modifications from
-        https://github.com/odoo/odoo/blob/11.0/addons/account/models/account_bank_statement.py#L669
+        Try to automatically reconcile the statement.line return the
+        counterpart journal entry/ies if the automatic reconciliation
+        succeeded, False otherwise.
+        Copied with modifications from super.
         """
         if self.company_id.auto_reconcile_method != 'finnish':
             return super(AccountBankStatementLine, self).auto_reconcile()
@@ -67,11 +48,15 @@ class AccountBankStatementLine(models.Model):
         amount = self.amount_currency or self.amount
         company_currency = self.journal_id.company_id.currency_id
         st_line_currency = self.currency_id or self.journal_id.currency_id
-        currency = (st_line_currency and st_line_currency != company_currency) and st_line_currency.id or False
-        precision = st_line_currency and st_line_currency.decimal_places or company_currency.decimal_places
+        currency = (st_line_currency and
+                    st_line_currency != company_currency) \
+                   and st_line_currency.id or False
+        precision = st_line_currency and st_line_currency.decimal_places \
+                    or company_currency.decimal_places
         params = {'company_id': self.env.user.company_id.id,
                   'account_payable_receivable': (
-                      self.journal_id.default_credit_account_id.id, self.journal_id.default_debit_account_id.id),
+                      self.journal_id.default_credit_account_id.id,
+                      self.journal_id.default_debit_account_id.id),
                   'amount': float_round(amount, precision_digits=precision),
                   'partner_id': self.partner_id.id,
                   'ref': self.name,
@@ -82,8 +67,10 @@ class AccountBankStatementLine(models.Model):
         if self.name:
             sql_query = self._get_common_sql_query() + \
                         " AND aml.ref = %(ref)s AND (" + field + \
-                        " = %(amount)s OR (acc.internal_type = 'liquidity' AND " + liquidity_field + \
-                        " = %(amount)s)) ORDER BY date_maturity asc, aml.id asc"
+                        " = %(amount)s OR (acc.internal_type = 'liquidity' " \
+                        "AND " + liquidity_field + \
+                        " = %(amount)s)) " \
+                        "ORDER BY date_maturity asc, aml.id asc"
             self.env.cr.execute(sql_query, params)
             match_recs = self.env.cr.dictfetchall()
             if len(match_recs) > 1:
@@ -93,9 +80,12 @@ class AccountBankStatementLine(models.Model):
         if self.name and not match_recs:
             # sql_query = self._get_common_sql_query() + " AND aml.payment_reference = %(ref)s"
             sql_query = self._get_common_sql_query() + \
-                        " AND aml.payment_reference = %(ref)s AND (" + field + \
-                        " = %(amount)s OR (acc.internal_type = 'liquidity' AND " + liquidity_field + \
-                        " = %(amount)s)) ORDER BY date_maturity asc, aml.id asc"
+                        " AND aml.payment_reference = %(ref)s AND (" \
+                        + field + \
+                        " = %(amount)s OR (acc.internal_type = 'liquidity' " \
+                        "AND " + liquidity_field + \
+                        " = %(amount)s)) " \
+                        "ORDER BY date_maturity asc, aml.id asc"
             self.env.cr.execute(sql_query, params)
             match_recs = self.env.cr.dictfetchall()
             if len(match_recs) > 1:
@@ -105,32 +95,44 @@ class AccountBankStatementLine(models.Model):
         if self.name:
             sql_query = self._get_common_sql_query(overlook_partner=True) + \
                         " AND aml.ref = %(ref)s AND (" + field + \
-                        " = %(amount)s OR (acc.internal_type = 'liquidity' AND " + liquidity_field + \
-                        " = %(amount)s)) ORDER BY date_maturity asc, aml.id asc"
+                        " = %(amount)s OR (acc.internal_type = 'liquidity' " \
+                        "AND " + liquidity_field + \
+                        " = %(amount)s)) " \
+                        "ORDER BY date_maturity asc, aml.id asc"
             self.env.cr.execute(sql_query, params)
             match_recs = self.env.cr.dictfetchall()
             if len(match_recs) > 1:
                 return False
 
-        # DIFF: Look for matching structured communication in payment_reference field, overlook partner
+        # DIFF: Look for matching structured communication in
+        # payment_reference field, overlook partner
         if self.name and not match_recs:
-            # sql_query = self._get_common_sql_query() + " AND aml.payment_reference = %(ref)s"
+            # sql_query = self._get_common_sql_query() + \
+            # " AND aml.payment_reference = %(ref)s"
             sql_query = self._get_common_sql_query(overlook_partner=True) + \
-                        " AND aml.payment_reference = %(ref)s AND (" + field + \
-                        " = %(amount)s OR (acc.internal_type = 'liquidity' AND " + liquidity_field + \
-                        " = %(amount)s)) ORDER BY date_maturity asc, aml.id asc"
+                        " AND aml.payment_reference = %(ref)s AND (" \
+                        + field + \
+                        " = %(amount)s OR (acc.internal_type = 'liquidity' " \
+                        "AND " + liquidity_field + \
+                        " = %(amount)s)) " \
+                        "ORDER BY date_maturity asc, aml.id asc"
             self.env.cr.execute(sql_query, params)
             match_recs = self.env.cr.dictfetchall()
             if len(match_recs) > 1:
                 return False
 
-        # DIFF: Do not try to match anything if structured communication match fails
+        # DIFF: Do not try to match anything if structured communication match
+        # fails
         # Look for a single move line with the same partner, the same amount
         # if not match_recs:
         #     if self.partner_id:
         #         sql_query = self._get_common_sql_query() + \
-        #                     " AND (" + field + " = %(amount)s OR (acc.internal_type = 'liquidity' AND " + \
-        #                     liquidity_field + " = %(amount)s)) ORDER BY date_maturity asc, aml.id asc"
+        #                     " AND (" + field + \
+        #                     " = %(amount)s " \
+        #                     "OR (acc.internal_type = 'liquidity' AND " + \
+        #                     liquidity_field + \
+        #                     " = %(amount)s)) " \
+        #                     "ORDER BY date_maturity asc, aml.id asc"
         #         self.env.cr.execute(sql_query, params)
         #         match_recs = self.env.cr.dictfetchall()
         #         if len(match_recs) > 1:
@@ -139,7 +141,8 @@ class AccountBankStatementLine(models.Model):
         if not match_recs:
             return False
 
-        match_recs = self.env['account.move.line'].browse([aml.get('id') for aml in match_recs])
+        match_recs = self.env['account.move.line'].browse(
+            [aml.get('id') for aml in match_recs])
         # Now reconcile
         counterpart_aml_dicts = []
         payment_aml_rec = self.env['account.move.line']
@@ -147,7 +150,8 @@ class AccountBankStatementLine(models.Model):
             if aml.account_id.internal_type == 'liquidity':
                 payment_aml_rec = (payment_aml_rec | aml)
             else:
-                amount = aml.currency_id and aml.amount_residual_currency or aml.amount_residual
+                amount = aml.currency_id and aml.amount_residual_currency \
+                         or aml.amount_residual
                 counterpart_aml_dicts.append({
                     'name': aml.name if aml.name != '/' else aml.move_id.name,
                     'debit': amount < 0 and -amount or 0,
@@ -157,13 +161,17 @@ class AccountBankStatementLine(models.Model):
 
         try:
             with self._cr.savepoint():
-                counterpart = self.process_reconciliation(counterpart_aml_dicts=counterpart_aml_dicts,
-                                                          payment_aml_rec=payment_aml_rec)
+                counterpart = self.process_reconciliation(
+                    counterpart_aml_dicts=counterpart_aml_dicts,
+                    payment_aml_rec=payment_aml_rec)
             return counterpart
         except UserError:
-            # A configuration / business logic error that makes it impossible to auto-reconcile should not be raised
-            # since automatic reconciliation is just an amenity and the user will get the same exception when manually
-            # reconciling. Other types of exception are (hopefully) programmation errors and should cause a stacktrace.
+            # A configuration / business logic error that makes it impossible
+            # to auto-reconcile should not be raised since automatic
+            # reconciliation is just an amenity and the user will get the same
+            # exception when manually reconciling. Other types of exception
+            # are (hopefully) programmation errors and should cause a
+            # stacktrace.
             self.invalidate_cache()
             self.env['account.move'].invalidate_cache()
             self.env['account.move.line'].invalidate_cache()
@@ -178,15 +186,15 @@ class AccountBankStatementLine(models.Model):
         amount = self.amount_currency or self.amount
         company_currency = self.journal_id.company_id.currency_id
         st_line_currency = self.currency_id or self.journal_id.currency_id
-        currency = (st_line_currency and st_line_currency != company_currency)\
-            and st_line_currency.id or False
+        currency = (st_line_currency and st_line_currency != company_currency) \
+                   and st_line_currency.id or False
         precision = st_line_currency and st_line_currency.decimal_places \
-            or company_currency.decimal_places
+                    or company_currency.decimal_places
         field = currency and 'amount_residual_currency' or 'amount_residual'
         liquidity_field = currency and 'amount_currency' or amount > 0 \
-            and 'debit' or 'credit'
+                          and 'debit' or 'credit'
         liquidity_amt_clause = currency and '%(amount)s::numeric' \
-            or 'abs(%(amount)s::numeric)'
+                               or 'abs(%(amount)s::numeric)'
         params = {'company_id': self.env.user.company_id.id,
                   'account_payable_receivable': (
                       self.journal_id.default_credit_account_id.id,

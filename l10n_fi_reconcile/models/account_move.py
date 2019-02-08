@@ -44,5 +44,6 @@ class AccountMoveLine(models.Model):
         line_lookup = {line.id: line for line in lines}
         for line_dict in res:
             line = line_lookup.get(line_dict['id'], False)
-            line_dict['payment_reference'] = line and line.payment_reference or '-'
+            line_dict['payment_reference'] = \
+                line and line.payment_reference or '-'
         return res
