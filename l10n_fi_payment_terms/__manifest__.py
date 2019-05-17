@@ -33,6 +33,6 @@
         'account',
     ],
     'data': [
-        #'data/payment_terms_finnish.xml',
+        'data/payment_terms_finnish.xml',
     ],
 }
