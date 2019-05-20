@@ -19,6 +19,13 @@ msgstr ""
 
 #. module: l10n_fi_payment_reference
 #: model:ir.ui.view,arch_db:l10n_fi_payment_reference.view_account_config_settings_finnish
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\" groups=\"base.group_multi_company\"/>"
+msgstr ""
+
+#. module: l10n_fi_payment_reference
+#: model:ir.ui.view,arch_db:l10n_fi_payment_reference.view_account_config_settings_finnish
 msgid "Choose the type of payment reference used on customer invoices"
 msgstr "Valitse myyntilaskuilla käytettävä maksuviitetyyppi"
 
