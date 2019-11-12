@@ -11,8 +11,14 @@
             <field name="date_due" position="after">
                 <field name="payment_reference_type" invisible="True"/>
                 <field name="payment_reference"
-                       attrs="{'readonly': ['|', ('state', '!=', 'draft'), ('payment_reference_type', '!=', 'none')],
-                           'invisible': [('type', '!=', 'out_invoice')]}"/>
+                        attrs="{
+                            'readonly': [
+                                '|',
+                                ('state', '!=', 'draft'),
+                                ('payment_reference_type', '!=', 'none'),
+                            ],
+                        }"
+                />
             </field>
 
         </field>
@@ -27,7 +33,12 @@
 
             <field name="date_due" position="after">
                 <field name="payment_reference"
-                       attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('type', '!=', 'in_invoice')]}"/>
+                        attrs="{
+                            'readonly': [
+                                ('state', '!=', 'draft'),
+                            ],
+                        }"
+                />
             </field>
 
         </field>
