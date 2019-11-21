@@ -1,10 +1,12 @@
 import unittest
+from odoo.tests import tagged
 from odoo.exceptions import UserError
 # noinspection PyUnresolvedReferences
 from ..models.account_invoice \
     import compute_payment_reference_fi, compute_payment_reference_rf
 
 
+@tagged('standard', 'at_install')
 class PaymentReferenceTest(unittest.TestCase):
 
     """

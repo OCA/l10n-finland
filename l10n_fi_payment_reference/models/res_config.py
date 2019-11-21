@@ -8,6 +8,7 @@ class FinnishAccountSettings(models.TransientModel):
     payment_reference_type = fields.Selection(
         related='company_id.payment_reference_type',
         required=True,
+        readonly=False,
     )
 
     @api.onchange('company_id')

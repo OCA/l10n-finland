@@ -15,7 +15,7 @@
                         <div class="o_setting_left_pane"/>
                         <div class="o_setting_right_pane">
 
-                            <label string="Payment Reference"/>
+                            <label for="" string="Payment Reference"/>
                             <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." groups="base.group_multi_company"/>
                             <div class="text-muted">
                                 Choose the type of payment reference used on customer invoices

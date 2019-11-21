@@ -95,7 +95,7 @@ class AccountInvoiceFinnish(models.Model):
                 method_name = '_compute_payment_reference_' + ref_type
                 if not hasattr(invoice, method_name):
                     raise NotImplementedError(
-                        _("Payment reference type {} doesn't have"
+                        _("Payment reference type {} doesn't have "
                           "a compute method").format(ref_type))
 
                 self.payment_reference = \
