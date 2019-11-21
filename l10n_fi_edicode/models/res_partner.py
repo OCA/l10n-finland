@@ -9,8 +9,3 @@ class ResPartner(models.Model):
         comodel_name="res.partner.operator.einvoice",
         string="eInvoice Operator",
     )
-    einvoice_operator_identifier = fields.Char(
-        string="Operator ID",
-        related="einvoice_operator.identifier",
-        readonly=True,
-    )
