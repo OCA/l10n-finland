@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
     <record id="res_partner_form_view" model="ir.ui.view">
         <field name="name">res.partner.form.inherit</field>
         <field name="model">res.partner</field>
@@ -8,8 +9,8 @@
             <xpath expr="//page[@name='sales_purchases']//field[@name='user_id']" position="after">
                 <field name="edicode"/>
                 <field name="einvoice_operator"/>
-                <field name="einvoice_operator_identifier"/>
             </xpath>
         </field>
     </record>
+
 </odoo>

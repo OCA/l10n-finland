@@ -31,7 +31,7 @@
     "data": [
         "data/res_partner_operator_einvoice.xml",
         "security/ir.model.access.csv",
-        "view/res_partner.xml",
+        "views/res_partner_view.xml",
     ],
     "demo": [],
     "qweb": [],
