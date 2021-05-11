@@ -4,84 +4,82 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 13.0+e-20210304\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-11 12:46+0000\n"
-"PO-Revision-Date: 2021-05-11 15:47+0300\n"
-"Last-Translator: Jarmo Kortetjärvi <jarmo@futurable.fi>\n"
+"PO-Revision-Date: 2021-05-11 12:46+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 2.3\n"
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_10_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_10_days
 msgid "10 Days"
-msgstr "10 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_14_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_14_days
 msgid "14 Days"
-msgstr "14 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_21_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_21_days
 msgid "21 Days"
-msgstr "21 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_30_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_30_days
 msgid "30 Days"
-msgstr "30 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_45_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_45_days
 msgid "45 Days"
-msgstr "45 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_60_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_60_days
 msgid "60 Days"
-msgstr "60 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_7_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_7_days
 msgid "7 Days"
-msgstr "7 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_90_days
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_90_days
 msgid "90 Days"
-msgstr "90 päivää netto"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:account.payment.term,name:l10n_fi_payment_terms.account_payment_term_immediate
 #: model:account.payment.term,note:l10n_fi_payment_terms.account_payment_term_immediate
 msgid "Immediate Payment"
-msgstr "HETI"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:ir.model,name:l10n_fi_payment_terms.model_account_payment_term
 msgid "Payment Terms"
-msgstr "Maksuehdot"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:ir.model.fields,field_description:l10n_fi_payment_terms.field_account_payment_term__sequence
 msgid "Sequence"
-msgstr "Järjestys"
+msgstr ""
 
 #. module: l10n_fi_payment_terms
 #: model:ir.model.fields,field_description:l10n_fi_payment_terms.field_account_payment_term__code
 msgid "Unique code"
-msgstr "Uniikki koodi"
+msgstr ""
