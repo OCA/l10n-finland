@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo13-addon-l10n_fi_banks',
         'odoo13-addon-l10n_fi_business_code',
         'odoo13-addon-l10n_fi_edicode',
+        'odoo13-addon-l10n_fi_payment_terms',
     ],
     classifiers=[
         'Programming Language :: Python',
