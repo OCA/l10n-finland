@@ -1,0 +1,59 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_fi_business_code
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20201012\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-21 09:14+0000\n"
+"PO-Revision-Date: 2021-05-21 09:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_fi_business_code
+#: model_terms:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
+msgid "), are you sure to create a new one?"
+msgstr "), oletko varma että haluat luoda uuden?"
+
+#. module: l10n_fi_business_code
+#: model_terms:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
+msgid "A partner with the same Business ID already exists ("
+msgstr "Tämä y-tunnus on jo käytössä kumppanilla ("
+
+#. module: l10n_fi_business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_users__business_code
+#: model_terms:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
+msgid "Business ID"
+msgstr "Y-tunnus"
+
+#. module: l10n_fi_business_code
+#: model:ir.model,name:l10n_fi_business_code.model_res_partner
+msgid "Contact"
+msgstr "Kontakti"
+
+#. module: l10n_fi_business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Näyttönimi"
+
+#. module: l10n_fi_business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__id
+msgid "ID"
+msgstr "Tunniste (ID)"
+
+#. module: l10n_fi_business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Viimeksi muokattu"
+
+#. module: l10n_fi_business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__same_business_code_partner_id
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_users__same_business_code_partner_id
+msgid "Partner with the same Business ID"
+msgstr "Kumppani jolla on sama y-tunnus"
