@@ -19,9 +19,9 @@
 {
     "name": "Partner EDI code",
     "summary": "Adds EDI code field and operators",
-    "version": "13.0.1.1.0",
+    "version": "14.0.1.0.0",
     "category": "Accounting",
-    "website": "https://odoo-community.org/",
+    "website": "https://github.com/OCA/l10n-finland",
     "author": (
         "Oy Tawasta Technologies Ltd."
         ", Odoo Community Association (OCA)"
