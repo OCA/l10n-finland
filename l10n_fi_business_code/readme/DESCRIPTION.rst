@@ -1,1 +1,1 @@
-Adds EDI code field and operator
+Adds business id (business code) to partners
