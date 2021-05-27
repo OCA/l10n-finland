@@ -6,7 +6,9 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    business_code = fields.Char(string="Business ID",)
+    business_code = fields.Char(
+        string="Business ID",
+    )
 
     same_business_code_partner_id = fields.Many2one(
         "res.partner",

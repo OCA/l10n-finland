@@ -6,7 +6,7 @@
     "version": "14.0.1.0.0",
     "development_status": "Production/Stable",
     "category": "CRM",
-    "website": "https://github.com/OCA/l10n-finland/",
+    "website": "https://github.com/OCA/l10n-finland",
     "author": "Tawasta, Odoo Community Association (OCA)",
     "license": "LGPL-3",
     "application": False,
