@@ -21,9 +21,9 @@
 {
     "name": "Finnish Banks",
     "summary": "Finnish banks and their addresses",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Localization",
-    "website": "https://odoo-community.org/",
+    "website": "https://github.com/OCA/l10n-finland",
     "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
