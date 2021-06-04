@@ -24,7 +24,7 @@
     "version": "14.0.1.0.0",
     "category": "Localization",
     "website": "https://github.com/OCA/l10n-finland",
-    "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
+    "author": "Tawasta, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
