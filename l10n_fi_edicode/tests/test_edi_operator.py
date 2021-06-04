@@ -23,3 +23,8 @@ class TestPartnerOperatorInvoice(TransactionCase):
                     "identifier": "NDEAFIHH",
                 }
             )
+
+    def test_name_get(self):
+        operator = self.env.ref("l10n_fi_edicode.operator_einvoice_003723327487")
+        operator_id, operator_name = operator.name_get()[0]
+        self.assertEqual("003723327487 - Apix Messaging Oy", operator_name)
