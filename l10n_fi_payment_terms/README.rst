@@ -8,7 +8,6 @@ Finnish Invoice Payment Terms
 
 Common Finnish invoice payment terms.
 
-* Adds a sequence to payment terms for ordering.
 * Adds and unique code to terms for easier searching
 
 **Added Payment terms**
