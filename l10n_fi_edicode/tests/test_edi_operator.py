@@ -25,6 +25,14 @@ class TestPartnerOperatorInvoice(TransactionCase):
             )
 
     def test_name_get(self):
+        # Test if name get syntax is correct
         operator = self.env.ref("l10n_fi_edicode.operator_einvoice_003723327487")
         operator_id, operator_name = operator.name_get()[0]
+        self.assertEqual("003723327487 - Apix Messaging Oy", operator_name)
+
+    def test_name_search(self):
+        # Test name search with name
+        operator_id, operator_name = self.env[
+            "res.partner.operator.einvoice"
+        ].name_search("Apix")[0]
         self.assertEqual("003723327487 - Apix Messaging Oy", operator_name)
