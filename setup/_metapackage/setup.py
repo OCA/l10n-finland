@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo14-addon-l10n_fi_banks',
         'odoo14-addon-l10n_fi_business_code',
+        'odoo14-addon-l10n_fi_payment_terms',
     ],
     classifiers=[
         'Programming Language :: Python',
