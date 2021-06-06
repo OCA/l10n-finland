@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-l10n-finland Odoo addons",
     version=version,
     install_requires=[
+        'odoo14-addon-l10n_fi_banks',
         'odoo14-addon-l10n_fi_business_code',
     ],
     classifiers=[
