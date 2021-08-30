@@ -46,7 +46,12 @@ class ResPartnerOperatorEinvoice(models.Model):
 
     @api.model
     def _name_search(
-        self, name, args=None, operator="ilike", limit=100, name_get_uid=None,
+        self,
+        name,
+        args=None,
+        operator="ilike",
+        limit=100,
+        name_get_uid=None,
     ):
         """
         Overload core method to add into domain search by `identifier`
