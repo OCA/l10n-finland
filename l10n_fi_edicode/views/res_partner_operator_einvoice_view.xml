@@ -40,7 +40,7 @@
                 <field name="name" />
                 <field name="identifier" />
                 <field name="ttype" />
-                <field name="active" />
+                <field name="active" widget="boolean_toggle" />
             </tree>
         </field>
     </record>
