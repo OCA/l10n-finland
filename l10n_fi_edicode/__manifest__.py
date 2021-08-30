@@ -19,14 +19,10 @@
 {
     "name": "Partner EDI code",
     "summary": "Adds EDI code field and operators",
-    "version": "13.0.1.1.0",
+    "version": "14.0.1.0.0",
     "category": "Accounting",
-    "website": "https://odoo-community.org/",
-    "author": (
-        "Oy Tawasta Technologies Ltd."
-        ", Odoo Community Association (OCA)"
-        ", Avoin.Systems"
-    ),
+    "website": "https://github.com/OCA/l10n-finland",
+    "author": ("Tawasta" ", Odoo Community Association (OCA)" ", Avoin.Systems"),
     "license": "LGPL-3",
     "application": False,
     "installable": True,
