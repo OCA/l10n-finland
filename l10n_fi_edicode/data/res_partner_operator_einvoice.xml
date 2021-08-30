@@ -58,7 +58,7 @@
         <field name="identifier">EXPSYS</field>
     </record>
     <record id="operator_einvoice_003708599126" model="res.partner.operator.einvoice">
-        <field name="name">Liaison Technologies Oy</field>
+        <field name="name">Opentext Oy</field>
         <field name="identifier">003708599126</field>
     </record>
     <record id="operator_einvoice_003721291126" model="res.partner.operator.einvoice">
