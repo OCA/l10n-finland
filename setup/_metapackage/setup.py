@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo13-addon-l10n_fi_business_code',
         'odoo13-addon-l10n_fi_edicode',
         'odoo13-addon-l10n_fi_payment_terms',
+        'odoo13-addon-l10n_fi_sale_refund_payment_reference',
     ],
     classifiers=[
         'Programming Language :: Python',
