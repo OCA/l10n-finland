@@ -4,45 +4,51 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 14.0-20210809\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 12:07+0000\n"
-"PO-Revision-Date: 2017-09-29 15:07+0300\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2021-10-01 09:45+0000\n"
+"PO-Revision-Date: 2021-10-01 09:45+0000\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 1.8.7.1\n"
 
 #. module: l10n_fi_business_code_validate
-#: model:ir.model,name:l10n_fi_business_code_validate.model_res_partner_id_category
-#, fuzzy
-msgid "Partner ID Category"
-msgstr "res.partner.id_category"
+#: model:ir.model,name:l10n_fi_business_code_validate.model_res_partner
+msgid "Contact"
+msgstr "Kontakti"
 
 #. module: l10n_fi_business_code_validate
-#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:73
+#: model:ir.model.fields,field_description:l10n_fi_business_code_validate.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Näyttönimi"
+
+#. module: l10n_fi_business_code_validate
+#: model:ir.model.fields,field_description:l10n_fi_business_code_validate.field_res_partner__id
+msgid "ID"
+msgstr "Tunniste (ID)"
+
+#. module: l10n_fi_business_code_validate
+#: model:ir.model.fields,field_description:l10n_fi_business_code_validate.field_res_partner____last_update
+msgid "Last Modified on"
+msgstr "Viimeksi muokattu"
+
+#. module: l10n_fi_business_code_validate
+#: code:addons/l10n_fi_business_code_validate/models/res_partner.py:0
 #, python-format
-msgid "Please check the given business id."
-msgstr ""
+msgid "Please check the given business ID."
+msgstr "Ole hyvä ja tarkasta antamasi y-tunnus"
 
 #. module: l10n_fi_business_code_validate
-#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:48
+#: code:addons/l10n_fi_business_code_validate/models/res_partner.py:0
 #, python-format
 msgid "Your business id is invalid. Please use format 1234567-1"
-msgstr ""
+msgstr "Y-tunnus ei ole kelvollinen. Käytä muotoa 1234567-1"
 
 #. module: l10n_fi_business_code_validate
-#: code:addons/l10n_fi_business_code_validate/models/res_partner_id_category.py:72
+#: code:addons/l10n_fi_business_code_validate/models/res_partner.py:0
 #, python-format
-msgid "Your business id validation number is invalid."
-msgstr ""
-
-#~ msgid "Partner"
-#~ msgstr "Kumppani"
-
-#~ msgid "res.partner.id_number"
-#~ msgstr "res.partner.id_number"
+msgid "Your business id validation digit is invalid."
+msgstr "Y-tunnuksen tarkistenumero on virheellinen"

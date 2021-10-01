@@ -17,12 +17,12 @@
 #    along with this program. If not, see http://www.gnu.org/licenses/agpl.html
 #
 {
-    "name": "Partner business code validate",
-    "summary": "Adds validation for partner_business_code",
-    "version": "12.0.1.0.0",
+    "name": "Partner business code validation",
+    "summary": "Adds business code (business id) validation for partners",
+    "version": "14.0.1.0.0",
     "category": "CRM",
     "website": "https://github.com/OCA/l10n-finland",
-    "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
+    "author": "Tawasta, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
@@ -33,9 +33,7 @@
     "depends": [
         "l10n_fi_business_code",
     ],
-    "data": [
-        "data/res_partner_id_category.xml",
-    ],
+    "data": [],
     "demo": [],
     "qweb": [],
 }
