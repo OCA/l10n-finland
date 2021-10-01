@@ -21,7 +21,7 @@
     "summary": "Adds validation for partner_business_code",
     "version": "12.0.1.0.0",
     "category": "CRM",
-    "website": "https://odoo-community.org/",
+    "website": "https://github.com/OCA/l10n-finland",
     "author": "Oy Tawasta Technologies Ltd., Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
@@ -34,10 +34,8 @@
         "l10n_fi_business_code",
     ],
     "data": [
-        'data/res_partner_id_category.xml',
+        "data/res_partner_id_category.xml",
     ],
-    "demo": [
-    ],
-    "qweb": [
-    ]
+    "demo": [],
+    "qweb": [],
 }
