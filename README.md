@@ -21,6 +21,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [l10n_fi_banks](l10n_fi_banks/) | 14.0.1.0.0 |  | Finnish banks and their addresses
 [l10n_fi_business_code](l10n_fi_business_code/) | 14.0.1.0.0 |  | Adds a business code (business id) for partners
+[l10n_fi_business_code_validate](l10n_fi_business_code_validate/) | 14.0.1.0.0 |  | Adds business code (business id) validation for partners
 [l10n_fi_payment_terms](l10n_fi_payment_terms/) | 14.0.1.0.0 |  | Common Finnish invoice payment terms
 
 [//]: # (end addons)
