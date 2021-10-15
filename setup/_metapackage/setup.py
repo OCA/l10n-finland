@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo14-addon-l10n_fi_banks',
         'odoo14-addon-l10n_fi_business_code',
         'odoo14-addon-l10n_fi_business_code_validate',
+        'odoo14-addon-l10n_fi_edicode',
         'odoo14-addon-l10n_fi_payment_terms',
     ],
     classifiers=[
