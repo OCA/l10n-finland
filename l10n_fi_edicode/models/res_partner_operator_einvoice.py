@@ -8,10 +8,9 @@ class ResPartnerOperatorEinvoice(models.Model):
     _order = "sequence, id"
 
     name = fields.Char(string="Operator", required=True)
-    active = fields.Boolean(string="Active", default=True)
-    sequence = fields.Integer("Sequence")
+    active = fields.Boolean(default=True)
+    sequence = fields.Integer()
     identifier = fields.Char(
-        string="Identifier",
         required=True,
         size=35,
         help="Monetary Institution Identifier (see https://tieke.fi)",
