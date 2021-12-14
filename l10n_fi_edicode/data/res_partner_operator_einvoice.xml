@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!--
+        Information about current eInvoice Operators can be found here:
+        https://tieke.fi
+    -->
+    <record id="operator_einvoice_helsfihh" model="res.partner.operator.einvoice">
+        <field name="name">Aktia Pankki Oyj / Aktia Bank Abp</field>
+        <field name="identifier">HELSFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_aabafi22" model="res.partner.operator.einvoice">
+        <field name="name">Ålandsbanken</field>
+        <field name="identifier">AABAFI22</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_003723327487" model="res.partner.operator.einvoice">
+        <field name="name">Apix Messaging Oy</field>
+        <field name="identifier">003723327487</field>
+    </record>
+    <record id="operator_einvoice_bawcfi22" model="res.partner.operator.einvoice">
+        <field name="name">Basware Oyj</field>
+        <field name="identifier">BAWCFI22</field>
+    </record>
+    <record id="operator_einvoice_003703575029" model="res.partner.operator.einvoice">
+        <field name="name">CGI / Telia Finland Oyj</field>
+        <field name="identifier">003703575029</field>
+    </record>
+    <record id="operator_einvoice_dabafihh" model="res.partner.operator.einvoice">
+        <field name="name">Danske Bank Oyj</field>
+        <field name="identifier">DABAFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_dnbafihx" model="res.partner.operator.einvoice">
+        <field name="name">DNB Bank ASA</field>
+        <field name="identifier">DNBAFIHX</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_handfihh" model="res.partner.operator.einvoice">
+        <field name="name">Handelsbanken</field>
+        <field name="identifier">HANDFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record
+        id="operator_einvoice_00885790000000418"
+        model="res.partner.operator.einvoice"
+    >
+        <field name="name">HighJump AS</field>
+        <field name="identifier">885790000000418</field>
+        <!-- Old identifier was with 2 lead zeros - 00885790000000418 -->
+    </record>
+    <record id="operator_einvoice_inexchange" model="res.partner.operator.einvoice">
+        <field name="name">InExchange Factorum AB</field>
+        <field name="identifier">INEXCHANGE</field>
+    </record>
+    <record id="operator_einvoice_expsys" model="res.partner.operator.einvoice">
+        <field name="name">Lexmark Expert Systems AB</field>
+        <field name="identifier">EXPSYS</field>
+    </record>
+    <record id="operator_einvoice_003708599126" model="res.partner.operator.einvoice">
+        <field name="name">Opentext Oy</field>
+        <field name="identifier">003708599126</field>
+    </record>
+    <record id="operator_einvoice_003721291126" model="res.partner.operator.einvoice">
+        <field name="name">Maventa</field>
+        <field name="identifier">003721291126</field>
+    </record>
+    <record id="operator_einvoice_003726044706" model="res.partner.operator.einvoice">
+        <field name="name">Netbox Finland Oy</field>
+        <field name="identifier">003726044706</field>
+    </record>
+    <record id="operator_einvoice_ndeafihh" model="res.partner.operator.einvoice">
+        <field name="name">Nordea</field>
+        <field name="identifier">NDEAFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_003717203971" model="res.partner.operator.einvoice">
+        <field name="name">Notebeat Oy</field>
+        <field name="identifier">003717203971</field>
+        <field name="active" eval="False" />
+    </record>
+    <record id="operator_einvoice_okoyfihh" model="res.partner.operator.einvoice">
+        <field name="name">OP-ryhmä</field>
+        <field name="identifier">OKOYFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_E204503" model="res.partner.operator.einvoice">
+        <field name="name">OpusCapita Solutions Oy</field>
+        <field name="identifier">E204503</field>
+    </record>
+    <record id="operator_einvoice_003723609900" model="res.partner.operator.einvoice">
+        <field name="name">Pagero</field>
+        <field name="identifier">003723609900</field>
+    </record>
+    <record id="operator_einvoice_pagero" model="res.partner.operator.einvoice">
+        <field name="name">Pagero</field>
+        <field name="identifier">PAGERO</field>
+    </record>
+    <record id="operator_einvoice_palette" model="res.partner.operator.einvoice">
+        <field name="name">Palette Software</field>
+        <field name="identifier">PALETTE</field>
+    </record>
+    <record id="operator_einvoice_popffi22" model="res.partner.operator.einvoice">
+        <field name="name">POP Pankit</field>
+        <field name="identifier">POPFFI22</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_003710948874" model="res.partner.operator.einvoice">
+        <field name="name">Posti Messaging Oy</field>
+        <field name="identifier">003710948874</field>
+    </record>
+    <record id="operator_einvoice_003701150617" model="res.partner.operator.einvoice">
+        <field name="name">PostNord Strålfors Oy</field>
+        <field name="identifier">003701150617</field>
+    </record>
+    <record id="operator_einvoice_003714377140" model="res.partner.operator.einvoice">
+        <field name="name">Ropo Capital Oy</field>
+        <field name="identifier">003714377140</field>
+    </record>
+    <record id="operator_einvoice_sbanfihh" model="res.partner.operator.einvoice">
+        <field name="name">S-Pankki Oy</field>
+        <field name="identifier">SBANFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_tapifi22" model="res.partner.operator.einvoice">
+        <field
+            name="name"
+        >S-Pankki Oy (ent. LähiTapiola Pankin tunnus toistaiseksi käytössä)</field>
+        <field name="identifier">TAPIFI22</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_itelfihh" model="res.partner.operator.einvoice">
+        <field name="name">Säästöpankit / Oma Säästöpankki</field>
+        <field name="identifier">ITELFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_003701011385" model="res.partner.operator.einvoice">
+        <field name="name">Tieto Oyj</field>
+        <field name="identifier">003701011385</field>
+    </record>
+    <record
+        id="operator_einvoice_00885060259470028"
+        model="res.partner.operator.einvoice"
+    >
+        <field name="name">Tradeshift</field>
+        <field name="identifier">885060259470028</field>
+        <!-- Old identifier was with 2 lead zeros - 00885060259470028 -->
+    </record>
+    <record id="operator_einvoice_fiyapsol" model="res.partner.operator.einvoice">
+        <field name="name">YAP Solutions Oy</field>
+        <field name="identifier">FIYAPSOL</field>
+        <field name="active" eval="False" />
+    </record>
+</odoo>
