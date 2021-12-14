@@ -14,18 +14,24 @@ Partner EDI code
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fl10n--finland-lightgray.png?logo=github
-    :target: https://github.com/OCA/l10n-finland/tree/14.0/l10n_fi_edicode
+    :target: https://github.com/OCA/l10n-finland/tree/15.0/l10n_fi_edicode
     :alt: OCA/l10n-finland
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/l10n-finland-14-0/l10n-finland-14-0-l10n_fi_edicode
+    :target: https://translation.odoo-community.org/projects/l10n-finland-15-0/l10n-finland-15-0-l10n_fi_edicode
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/178/14.0
+    :target: https://runbot.odoo-community.org/runbot/178/15.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-Adds EDI code field and operator
+This module allows users to configure Finnish eInvoicing settings on your company and customers.
+
+These settings include
+
+* Edicode: the indentifier used to identify a person or organization in eInvoicing services.
+* eInvoicing Operator: the organization that handles eInvoicing traffic for the person or organization.
+  This module creates entries for most eInvoicing partners currently active in Finland.
 
 **Table of contents**
 
@@ -44,6 +50,11 @@ Changelog
     with the ~ (tilde) character. Other section markers are
     forbidden and will likely break the structure of the README.rst
     or other documents where this fragment is included. ]
+
+15.0.1.0.0 (2021-11-24)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* [MIGRATION] from 14.0 to 15.0
 
 14.0.1.0.0 (2021-08-30)
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,7 +84,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/l10n-finland/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/l10n-finland/issues/new?body=module:%20l10n_fi_edicode%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/l10n-finland/issues/new?body=module:%20l10n_fi_edicode%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -114,6 +125,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/l10n-finland <https://github.com/OCA/l10n-finland/tree/14.0/l10n_fi_edicode>`_ project on GitHub.
+This module is part of the `OCA/l10n-finland <https://github.com/OCA/l10n-finland/tree/15.0/l10n_fi_edicode>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
