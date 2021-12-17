@@ -6,7 +6,7 @@
     "license": "AGPL-3",
     "summary": "Automatically generate payment references for sale refunds",
     "author": "Avoin.Systems, Odoo Community Association (OCA)",
-    "website": "https://avoin.systems",
+    "website": "https://github.com/OCA/l10n-finland",
     # `category`: check
     # https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml # noqa B950
     # for the full list
