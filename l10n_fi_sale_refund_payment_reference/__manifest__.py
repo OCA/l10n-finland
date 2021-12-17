@@ -2,7 +2,7 @@
 
 {
     "name": "Payment References for Sale Refunds",
-    "version": "13.0.1.0.0",
+    "version": "15.0.1.0.0",
     "license": "AGPL-3",
     "summary": "Automatically generate payment references for sale refunds",
     "author": "Avoin.Systems, Odoo Community Association (OCA)",
