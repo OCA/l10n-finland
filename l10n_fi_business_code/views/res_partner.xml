@@ -31,7 +31,7 @@
             <field name="name" position="after">
                 <field
                     name="business_code"
-                    filter_domain="[('business_cod','like',self)]"
+                    filter_domain="[('business_code','like',self)]"
                 />
             </field>
         </field>
