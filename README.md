@@ -21,6 +21,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [l10n_fi_business_code](l10n_fi_business_code/) | 15.0.1.1.0 |  | Adds a business code (business id) for partners
 [l10n_fi_edicode](l10n_fi_edicode/) | 15.0.1.0.0 |  | Adds EDI code field and operators
+[l10n_fi_sale_refund_payment_reference](l10n_fi_sale_refund_payment_reference/) | 15.0.1.0.0 |  | Automatically generate payment references for sale refunds
 
 [//]: # (end addons)
 
