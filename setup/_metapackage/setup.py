@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo-addon-l10n_fi_business_code>=15.0dev,<15.1dev',
         'odoo-addon-l10n_fi_edicode>=15.0dev,<15.1dev',
+        'odoo-addon-l10n_fi_sale_refund_payment_reference>=15.0dev,<15.1dev',
     ],
     classifiers=[
         'Programming Language :: Python',
