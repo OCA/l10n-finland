@@ -45,46 +45,24 @@ class ResPartnerOperatorEinvoice(models.Model):
 
     @api.model
     def _name_search(
-        self,
-        name,
-        args=None,
-        operator="ilike",
-        limit=100,
-        name_get_uid=None,
+        self, name, args=None, operator="ilike", limit=100, name_get_uid=None
     ):
-        """
-        Overload core method to add into domain search by `identifier`
-        ("Identifier") field
-
-        Args:
-         * name(str) - search string
-         * args(list of tupples, None) - search domain
-         * operator(str) - domain operator for matching `name`, such as
-            `"like"` or `"="`.
-         * limit(integer, 100) - max number of records to return
-         * name_get_uid(integer, None) - ID of dedicated user for the
-            `name_get` method to solve some access rights issues
-
-        Returns:
-          * list of tuples - (record id, `name_get` of record) of matched
-            record
-        """
         args = args or []
         domain = []
         if name:
-            domain = [
-                "|",
-                ("identifier", "=ilike", name + "%"),
-                ("name", operator, name),
-            ]
             if operator in expression.NEGATIVE_TERM_OPERATORS:
-                domain = ["&", "!"] + domain[1:]
+                domain = [
+                    "&",
+                    ("identifier", "not ilike", name + "%"),
+                    ("name", operator, name),
+                ]
+            else:
+                domain = [
+                    "|",
+                    ("identifier", "=ilike", name + "%"),
+                    ("name", operator, name),
+                ]
+
         args = expression.AND([domain, args])
-        search_results = super(ResPartnerOperatorEinvoice, self)._name_search(
-            name=name,
-            args=args,
-            operator=operator,
-            limit=limit,
-            name_get_uid=name_get_uid,
-        )
-        return search_results
+
+        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
