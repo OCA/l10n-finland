@@ -18,16 +18,31 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 
 #. module: l10n_fi_business_code
-#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__business_id
-#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_users__business_id
 #: model_terms:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
-#: model:res.partner.id_category,name:l10n_fi_business_code.res_partner_id_category_business_id
+msgid "), are you sure to create a new one?"
+msgstr ""
+
+#. module: l10n_fi_business_code
+#: model_terms:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
+msgid "A partner with the same Business ID already exists ("
+msgstr ""
+
+#. module: l10n_fi_business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_users__business_code
+#: model_terms:ir.ui.view,arch_db:l10n_fi_business_code.view_partner_form
 msgid "Business ID"
 msgstr "Y-tunnus"
 
 #. module: l10n_fi_business_code
 #: model:ir.model,name:l10n_fi_business_code.model_res_partner
 msgid "Contact"
+msgstr ""
+
+#. module: l10n_fi_business_code
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_partner__same_business_code_partner_id
+#: model:ir.model.fields,field_description:l10n_fi_business_code.field_res_users__same_business_code_partner_id
+msgid "Partner with the same Business ID"
 msgstr ""
 
 #~ msgid "Partner"
