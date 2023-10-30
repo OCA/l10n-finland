@@ -1,3 +1,4 @@
+from odoo.tests import Form
 from odoo.tests.common import TransactionCase
 
 
@@ -26,3 +27,12 @@ class TestPartner(TransactionCase):
         )
 
         self.assertIs(len(self.partner2.same_business_code_partner_id), 1)
+
+        draft_partner = Form(self.env["res.partner"])
+        draft_partner.name = "Test Company 3"
+        draft_partner.business_code = "1234567-1"
+        self.assertEqual(
+            draft_partner.same_business_code_partner_id,
+            self.partner1 + self.partner2,
+            msg="Duplicate code calculation should also work while in draft",
+        )
