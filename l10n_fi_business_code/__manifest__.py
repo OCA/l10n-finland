@@ -3,7 +3,7 @@
 {
     "name": "Partner business code (business id)",
     "summary": "Adds a business code (business id) for partners",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "development_status": "Production/Stable",
     "category": "CRM",
     "website": "https://github.com/OCA/l10n-finland",
