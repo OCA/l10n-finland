@@ -210,6 +210,5 @@ msgstr "Verkkolaskuvälittäjä"
 #. module: l10n_fi_edicode
 #: model:ir.actions.act_window,name:l10n_fi_edicode.res_partner_operator_einvoice_action
 #: model:ir.ui.menu,name:l10n_fi_edicode.res_partner_operator_einvoice_menu
-#: model_terms:ir.ui.view,arch_db:l10n_fi_edicode.res_partner_operator_einvoice_view_tree
 msgid "eInvoice Operators"
 msgstr "Verkkolaskun välittäjätunnus"
