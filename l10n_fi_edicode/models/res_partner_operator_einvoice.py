@@ -32,22 +32,18 @@ class ResPartnerOperatorEinvoice(models.Model):
         ),
     ]
 
-    def name_get(self):
+    @api.depends("identifier")
+    def _compute_display_name(self):
         """
         Overwrite core method to add value of `identifier` ("Identifier") field
-        into name of recors.
+        into name of records.
         """
-        result = []
+        super()._compute_display_name()
         for operator in self:
-            name = " - ".join([operator.identifier, operator.name])
-            result.append((operator.id, name))
-        return result
+            operator.display_name = " - ".join([operator.identifier, operator.name])
 
     @api.model
-    def _name_search(
-        self, name, args=None, operator="ilike", limit=100, name_get_uid=None
-    ):
-        args = args or []
+    def _name_search(self, name, domain=None, operator="ilike", limit=None, order=None):
         domain = []
         if name:
             if operator in expression.NEGATIVE_TERM_OPERATORS:
@@ -63,6 +59,4 @@ class ResPartnerOperatorEinvoice(models.Model):
                     ("name", operator, name),
                 ]
 
-        args = expression.AND([domain, args])
-
-        return self._search(args, limit=limit, access_rights_uid=name_get_uid)
+        return self._search(domain, limit=limit, order=order)

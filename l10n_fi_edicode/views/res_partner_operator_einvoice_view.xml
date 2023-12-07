@@ -9,7 +9,7 @@
                     <widget
                         name="web_ribbon"
                         text="Archived"
-                        attrs="{'invisible': [('active', '=', True)]}"
+                        invisible="active"
                         bg_color="bg-danger"
                     />
                     <div class="oe_title">
@@ -24,7 +24,7 @@
                         </group>
                         <group name="main_info_right">
                             <field name="ttype" />
-                            <field name="active" invisible="1" />
+                            <field name="active" invisible="True" />
                         </group>
                     </group>
                 </sheet>

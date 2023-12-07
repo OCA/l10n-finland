@@ -3,7 +3,7 @@ from odoo.tests.common import TransactionCase
 
 class TestPartner(TransactionCase):
     def setUp(self):
-        super(TestPartner, self).setUp()
+        super().setUp()
         self.partner = self.env["res.partner"].create(
             {
                 "name": "Test Company",
