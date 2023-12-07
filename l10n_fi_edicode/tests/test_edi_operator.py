@@ -6,14 +6,14 @@ from odoo.tools import mute_logger
 
 class TestPartnerOperatorInvoice(TransactionCase):
     def setUp(self):
-        super(TestPartnerOperatorInvoice, self).setUp()
+        super().setUp()
 
-    def test_name_get(self):
+    def test_display_name(self):
         operator = self.env.ref("l10n_fi_edicode.operator_einvoice_003723327487")
-        operator_name = operator.name_get()
+        operator_name = operator.display_name
 
         # Name should have operator code and name
-        self.assertEqual(operator_name[0][1], "003723327487 - Apix Messaging Oy")
+        self.assertEqual(operator_name, "003723327487 - Apix Messaging Oy")
 
     def test_name_search(self):
         operators = self.env["res.partner.operator.einvoice"].name_search(name="Apix")
