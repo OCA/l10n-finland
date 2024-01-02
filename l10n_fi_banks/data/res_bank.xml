@@ -13,6 +13,16 @@
         <field name="country" ref="base.fi" />
         <field name="phone">010 247 5000</field>
     </record>
+    <!-- Bigbank -->
+    <record id="res_bank_BIGKFIH1" model="res.bank">
+        <field name="name">Bigbank</field>
+        <field name="bic">BIGKFIH1</field>
+        <field name="street">Panimokatu 4</field>
+        <field name="zip">00580</field>
+        <field name="city">HELSINKI</field>
+        <field name="country" ref="base.fi" />
+        <field name="phone">09 4259 9691</field>
+    </record>
     <!-- Citibank -->
     <record id="res_bank_CITIFIHX" model="res.bank">
         <field name="name">Citibank</field>
