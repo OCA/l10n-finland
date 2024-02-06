@@ -1,8 +1,9 @@
 [project]
 name = "odoo-addons-oca-l10n-finland"
-version = "17.0.20231212.0"
+version = "17.0.20240206.0"
 dependencies = [
     "odoo-addon-l10n_fi_edicode>=17.0dev,<17.1dev",
+    "odoo-addon-l10n_fi_sale_refund_payment_reference>=17.0dev,<17.1dev",
 ]
 classifiers=[
     "Programming Language :: Python",
