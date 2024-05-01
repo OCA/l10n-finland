@@ -38,9 +38,10 @@ class ResPartnerOperatorEinvoice(models.Model):
         Overwrite core method to add value of `identifier` ("Identifier") field
         into name of records.
         """
-        super()._compute_display_name()
+        res = super()._compute_display_name()
         for operator in self:
             operator.display_name = " - ".join([operator.identifier, operator.name])
+        return res
 
     @api.model
     def _name_search(self, name, domain=None, operator="ilike", limit=None, order=None):
