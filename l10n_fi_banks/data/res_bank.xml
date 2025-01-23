@@ -1,160 +1,832 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <odoo>
-    <!-- Finnish banks -->
-    <!-- TODO: Add branches? -->
+    <!-- Finnish and Nordic banks -->
+    <!-- according to the finance regulation authority of each country -->
     <!-- Please maintain the alphabetical order when doing additions -->
-    <!-- Aktia -->
-    <record id="res_bank_HELSFIHH" model="res.bank">
-        <field name="name">Aktia</field>
-        <field name="bic">HELSFIHH</field>
-        <field name="street">Mannerheimvägen 14</field>
-        <field name="zip">00100</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">010 247 5000</field>
-    </record>
-    <!-- Bigbank -->
-    <record id="res_bank_BIGKFIH1" model="res.bank">
-        <field name="name">Bigbank</field>
-        <field name="bic">BIGKFIH1</field>
-        <field name="street">Panimokatu 4</field>
-        <field name="zip">00580</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">09 4259 9691</field>
-    </record>
-    <!-- Citibank -->
-    <record id="res_bank_CITIFIHX" model="res.bank">
-        <field name="name">Citibank</field>
-        <field name="bic">CITIFIHX</field>
-        <field name="street">Aleksanterinkatu 48 A</field>
-        <field name="zip">00100</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">09 348 871</field>
-    </record>
-    <!-- Danske Bank -->
-    <record id="res_bank_DABAFIHH" model="res.bank">
-        <field name="name">Danske Bank</field>
-        <field name="bic">DABAFIHH</field>
-        <field name="street">Televisiokatu 1</field>
-        <field name="street2">PL 1243</field>
-        <field name="zip">00075</field>
-        <field name="city">Danske bank</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">010 546 0000</field>
-    </record>
-    <!-- DNB Bank Finnish branch -->
-    <record id="res_bank_DNBAFIHX" model="res.bank">
-        <field name="name">DNB Bank ASA, filial Finland</field>
-        <field name="bic">DNBAFIHX</field>
-        <field name="street">Urho Kekkosen katu 7 B</field>
-        <field name="zip">00100</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">+358 105 482100</field>
-    </record>
-    <!-- Handelsbanken -->
-    <record id="res_bank_HANDFIHH" model="res.bank">
-        <field name="name">Handelsbanken Suomi</field>
-        <field name="bic">HANDFIHH</field>
-        <field name="street">Itämerenkatu 11-13</field>
-        <field name="zip">00180</field>
-        <field name="city">Helsinki</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">010 444 11</field>
-    </record>
-    <!-- Holvi Payment Services Oy -->
-    <record id="res_bank_HOLVFIHH" model="res.bank">
-        <field name="name">Holvi</field>
-        <field name="bic">HOLVFIHH</field>
-        <field name="street">Hämeentie 11</field>
-        <field name="zip">00530</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">+358 753 252935</field>
-    </record>
-    <!-- Nordea -->
-    <record id="res_bank_NDEAFIHH" model="res.bank">
-        <field name="name">Nordea</field>
-        <field name="bic">NDEAFIHH</field>
-        <field name="street">Satamaradankatu 5</field>
-        <field name="zip">00020</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">09 1651</field>
-    </record>
-    <!-- Osuuspankki -->
-    <record id="res_bank_OKOYFIHH" model="res.bank">
-        <field name="name">Osuuspankki (OP)</field>
-        <field name="bic">OKOYFIHH</field>
-        <field name="street">Mikonkatu 13 A</field>
-        <field name="street2">PL 670</field>
-        <field name="zip">00101</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="email">helsingin@op.fi</field>
-        <field name="phone">010 255 9015</field>
-    </record>
-    <!-- POP Pankki -->
-    <record id="res_bank_POPFFI22" model="res.bank">
-        <field name="name">POP Pankki</field>
-        <field name="bic">POPFFI22</field>
-        <field name="street">Kasarmikatu 38</field>
-        <field name="zip">00130</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">020 749 5325</field>
-    </record>
-    <!-- S-Pankki -->
-    <record id="res_bank_SBANFIHH" model="res.bank">
-        <field name="name">S-Pankki</field>
-        <field name="bic">SBANFIHH</field>
-        <field name="street">Fleminginkatu 34</field>
-        <field name="zip">00510</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">010 768 011</field>
-    </record>
-    <!-- Skandinaviska Enskilda Banken -->
-    <record id="res_bank_SEBESSEFIHX" model="res.bank">
-        <field name="name">Skandinaviska Enskilda Banken (SEB)</field>
-        <field name="bic">SEBESSEFIHX</field>
-        <field name="street">Eteläesplanadi 18</field>
-        <field name="zip">00130</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone" />
-    </record>
-    <!-- Swedbank -->
-    <record id="res_bank_SWEDFIHH" model="res.bank">
-        <field name="name">Swedbank</field>
-        <field name="bic">SWEDFIHH</field>
-        <field name="street">Mannerheimvägen 14 B</field>
-        <field name="zip">00100</field>
-        <field name="city">HELSINKI</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">+358 20 746 9100</field>
-    </record>
-    <!-- Säästöpankki -->
-    <record id="res_bank_ITELFIHH" model="res.bank">
-        <field name="name">Säästöpankki (SP)</field>
-        <field name="bic">ITELFIHH</field>
-        <field name="street">Teollisuuskatu 33</field>
-        <field name="zip">00510</field>
-        <field name="city">Helsinki</field>
-        <field name="country" ref="base.fi" />
-        <field name="email">omasp@omasp.fi</field>
-        <field name="phone">045 657 5506</field>
-    </record>
-    <!-- Ålandsbanken -->
-    <record id="res_bank_AABAFI22" model="res.bank">
-        <field name="name">Ålandsbanken</field>
-        <field name="bic">AABAFI22</field>
-        <field name="street">Nygatan 2</field>
-        <field name="zip">22100</field>
-        <field name="city">MARIEHAMN</field>
-        <field name="country" ref="base.fi" />
-        <field name="phone">020 429 011</field>
-    </record>
+    
+	<record model="res.bank" id="res_bank_HELSFIHH">
+		<!-- Aktia Pankki, Finland -->
+		<field name="name">Aktia Pankki</field>
+		<field name="bic">HELSFIHH</field>
+		<field name="street">Mannerheimintie 14</field>
+		<field name="zip">00100</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">010 247 5000</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_ALBADKKK">
+		<!-- Arbejdernes Landsbank, Denmark -->
+		<field name="name">Arbejdernes Landsbank</field>
+		<field name="bic">ALBADKKK</field>
+		<field name="street">Vesterbrogade 5</field>
+		<field name="zip">1502</field>
+		<field name="city">Copenhagen</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_AVANSES1XXX">
+		<!-- Avanza Bank AB, Sweden -->
+		<field name="name">Avanza Bank AB</field>
+		<field name="bic">AVANSES1XXX</field>
+		<field name="street">Regeringsgatan 103</field>
+		<field name="zip">111 39</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_BANKGIROT">
+		<!-- BANKGIROT, Sweden -->
+		<field name="name">BANKGIROT</field>
+		<field name="bic">BGABSESSXXX</field>
+		<field name="street">Mejerivägen 1</field>
+		<field name="zip">117 43</field>
+		<field name="city">Stockholm</field>
+
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_BNBANOKKXXX">
+		<!-- BN Bank, Norway -->
+		<field name="name">BN Bank</field>
+		<field name="bic">BNBANOKKXXX</field>
+		<field name="street">Søndre gate 4</field>
+		<field name="zip">7011</field>
+		<field name="city">Trondheim</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NORWNOK1XXX">
+		<!-- Bank Norwegian, Norway -->
+		<field name="name">Bank Norwegian</field>
+		<field name="bic">NORWNOK1XXX</field>
+		<field name="street">Snarøyveien 36</field>
+		<field name="zip">1364</field>
+		<field name="city">Fornebu</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_BIGKFIH1">
+		<!-- Bigbank AS Suomen sivuliike, Finland -->
+		<field name="name">Bigbank AS Suomen sivuliike</field>
+		<field name="bic">BIGKFIH1</field>
+		<field name="street">Panimokatu 4</field>
+		<field name="zip">00580</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">09 4259 9691</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_BSTPSESSXXX">
+		<!-- Bluestep Bank AB (publ), Sweden -->
+		<field name="name">Bluestep Bank AB (publ)</field>
+		<field name="bic">BSTPSESSXXX</field>
+		<field name="street">Sveavägen 163</field>
+		<field name="zip">104 35</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_POPFFI22">
+		<!-- Bonum Pankki, Finland -->
+		<field name="name">Bonum Pankki</field>
+		<field name="bic">POPFFI22</field>
+		<field name="street">Itämerenkatu 14</field>
+		<field name="zip">00101</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">020 749 5325</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_ESSESESSXXX">
+		<!-- Carnegie Investment Bank AB, Sweden -->
+		<field name="name">Carnegie Investment Bank AB</field>
+		<field name="bic">ESSESESSXXX</field>
+		<field name="street">Regeringsgatan 56</field>
+		<field name="zip">111 56</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_CITIFIHX">
+		<!-- Citibank, Finland -->
+		<field name="name">Citibank</field>
+		<field name="bic">CITIFIHX</field>
+		<field name="street">Kasarmikatu 36 A</field>
+		<field name="zip">00130</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">09 348 871</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_DNBANOKKXXX">
+		<!-- DNB Bank, Norway -->
+		<field name="name">DNB Bank</field>
+		<field name="bic">DNBANOKKXXX</field>
+		<field name="street">Dronning Eufemias gate 30</field>
+		<field name="zip">0191</field>
+		<field name="city">Oslo</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_DNBAFIHX">
+		<!-- DNB Bank ASA, Finland Branch, Finland -->
+		<field name="name">DNB Bank ASA, Finland Branch</field>
+		<field name="bic">DNBAFIHX</field>
+		<field name="street">Itämerenkatu 11-13</field>
+		<field name="zip">00180</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">+358 105 482100</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_DABADKKK">
+		<!-- Danske Bank, Denmark -->
+		<field name="name">Danske Bank</field>
+		<field name="bic">DABADKKK</field>
+		<field name="street">Holmens Kanal 2-12</field>
+		<field name="zip">1092</field>
+		<field name="city">Copenhagen</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_DABAFIHH">
+		<!-- Danske Bank A/S, Suomen sivuliike, Finland -->
+		<field name="name">Danske Bank A/S, Suomen sivuliike</field>
+		<field name="bic">DABAFIHH</field>
+		<field name="street">Televisiokatu 1</field>
+		<field name="zip">00075</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">010 546 0000</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_EPBSSESSXXX">
+		<!-- Erik Penser Bank AB, Sweden -->
+		<field name="name">Erik Penser Bank AB</field>
+		<field name="bic">EPBSSESSXXX</field>
+		<field name="street">Biblioteksgatan 9</field>
+		<field name="zip">111 46</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_HANDFIHH">
+		<!-- Handelsbanken, Finland -->
+		<field name="name">Handelsbanken</field>
+		<field name="bic">HANDFIHH</field>
+		<field name="street">Aleksanterinkatu 11</field>
+		<field name="zip">Aleksanterinkatu 11</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">010 444 11</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_HANDNOKKXXX">
+		<!-- Handelsbanken Norway, Norway -->
+		<field name="name">Handelsbanken Norway</field>
+		<field name="bic">HANDNOKKXXX</field>
+		<field name="street">Tjuvholmen allé 11</field>
+		<field name="zip">0252</field>
+		<field name="city">Oslo</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_HOLVFIHH">
+		<!-- Holvi, Finland -->
+		<field name="name">Holvi</field>
+		<field name="bic">HOLVFIHH</field>
+		<field name="street">Itämerenkatu 3</field>
+		<field name="zip">00180</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">+358 753 252935</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_ICABSESSXXX">
+		<!-- ICA Banken AB, Sweden -->
+		<field name="name">ICA Banken AB</field>
+		<field name="bic">ICABSESSXXX</field>
+		<field name="street">Kolonnvägen 20</field>
+		<field name="zip">169 71</field>
+		<field name="city">Solna</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_IKANSESSXXX">
+		<!-- Ikano Bank AB (publ), Sweden -->
+		<field name="name">Ikano Bank AB (publ)</field>
+		<field name="bic">IKANSESSXXX</field>
+		<field name="street">Hyllie Boulevard 27</field>
+		<field name="zip">215 32</field>
+		<field name="city">Malmö</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_JYBADKKK">
+		<!-- Jyske Bank, Denmark -->
+		<field name="name">Jyske Bank</field>
+		<field name="bic">JYBADKKK</field>
+		<field name="street">Vestergade 8-16</field>
+		<field name="zip">8600</field>
+		<field name="city">Silkeborg</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_KLARSES1XXX">
+		<!-- Klarna Bank AB, Sweden -->
+		<field name="name">Klarna Bank AB</field>
+		<field name="bic">KLARSES1XXX</field>
+		<field name="street">Sveavägen 46</field>
+		<field name="zip">111 34</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_LANDSESSXXX">
+		<!-- Landshypotek Bank Aktiebolag, Sweden -->
+		<field name="name">Landshypotek Bank Aktiebolag</field>
+		<field name="bic">LANDSESSXXX</field>
+		<field name="street">Lilla Nygatan 8</field>
+		<field name="zip">111 28</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_LEAFSESSXXX">
+		<!-- Lea finans AB, Sweden -->
+		<field name="name">Lea finans AB</field>
+		<field name="bic">LEAFSESSXXX</field>
+		<field name="street">Norrlandsgatan 22</field>
+		<field name="zip">111 43</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_EGEGSESSXXX">
+		<!-- Länsförsäkringar Bank Aktiebolag, Sweden -->
+		<field name="name">Länsförsäkringar Bank Aktiebolag</field>
+		<field name="bic">EGEGSESSXXX</field>
+		<field name="street">Tegeluddsvägen 11-13</field>
+		<field name="zip">106 50</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_MARGSESSXXX">
+		<!-- Marginalen Bank Bankaktiebolag, Sweden -->
+		<field name="name">Marginalen Bank Bankaktiebolag</field>
+		<field name="bic">MARGSESSXXX</field>
+		<field name="street">Adolf Fredriks Kyrkogata 8</field>
+		<field name="zip">111 37</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_MEDESESSXXX">
+		<!-- MedMera Bank Aktiebolag, Sweden -->
+		<field name="name">MedMera Bank Aktiebolag</field>
+		<field name="bic">MEDESESSXXX</field>
+		<field name="street">Solnavägen 7A</field>
+		<field name="zip">113 65</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NOBASESSXXX">
+		<!-- NOBA Bank Group AB (publ), Sweden -->
+		<field name="name">NOBA Bank Group AB (publ)</field>
+		<field name="bic">NOBASESSXXX</field>
+		<field name="street">Södermalmsallén 36</field>
+		<field name="zip">118 28</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NDEANOKKXXX">
+		<!-- Nordea Bank, Norway -->
+		<field name="name">Nordea Bank</field>
+		<field name="bic">NDEANOKKXXX</field>
+		<field name="street">Essendrops gate 7</field>
+		<field name="zip">0368</field>
+		<field name="city">Oslo</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NDEASESS">
+		<!-- Nordea Bank ABP, Filial i Sverige, Sweden -->
+		<field name="name">Nordea Bank ABP, Filial i Sverige</field>
+		<field name="bic">NDEASESS</field>
+		<field name="street">HAMNGATAN 10</field>
+		<field name="zip">167 51</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NDEADKKK">
+		<!-- Nordea Denmark, Denmark -->
+		<field name="name">Nordea Denmark</field>
+		<field name="bic">NDEADKKK</field>
+		<field name="street">Grønjordsvej 10</field>
+		<field name="zip">2300</field>
+		<field name="city">Copenhagen</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NDEAFIHH">
+		<!-- Nordea Pankki (Nordea) 1 ja 2, Finland -->
+		<field name="name">Nordea Pankki (Nordea) 1 ja 2</field>
+		<field name="bic">NDEAFIHH</field>
+		<field name="street">Aleksis Kiven katu 7</field>
+		<field name="zip">00020</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">09 1651</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_NODASESSXXX">
+		<!-- Nordnet Bank AB, Sweden -->
+		<field name="name">Nordnet Bank AB</field>
+		<field name="bic">NODASESSXXX</field>
+		<field name="street">Gustavslundsvägen 141</field>
+		<field name="zip">167 51</field>
+		<field name="city">Bromma</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NORISESSXXX">
+		<!-- Norion Bank AB, Sweden -->
+		<field name="name">Norion Bank AB</field>
+		<field name="bic">NORISESSXXX</field>
+		<field name="street">Kungsgatan 33</field>
+		<field name="zip">111 56</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NOMISESSXXX">
+		<!-- Northmill Bank AB, Sweden -->
+		<field name="name">Northmill Bank AB</field>
+		<field name="bic">NOMISESSXXX</field>
+		<field name="street">Mäster Samuelsgatan 36</field>
+		<field name="zip">111 57</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_NYKBDKKK">
+		<!-- Nykredit Bank, Denmark -->
+		<field name="name">Nykredit Bank</field>
+		<field name="bic">NYKBDKKK</field>
+		<field name="street">Kalvebod Brygge 1-3</field>
+		<field name="zip">1780</field>
+		<field name="city">Copenhagen</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_OKQBSESSXXX">
+		<!-- OK-Q8 Bank AB, Sweden -->
+		<field name="name">OK-Q8 Bank AB</field>
+		<field name="bic">OKQBSESSXXX</field>
+		<field name="street">Sveavägen 155</field>
+		<field name="zip">104 35</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_OKOYFIHH">
+		<!-- OP Ryhmä, Finland -->
+		<field name="name">OP Ryhmä</field>
+		<field name="bic">OKOYFIHH</field>
+		<field name="street">Gebhardinaukio 1</field>
+		<field name="zip">00510</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">010 255 9015</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_ITELFIHH">
+		<!-- Oma Säästöpankki, Finland -->
+		<field name="name">Oma Säästöpankki</field>
+		<field name="bic">ITELFIHH</field>
+		<field name="street">Vironkatu 2</field>
+		<field name="zip">00170</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">045 657 5506</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_QREDSESSXXX">
+		<!-- Qred Bank AB, Sweden -->
+		<field name="name">Qred Bank AB</field>
+		<field name="bic">QREDSESSXXX</field>
+		<field name="street">Västra Järnvägsgatan 7</field>
+		<field name="zip">111 64</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_RESPSESSXXX">
+		<!-- Resurs Bank Aktiebolag, Sweden -->
+		<field name="name">Resurs Bank Aktiebolag</field>
+		<field name="bic">RESPSESSXXX</field>
+		<field name="street">Ekslingan 9</field>
+		<field name="zip">254 67</field>
+		<field name="city">Helsingborg</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_RINGDK22">
+		<!-- Ringkjøbing Landbobank, Denmark -->
+		<field name="name">Ringkjøbing Landbobank</field>
+		<field name="bic">RINGDK22</field>
+		<field name="street">Torvet 1</field>
+		<field name="zip">6950</field>
+		<field name="city">Ringkøbing</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SBANFIHH">
+		<!-- S-Pankki, Finland -->
+		<field name="name">S-Pankki</field>
+		<field name="bic">SBANFIHH</field>
+		<field name="street">Fleminginkatu 34</field>
+		<field name="zip">00510</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">010 768 011</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_SBAVSESSXXX">
+		<!-- SBAB Bank AB (publ), Sweden -->
+		<field name="name">SBAB Bank AB (publ)</field>
+		<field name="bic">SBAVSESSXXX</field>
+		<field name="street">Svetsarvägen 24</field>
+		<field name="zip">171 41</field>
+		<field name="city">Solna</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SEBKSESSXXX">
+		<!-- SEB Kort Bank AB, Sweden -->
+		<field name="name">SEB Kort Bank AB</field>
+		<field name="bic">SEBKSESSXXX</field>
+		<field name="street">Stjärntorget 4</field>
+		<field name="zip">169 79</field>
+		<field name="city">Solna</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SANBANOKXXX">
+		<!-- Santander, Norway -->
+		<field name="name">Santander</field>
+		<field name="bic">SANBANOKXXX</field>
+		<field name="street">Strandveien 18</field>
+		<field name="zip">1325</field>
+		<field name="city">Lysaker</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SAXODKKK">
+		<!-- Saxo Bank, Denmark -->
+		<field name="name">Saxo Bank</field>
+		<field name="bic">SAXODKKK</field>
+		<field name="street">Philip Heymans Alle 15</field>
+		<field name="zip">2900</field>
+		<field name="city">Hellerup</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SBANNOKKXXX">
+		<!-- Sbanken, Norway -->
+		<field name="name">Sbanken</field>
+		<field name="bic">SBANNOKKXXX</field>
+		<field name="street">Folke Bernadottes vei 38</field>
+		<field name="zip">5147</field>
+		<field name="city">Fyllingsdalen</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SKIASESSXXX">
+		<!-- Skandiabanken Aktiebolag (publ), Sweden -->
+		<field name="name">Skandiabanken Aktiebolag (publ)</field>
+		<field name="bic">SKIASESSXXX</field>
+		<field name="street">Lindhagensgatan 86</field>
+		<field name="zip">112 18</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record id="res_bank_SEBESSEFIHX" model="res.bank">
+		<!-- Skandinaviska Enskilda Banken (SEB), Finland -->
+		<field name="name">Skandinaviska Enskilda Banken (SEB)</field>
+		<field name="bic">SEBESSEFIHX</field>
+		<field name="street">Eteläesplanadi 18</field>
+		<field name="zip">00130</field>
+		<field name="city">HELSINKI</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone" />
+	</record>
+	<record model="res.bank" id="res_bank_ESSEFIHX">
+		<!-- Skandinaviska Enskilda Banken (SEB) Oy, Finland -->
+		<field name="name">Skandinaviska Enskilda Banken (SEB) Oy</field>
+		<field name="bic">ESSEFIHX</field>
+		<field name="street">Unioninkatu 30</field>
+		<field name="zip">00100</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+	</record>
+
+	<record model="res.bank" id="res_bank_ESSESESS">
+		<!-- Skandinaviska Enskilda Banken AB, Sweden -->
+		<field name="name">Skandinaviska Enskilda Banken AB</field>
+		<field name="bic">ESSESESS</field>
+		<field name="street">Kungsträdgårdsgatan 8</field>
+		<field name="zip">106 40</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SPNODK22">
+		<!-- Spar Nord Bank, Denmark -->
+		<field name="name">Spar Nord Bank</field>
+		<field name="bic">SPNODK22</field>
+		<field name="street">Skelagervej 15</field>
+		<field name="zip">9000</field>
+		<field name="city">Aalborg</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_ALNGSESSXXX">
+		<!-- Sparbanken Alingsås AB (publ), Sweden -->
+		<field name="name">Sparbanken Alingsås AB (publ)</field>
+		<field name="bic">ALNGSESSXXX</field>
+		<field name="street">Kungsgatan 29</field>
+		<field name="zip">441 30</field>
+		<field name="city">Alingsås</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_BGRSSESSXXX">
+		<!-- Sparbanken Bergslagen AB, Sweden -->
+		<field name="name">Sparbanken Bergslagen AB</field>
+		<field name="bic">BGRSSESSXXX</field>
+		<field name="street">Hammartorget 14</field>
+		<field name="zip">737 30</field>
+		<field name="city">Fagersta</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_EKENSESSXXX">
+		<!-- Sparbanken Eken AB, Sweden -->
+		<field name="name">Sparbanken Eken AB</field>
+		<field name="bic">EKENSESSXXX</field>
+		<field name="street">Storgatan 56</field>
+		<field name="zip">362 30</field>
+		<field name="city">Tingsryd</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_GONGSESSXXX">
+		<!-- Sparbanken Göinge AB, Sweden -->
+		<field name="name">Sparbanken Göinge AB</field>
+		<field name="bic">GONGSESSXXX</field>
+		<field name="street">Storgatan 15</field>
+		<field name="zip">280 60</field>
+		<field name="city">Brodalen</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_LIDKSESSXXX">
+		<!-- Sparbanken Lidköping AB (publ), Sweden -->
+		<field name="name">Sparbanken Lidköping AB (publ)</field>
+		<field name="bic">LIDKSESSXXX</field>
+		<field name="street">Nya Stadens Torg 4</field>
+		<field name="zip">531 31</field>
+		<field name="city">Lidköping</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SJHRSESSXXX">
+		<!-- Sparbanken Sjuhärad AB (publ), Sweden -->
+		<field name="name">Sparbanken Sjuhärad AB (publ)</field>
+		<field name="bic">SJHRSESSXXX</field>
+		<field name="street">Sparbanksgatan 1</field>
+		<field name="zip">503 34</field>
+		<field name="city">Borås</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SKARSESSXXX">
+		<!-- Sparbanken Skaraborg AB (publ), Sweden -->
+		<field name="name">Sparbanken Skaraborg AB (publ)</field>
+		<field name="bic">SKARSESSXXX</field>
+		<field name="street">Stora Torget 1</field>
+		<field name="zip">532 30</field>
+		<field name="city">Skara</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SKASESSXXX">
+		<!-- Sparbanken Skåne AB (publ), Sweden -->
+		<field name="name">Sparbanken Skåne AB (publ)</field>
+		<field name="bic">SKASESSXXX</field>
+		<field name="street">Kyrkogatan 1</field>
+		<field name="zip">222 22</field>
+		<field name="city">Lund</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SPRANO22XXX">
+		<!-- SpareBank 1 SR-Bank, Norway -->
+		<field name="name">SpareBank 1 SR-Bank</field>
+		<field name="bic">SPRANO22XXX</field>
+		<field name="street">Bjergsted Terrasse 1</field>
+		<field name="zip">4007</field>
+		<field name="city">Stavanger</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SHEDNOKKXXX">
+		<!-- Sparebank 1 Østlandet, Norway -->
+		<field name="name">Sparebank 1 Østlandet</field>
+		<field name="bic">SHEDNOKKXXX</field>
+		<field name="street">Parkgata 2</field>
+		<field name="zip">2317</field>
+		<field name="city">Hamar</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_STBANO22XXX">
+		<!-- Storebrand Bank, Norway -->
+		<field name="name">Storebrand Bank</field>
+		<field name="bic">STBANO22XXX</field>
+		<field name="street">Professor Kohts vei 9</field>
+		<field name="zip">1366</field>
+		<field name="city">Lysaker</field>
+		<field name="country" ref="base.no" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SVEASESSXXX">
+		<!-- Svea Bank AB, Sweden -->
+		<field name="name">Svea Bank AB</field>
+		<field name="bic">SVEASESSXXX</field>
+		<field name="street">Evenemangsgatan 31</field>
+		<field name="zip">169 79</field>
+		<field name="city">Solna</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_HANDSESSXXX">
+		<!-- Svenska Handelsbanken AB, Sweden -->
+		<field name="name">Svenska Handelsbanken AB</field>
+		<field name="bic">HANDSESSXXX</field>
+		<field name="street">Kungsträdgårdsgatan 2</field>
+		<field name="zip">106 70</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SWEDFIHH">
+		<!-- Swedbank, Finland -->
+		<field name="name">Swedbank</field>
+		<field name="bic">SWEDFIHH</field>
+		<field name="street">Aleksanterinkatu 19</field>
+		<field name="zip">00100</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">+358 20 746 9100</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_SWEDSESSXXX">
+		<!-- Swedbank AB, Sweden -->
+		<field name="name">Swedbank AB</field>
+		<field name="bic">SWEDSESSXXX</field>
+		<field name="street">Landsvägen 40</field>
+		<field name="zip">172 63</field>
+		<field name="city">Sundbyberg</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SYBKDK22">
+		<!-- Sydbank, Denmark -->
+		<field name="name">Sydbank</field>
+		<field name="bic">SYBKDK22</field>
+		<field name="street">Peberlyk 4</field>
+		<field name="zip">6200</field>
+		<field name="city">Aabenraa</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_SORSSESSXXX">
+		<!-- Sörmlands Sparbank AB, Sweden -->
+		<field name="name">Sörmlands Sparbank AB</field>
+		<field name="bic">SORSSESSXXX</field>
+		<field name="street">Järntorget 1</field>
+		<field name="zip">611 30</field>
+		<field name="city">Nyköping</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_TFBKSESSXXX">
+		<!-- TF Bank AB, Sweden -->
+		<field name="name">TF Bank AB</field>
+		<field name="bic">TFBKSESSXXX</field>
+		<field name="street">Bohusgatan 15</field>
+		<field name="zip">411 39</field>
+		<field name="city">Göteborg</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_TJSPSESSXXX">
+		<!-- Tjustbygdens Sparbank Bankaktiebolag, Sweden -->
+		<field name="name">Tjustbygdens Sparbank Bankaktiebolag</field>
+		<field name="bic">TJSPSESSXXX</field>
+		<field name="street">Storgatan 32</field>
+		<field name="zip">593 30</field>
+		<field name="city">Västervik</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_VARBSESSXXX">
+		<!-- Varbergs Sparbank AB (publ), Sweden -->
+		<field name="name">Varbergs Sparbank AB (publ)</field>
+		<field name="bic">VARBSESSXXX</field>
+		<field name="street">Bäckgatan 16</field>
+		<field name="zip">432 44</field>
+		<field name="city">Varberg</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_VEJSDK22">
+		<!-- Vestjysk Bank, Denmark -->
+		<field name="name">Vestjysk Bank</field>
+		<field name="bic">VEJSDK22</field>
+		<field name="street">Torvet 4-5</field>
+		<field name="zip">7620</field>
+		<field name="city">Lemvig</field>
+
+		<field name="country" ref="base.dk" />
+	</record>
+
+	<record model="res.bank" id="res_bank_VIPPSE21XXX">
+		<!-- Vimmerby Sparbank AB, Sweden -->
+		<field name="name">Vimmerby Sparbank AB</field>
+		<field name="bic">VIPPSE21XXX</field>
+		<field name="street">Sevedegatan 37</field>
+		<field name="zip">598 37</field>
+		<field name="city">Vimmerby</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_VPAYFIH2">
+		<!-- Viva Payment Services S.A., Suomen sivuliike, Finland -->
+		<field name="name">Viva Payment Services S.A., Suomen sivuliike</field>
+		<field name="bic">VPAYFIH2</field>
+		<field name="street">Pohjoisesplanadi 37 A</field>
+		<field name="zip">00100</field>
+		<field name="city">Helsinki</field>
+		<field name="country" ref="base.fi" />
+	</record>
+
+	<record model="res.bank" id="res_bank_ZIKOSESSXXX">
+		<!-- Ziklo Bank AB, Sweden -->
+		<field name="name">Ziklo Bank AB</field>
+		<field name="bic">ZIKOSESSXXX</field>
+		<field name="street">Östermalmstorg 1</field>
+		<field name="zip">114 42</field>
+		<field name="city">Stockholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
+	<record model="res.bank" id="res_bank_AABAFI22">
+		<!-- Ålandsbanken (ÅAB), Finland -->
+		<field name="name">Ålandsbanken (ÅAB)</field>
+		<field name="bic">AABAFI22</field>
+		<field name="street">Strandgatan 12</field>
+		<field name="zip">22100</field>
+		<field name="city">Mariehamn</field>
+		<field name="country" ref="base.fi" />
+		<field name="phone">020 429 011</field>
+	</record>
+
+	<record model="res.bank" id="res_bank_OLANSESSXXX">
+		<!-- Ölands Bank AB, Sweden -->
+		<field name="name">Ölands Bank AB</field>
+		<field name="bic">OLANSESSXXX</field>
+		<field name="street">Storgatan 22</field>
+		<field name="zip">387 31</field>
+		<field name="city">Borgholm</field>
+		<field name="country" ref="base.se" />
+	</record>
+
 </odoo>

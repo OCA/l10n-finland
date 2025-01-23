@@ -1,6 +1,6 @@
 ##############################################################################
 #
-#    Author: Oy Tawasta OS Technologies Ltd.
+#    Author: Oy Tawasta OS Technologies Ltd and OBS
 #    Copyright 2015 Oy Tawasta OS Technologies Ltd. (http://www.tawasta.fi)
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,8 @@
 
 {
     "name": "Finnish Banks",
-    "summary": "Finnish banks and their addresses",
-    "version": "17.0.1.0.0",
+    "summary": "Finnish and Nordic banks and their addresses",
+    "version": "17.0.1.0.1",
     "category": "Localization",
     "website": "https://github.com/OCA/l10n-finland",
     "author": "Tawasta, Odoo Community Association (OCA)",
