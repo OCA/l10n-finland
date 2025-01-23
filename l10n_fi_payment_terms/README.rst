@@ -57,6 +57,11 @@ Configuration
 Changelog
 =========
 
+17.0.1.0.0 (2025-01-23)
+-----------------------
+
+-  [MIGRATION] from 14.0 to 17.0
+
 14.0.1.0.0 (2021-06-04)
 -----------------------
 
@@ -83,7 +88,7 @@ Authors
 Contributors
 ------------
 
--  Jarmo Kortetjärvi <jarmo.kortetjarvi@tawasta.fi>
+-  Jarmo Kortetjärvi <jarmo.kortetjarvi@futural.fi>
 -  Miku Laitinen <miku.laitinen@avoin.systems>
 
 Other credits
