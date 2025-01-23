@@ -46,7 +46,7 @@ Changelog
 14.0.1.0.0 (2021-06-04)
 -----------------------
 
--  [MIGRATION] from 13.0 to 14.0
+- [MIGRATION] from 13.0 to 14.0
 
 Bug Tracker
 ===========
@@ -69,7 +69,7 @@ Authors
 Contributors
 ------------
 
--  Jarmo Kortetjärvi <jarmo.kortetjarvi@tawasta.fi>
+- Jarmo Kortetjärvi <jarmo.kortetjarvi@tawasta.fi>
 
 Other credits
 -------------
@@ -77,8 +77,8 @@ Other credits
 Images
 ~~~~~~
 
--  Odoo Community Association:
-   `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`__.
+- Odoo Community Association:
+  `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`__.
 
 Maintainers
 -----------

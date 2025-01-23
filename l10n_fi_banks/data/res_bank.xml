@@ -1,9 +1,9 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='utf-8' ?>
 <odoo>
     <!-- Finnish and Nordic banks -->
     <!-- according to the finance regulation authority of each country -->
     <!-- Please maintain the alphabetical order when doing additions -->
-    
+
 	<record model="res.bank" id="res_bank_HELSFIHH">
 		<!-- Aktia Pankki, Finland -->
 		<field name="name">Aktia Pankki</field>

@@ -53,12 +53,12 @@ Changelog
 17.0.1.0.0 (2024-02-04)
 -----------------------
 
--  [MIGRATION] from 15.0 to 17.0
+- [MIGRATION] from 15.0 to 17.0
 
 15.0.1.0.0 (2021-12-16)
 -----------------------
 
--  [MIGRATION] from 13.0 to 15.0
+- [MIGRATION] from 13.0 to 15.0
 
 Bug Tracker
 ===========
@@ -81,8 +81,8 @@ Authors
 Contributors
 ------------
 
--  Atte Isopuro (Avoin.Systems)
--  Nedas Zilinskas (Avoin.Systems)
+- Atte Isopuro (Avoin.Systems)
+- Nedas Zilinskas (Avoin.Systems)
 
 Maintainers
 -----------
