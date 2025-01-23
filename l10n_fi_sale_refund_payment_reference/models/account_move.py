@@ -19,4 +19,4 @@ class AccountMove(models.Model):
             )
         ):
             move.payment_reference = move._get_invoice_computed_reference()
-        super()._compute_payment_reference()
+        return super()._compute_payment_reference()
