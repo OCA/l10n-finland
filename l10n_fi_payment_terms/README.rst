@@ -34,13 +34,9 @@ Common Finnish invoice payment terms.
 
 **Added Payment terms**
 
--  IMMEDIATE
 -  7 days
 -  10 days
 -  14 days
--  21 days
--  30 days
--  45 days
 -  60 days
 -  90 days
 
@@ -56,6 +52,14 @@ Configuration
 
 Changelog
 =========
+
+17.0.1.0.0 (2025-01-24)
+-----------------------
+
+-  [MIGRATION] from 14.0 to 17.0
+-  Removed "Immediate payment", "21 Days", "30 Days", "45 Days" as
+   redundant
+-  Removed the "code" field that was added to payment terms
 
 14.0.1.0.0 (2021-06-04)
 -----------------------
@@ -78,12 +82,12 @@ Credits
 Authors
 -------
 
-* Tawasta
+* Futural
 
 Contributors
 ------------
 
--  Jarmo Kortetjärvi <jarmo.kortetjarvi@tawasta.fi>
+-  Jarmo Kortetjärvi <jarmo.kortetjarvi@futural.fi>
 -  Miku Laitinen <miku.laitinen@avoin.systems>
 
 Other credits

@@ -1,7 +1,7 @@
 ##############################################################################
 #
-#    Author: Oy Tawasta OS Technologies Ltd.
-#    Copyright 2015 Oy Tawasta OS Technologies Ltd. (http://www.tawasta.fi)
+#    Author: Futural Oy
+#    Copyright 2015 Futural Oy (https://futural.fi)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -21,10 +21,10 @@
 {
     "name": "Finnish Payment Terms",
     "summary": "Common Finnish invoice payment terms",
-    "version": "14.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Localization",
     "website": "https://github.com/OCA/l10n-finland",
-    "author": "Tawasta, Odoo Community Association (OCA)",
+    "author": "Futural, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
