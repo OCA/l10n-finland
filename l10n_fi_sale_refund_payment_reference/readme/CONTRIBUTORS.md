@@ -1,2 +1,4 @@
 -   Atte Isopuro (Avoin.Systems)
 -   Nedas Zilinskas (Avoin.Systems)
+- `Ahkio Consulting Oy <https://ahkio.com>`__:
+  - Johan Tötterman <johan@ahkio.com>
