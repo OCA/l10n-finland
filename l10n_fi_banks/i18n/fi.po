@@ -17,12 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#. module: finnish_banks
-#: model:account.payment.term,name:finnish_banks.payment_term_14_days
-msgid "14 Days"
-msgstr "14 päivää"
+#~ msgid "14 Days"
+#~ msgstr "14 päivää"
 
-#. module: finnish_banks
-#: model_terms:account.payment.term,note:finnish_banks.payment_term_14_days
-msgid "Payment due in 14 days"
-msgstr "Maksun eräpäivä 14 päivän kuluessa"
+#~ msgid "Payment due in 14 days"
+#~ msgstr "Maksun eräpäivä 14 päivän kuluessa"
