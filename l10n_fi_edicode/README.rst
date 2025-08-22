@@ -97,7 +97,7 @@ Credits
 Authors
 -------
 
-* Tawasta
+* Futural
 * Avoin.Systems
 
 Contributors
