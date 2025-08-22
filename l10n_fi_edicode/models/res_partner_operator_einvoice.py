@@ -40,7 +40,9 @@ class ResPartnerOperatorEinvoice(models.Model):
         """
         res = super()._compute_display_name()
         for operator in self:
-            operator.display_name = " - ".join([operator.identifier, operator.name])
+            identifier = operator.identifier or ""
+            name = operator.name or ""
+            operator.display_name = f"{identifier} - {name}".strip(" -")
         return res
 
     @api.model
