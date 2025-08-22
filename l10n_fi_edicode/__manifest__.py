@@ -1,7 +1,7 @@
 ##############################################################################
 #
-#    Author: Oy Tawasta OS Technologies Ltd.
-#    Copyright 2017 Oy Tawasta OS Technologies Ltd. (http://www.tawasta.fi)
+#    Author: Futural Oy.
+#    Copyright 2017 Futural Oy (https://futural.fi)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,10 +19,10 @@
 {
     "name": "Partner EDI code",
     "summary": "Adds EDI code field and operators",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "category": "Accounting",
     "website": "https://github.com/OCA/l10n-finland",
-    "author": ("Tawasta" ", Odoo Community Association (OCA)" ", Avoin.Systems"),
+    "author": ("Futural" ", Odoo Community Association (OCA)" ", Avoin.Systems"),
     "license": "LGPL-3",
     "application": False,
     "installable": True,
