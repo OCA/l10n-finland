@@ -6,7 +6,7 @@
 Account Report Barcode
 ======================
 
-Show barcode in invoice PDF
+Show barcode in invoice PDF footer.
 
 Configuration
 =============
@@ -14,7 +14,7 @@ Configuration
 
 Usage
 =====
-\-
+If you want the barcode to be shown only on the last page of the invoice, install the module `report_qweb_element_page_visibility` from OCA/reporting-engine.
 
 Known issues / Roadmap
 ======================

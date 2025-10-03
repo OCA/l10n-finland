@@ -1,71 +1,65 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="invoice_barcode_template" priority="25">
-        <div id="barcode" t-if="o and o.barcode" class="row mt16 text-center"
-             style="height: 6rem; width: 500px; margin-right: -70px">
+    <template id="invoice_barcode_template" priority="99">
+        <!-- The last-page class is only applied if report_qweb_element_page_visibility is installed -->
+        <div
+            id="barcode"
+            t-if="o and o.barcode"
+            class="row mt16 text-center last-page"
+            style="height: 6rem; width: 500px; margin-left: -70px;"
+        >
             <img
-                    t-att-src="'/report/barcode?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %('Code128', o.barcode or '', 1600, 60)"
-                    class="col-12"
-                    style="width: 500px; height: 3rem; margin: 0; padding: 0;"/>
+                t-att-src="'/report/barcode?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %('Code128', o.barcode or '', 1600, 60)"
+                class="col-12"
+                style="width: 500px; height: 3rem; margin: auto; padding: 0; "
+            />
             <span
-                    t-field="o.barcode"
-                    class="col-12"
-                    style="font-size: 12px; font-weight: bold; text-align: center; margin: 0; padding: 0;"
+                t-field="o.barcode"
+                class="col-12"
+                style="font-size: 12px; font-weight: bold; text-align: center; margin: auto; padding: 0;"
             />
         </div>
     </template>
 
-    <template id="company_pdf_info_footer" priority="25">
-        <div class="row" style="font-size: 12px; margin-top: 1rem;">
-            <div style="height: 6rem;" class="col-5">
-                <span t-esc="o.company_id.partner_id"
-                      t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
-            </div>
-            <div style="height: 6rem;" class="col-5">
-                <span t-esc="o.company_id.partner_id"
-                      t-options='{"widget": "contact", "fields": ["vat"], "no_marker": True}'/>
-                <span t-esc="'Y-tunnus: ' + o.company_id.partner_id.company_registry"/>
-            </div>
-            <div style="height: 6rem;" class="col-6">
-                <span t-esc="o.company_id.partner_id"
-                      t-options='{"widget": "contact", "fields": ["phone"], "no_marker": True, "phone_icons": False}'/>
-                <span>laskutus@kinnunen.fi</span>
-            </div>
-        </div>
-    </template>
-
-
-    <template id="external_layout_standard_inherit" inherit_id="web.external_layout_standard" priority="25">
+    <template
+        id="external_layout_standard_inherit"
+        inherit_id="web.external_layout_standard"
+        priority="99"
+    >
         <xpath expr="//div[hasclass('o_footer_content')]" position="inside">
             <t t-if="o and o._name == 'account.move'">
-                <t t-call="account_report_invoice_barcode.invoice_barcode_template"/>
+                <t t-call="account_report_invoice_barcode.invoice_barcode_template" />
             </t>
         </xpath>
-        <xpath expr="//div[@t-field='company.report_footer']" position="replace">
-            <t t-call="account_report_invoice_barcode.company_pdf_info_footer"/>
-        </xpath>
-        <xpath expr="//div[@class='text-end text-muted']" position="replace">
-            <div class="text-end text-muted" style="font-size: 10px;">
-                <div t-if="report_type == 'pdf'">Page <span class="page"/> / <span class="topage"/></div>
-            </div>
+    </template>
+
+    <template
+        id="external_layout_bold_inherit"
+        inherit_id="web.external_layout_bold"
+        priority="99"
+    >
+        <xpath expr="//div[hasclass('o_footer_content')]" position="inside">
+            <t t-call="account_report_invoice_barcode.invoice_barcode_template" />
         </xpath>
     </template>
 
-    <template id="external_layout_bold_inherit" inherit_id="web.external_layout_bold" priority="25">
+    <template
+        id="external_layout_boxed_inherit"
+        inherit_id="web.external_layout_boxed"
+        priority="99"
+    >
         <xpath expr="//div[hasclass('o_footer_content')]" position="inside">
-            <t t-call="account_report_invoice_barcode.invoice_barcode_template"/>
+            <t t-call="account_report_invoice_barcode.invoice_barcode_template" />
         </xpath>
     </template>
 
-    <template id="external_layout_boxed_inherit" inherit_id="web.external_layout_boxed" priority="25">
+    <template
+        id="external_layout_striped_inherit"
+        inherit_id="web.external_layout_striped"
+        priority="99"
+    >
         <xpath expr="//div[hasclass('o_footer_content')]" position="inside">
-            <t t-call="account_report_invoice_barcode.invoice_barcode_template"/>
-        </xpath>
-    </template>
-
-    <template id="external_layout_striped_inherit" inherit_id="web.external_layout_striped" priority="25">
-        <xpath expr="//div[hasclass('o_footer_content')]" position="inside">
-            <t t-call="account_report_invoice_barcode.invoice_barcode_template"/>
+            <t t-call="account_report_invoice_barcode.invoice_barcode_template" />
         </xpath>
     </template>
 </odoo>
