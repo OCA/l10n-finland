@@ -22,7 +22,7 @@
     "version": "18.0.1.0.1",
     "category": "Accounting",
     "website": "https://github.com/OCA/l10n-finland",
-    "author": ("Futural" ", Odoo Community Association (OCA)" ", Avoin.Systems"),
+    "author": ("Futural, Odoo Community Association (OCA), Avoin.Systems"),
     "license": "LGPL-3",
     "application": False,
     "installable": True,
