@@ -19,7 +19,7 @@
 {
     "name": "Partner EDI code",
     "summary": "Adds EDI code field and operators",
-    "version": "18.0.1.0.1",
+    "version": "19.0.1.0.0",
     "category": "Accounting",
     "website": "https://github.com/OCA/l10n-finland",
     "author": ("Futural, Odoo Community Association (OCA), Avoin.Systems"),

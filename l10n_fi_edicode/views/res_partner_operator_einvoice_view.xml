@@ -55,7 +55,7 @@
                     string="Archived"
                     domain="[('active', '=', False)]"
                 />
-                <group expand="0" string="Group by...">
+                <group>
                     <filter
                         name="groupby_ttype"
                         string="Operator Type"
