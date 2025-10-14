@@ -1,5 +1,4 @@
 from odoo import api, fields, models
-from odoo.osv import expression
 
 
 class ResPartnerOperatorEinvoice(models.Model):
@@ -24,13 +23,10 @@ class ResPartnerOperatorEinvoice(models.Model):
         default="broker",
     )
 
-    _sql_constraints = [
-        (
-            "operator_identifier_uniq",
-            "unique(identifier)",
-            '"Identifier" should be unique!',
-        ),
-    ]
+    _operator_identifier_uniq = models.Constraint(
+        "unique(identifier)",
+        '"Identifier" should be unique!',
+    )
 
     @api.depends("identifier")
     def _compute_display_name(self):
@@ -49,7 +45,7 @@ class ResPartnerOperatorEinvoice(models.Model):
     def _search_display_name(self, operator, value):
         if not value:
             return super()._search_display_name(operator, value)
-        if operator in expression.NEGATIVE_TERM_OPERATORS:
+        if operator in fields.Domain.NEGATIVE_OPERATORS:
             domain = [
                 "&",
                 ("identifier", "not ilike", value + "%"),
