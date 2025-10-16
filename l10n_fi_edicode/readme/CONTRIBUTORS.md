@@ -1,0 +1,3 @@
+-   Jarmo Kortetjärvi \<<jarmo.kortetjarvi@futural.fi>\>
+-   Timo Talvitie \<<timo.talvitie@vizucom.com>\>
+-   Tatiana Deribina \<<tatiana.deribina@avoin.systems>\>

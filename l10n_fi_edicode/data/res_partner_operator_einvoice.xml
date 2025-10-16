@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- Operators updated on 22.8.2025 -->
+    <!-- Orbyt AS was left out, because it has the same identifier as Posti Messaging Oy (?) -->
+
+    <!--
+        Information about current eInvoice Operators can be found here:
+        https://verkkolaskuosoite.fi/client/index.html#/info
+    -->
+
+    <!-- Banks -->
+    <record id="operator_einvoice_helsfihh" model="res.partner.operator.einvoice">
+        <field name="name">Aktia Pankki Oyj</field>
+        <field name="identifier">HELSFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_dabafihh" model="res.partner.operator.einvoice">
+        <field name="name">Danske Bank A/S, Suomen sivuliike</field>
+        <field name="identifier">DABAFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_ndeafihh" model="res.partner.operator.einvoice">
+        <field name="name">Nordea</field>
+        <field name="identifier">NDEAFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_okoyfihh" model="res.partner.operator.einvoice">
+        <field name="name">OP Osuuskunta</field>
+        <field name="identifier">OKOYFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_itelfihh" model="res.partner.operator.einvoice">
+        <field name="name">Oma Säästöpankki Oyj / Säästöpankit</field>
+        <field name="identifier">ITELFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_popffi22" model="res.partner.operator.einvoice">
+        <field name="name">POP Pankki</field>
+        <field name="identifier">POPFFI22</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_sbanfihh" model="res.partner.operator.einvoice">
+        <field name="name">S-Pankki</field>
+        <field name="identifier">SBANFIHH</field>
+        <field name="ttype">bank</field>
+    </record>
+    <record id="operator_einvoice_aabafi22" model="res.partner.operator.einvoice">
+        <field name="name">Ålandsbanken Abp</field>
+        <field name="identifier">AABAFI22</field>
+        <field name="ttype">bank</field>
+    </record>
+
+    <!-- Messaging / Operators -->
+    <record id="operator_einvoice_003723327487" model="res.partner.operator.einvoice">
+        <field name="name">Apix Messaging Oy</field>
+        <field name="identifier">003723327487</field>
+    </record>
+    <record id="operator_einvoice_apper" model="res.partner.operator.einvoice">
+        <field name="name">Apper Systems AB</field>
+        <field name="identifier">APPER</field>
+    </record>
+    <record id="operator_einvoice_993208446351" model="res.partner.operator.einvoice">
+        <field name="name">Avalara Europe Ltd</field>
+        <field name="identifier">993208446351</field>
+    </record>
+    <record id="operator_einvoice_bawcfi22" model="res.partner.operator.einvoice">
+        <field name="name">Basware Oy</field>
+        <field name="identifier">BAWCFI22</field>
+    </record>
+    <record id="operator_einvoice_003703575029" model="res.partner.operator.einvoice">
+        <field name="name">CGI Suomi Oy</field>
+        <field name="identifier">003703575029</field>
+    </record>
+    <record id="operator_einvoice_5909000716438" model="res.partner.operator.einvoice">
+        <field name="name">Comarch</field>
+        <field name="identifier">5909000716438</field>
+    </record>
+    <record id="operator_einvoice_crediflow" model="res.partner.operator.einvoice">
+        <field name="name">Crediflow AB</field>
+        <field name="identifier">CREDIFLOW</field>
+    </record>
+    <record id="operator_einvoice_inexchange" model="res.partner.operator.einvoice">
+        <field name="name">InExchange Factorum AB</field>
+        <field name="identifier">INEXCHANGE</field>
+    </record>
+    <record id="operator_einvoice_expsys" model="res.partner.operator.einvoice">
+        <field name="name">Kofax Expert Systems</field>
+        <field name="identifier">EXPSYS</field>
+    </record>
+    <record id="operator_einvoice_lo" model="res.partner.operator.einvoice">
+        <field name="name">LOGIQ AS</field>
+        <field name="identifier">LO</field>
+    </record>
+    <record id="operator_einvoice_003721291126" model="res.partner.operator.einvoice">
+        <field name="name">Maventa</field>
+        <field name="identifier">003721291126</field>
+    </record>
+    <record id="operator_einvoice_maventa" model="res.partner.operator.einvoice">
+        <field name="name">Maventa</field>
+        <field name="identifier">MAVENTA</field>
+    </record>
+    <record id="operator_einvoice_003726044706" model="res.partner.operator.einvoice">
+        <field name="name">Netbox Finland Oy</field>
+        <field name="identifier">003726044706</field>
+    </record>
+    <record id="operator_einvoice_003708599126" model="res.partner.operator.einvoice">
+        <field name="name">Open Text Oy</field>
+        <field name="identifier">003708599126</field>
+    </record>
+    <record id="operator_einvoice_E204503" model="res.partner.operator.einvoice">
+        <field name="name">OpusCapita Solutions Oy</field>
+        <field name="identifier">E204503</field>
+    </record>
+    <!-- Orbyt AS should also be included, but has a conflict with Posti Messaging Oy
+    <record id="operator_einvoice_fi28768767" model="res.partner.operator.einvoice">
+        <field name="name">Orbyt AS</field>
+        <field name="identifier">FI28768767</field>
+    </record>
+    -->
+    <record id="operator_einvoice_003723609900" model="res.partner.operator.einvoice">
+        <field name="name">Pagero Oy</field>
+        <field name="identifier">003723609900</field>
+    </record>
+    <record id="operator_einvoice_pagero" model="res.partner.operator.einvoice">
+        <field name="name">Pagero Oy</field>
+        <field name="identifier">PAGERO</field>
+    </record>
+    <record id="operator_einvoice_003701150617" model="res.partner.operator.einvoice">
+        <field name="name">PostNord Strålfors Oy</field>
+        <field name="identifier">003701150617</field>
+    </record>
+    <!-- Posti Messaging Oy id is mismatching because of old operator identifier -->
+    <record id="operator_einvoice_003710948874" model="res.partner.operator.einvoice">
+        <field name="name">Posti Messaging Oy</field>
+        <field name="identifier">FI28768767</field>
+    </record>
+    <record id="operator_einvoice_003714377140" model="res.partner.operator.einvoice">
+        <field name="name">Ropo Suomi Oy</field>
+        <field name="identifier">003714377140</field>
+    </record>
+    <record id="operator_einvoice_003701011385" model="res.partner.operator.einvoice">
+        <field name="name">Tietoevry Oyj</field>
+        <field name="identifier">003701011385</field>
+    </record>
+    <record id="operator_einvoice_003722207029" model="res.partner.operator.einvoice">
+        <field name="name">Åland Post Ab</field>
+        <field name="identifier">003722207029</field>
+    </record>
+
+    <!-- Legacy / no longer active -->
+    <record id="operator_einvoice_palette" model="res.partner.operator.einvoice">
+        <field name="name">Palette Software</field>
+        <field name="identifier">PALETTE</field>
+        <field name="active" eval="False" />
+    </record>
+    <record
+        id="operator_einvoice_00885060259470028"
+        model="res.partner.operator.einvoice"
+    >
+        <field name="name">Tradeshift</field>
+        <field name="identifier">885060259470028</field>
+        <field name="active" eval="False" />
+    </record>
+    <record id="operator_einvoice_fiyapsol" model="res.partner.operator.einvoice">
+        <field name="name">YAP Solutions Oy</field>
+        <field name="identifier">FIYAPSOL</field>
+        <field name="active" eval="False" />
+    </record>
+    <record
+        id="operator_einvoice_00885790000000418"
+        model="res.partner.operator.einvoice"
+    >
+        <field name="name">HighJump AS</field>
+        <field name="identifier">885790000000418</field>
+        <field name="active" eval="False" />
+    </record>
+</odoo>

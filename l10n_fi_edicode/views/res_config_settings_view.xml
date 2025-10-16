@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.edicode</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="40" />
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <app name="account" position="inside">
+                <block title="E-Invoicing" name="einvoicing">
+                    <setting
+                        id="edicode"
+                        string="Edicode"
+                        company_dependent="1"
+                        help="Our company's Edicode for eInvoice documents."
+                    >
+                        <field name="edicode" />
+                    </setting>
+                    <setting
+                        id="einvoice_operator_id"
+                        string="eInvoice Operator"
+                        company_dependent="1"
+                        help="Our company's provider for eInvoice documents."
+                    >
+                        <field name="einvoice_operator_id" />
+                    </setting>
+                </block>
+            </app>
+        </field>
+    </record>
+</odoo>
