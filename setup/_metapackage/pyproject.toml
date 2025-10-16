@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-l10n-finland"
+version = "19.0.20251016.0"
+dependencies = [
+    "odoo-addon-l10n_fi_edicode==19.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 19.0",
+]
