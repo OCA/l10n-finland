@@ -10,6 +10,7 @@ class TestRefundGeneratesReference(AccountTestInvoicingCommon):
         # super will skip this test if l10n_generic_coa is not installed
         super().setUpClass()
 
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.invoice = cls.init_invoice("out_refund", products=cls.product_a)
 
     def test_get_reference_odoo_refund(self):
