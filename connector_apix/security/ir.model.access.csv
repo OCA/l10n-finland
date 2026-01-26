@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_apix_binding","access_apix_binding","model_apix_binding","account.group_account_invoice",1,1,1,0
+"access_apix_invoice","access_apix_binding","model_apix_account_invoice","account.group_account_invoice",1,1,1,0
+"access_apix_backend","access_apix_backend","model_apix_backend","account.group_account_invoice",1,0,0,0
+"access_apix_backend_system","access_apix_backend","model_apix_backend","base.group_system",1,1,1,1

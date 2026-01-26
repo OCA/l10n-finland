@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">APIX EDI Invoice</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+
+            <field name="invoice_date" position="after">
+                <field
+                    name="date_einvoice_sent"
+                    invisible="not date_einvoice_sent"
+                    readonly="True"
+                />
+            </field>
+
+            <!-- Add an eInvoice sending buttons -->
+            <xpath expr="//button[@name='action_post']" position="after">
+
+                <button
+                    name="action_einvoice_send"
+                    type="object"
+                    string="Send eInvoice"
+                    class="oe_highlight"
+                    groups="account.group_account_invoice"
+                    invisible="date_einvoice_sent or state != 'posted' or transmit_method_code != 'einvoice'"
+                />
+
+                <button
+                    name="action_einvoice_send"
+                    type="object"
+                    string="Send via printing service"
+                    class="oe_highlight"
+                    groups="account.group_account_invoice"
+                    invisible="date_einvoice_sent or state != 'posted' or transmit_method_code != 'printing_service'"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_move_form_admin" model="ir.ui.view">
+        <field name="name">APIX EDI Invoice Admin</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page
+                    name="apix_bindings"
+                    string="APIX"
+                    groups="base.group_system"
+                >
+                    <field name="apix_bind_ids">
+                        <list create="false" delete="false" editable="bottom">
+                            <field name="backend_id" readonly="True" />
+                            <field name="odoo_id" readonly="True" />
+                            <field name="apix_batch_id" readonly="True" />
+                            <field
+                                name="apix_accepted_document_id"
+                                readonly="True"
+                            />
+                            <field name="apix_cost_in_credits" readonly="True" />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

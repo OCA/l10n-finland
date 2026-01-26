@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+
+    <record
+        id="ir_cron_apix_purchase_invoice_import"
+        model="ir.cron"
+        forcecreate="True"
+    >
+        <field name="name">APIX: Import purchase invoices</field>
+        <field name="model_id" ref="model_apix_backend" />
+        <field name="state">code</field>
+        <field name="code">model.action_cron_einvoice_fetch()</field>
+        <field name="active" eval="False" />
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+    </record>
+
+</odoo>

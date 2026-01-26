@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="action_apix_backend" model="ir.actions.act_window">
+        <field name="name">APIX Backends</field>
+        <field name="res_model">apix.backend</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_apix_root"
+        parent="connector.menu_connector_root"
+        name="APIX"
+        sequence="10"
+        groups="connector.group_connector_manager"
+    />
+
+    <menuitem
+        id="menu_apix_backend"
+        name="Backends"
+        parent="menu_apix_root"
+        action="action_apix_backend"
+    />
+
+</odoo>
