@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <!--
         Finvoice 3.0 XML document
     -->
@@ -171,7 +170,6 @@
                         <PaymentOverDueFinePercent t-esc="overdue_fine_percent" />
                     </PaymentOverDueFineDetails>
                 </PaymentTermsDetails>
-
             </InvoiceDetails>
             <!-- endregion -->
 
@@ -265,8 +263,6 @@
                 </EpiPaymentInstructionDetails>
             </EpiDetails>
             <!-- endregion -->
-
         </Finvoice>
     </template>
-
 </odoo>

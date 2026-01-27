@@ -22,25 +22,18 @@
     "summary": "Add subsections for MIS templates",
     "version": "18.0.0.1.0",
     "category": "Localization",
-    "website": "https://github.com/tawasta/l10n-finland",
-    "author": "Futural",
-    "maintainer": "Futural",
+    "website": "https://github.com/OCA/l10n-finland",
+    "author": "Odoo Community Association (OCA), Futural",
+    "maintainer": "Odoo Community Association (OCA), Futural",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
-    "depends": [
-        "l10n_fi",
-        "mis_template_financial_report"
-    ],
+    "depends": ["l10n_fi", "mis_template_financial_report"],
     "data": [
         "data/mis_report_kpi_bs.xml",
         "data/mis_report_kpi_pl.xml",
-        "data/mis_report_kpi_vat.xml"
+        "data/mis_report_kpi_vat.xml",
     ],
-    "external_dependencies": {
-        "python": [],
-        "bin": []
-    },
-    "assets": {}
+    "external_dependencies": {"python": [], "bin": []},
+    "assets": {},
 }
-

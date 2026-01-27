@@ -2,8 +2,8 @@ import logging
 import re
 from datetime import datetime
 
-from odoo import _, api, models, tools
-from odoo.exceptions import UserError, ValidationError
+from odoo import _, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -69,7 +69,6 @@ class AccountMove(models.Model):
             company_id=company_id,
         )
 
-
         spad = "SellerPostalAddressDetails"
 
         partner_vals = {
@@ -129,7 +128,7 @@ class AccountMove(models.Model):
 
         for line in lines:
             line_number += 1
-            _logger.debug("Importing line {}/{}".format(line_number, line_count))
+            _logger.debug(f"Importing line {line_number}/{line_count}")
             line_values = {"move_id": invoice.id}
 
             if _find_value("./BuyerArticleIdentifier", line):
@@ -147,7 +146,7 @@ class AccountMove(models.Model):
             # ean_code = _find_value("./EanCode", line)
 
             # Construct a unit price
-            quantity =  1
+            quantity = 1
 
             # Try to find UnitPriceAmount
             price_unit = False
@@ -163,7 +162,7 @@ class AccountMove(models.Model):
                 price_unit = 0
 
             if article_name:
-                _logger.debug("Importing '{}'".format(article_name))
+                _logger.debug(f"Importing '{article_name}'")
 
             if line_count > 200 and not price_unit:
                 # If invoice has more than 200 lines, skip zero lines to prevent a timeout
@@ -310,7 +309,7 @@ class AccountMove(models.Model):
             return Partner
 
         partners = Partner.search(
-            ["|"] * (len(domain) - 1) + domain + [('type', '=', 'contact')],
+            ["|"] * (len(domain) - 1) + domain + [("type", "=", "contact")],
             limit=1,
         )
 

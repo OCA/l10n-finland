@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_apix_backend_form" model="ir.ui.view">
         <field name="name">apix.backend.form</field>
         <field name="model">apix.backend</field>
@@ -43,19 +42,14 @@
                 </header>
 
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
-
-                    </div>
+                    <div class="oe_button_box" name="button_box" />
 
                     <label for="name" class="oe_edit_only" />
                     <h1>
                         <field name="name" class="oe_inline" />
                     </h1>
                     <group name="configuration" groups="base.group_erp_manager">
-                        <group
-                            name="odoo_configuration"
-                            string="Odoo configuration"
-                        >
+                        <group name="odoo_configuration" string="Odoo configuration">
                             <field name="support_email" />
                             <field name="invoice_template_id" />
                         </group>
@@ -77,12 +71,9 @@
                     </group>
 
                     <group name="apix_information">
-
                         <group name="apix_info" string="Customer information">
-                            <field
-                                name="customer_id"
-                                invisible='1'
-                            /> <!-- This is identical with customer number -->
+                            <field name="customer_id" invisible='1' />
+                            <!-- This is identical with customer number -->
                             <field name="customer_number" />
                             <field name="contact_person" />
                             <field name="contact_email" />
@@ -106,5 +97,4 @@
             </form>
         </field>
     </record>
-
 </odoo>

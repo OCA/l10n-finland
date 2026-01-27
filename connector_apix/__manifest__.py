@@ -23,7 +23,7 @@
     "summary": "APIX EDI connector for receiving and sending eInvoices",
     "version": "18.0.1.0.2",
     "category": "Connector",
-    "website": "https://github.com/tawasta/connector-apix",
+    "website": "https://github.com/OCA/l10n-finland",
     "author": "Futural",
     "license": "AGPL-3",
     "application": False,
