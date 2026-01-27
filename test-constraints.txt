@@ -1,6 +1,0 @@
-odoo-addon-account_edi_finvoice @ file:///workspace/account_edi_finvoice
-odoo-addon-connector_apix @ file:///workspace/connector_apix
-odoo-addon-l10n_fi_banks @ file:///workspace/l10n_fi_banks
-odoo-addon-l10n_fi_edicode @ file:///workspace/l10n_fi_edicode
-odoo-addon-l10n_fi_mis_templates @ file:///workspace/l10n_fi_mis_templates
-odoo-addon-l10n_fi_sale_refund_payment_reference @ file:///workspace/l10n_fi_sale_refund_payment_reference
