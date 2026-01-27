@@ -125,9 +125,9 @@ class ApixBackend(models.Model):
 
     # Qualifier for the identification; y-tunnus, orgnr etc.
     # Usually business id (y-tunnus)
-    id_qualifier = fields.Char(
-        string="ID Qualifier",
+    id_qualifier = fields.Selection(
         selection=[("y-tunnus", "Business ID")],
+        string="ID Qualifier",
         default="y-tunnus",
         required=True,
         readonly=True,
