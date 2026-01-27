@@ -270,8 +270,8 @@ class AccountEdiFormat(models.Model):
             if "." in string_number and "," in string_number:
                 # TODO: Add support for comma as thousands separator (1,000.00)
                 msg = _(
-                    f"Using comma as thousands separator not supported! ({string_number})"
-                )
+                    "Using comma as thousands separator not supported! ({})"
+                ).format(string_number)
                 raise UserError(msg)
 
             # Replace comma with period

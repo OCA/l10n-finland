@@ -58,10 +58,10 @@ class AccountMove(models.Model):
         # Can't find a VAT, use business id instead
         if not vat and business_code and re.search(business_code_regex, business_code):
             # TODO: this is pretty unreliable
-            vat = "FI%s" % re.sub("[^0-9]", "", business_code)
+            vat = f"FI{re.sub('[^0-9]', '', business_code)}"
         elif vat and re.search(business_code_regex, vat):
             # Business Code is incorrectly given in VAT field (this happens)
-            vat = "FI%s" % re.sub("[^0-9]", "", vat)
+            vat = f"FI{re.sub('[^0-9]', '', vat)}"
 
         invoice.partner_id = self._lookup_partner_by_vat_or_business_code(
             vat,
@@ -165,9 +165,9 @@ class AccountMove(models.Model):
                 _logger.debug(f"Importing '{article_name}'")
 
             if line_count > 200 and not price_unit:
-                # If invoice has more than 200 lines, skip zero lines to 
+                # If invoice has more than 200 lines, skip zero lines to
                 # prevent a timeout
-                # This can be disabled (or limit raised) after line import 
+                # This can be disabled (or limit raised) after line import
                 # is optimized
                 _logger.debug("Skipping a zero line due to a long invoice")
                 continue
