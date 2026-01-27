@@ -151,7 +151,7 @@ class AccountEdiFormat(models.Model):
 
         xml_string = self._edi_content_invoice_edi_finvoice(invoice)
 
-        xml_name = "%s_finvoice_3_0.xml" % (invoice.name.replace("/", "_"))
+        xml_name = f"{invoice.name.replace('/', '_')}_finvoice_3_0.xml"
         return self.env["ir.attachment"].create(
             {
                 "name": xml_name,
@@ -301,8 +301,8 @@ class AccountEdiFormat(models.Model):
 
         domain = [
             ("acc_number", "in", account_numbers),
-            # In some cases (e.g. business groups, organizations) the partner is not the owner
-            # of the bank account.
+            # In some cases (e.g. business groups, organizations) the partner
+            # is not the owner of the bank account.
             # This would cause an error, as we try to create an overlapping
             # bank account number
             # ("partner_id", "=", partner_id),

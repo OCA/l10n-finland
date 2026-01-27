@@ -24,7 +24,7 @@
     "version": "18.0.1.0.2",
     "category": "Connector",
     "website": "https://github.com/OCA/l10n-finland",
-    "author": "Futural",
+    "author": "Odoo Community Association (OCA), Futural",
     "license": "AGPL-3",
     "application": False,
     "installable": True,

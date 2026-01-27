@@ -24,7 +24,7 @@
     "version": "18.0.1.0.4",
     "category": "Accounting",
     "website": "https://github.com/OCA/l10n-finland",
-    "author": "Futural",
+    "author": "Odoo Community Association (OCA), Futural",
     "license": "LGPL-3",
     "application": False,
     "installable": True,

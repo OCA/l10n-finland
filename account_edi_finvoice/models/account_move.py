@@ -165,8 +165,10 @@ class AccountMove(models.Model):
                 _logger.debug(f"Importing '{article_name}'")
 
             if line_count > 200 and not price_unit:
-                # If invoice has more than 200 lines, skip zero lines to prevent a timeout
-                # This can be disabled (or limit raised) after line import is optimized
+                # If invoice has more than 200 lines, skip zero lines to 
+                # prevent a timeout
+                # This can be disabled (or limit raised) after line import 
+                # is optimized
                 _logger.debug("Skipping a zero line due to a long invoice")
                 continue
 
