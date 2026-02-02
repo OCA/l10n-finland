@@ -348,7 +348,7 @@
         model="mis.report.kpi.expression"
     >
         <field name="kpi_id" ref="kpi_vero_kotimaan_myynneista_verokannoittain" />
-        <field name="name">vero_25_5 + vero_14 + vero_10</field>
+        <field name="name">vero_25_5 + vero_13_5 + vero_10</field>
         <field name="sequence">0</field>
     </record>
 
@@ -360,8 +360,8 @@
         <field name="sequence">0</field>
     </record>
 
-    <record id="kpi_expression_vero_14" model="mis.report.kpi.expression">
-        <field name="kpi_id" ref="kpi_vero_14" />
+    <record id="kpi_expression_vero_13_5" model="mis.report.kpi.expression">
+        <field name="kpi_id" ref="kpi_vero_13_5" />
         <field
             name="name"
         >-balp[][("tax_tag_ids.name", "=", "+302")]-balp[][("tax_tag_ids.name", "=", "-302")]</field>
@@ -383,7 +383,7 @@
         <field name="kpi_id" ref="kpi_vero_tavaraostoista_muista_eu_maista" />
         <field
             name="name"
-        >+balp[][("tax_tag_ids.name", "=", "+fi_305")]-balp[][("tax_tag_ids.name", "=", "-fi_305")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "+fi_305")]+balp[][("tax_tag_ids.name", "=", "-fi_305")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -394,7 +394,7 @@
         <field name="kpi_id" ref="kpi_vero_palveluostoista_muista_eu_maista" />
         <field
             name="name"
-        >+balp[][("tax_tag_ids.name", "=", "+fi_tax_306")]-balp[][("tax_tag_ids.name", "=", "-fi_tax_306")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "+fi_tax_306")]+balp[][("tax_tag_ids.name", "=", "-fi_tax_306")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -408,7 +408,7 @@
         />
         <field
             name="name"
-        >-balp[][("tax_tag_ids.name", "=", "+fi_340")]+balp[][("tax_tag_ids.name", "=", "-fi_340")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "+fi_340")]+balp[][("tax_tag_ids.name", "=", "-fi_340")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -422,7 +422,7 @@
         />
         <field
             name="name"
-        >-balp[][("tax_tag_ids.name", "=", "-fi_318")]+balp[][("tax_tag_ids.name", "=", "+fi_318")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "-fi_318")]+balp[][("tax_tag_ids.name", "=", "+fi_318")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -444,7 +444,7 @@
         <field name="kpi_id" ref="kpi_alarajahuojennuksen_maara" />
         <field
             name="name"
-        >-balp[][("tax_tag_ids.name", "=", "+fi_vat_relief")]+balp[][("tax_tag_ids.name", "=", "-fi_vat_relief")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "+fi_vat_relief")]+balp[][("tax_tag_ids.name", "=", "-fi_vat_relief")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -499,7 +499,7 @@
         <field name="kpi_id" ref="kpi_tavaraostot_muista_eu_maista" />
         <field
             name="name"
-        >-balp[][("tax_tag_ids.name", "=", "+fi_base_purchase_goods_eu")]+balp[][("tax_tag_ids.name", "=", "-fi_base_purchase_goods_eu")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "+fi_base_purchase_goods_eu")]+balp[][("tax_tag_ids.name", "=", "-fi_base_purchase_goods_eu")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -521,7 +521,7 @@
         <field name="kpi_id" ref="kpi_tavaroiden_maahantuonnit_eu_ulkopuolelta" />
         <field
             name="name"
-        >-balp[][("tax_tag_ids.name", "=", "+fi_base_340")]+balp[][("tax_tag_ids.name", "=", "-fi_base_340")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "+fi_base_340")]+balp[][("tax_tag_ids.name", "=", "-fi_base_340")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -535,7 +535,7 @@
         />
         <field
             name="name"
-        >-balp[][("tax_tag_ids.name", "=", "-fi_319")]+balp[][("tax_tag_ids.name", "=", "+fi_319")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "-fi_319")]+balp[][("tax_tag_ids.name", "=", "+fi_319")]</field>
         <field name="sequence">0</field>
     </record>
 
@@ -549,7 +549,7 @@
         />
         <field
             name="name"
-        >-balp[][("tax_tag_ids.name", "=", "-fi_base_318")]+balp[][("tax_tag_ids.name", "=", "+fi_base_318")]</field>
+        >+balp[][("tax_tag_ids.name", "=", "-fi_base_318")]+balp[][("tax_tag_ids.name", "=", "+fi_base_318")]</field>
         <field name="sequence">0</field>
     </record>
 </odoo>
