@@ -33,7 +33,6 @@
         "account",
         "account_edi",
         "account_edi_ubl_cii",
-        "account_invoice_transmit_method",
         "l10n_fi_edicode",
     ],
     "data": [
