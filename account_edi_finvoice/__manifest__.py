@@ -29,7 +29,13 @@
     "application": False,
     "installable": True,
     "external_dependencies": {"python": [], "bin": []},
-    "depends": ["account", "account_edi", "account_edi_ubl_cii", "l10n_fi_edicode"],
+    "depends": [
+        "account",
+        "account_edi",
+        "account_edi_ubl_cii",
+        "account_invoice_transmit_method",
+        "l10n_fi_edicode",
+    ],
     "data": [
         "data/finvoice_template.xml",
         "data/account_edi_data.xml",
