@@ -200,7 +200,7 @@ class AccountEdiFormat(models.Model):
                 f"cause of the problem : {e}."
             )
 
-            _logger.error(msg)
+            _logger.warning(msg)
         return True
 
     def _create_invoice_from_xml_tree(self, filename, tree, journal=None):
