@@ -4,7 +4,6 @@ from odoo.tests.common import TransactionCase
 class TestAccountEdiFormat(TransactionCase):
     def setUp(self):
         super().setUp()
-        self.edi_format = self.env.ref("l10n_finland.account_edi_finvoice_format")
 
     def test_get_move_applicability(self):
         """
