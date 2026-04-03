@@ -2,7 +2,6 @@ from odoo.tests.common import TransactionCase
 
 
 class TestAccountEdiFormat(TransactionCase):
-
     def setUp(self):
         super().setUp()
 
@@ -12,7 +11,7 @@ class TestAccountEdiFormat(TransactionCase):
         """
         # TODO
         return True
-    
+
     def test_is_finvoice(self):
         """
         Test that the xml is identified as Finvoice
@@ -27,7 +26,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_lookup_partner_by_vat_or_business_code(self):
         """
         Test that the correct partner is found by VAT or business code

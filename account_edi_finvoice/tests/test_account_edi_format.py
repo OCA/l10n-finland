@@ -2,7 +2,6 @@ from odoo.tests.common import TransactionCase
 
 
 class TestAccountEdiFormat(TransactionCase):
-
     def setUp(self):
         super().setUp()
         self.edi_format = self.env.ref("l10n_finland.account_edi_finvoice_format")
@@ -12,10 +11,10 @@ class TestAccountEdiFormat(TransactionCase):
         Test that the EDI format correctly identifies applicable moves.
         If code = "finvoice", it should return Finvoice-functions
         """
-        
+
         # TODO
         return True
-    
+
     def test_post_invoice_edi_finvoice(self):
         """
         Test that EDI invoie posting works with Finvoice.
@@ -31,7 +30,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_edi_content_invoice_edi_finvoice(self):
         """
         Test that a sane XML is generated
@@ -39,7 +38,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_get_finvoice_values(self):
         """
         Test that the correct default values are retrieved
@@ -47,7 +46,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_export_finvoice(self):
         """
         Test that the export function works and generates an attachment
@@ -55,7 +54,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_is_compatible_with_journal(self):
         """
         Test that correct journal type is returned
@@ -63,7 +62,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_finvoice_get_xml_schema(self):
         """
         Test that the correct XML schema is returned
@@ -72,7 +71,6 @@ class TestAccountEdiFormat(TransactionCase):
         # TODO
         return True
 
-
     def test_finvoice_check_xml_schema(self):
         """
         Test that the XML schema check works
@@ -80,7 +78,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_create_invoice_from_xml_tree(self):
         """
         Test that an invoice can be imported from Finvoice XML
@@ -96,7 +94,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_find_attribute(self):
         """
         Test that the find attribute function works
@@ -104,7 +102,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_find_values_joined(self):
         """
         Test that the find values joined function works
@@ -112,7 +110,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_get_invoice_type(self):
         """
         Test that the correct invoice type is returned
@@ -128,7 +126,7 @@ class TestAccountEdiFormat(TransactionCase):
 
         # TODO
         return True
-    
+
     def test_retrieve_bank_account(self):
         """
         Test that the bank account retrieval works
