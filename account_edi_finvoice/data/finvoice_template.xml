@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--
+        Finvoice 3.0 XML document
+    -->
+    <template id="export_finvoice">
+        <Finvoice t-att-Version="3.0">
+            <t t-set="company" t-value="record.company_id" />
+            <t t-set="partner" t-value="record.partner_id" />
+            <t t-set="delivery" t-value="record.partner_id" />
+
+            <!-- region Message information -->
+            <MessageTransmissionDetails>
+                <MessageSenderDetails>
+                    <FromIdentifier t-esc="company.edicode" />
+                    <FromIntermediator
+                        t-esc="company.einvoice_operator_id.identifier"
+                    />
+                </MessageSenderDetails>
+                <MessageReceiverDetails>
+                    <ToIdentifier t-esc="partner.edicode" />
+                    <ToIntermediator t-esc="partner.einvoice_operator_id.identifier" />
+                </MessageReceiverDetails>
+                <MessageDetails>
+                    <MessageIdentifier t-esc="record.id" />
+                    <MessageTimeStamp t-esc="message_timestamp" />
+                    <!-- TODO: configurable SpecificationIdentifier -->
+                    <SpecificationIdentifier>EN16931</SpecificationIdentifier>
+                </MessageDetails>
+            </MessageTransmissionDetails>
+            <!-- endregion -->
+
+            <!-- region Seller information -->
+            <SellerPartyDetails>
+                <SellerPartyIdentifier t-esc="company.company_registry" />
+                <SellerOrganisationName t-esc="company.name" />
+                <SellerOrganisationTaxCode t-esc="company.vat" />
+
+                <SellerPostalAddressDetails>
+                    <SellerStreetName t-if="company.street" t-esc="company.street" />
+                    <SellerStreetName t-if="company.street2" t-esc="company.street2" />
+                    <SellerTownName t-esc="company.city" />
+                    <SellerPostCodeIdentifier t-esc="company.zip" />
+                    <CountryCode t-esc="company.country_id.code" />
+                    <CountryName t-esc="company.country_id.name" />
+                </SellerPostalAddressDetails>
+            </SellerPartyDetails>
+
+            <SellerContactPersonName t-esc="record.invoice_user_id.name" />
+
+            <SellerCommunicationDetails>
+                <SellerPhoneNumberIdentifier t-esc="company.phone" />
+                <SellerEmailaddressIdentifier t-esc="company.email" />
+            </SellerCommunicationDetails>
+
+            <SellerInformationDetails>
+                <SellerAccountDetails>
+                    <SellerAccountID
+                        IdentificationSchemeName="IBAN"
+                        t-esc="record.partner_bank_id.sanitized_acc_number"
+                    />
+                    <SellerBic
+                        IdentificationSchemeName="BIC"
+                        t-esc="record.partner_bank_id.bank_bic"
+                    />
+                </SellerAccountDetails>
+            </SellerInformationDetails>
+            <!-- endregion -->
+
+            <!-- region Invoice recipient information -->
+            <InvoiceRecipientPartyDetails>
+                <InvoiceRecipientPartyIdentifier t-esc="partner.company_registry" />
+                <InvoiceRecipientOrganisationName t-esc="partner.name[0:35]" />
+                <InvoiceRecipientOrganisationTaxCode t-esc="partner.vat" />
+                <InvoiceRecipientPostalAddressDetails>
+                    <InvoiceRecipientStreetName t-esc="partner.street" />
+                    <InvoiceRecipientStreetName t-esc="partner.street2" />
+                    <InvoiceRecipientTownName t-esc="partner.city" />
+                    <InvoiceRecipientPostCodeIdentifier t-esc="partner.zip" />
+                    <CountryCode t-esc="partner.country_id.code" />
+                    <CountryName t-esc="partner.country_id.name" />
+                </InvoiceRecipientPostalAddressDetails>
+            </InvoiceRecipientPartyDetails>
+            <InvoiceRecipientLanguageCode>FI</InvoiceRecipientLanguageCode>
+            <!-- endregion -->
+
+            <!-- region Buyer information -->
+            <BuyerPartyDetails>
+                <BuyerPartyIdentifier t-esc="partner.company_registry" />
+                <BuyerOrganisationName t-esc="partner.name" />
+                <BuyerOrganisationTaxCode t-esc="partner.vat" />
+
+                <BuyerPostalAddressDetails>
+                    <BuyerStreetName t-esc="partner.street" />
+                    <BuyerStreetName t-esc="partner.street2" />
+                    <BuyerTownName t-esc="partner.city" />
+                    <BuyerPostCodeIdentifier t-esc="partner.zip" />
+                    <CountryCode t-esc="partner.country_id.code" />
+                    <CountryName t-esc="partner.country_id.name" />
+                </BuyerPostalAddressDetails>
+            </BuyerPartyDetails>
+
+            <BuyerCommunicationDetails>
+                <BuyerPhoneNumberIdentifier t-esc="partner.phone" />
+                <BuyerEmailaddressIdentifier t-esc="partner.email" />
+            </BuyerCommunicationDetails>
+            <!-- endregion -->
+
+            <!-- region Delivery information -->
+            <DeliveryPartyDetails>
+                <DeliveryPartyIdentifier t-esc="delivery.company_registry" />
+                <DeliveryOrganisationName t-esc="delivery.name[0:35]" />
+                <DeliveryOrganisationTaxCode t-esc="delivery.vat" />
+
+                <DeliveryPostalAddressDetails>
+                    <DeliveryStreetName t-esc="delivery.street" />
+                    <DeliveryStreetName t-esc="delivery.street2" />
+                    <DeliveryTownName t-esc="delivery.city" />
+                    <DeliveryPostCodeIdentifier t-esc="delivery.zip" />
+                    <CountryCode t-esc="delivery.country_id.code" />
+                    <CountryName t-esc="delivery.country_id.name" />
+                </DeliveryPostalAddressDetails>
+            </DeliveryPartyDetails>
+
+            <DeliveryCommunicationDetails>
+                <DeliveryPhoneNumberIdentifier t-esc="delivery.phone" />
+                <DeliveryEmailaddressIdentifier t-esc="delivery.email" />
+            </DeliveryCommunicationDetails>
+            <!-- endregion -->
+
+            <!-- region Invoice information -->
+            <InvoiceDetails>
+                <InvoiceTypeCode t-esc="type_code" />
+                <InvoiceTypeText t-esc="type_text" />
+                <OriginCode t-esc="origin_code" />
+                <InvoiceNumber t-esc="record.name" />
+                <InvoiceDate
+                    Format="CCYYMMDD"
+                    t-esc="format_date(record.invoice_date)"
+                />
+                <SellerReferenceIdentifier t-esc="record.payment_reference" />
+                <OrderIdentifier t-esc="record.name" />
+                <SalesPersonName t-esc="record.invoice_user_id.name" />
+                <AgreementIdentifier t-esc="agreement_identifier" />
+                <BuyerReferenceIdentifier t-esc="record.ref or ''" />
+                <ProjectReferenceIdentifier t-esc="''" />
+                <InvoiceTotalVatExcludedAmount
+                    t-att-AmountCurrencyIdentifier="record.currency_id.name"
+                    t-esc="format_monetary(record.amount_untaxed_signed)"
+                />
+                <InvoiceTotalVatAmount
+                    t-att-AmountCurrencyIdentifier="record.currency_id.name"
+                    t-esc="format_monetary(record.amount_tax_signed)"
+                />
+                <InvoiceTotalVatIncludedAmount
+                    t-att-AmountCurrencyIdentifier="record.currency_id.name"
+                    t-esc="format_monetary(record.amount_total_signed)"
+                />
+                <t t-foreach="free_texts" t-as="free_text">
+                    <InvoiceFreeText t-esc="free_text" />
+                </t>
+                <PaymentTermsDetails>
+                    <PaymentTermsFreeText t-esc="record.invoice_payment_term_id.name" />
+                    <InvoiceDueDate
+                        Format="CCYYMMDD"
+                        t-esc="format_date(record.invoice_date_due)"
+                    />
+                    <PaymentOverDueFineDetails t-if="overdue_fine_percent">
+                        <!--<PaymentOverDueFineFreeText />-->
+                        <PaymentOverDueFinePercent t-esc="overdue_fine_percent" />
+                    </PaymentOverDueFineDetails>
+                </PaymentTermsDetails>
+            </InvoiceDetails>
+            <!-- endregion -->
+
+            <!-- region Invoice Row information -->
+            <InvoiceRow t-foreach="record.invoice_line_ids" t-as="line">
+                <ArticleIdentifier t-esc="line.product_id.default_code" />
+                <ArticleName t-esc="line.product_id.name" />
+                <!-- TODO: Get the supplier identifier if one exists -->
+                <BuyerArticleIdentifier t-esc="line.product_id.default_code" />
+                <EanCode t-esc="line.product_id.barcode" />
+                <DeliveredQuantity
+                    t-att-QuantityUnitCode="line.product_uom_id.name"
+                    t-esc="format_monetary(line.quantity)"
+                />
+                <InvoicedQuantity
+                    t-att-QuantityUnitCode="line.product_uom_id.name"
+                    t-esc="format_monetary(line.quantity)"
+                />
+                <UnitPriceAmount
+                    t-att-AmountCurrencyIdentifier="line.currency_id.name"
+                    t-esc="format_monetary(line.price_unit)"
+                />
+                <RowIdentifier t-esc="line.id" />
+                <RowPositionIdentifier t-esc="line.id" />
+
+                <RowFreeText t-esc="line.name" />
+
+                <RowDiscountPercent t-if="line.discount" t-esc="line.discount" />
+
+                <RowVatRatePercent
+                    t-esc="format_monetary(sum(line.tax_ids.mapped('amount')))"
+                />
+                <RowVatAmount
+                    t-att-AmountCurrencyIdentifier="line.currency_id.name"
+                    t-esc="format_monetary(line.price_total-line.price_subtotal)"
+                />
+                <RowVatExcludedAmount
+                    t-att-AmountCurrencyIdentifier="line.currency_id.name"
+                    t-esc="format_monetary(line.price_subtotal)"
+                />
+                <RowAmount
+                    t-att-AmountCurrencyIdentifier="line.currency_id.name"
+                    t-esc="format_monetary(line.price_total)"
+                />
+            </InvoiceRow>
+            <!-- endregion -->
+
+            <!-- region EPI information -->
+            <EpiDetails>
+                <EpiIdentificationDetails>
+                    <EpiDate Format="CCYYMMDD" t-esc="format_date()" />
+                    <EpiReference />
+                </EpiIdentificationDetails>
+                <EpiPartyDetails>
+                    <EpiBfiPartyDetails>
+                        <EpiBfiIdentifier
+                            IdentificationSchemeName="BIC"
+                            t-esc="record.partner_bank_id.bank_bic"
+                        />
+                    </EpiBfiPartyDetails>
+                    <EpiBeneficiaryPartyDetails>
+                        <EpiNameAddressDetails t-esc="company.name" />
+                        <EpiBei t-esc="company.company_registry" />
+                        <EpiAccountID
+                            IdentificationSchemeName="IBAN"
+                            t-if="record.partner_bank_id"
+                            t-esc="record.partner_bank_id.sanitized_acc_number"
+                        />
+                        <EpiAccountID
+                            IdentificationSchemeName="IBAN"
+                            t-if="not record.partner_bank_id and company.bank_ids"
+                            t-esc="company.bank_ids[0].sanitized_acc_number"
+                        />
+                    </EpiBeneficiaryPartyDetails>
+                </EpiPartyDetails>
+                <EpiPaymentInstructionDetails>
+                    <EpiPaymentInstructionId t-esc="record.payment_reference" />
+                    <EpiRemittanceInfoIdentifier
+                        IdentificationSchemeName="SPY"
+                        t-esc="record.payment_reference"
+                    />
+                    <EpiInstructedAmount
+                        t-att-AmountCurrencyIdentifier="record.currency_id.name"
+                        t-esc="format_monetary(record.amount_residual)"
+                    />
+                    <EpiCharge ChargeOption="SHA">SHA</EpiCharge>
+                    <EpiDateOptionDate
+                        Format="CCYYMMDD"
+                        t-esc="format_date(record.invoice_date_due)"
+                    />
+                </EpiPaymentInstructionDetails>
+            </EpiDetails>
+            <!-- endregion -->
+        </Finvoice>
+    </template>
+</odoo>

@@ -1,0 +1,3 @@
+- Improve user experience and on-screen guidance
+- Rewrite outdated/complicated 14.0 logic
+- Add a lot of mapping tests
