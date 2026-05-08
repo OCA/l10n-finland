@@ -146,9 +146,12 @@ class AccountMove(models.Model):
 
             # ean_code = _find_value("./EanCode", line)
 
-            # Construct a unit price
+            # Construct a unit price. InvoicedQuantity is the canonical
+            # element; some senders only fill DeliveredQuantity.
             quantity = (
-                edi_format._to_float(_find_value("./InvoicedQuantity", line)) or 1
+                edi_format._to_float(_find_value("./InvoicedQuantity", line))
+                or edi_format._to_float(_find_value("./DeliveredQuantity", line))
+                or 1
             )
 
             # Try to find UnitPriceAmount
@@ -263,6 +266,10 @@ class AccountMove(models.Model):
             unit_code = edi_format._find_attribute(
                 "./InvoicedQuantity", line, "QuantityUnitCode"
             )
+            if not unit_code:
+                unit_code = edi_format._find_attribute(
+                    "./DeliveredQuantity", line, "QuantityUnitCode"
+                )
             if product_id and unit_code:
                 uom = self.env["uom.uom"].search(
                     [("name", "ilike", unit_code)], limit=1
