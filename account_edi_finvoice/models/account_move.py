@@ -210,12 +210,6 @@ class AccountMove(models.Model):
 
             line_values["name"] = line_name
 
-            if not article_name and not default_code:
-                # Comment line
-                # TODO: comment lines not working yet
-                line_values["display_type"] = "line_note"
-                line_values["account_id"] = self.env["account.account"]
-
             line_values["quantity"] = quantity
 
             unit_code = edi_format._find_attribute(
