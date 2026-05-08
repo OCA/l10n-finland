@@ -267,17 +267,28 @@ class AccountMove(models.Model):
 
         # region EpiDetails
         ede = "EpiDetails"
-        payment_reference = invoice.payment_reference = _find_value(
-            f"./{ede}/EpiIdentificationDetails/EpiReference"
-        )
+        epid = "EpiPaymentInstructionDetails"
 
+        # Collect candidates in order of authority. EpiRemittanceInfoIdentifier
+        # is the official Finvoice payment reference; EpiReference is a
+        # message identifier sometimes (incorrectly) used as a payment
+        # reference; SellersBuyerIdentifier is also occasionally repurposed.
+        ref_candidates = [
+            _find_value(f"./{ede}/{epid}/EpiRemittanceInfoIdentifier"),
+            _find_value(f"./{ede}/EpiIdentificationDetails/EpiReference"),
+            _find_value(f"./{ind}/SellersBuyerIdentifier"),
+        ]
+
+        # Prefer the first candidate that validates as a Finnish national
+        # reference or RF (ISO 11649) creditor reference; otherwise fall
+        # back to the first non-empty candidate so we still record what the
+        # sender provided.
+        payment_reference = next(
+            (r for r in ref_candidates if r and self._is_valid_payment_reference(r)),
+            None,
+        )
         if not payment_reference:
-            # Try to get payment reference from SellersBuyerIdentifier
-            # It's not officially for a payment reference,
-            # but is sometimes incorrectly used as it was
-            payment_reference = invoice.payment_reference = _find_value(
-                f"./{ind}/SellersBuyerIdentifier"
-            )
+            payment_reference = next((r for r in ref_candidates if r), None)
 
         invoice.payment_reference = payment_reference
 
@@ -328,3 +339,31 @@ class AccountMove(models.Model):
         )
 
         return partners or Partner
+
+    @staticmethod
+    def _is_valid_finnish_reference(ref):
+        """Validate a Finnish national payment reference (4-20 digits, 7-3-1 check)."""
+        if not ref.isdigit() or not (4 <= len(ref) <= 20):
+            return False
+        base = ref[:-1]
+        check_digit = ref[-1]
+        total = sum(
+            (7, 3, 1)[idx % 3] * int(val) for idx, val in enumerate(base[::-1])
+        )
+        return check_digit == str((10 - (total % 10)) % 10)
+
+    @staticmethod
+    def _is_valid_rf_reference(ref):
+        """Validate an RF creditor reference (ISO 11649, mod 97 check)."""
+        ref_upper = ref.upper()
+        if not re.match(r"^RF\d{2}\d{4,20}$", ref_upper):
+            return False
+        rearranged = ref_upper[4:] + ref_upper[:4]
+        numeric_str = "".join(
+            str(ord(c) - 55) if c.isalpha() else c for c in rearranged
+        )
+        return int(numeric_str) % 97 == 1
+
+    def _is_valid_payment_reference(self, ref):
+        """Check if ref is a valid Finnish national or RF payment reference."""
+        return self._is_valid_finnish_reference(ref) or self._is_valid_rf_reference(ref)
