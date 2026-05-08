@@ -147,10 +147,12 @@ class AccountMove(models.Model):
             # ean_code = _find_value("./EanCode", line)
 
             # Construct a unit price
-            quantity = 1
+            quantity = (
+                edi_format._to_float(_find_value("./InvoicedQuantity", line)) or 1
+            )
 
             # Try to find UnitPriceAmount
-            price_unit = False
+            price_unit = _find_value("./UnitPriceAmount", line)
 
             if not price_unit or edi_format._to_float(price_unit) == 0:
                 # Didn't find UnitPriceAmount. Try RowVatExcludedAmount
@@ -161,6 +163,43 @@ class AccountMove(models.Model):
 
             if not price_unit:
                 price_unit = 0
+
+            # Reconcile against the row's authoritative excluded total when
+            # the naive quantity x round(unit_price, 2) x (1 - discount) does
+            # not produce it. Three known causes:
+            # - Per-N pricing (e.g. price quoted per 100 pieces while
+            #   InvoicedQuantity is in pieces) silently inflates the line.
+            # - Per-line vs per-invoice VAT rounding can drift the row total
+            #   by a cent or two.
+            # - UnitPriceAmount may carry more than two decimals; storing it
+            #   in price_unit (2-decimal precision) loses cents on quantities
+            #   that don't divide evenly.
+            # When the reconstruction does not match RowVatExcludedAmount,
+            # collapse to (qty=1, price_unit=row_excl, discount=0) so the
+            # imported subtotal matches the source. The original pricing is
+            # kept in the line description for traceability. Discount must be
+            # factored in because RowVatExcludedAmount already reflects it.
+            row_vat_excluded_raw = _find_value("./RowVatExcludedAmount", line)
+            discount = (
+                edi_format._to_float(_find_value("./RowDiscountPercent", line)) or 0
+            )
+            reconciliation_note = ""
+            if row_vat_excluded_raw:
+                row_vat_excluded = edi_format._to_float(row_vat_excluded_raw)
+                current_price_unit = edi_format._to_float(price_unit) or 0
+                discount_factor = 1 - discount / 100
+                stored_subtotal = round(
+                    round(current_price_unit, 2) * quantity * discount_factor, 2
+                )
+                if round(stored_subtotal - row_vat_excluded, 2) != 0:
+                    currency_name = invoice.currency_id.name or ""
+                    reconciliation_note = (
+                        f"({quantity:g} × {current_price_unit:g} {currency_name}"
+                        + (f" - {discount:g}%)" if discount else ")")
+                    )
+                    quantity = 1
+                    price_unit = row_vat_excluded
+                    discount = 0
 
             if article_name:
                 _logger.debug(f"Importing '{article_name}'")
@@ -208,6 +247,9 @@ class AccountMove(models.Model):
             if article_name != article_free_text:
                 line_name += "\n" + article_free_text
 
+            if reconciliation_note:
+                line_name = (line_name + "\n" + reconciliation_note).lstrip("\n")
+
             line_values["name"] = line_name
 
             if not article_name and not default_code:
@@ -233,9 +275,7 @@ class AccountMove(models.Model):
 
             line_values["price_unit"] = edi_format._to_float(price_unit)
 
-            line_values["discount"] = edi_format._to_float(
-                _find_value("./RowDiscountPercent", line)
-            )
+            line_values["discount"] = discount
 
             # Taxes
             # We are not using _retrieve_tax()
