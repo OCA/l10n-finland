@@ -96,9 +96,13 @@ class AccountMove(models.Model):
 
         # region InvoiceDetails
         ind = "InvoiceDetails"
-        invoice.ref = _find_value(f"./{ind}/SellerReferenceIdentifier") or _find_value(
-            f"./{ind}/InvoiceNumber"
-        )
+        # Per Finvoice 3.0, InvoiceNumber is the seller's invoice number;
+        # SellerReferenceIdentifier is the seller's own reference for the
+        # buyer (e.g. customer number). The former is the right value for
+        # invoice.ref.
+        invoice_number = _find_value(f"./{ind}/InvoiceNumber")
+        seller_ref = _find_value(f"./{ind}/SellerReferenceIdentifier")
+        invoice.ref = invoice_number or seller_ref
 
         invoice_date = _find_value(f"./{ind}/InvoiceDate")
         invoice.invoice_date = datetime.strptime(invoice_date, "%Y%m%d")
@@ -109,6 +113,10 @@ class AccountMove(models.Model):
             f"./{ind}/InvoiceFreeText",
             tree,
         )
+        if seller_ref and invoice_number and seller_ref != invoice_number:
+            invoice.narration = (invoice.narration or "") + _(
+                "\nSeller Reference: %s", seller_ref
+            )
 
         ptd = "PaymentTermsDetails"
         invoice.narration += edi_format._find_values_joined(
