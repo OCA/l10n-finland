@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_move_form_finvoice_warning" model="ir.ui.view">
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <field name="invoice_filter_type_domain" position="after">
+                <field name="finvoice_expected_total" invisible="1" />
+                <field name="finvoice_expected_total_incl" invisible="1" />
+                <field name="finvoice_total_warning" invisible="1" />
+            </field>
+            <div name="button_box" position="before">
+                <div class="alert alert-warning mb-0" role="alert"
+                     attrs="{'invisible': [('finvoice_total_warning', '=', False)]}">
+                    <field name="finvoice_total_warning" nolabel="1" />
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

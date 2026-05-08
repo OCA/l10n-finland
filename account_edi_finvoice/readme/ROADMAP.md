@@ -1,0 +1,3 @@
+- Add a sample-XML test suite covering the row-reconciliation, sub-row, FedEx VAT-included and partner-write-filter paths.
+- Option to auto-create products when a row's article identity has no match.
+- Improve user experience and on-screen guidance for partial imports.
