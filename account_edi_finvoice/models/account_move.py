@@ -173,29 +173,25 @@ class AccountMove(models.Model):
                 _logger.debug("Skipping a zero line due to a long invoice")
                 continue
 
+            # Try to find a matching product by default code or article name
+            # TODO: an option to auto-create missing products
             product_id = False
-            line_name = ""
+            if default_code or article_name:
+                product_id = self.env["product.product"]._retrieve_product(
+                    default_code=default_code,
+                    name=article_name,
+                )
 
-            # if default_code or ean_code or article_name:
-            #     product_id = self.env["product.product"]._retrieve_product(
-            #         default_code=default_code,
-            #         name=article_name,
-            #         barcode=ean_code,
-            #     )
-            # else:
-            #     product_id = self.env["product.product"]
-            # # TODO: An option to auto-create products
-            #
-            # if product_id:
-            #     line_values["product_id"] = product_id.id
-            #
-            # if product_id:
-            #     accounts = product_id.product_tmpl_id._get_product_accounts()
-            #
-            #     if invoice_type == "in_invoice":
-            #         line_values["account_id"] = accounts["expense"].id
-            #     elif invoice_type == "out_invoice":
-            #         line_values["account_id"] = accounts["income"].id
+            if product_id:
+                line_values["product_id"] = product_id.id
+
+                accounts = product_id.product_tmpl_id._get_product_accounts()
+                if invoice_type == "in_invoice":
+                    line_values["account_id"] = accounts["expense"].id
+                elif invoice_type == "out_invoice":
+                    line_values["account_id"] = accounts["income"].id
+
+            line_name = ""
 
             # Construct a line name, if product is not found
 
