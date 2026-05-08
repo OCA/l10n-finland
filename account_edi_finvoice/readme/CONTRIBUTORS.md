@@ -1,0 +1,6 @@
+- [Futural](https://futural.fi):
+    - Jarmo Kortetjärvi <jarmo.kortetjarvi@futural.fi>
+- [Goodahead](https://www.goodahead.com/)
+    - Alexander Stadnitski <alexander@goodahead.com>
+- [Cetmix](https://www.cetmix.fi/)
+    - Jussi Lehto <jussi.lehto@cetmix.com>
