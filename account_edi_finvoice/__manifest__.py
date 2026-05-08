@@ -21,7 +21,7 @@
 {
     "name": "Import/Export invoices as Finvoice",
     "summary": "Import/Export Finvoice 3.0 invoices",
-    "version": "18.0.1.0.6",
+    "version": "18.0.1.0.7",
     "category": "Accounting",
     "website": "https://github.com/OCA/l10n-finland",
     "author": "Odoo Community Association (OCA), Futural",
