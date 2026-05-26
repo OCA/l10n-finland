@@ -75,7 +75,6 @@ class AccountMove(models.Model):
 
         spad = "SellerPostalAddressDetails"
 
-        # TODO: Why are we always overwriting the values here?
         partner_vals = {
             "company_registry": business_code,
             "street": _find_value(f"./{spd}/{spad}/SellerStreetName"),
@@ -84,7 +83,10 @@ class AccountMove(models.Model):
         }
 
         if invoice.partner_id:
-            invoice.partner_id.write(partner_vals)
+            # Don't overwrite existing partner data with empty Finvoice fields
+            partner_write_vals = {k: v for k, v in partner_vals.items() if v}
+            if partner_write_vals:
+                invoice.partner_id.write(partner_write_vals)
         else:
             invoice.partner_id = self.env["res.partner"].create(
                 dict(
