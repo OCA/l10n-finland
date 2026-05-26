@@ -46,6 +46,10 @@ class AccountMove(models.Model):
         elif not company_id:
             company_id = self.env.company.id
 
+        invoice = invoice.with_company(company_id).with_context(
+            default_move_type=invoice_type
+        )
+
         # region SellerPartyDetails
         spd = "SellerPartyDetails"
 
@@ -298,9 +302,6 @@ class AccountMove(models.Model):
         if partner_bank_id:
             invoice.partner_bank_id = partner_bank_id
         # endregion
-
-        if invoice.move_type == "in_invoice" and invoice_type == "in_refund":
-            invoice.action_switch_move_type()
 
         return invoice
 
