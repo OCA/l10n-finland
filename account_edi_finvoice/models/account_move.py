@@ -136,6 +136,21 @@ class AccountMove(models.Model):
 
         # endregion
 
+        # region VatSpecificationDetails
+        # Build a base_amount -> vat_rate map from invoice-level VAT
+        # specifications, used as a fallback when an InvoiceRow lacks
+        # RowVatRatePercent. The row's RowVatExcludedAmount can then be
+        # matched against a VatBaseAmount to recover its VAT rate.
+        vat_spec_map = {}
+        for vat_spec in tree.xpath(f"./{ind}/VatSpecificationDetails", namespaces=ns):
+            base_amount = edi_format._to_float(
+                _find_value("./VatBaseAmount", vat_spec)
+            )
+            vat_rate = edi_format._to_float(_find_value("./VatRatePercent", vat_spec))
+            if base_amount:
+                vat_spec_map[base_amount] = vat_rate
+        # endregion
+
         # region InvoiceRows
         lines = tree.xpath("./InvoiceRow", namespaces=ns)
         line_number = 0
@@ -248,7 +263,17 @@ class AccountMove(models.Model):
             # Taxes
             # We are not using _retrieve_tax()
             # as it might return a tax with prices included
-            tax_amount = edi_format._to_float(_find_value("./RowVatRatePercent", line))
+            row_vat_rate = _find_value("./RowVatRatePercent", line)
+            if row_vat_rate is not None:
+                tax_amount = edi_format._to_float(row_vat_rate)
+            else:
+                # Row didn't carry a VAT rate; try the invoice-level
+                # VatSpecificationDetails by matching the row's excluded
+                # amount against a VatBaseAmount.
+                line_amount = edi_format._to_float(
+                    _find_value("./RowVatExcludedAmount", line)
+                )
+                tax_amount = vat_spec_map.get(line_amount)
             if tax_amount:
                 tax_domain = [
                     ("amount", "=", tax_amount),
