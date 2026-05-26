@@ -14,6 +14,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_edi_finvoice
+#. odoo-python
+#: code:addons/account_edi_finvoice/models/account_move.py:0
+msgid ""
+"\n"
+"Seller Reference: %s"
+msgstr ""
+
+#. module: account_edi_finvoice
 #: model:ir.model,name:account_edi_finvoice.model_account_edi_format
 msgid "EDI format"
 msgstr ""
