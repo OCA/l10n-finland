@@ -38,6 +38,7 @@
     "data": [
         "data/finvoice_template.xml",
         "data/account_edi_data.xml",
+        "views/account_move.xml",
     ],
     "demo": [],
 }

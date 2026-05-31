@@ -2,14 +2,80 @@ import logging
 import re
 from datetime import datetime
 
-from odoo import _, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools.misc import formatLang
 
 _logger = logging.getLogger(__name__)
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
+
+    finvoice_expected_total = fields.Monetary(
+        string="Finvoice Expected Total",
+        currency_field="currency_id",
+        copy=False,
+    )
+    finvoice_expected_total_incl = fields.Monetary(
+        string="Finvoice Expected Total (incl. VAT)",
+        currency_field="currency_id",
+        copy=False,
+    )
+    finvoice_total_warning = fields.Char(
+        compute="_compute_finvoice_total_warning",
+    )
+
+    @api.depends(
+        "finvoice_expected_total",
+        "finvoice_expected_total_incl",
+        "amount_untaxed",
+        "amount_total",
+    )
+    def _compute_finvoice_total_warning(self):
+        for move in self:
+            expected_excl = move.finvoice_expected_total
+            expected_incl = move.finvoice_expected_total_incl
+            if not expected_excl and not expected_incl:
+                move.finvoice_total_warning = False
+                continue
+            currency = move.currency_id
+            untaxed = move.amount_untaxed
+            total = move.amount_total
+            # Senders vary in what they put in InvoiceTotalVatExcludedAmount
+            # vs InvoiceTotalVatIncludedAmount, and per-line VAT rounding can
+            # drift from per-invoice rounding by a cent. The warning is
+            # suppressed as long as any of the three header figures can be
+            # reconciled with what Odoo computed.
+            matches = (
+                (
+                    expected_excl
+                    and currency.compare_amounts(expected_excl, untaxed) == 0
+                )
+                or (
+                    expected_incl
+                    and currency.compare_amounts(expected_incl, untaxed) == 0
+                )
+                or (
+                    expected_incl
+                    and currency.compare_amounts(expected_incl, total) == 0
+                )
+            )
+            if matches:
+                move.finvoice_total_warning = False
+                continue
+            expected = expected_excl or expected_incl
+            diff = expected - untaxed
+            move.finvoice_total_warning = _(
+                "The Finvoice total is %(expected)s %(currency)s "
+                "but invoice lines total %(actual)s %(currency)s "
+                "(difference: %(diff)s %(currency)s). "
+                "Check for missing charges (e.g. shipping, handling).",
+                expected=formatLang(move.env, expected, currency_obj=currency),
+                actual=formatLang(move.env, untaxed, currency_obj=currency),
+                diff=formatLang(move.env, diff, currency_obj=currency),
+                currency=currency.name,
+            )
 
     def _get_edi_decoder(self, file_data, new=False):
         if file_data["type"] == "xml":
@@ -102,6 +168,22 @@ class AccountMove(models.Model):
 
         # region InvoiceDetails
         ind = "InvoiceDetails"
+
+        expected_total = edi_format._to_float(
+            _find_value(f"./{ind}/InvoiceTotalVatExcludedAmount")
+        )
+        if expected_total:
+            invoice.finvoice_expected_total = expected_total
+
+        expected_total_incl = edi_format._to_float(
+            _find_value(f"./{ind}/InvoiceTotalVatIncludedAmount")
+        )
+        if expected_total_incl:
+            invoice.finvoice_expected_total_incl = expected_total_incl
+
+        invoice.ref = _find_value(f"./{ind}/SellerReferenceIdentifier") or _find_value(
+            f"./{ind}/InvoiceNumber"
+        )
         # Per Finvoice 3.0, InvoiceNumber is the seller's invoice number;
         # SellerReferenceIdentifier is the seller's own reference for the
         # buyer (e.g. customer number). The former is the right value for
