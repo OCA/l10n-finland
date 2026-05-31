@@ -255,7 +255,7 @@ class AccountMove(models.Model):
             if not article_name:
                 article_name = article_description or article_free_text
 
-            # ean_code = _find_value("./EanCode", line)
+            ean_code = _find_value("./EanCode", line)
 
             # Construct a unit price. InvoicedQuantity is the canonical
             # element; some senders only fill DeliveredQuantity.
@@ -339,13 +339,14 @@ class AccountMove(models.Model):
                 _logger.debug("Skipping a zero line due to a long invoice")
                 continue
 
-            # Try to find a matching product by default code or article name
+            # Try to find a matching product by default code, EAN or name
             # TODO: an option to auto-create missing products
             product_id = False
-            if default_code or article_name:
+            if default_code or ean_code or article_name:
                 product_id = self.env["product.product"]._retrieve_product(
                     default_code=default_code,
                     name=article_name,
+                    barcode=ean_code,
                 )
 
             if product_id:
