@@ -37,6 +37,24 @@ msgid "FI"
 msgstr ""
 
 #. module: account_edi_finvoice
+#: model:ir.model.fields,field_description:account_edi_finvoice.field_account_bank_statement_line__finvoice_expected_total
+#: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__finvoice_expected_total
+msgid "Finvoice Expected Total"
+msgstr ""
+
+#. module: account_edi_finvoice
+#: model:ir.model.fields,field_description:account_edi_finvoice.field_account_bank_statement_line__finvoice_expected_total_incl
+#: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__finvoice_expected_total_incl
+msgid "Finvoice Expected Total (incl. VAT)"
+msgstr ""
+
+#. module: account_edi_finvoice
+#: model:ir.model.fields,field_description:account_edi_finvoice.field_account_bank_statement_line__finvoice_total_warning
+#: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__finvoice_total_warning
+msgid "Finvoice Total Warning"
+msgstr ""
+
+#. module: account_edi_finvoice
 #: model:ir.model,name:account_edi_finvoice.model_account_move
 msgid "Journal Entry"
 msgstr ""
@@ -44,4 +62,13 @@ msgstr ""
 #. module: account_edi_finvoice
 #: model_terms:ir.ui.view,arch_db:account_edi_finvoice.export_finvoice
 msgid "SHA"
+msgstr ""
+
+#. module: account_edi_finvoice
+#. odoo-python
+#: code:addons/account_edi_finvoice/models/account_move.py:0
+msgid ""
+"The Finvoice total is %(expected)s %(currency)s but invoice lines total "
+"%(actual)s %(currency)s (difference: %(diff)s %(currency)s). Check for "
+"missing charges (e.g. shipping, handling)."
 msgstr ""
