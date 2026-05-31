@@ -2,14 +2,80 @@ import logging
 import re
 from datetime import datetime
 
-from odoo import _, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools.misc import formatLang
 
 _logger = logging.getLogger(__name__)
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
+
+    finvoice_expected_total = fields.Monetary(
+        string="Finvoice Expected Total",
+        currency_field="currency_id",
+        copy=False,
+    )
+    finvoice_expected_total_incl = fields.Monetary(
+        string="Finvoice Expected Total (incl. VAT)",
+        currency_field="currency_id",
+        copy=False,
+    )
+    finvoice_total_warning = fields.Char(
+        compute="_compute_finvoice_total_warning",
+    )
+
+    @api.depends(
+        "finvoice_expected_total",
+        "finvoice_expected_total_incl",
+        "amount_untaxed",
+        "amount_total",
+    )
+    def _compute_finvoice_total_warning(self):
+        for move in self:
+            expected_excl = move.finvoice_expected_total
+            expected_incl = move.finvoice_expected_total_incl
+            if not expected_excl and not expected_incl:
+                move.finvoice_total_warning = False
+                continue
+            currency = move.currency_id
+            untaxed = move.amount_untaxed
+            total = move.amount_total
+            # Senders vary in what they put in InvoiceTotalVatExcludedAmount
+            # vs InvoiceTotalVatIncludedAmount, and per-line VAT rounding can
+            # drift from per-invoice rounding by a cent. The warning is
+            # suppressed as long as any of the three header figures can be
+            # reconciled with what Odoo computed.
+            matches = (
+                (
+                    expected_excl
+                    and currency.compare_amounts(expected_excl, untaxed) == 0
+                )
+                or (
+                    expected_incl
+                    and currency.compare_amounts(expected_incl, untaxed) == 0
+                )
+                or (
+                    expected_incl
+                    and currency.compare_amounts(expected_incl, total) == 0
+                )
+            )
+            if matches:
+                move.finvoice_total_warning = False
+                continue
+            expected = expected_excl or expected_incl
+            diff = expected - untaxed
+            move.finvoice_total_warning = _(
+                "The Finvoice total is %(expected)s %(currency)s "
+                "but invoice lines total %(actual)s %(currency)s "
+                "(difference: %(diff)s %(currency)s). "
+                "Check for missing charges (e.g. shipping, handling).",
+                expected=formatLang(move.env, expected, currency_obj=currency),
+                actual=formatLang(move.env, untaxed, currency_obj=currency),
+                diff=formatLang(move.env, diff, currency_obj=currency),
+                currency=currency.name,
+            )
 
     def _get_edi_decoder(self, file_data, new=False):
         if file_data["type"] == "xml":
@@ -102,6 +168,22 @@ class AccountMove(models.Model):
 
         # region InvoiceDetails
         ind = "InvoiceDetails"
+
+        expected_total = edi_format._to_float(
+            _find_value(f"./{ind}/InvoiceTotalVatExcludedAmount")
+        )
+        if expected_total:
+            invoice.finvoice_expected_total = expected_total
+
+        expected_total_incl = edi_format._to_float(
+            _find_value(f"./{ind}/InvoiceTotalVatIncludedAmount")
+        )
+        if expected_total_incl:
+            invoice.finvoice_expected_total_incl = expected_total_incl
+
+        invoice.ref = _find_value(f"./{ind}/SellerReferenceIdentifier") or _find_value(
+            f"./{ind}/InvoiceNumber"
+        )
         # Per Finvoice 3.0, InvoiceNumber is the seller's invoice number;
         # SellerReferenceIdentifier is the seller's own reference for the
         # buyer (e.g. customer number). The former is the right value for
@@ -175,11 +257,17 @@ class AccountMove(models.Model):
 
             ean_code = _find_value("./EanCode", line)
 
-            # Construct a unit price
-            quantity = 1
+            # Construct a unit price. InvoicedQuantity is the canonical
+            # element; some senders only fill DeliveredQuantity.
+            quantity = (
+                edi_format._to_float(_find_value("./InvoicedQuantity", line))
+                or edi_format._to_float(_find_value("./DeliveredQuantity", line))
+                or 1
+            )
 
-            # Try to find UnitPriceAmount
-            price_unit = False
+            # Try to find UnitPriceAmount (VAT-excluded)
+            price_unit = _find_value("./UnitPriceAmount", line)
+            price_include = False
 
             if not price_unit or edi_format._to_float(price_unit) == 0:
                 # Didn't find UnitPriceAmount. Try RowVatExcludedAmount
@@ -188,8 +276,57 @@ class AccountMove(models.Model):
                 if price_subtotal:
                     price_unit = price_subtotal / quantity
 
+            if not price_unit or edi_format._to_float(price_unit) == 0:
+                # Still no price. Try VAT-included amounts
+                # (e.g. FedEx invoices that omit the excluded fields).
+                price_unit_incl = _find_value("./UnitPriceVatIncludedAmount", line)
+                if not price_unit_incl or edi_format._to_float(price_unit_incl) == 0:
+                    row_amount = edi_format._to_float(_find_value("./RowAmount", line))
+                    if row_amount:
+                        price_unit_incl = row_amount / quantity
+                if price_unit_incl and edi_format._to_float(price_unit_incl) != 0:
+                    price_unit = price_unit_incl
+                    price_include = True
+
             if not price_unit:
                 price_unit = 0
+
+            # Reconcile against the row's authoritative excluded total when
+            # the naive quantity x round(unit_price, 2) x (1 - discount) does
+            # not produce it. Three known causes:
+            # - Per-N pricing (e.g. price quoted per 100 pieces while
+            #   InvoicedQuantity is in pieces) silently inflates the line.
+            # - Per-line vs per-invoice VAT rounding can drift the row total
+            #   by a cent or two.
+            # - UnitPriceAmount may carry more than two decimals; storing it
+            #   in price_unit (2-decimal precision) loses cents on quantities
+            #   that don't divide evenly.
+            # When the reconstruction does not match RowVatExcludedAmount,
+            # collapse to (qty=1, price_unit=row_excl, discount=0) so the
+            # imported subtotal matches the source. The original pricing is
+            # kept in the line description for traceability. Discount must be
+            # factored in because RowVatExcludedAmount already reflects it.
+            row_vat_excluded_raw = _find_value("./RowVatExcludedAmount", line)
+            discount = (
+                edi_format._to_float(_find_value("./RowDiscountPercent", line)) or 0
+            )
+            reconciliation_note = ""
+            if row_vat_excluded_raw:
+                row_vat_excluded = edi_format._to_float(row_vat_excluded_raw)
+                current_price_unit = edi_format._to_float(price_unit) or 0
+                discount_factor = 1 - discount / 100
+                stored_subtotal = round(
+                    round(current_price_unit, 2) * quantity * discount_factor, 2
+                )
+                if round(stored_subtotal - row_vat_excluded, 2) != 0:
+                    currency_name = invoice.currency_id.name or ""
+                    reconciliation_note = (
+                        f"({quantity:g} × {current_price_unit:g} {currency_name}"
+                        + (f" - {discount:g}%)" if discount else ")")
+                    )
+                    quantity = 1
+                    price_unit = row_vat_excluded
+                    discount = 0
 
             if article_name:
                 _logger.debug(f"Importing '{article_name}'")
@@ -234,6 +371,9 @@ class AccountMove(models.Model):
             if article_name != article_free_text:
                 line_name += "\n" + article_free_text
 
+            if reconciliation_note:
+                line_name = (line_name + "\n" + reconciliation_note).lstrip("\n")
+
             line_values["name"] = line_name
 
             line_values["quantity"] = quantity
@@ -241,6 +381,10 @@ class AccountMove(models.Model):
             unit_code = edi_format._find_attribute(
                 "./InvoicedQuantity", line, "QuantityUnitCode"
             )
+            if not unit_code:
+                unit_code = edi_format._find_attribute(
+                    "./DeliveredQuantity", line, "QuantityUnitCode"
+                )
             if product_id and unit_code:
                 uom = self.env["uom.uom"].search(
                     [("name", "ilike", unit_code)], limit=1
@@ -253,9 +397,7 @@ class AccountMove(models.Model):
 
             line_values["price_unit"] = edi_format._to_float(price_unit)
 
-            line_values["discount"] = edi_format._to_float(
-                _find_value("./RowDiscountPercent", line)
-            )
+            line_values["discount"] = discount
 
             # Taxes
             # We are not using _retrieve_tax()
@@ -275,14 +417,34 @@ class AccountMove(models.Model):
                 tax_domain = [
                     ("amount", "=", tax_amount),
                     ("type_tax_use", "=", invoice.journal_id.type),
-                    # The subtotal will be saved as untaxed amount
-                    ("price_include", "=", False),
+                    ("price_include", "=", price_include),
                     ("company_id", "=", company_id),
                 ]
 
                 tax = self.env["account.tax"].search(
                     tax_domain, order="sequence ASC", limit=1
                 )
+
+                if not tax and price_include:
+                    # No price-included tax exists. Fall back to a
+                    # price-excluded tax and reverse-calculate the unit
+                    # price so the imported subtotal still matches.
+                    tax = self.env["account.tax"].search(
+                        [
+                            ("amount", "=", tax_amount),
+                            ("type_tax_use", "=", invoice.journal_id.type),
+                            ("price_include", "=", False),
+                            ("company_id", "=", company_id),
+                        ],
+                        order="sequence ASC",
+                        limit=1,
+                    )
+                    if tax and tax_amount:
+                        price_unit = edi_format._to_float(price_unit) / (
+                            1 + tax_amount / 100
+                        )
+                        line_values["price_unit"] = price_unit
+                        price_include = False
 
                 if not tax:
                     raise ValidationError(_(f"Could not find a tax for {tax_amount}"))
