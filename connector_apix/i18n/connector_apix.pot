@@ -508,6 +508,21 @@ msgid "Fetch invoices"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__finvoice_expected_total
+msgid "Finvoice Expected Total"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__finvoice_expected_total_incl
+msgid "Finvoice Expected Total (incl. VAT)"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__finvoice_total_warning
+msgid "Finvoice Total Warning"
+msgstr ""
+
+#. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/importer.py:0
 msgid "Finvoice is mandatory information"
