@@ -2,14 +2,80 @@ import logging
 import re
 from datetime import datetime
 
-from odoo import _, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
+from odoo.tools.misc import formatLang
 
 _logger = logging.getLogger(__name__)
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
+
+    finvoice_expected_total = fields.Monetary(
+        string="Finvoice Expected Total",
+        currency_field="currency_id",
+        copy=False,
+    )
+    finvoice_expected_total_incl = fields.Monetary(
+        string="Finvoice Expected Total (incl. VAT)",
+        currency_field="currency_id",
+        copy=False,
+    )
+    finvoice_total_warning = fields.Char(
+        compute="_compute_finvoice_total_warning",
+    )
+
+    @api.depends(
+        "finvoice_expected_total",
+        "finvoice_expected_total_incl",
+        "amount_untaxed",
+        "amount_total",
+    )
+    def _compute_finvoice_total_warning(self):
+        for move in self:
+            expected_excl = move.finvoice_expected_total
+            expected_incl = move.finvoice_expected_total_incl
+            if not expected_excl and not expected_incl:
+                move.finvoice_total_warning = False
+                continue
+            currency = move.currency_id
+            untaxed = move.amount_untaxed
+            total = move.amount_total
+            # Senders vary in what they put in InvoiceTotalVatExcludedAmount
+            # vs InvoiceTotalVatIncludedAmount, and per-line VAT rounding can
+            # drift from per-invoice rounding by a cent. The warning is
+            # suppressed as long as any of the three header figures can be
+            # reconciled with what Odoo computed.
+            matches = (
+                (
+                    expected_excl
+                    and currency.compare_amounts(expected_excl, untaxed) == 0
+                )
+                or (
+                    expected_incl
+                    and currency.compare_amounts(expected_incl, untaxed) == 0
+                )
+                or (
+                    expected_incl
+                    and currency.compare_amounts(expected_incl, total) == 0
+                )
+            )
+            if matches:
+                move.finvoice_total_warning = False
+                continue
+            expected = expected_excl or expected_incl
+            diff = expected - untaxed
+            move.finvoice_total_warning = _(
+                "The Finvoice total is %(expected)s %(currency)s "
+                "but invoice lines total %(actual)s %(currency)s "
+                "(difference: %(diff)s %(currency)s). "
+                "Check for missing charges (e.g. shipping, handling).",
+                expected=formatLang(move.env, expected, currency_obj=currency),
+                actual=formatLang(move.env, untaxed, currency_obj=currency),
+                diff=formatLang(move.env, diff, currency_obj=currency),
+                currency=currency.name,
+            )
 
     def _get_edi_decoder(self, file_data, new=False):
         if file_data["type"] == "xml":
@@ -46,6 +112,10 @@ class AccountMove(models.Model):
         elif not company_id:
             company_id = self.env.company.id
 
+        invoice = invoice.with_company(company_id).with_context(
+            default_move_type=invoice_type
+        )
+
         # region SellerPartyDetails
         spd = "SellerPartyDetails"
 
@@ -71,7 +141,6 @@ class AccountMove(models.Model):
 
         spad = "SellerPostalAddressDetails"
 
-        # TODO: Why are we always overwriting the values here?
         partner_vals = {
             "company_registry": business_code,
             "street": _find_value(f"./{spd}/{spad}/SellerStreetName"),
@@ -80,7 +149,10 @@ class AccountMove(models.Model):
         }
 
         if invoice.partner_id:
-            invoice.partner_id.write(partner_vals)
+            # Don't overwrite existing partner data with empty Finvoice fields
+            partner_write_vals = {k: v for k, v in partner_vals.items() if v}
+            if partner_write_vals:
+                invoice.partner_id.write(partner_write_vals)
         else:
             invoice.partner_id = self.env["res.partner"].create(
                 dict(
@@ -96,9 +168,29 @@ class AccountMove(models.Model):
 
         # region InvoiceDetails
         ind = "InvoiceDetails"
+
+        expected_total = edi_format._to_float(
+            _find_value(f"./{ind}/InvoiceTotalVatExcludedAmount")
+        )
+        if expected_total:
+            invoice.finvoice_expected_total = expected_total
+
+        expected_total_incl = edi_format._to_float(
+            _find_value(f"./{ind}/InvoiceTotalVatIncludedAmount")
+        )
+        if expected_total_incl:
+            invoice.finvoice_expected_total_incl = expected_total_incl
+
         invoice.ref = _find_value(f"./{ind}/SellerReferenceIdentifier") or _find_value(
             f"./{ind}/InvoiceNumber"
         )
+        # Per Finvoice 3.0, InvoiceNumber is the seller's invoice number;
+        # SellerReferenceIdentifier is the seller's own reference for the
+        # buyer (e.g. customer number). The former is the right value for
+        # invoice.ref.
+        invoice_number = _find_value(f"./{ind}/InvoiceNumber")
+        seller_ref = _find_value(f"./{ind}/SellerReferenceIdentifier")
+        invoice.ref = invoice_number or seller_ref
 
         invoice_date = _find_value(f"./{ind}/InvoiceDate")
         invoice.invoice_date = datetime.strptime(invoice_date, "%Y%m%d")
@@ -109,6 +201,10 @@ class AccountMove(models.Model):
             f"./{ind}/InvoiceFreeText",
             tree,
         )
+        if seller_ref and invoice_number and seller_ref != invoice_number:
+            invoice.narration = (invoice.narration or "") + _(
+                "\nSeller Reference: %s", seller_ref
+            )
 
         ptd = "PaymentTermsDetails"
         invoice.narration += edi_format._find_values_joined(
@@ -120,6 +216,21 @@ class AccountMove(models.Model):
         except (ValueError, TypeError):
             invoice.invoice_date_due = False
 
+        # endregion
+
+        # region VatSpecificationDetails
+        # Build a base_amount -> vat_rate map from invoice-level VAT
+        # specifications, used as a fallback when an InvoiceRow lacks
+        # RowVatRatePercent. The row's RowVatExcludedAmount can then be
+        # matched against a VatBaseAmount to recover its VAT rate.
+        vat_spec_map = {}
+        for vat_spec in tree.xpath(f"./{ind}/VatSpecificationDetails", namespaces=ns):
+            base_amount = edi_format._to_float(
+                _find_value("./VatBaseAmount", vat_spec)
+            )
+            vat_rate = edi_format._to_float(_find_value("./VatRatePercent", vat_spec))
+            if base_amount:
+                vat_spec_map[base_amount] = vat_rate
         # endregion
 
         # region InvoiceRows
@@ -187,13 +298,17 @@ class AccountMove(models.Model):
 
             # ean_code = _find_value("./EanCode", line)
 
-            # Construct a unit price
+            # Construct a unit price. InvoicedQuantity is the canonical
+            # element; some senders only fill DeliveredQuantity.
             quantity = (
-                edi_format._to_float(_find_value("./InvoicedQuantity", line)) or 1
+                edi_format._to_float(_find_value("./InvoicedQuantity", line))
+                or edi_format._to_float(_find_value("./DeliveredQuantity", line))
+                or 1
             )
 
-            # Try to find UnitPriceAmount
+            # Try to find UnitPriceAmount (VAT-excluded)
             price_unit = _find_value("./UnitPriceAmount", line)
+            price_include = False
 
             if not price_unit or edi_format._to_float(price_unit) == 0:
                 # Didn't find UnitPriceAmount. Try RowVatExcludedAmount
@@ -201,6 +316,18 @@ class AccountMove(models.Model):
                 price_subtotal = edi_format._to_float(price_subtotal)
                 if price_subtotal:
                     price_unit = price_subtotal / quantity
+
+            if not price_unit or edi_format._to_float(price_unit) == 0:
+                # Still no price. Try VAT-included amounts
+                # (e.g. FedEx invoices that omit the excluded fields).
+                price_unit_incl = _find_value("./UnitPriceVatIncludedAmount", line)
+                if not price_unit_incl or edi_format._to_float(price_unit_incl) == 0:
+                    row_amount = edi_format._to_float(_find_value("./RowAmount", line))
+                    if row_amount:
+                        price_unit_incl = row_amount / quantity
+                if price_unit_incl and edi_format._to_float(price_unit_incl) != 0:
+                    price_unit = price_unit_incl
+                    price_include = True
 
             if not price_unit:
                 price_unit = 0
@@ -253,29 +380,25 @@ class AccountMove(models.Model):
                 _logger.debug("Skipping a zero line due to a long invoice")
                 continue
 
+            # Try to find a matching product by default code or article name
+            # TODO: an option to auto-create missing products
             product_id = False
-            line_name = ""
+            if default_code or article_name:
+                product_id = self.env["product.product"]._retrieve_product(
+                    default_code=default_code,
+                    name=article_name,
+                )
 
-            # if default_code or ean_code or article_name:
-            #     product_id = self.env["product.product"]._retrieve_product(
-            #         default_code=default_code,
-            #         name=article_name,
-            #         barcode=ean_code,
-            #     )
-            # else:
-            #     product_id = self.env["product.product"]
-            # # TODO: An option to auto-create products
-            #
-            # if product_id:
-            #     line_values["product_id"] = product_id.id
-            #
-            # if product_id:
-            #     accounts = product_id.product_tmpl_id._get_product_accounts()
-            #
-            #     if invoice_type == "in_invoice":
-            #         line_values["account_id"] = accounts["expense"].id
-            #     elif invoice_type == "out_invoice":
-            #         line_values["account_id"] = accounts["income"].id
+            if product_id:
+                line_values["product_id"] = product_id.id
+
+                accounts = product_id.product_tmpl_id._get_product_accounts()
+                if invoice_type == "in_invoice":
+                    line_values["account_id"] = accounts["expense"].id
+                elif invoice_type == "out_invoice":
+                    line_values["account_id"] = accounts["income"].id
+
+            line_name = ""
 
             # Construct a line name, if product is not found
 
@@ -293,17 +416,15 @@ class AccountMove(models.Model):
 
             line_values["name"] = line_name
 
-            if not article_name and not default_code:
-                # Comment line
-                # TODO: comment lines not working yet
-                line_values["display_type"] = "line_note"
-                line_values["account_id"] = self.env["account.account"]
-
             line_values["quantity"] = quantity
 
             unit_code = edi_format._find_attribute(
                 "./InvoicedQuantity", line, "QuantityUnitCode"
             )
+            if not unit_code:
+                unit_code = edi_format._find_attribute(
+                    "./DeliveredQuantity", line, "QuantityUnitCode"
+                )
             if product_id and unit_code:
                 uom = self.env["uom.uom"].search(
                     [("name", "ilike", unit_code)], limit=1
@@ -321,19 +442,49 @@ class AccountMove(models.Model):
             # Taxes
             # We are not using _retrieve_tax()
             # as it might return a tax with prices included
-            tax_amount = edi_format._to_float(_find_value("./RowVatRatePercent", line))
+            row_vat_rate = _find_value("./RowVatRatePercent", line)
+            if row_vat_rate is not None:
+                tax_amount = edi_format._to_float(row_vat_rate)
+            else:
+                # Row didn't carry a VAT rate; try the invoice-level
+                # VatSpecificationDetails by matching the row's excluded
+                # amount against a VatBaseAmount.
+                line_amount = edi_format._to_float(
+                    _find_value("./RowVatExcludedAmount", line)
+                )
+                tax_amount = vat_spec_map.get(line_amount)
             if tax_amount:
                 tax_domain = [
                     ("amount", "=", tax_amount),
                     ("type_tax_use", "=", invoice.journal_id.type),
-                    # The subtotal will be saved as untaxed amount
-                    ("price_include", "=", False),
+                    ("price_include", "=", price_include),
                     ("company_id", "=", company_id),
                 ]
 
                 tax = self.env["account.tax"].search(
                     tax_domain, order="sequence ASC", limit=1
                 )
+
+                if not tax and price_include:
+                    # No price-included tax exists. Fall back to a
+                    # price-excluded tax and reverse-calculate the unit
+                    # price so the imported subtotal still matches.
+                    tax = self.env["account.tax"].search(
+                        [
+                            ("amount", "=", tax_amount),
+                            ("type_tax_use", "=", invoice.journal_id.type),
+                            ("price_include", "=", False),
+                            ("company_id", "=", company_id),
+                        ],
+                        order="sequence ASC",
+                        limit=1,
+                    )
+                    if tax and tax_amount:
+                        price_unit = edi_format._to_float(price_unit) / (
+                            1 + tax_amount / 100
+                        )
+                        line_values["price_unit"] = price_unit
+                        price_include = False
 
                 if not tax:
                     raise ValidationError(_(f"Could not find a tax for {tax_amount}"))
@@ -427,17 +578,28 @@ class AccountMove(models.Model):
 
         # region EpiDetails
         ede = "EpiDetails"
-        payment_reference = invoice.payment_reference = _find_value(
-            f"./{ede}/EpiIdentificationDetails/EpiReference"
-        )
+        epid = "EpiPaymentInstructionDetails"
 
+        # Collect candidates in order of authority. EpiRemittanceInfoIdentifier
+        # is the official Finvoice payment reference; EpiReference is a
+        # message identifier sometimes (incorrectly) used as a payment
+        # reference; SellersBuyerIdentifier is also occasionally repurposed.
+        ref_candidates = [
+            _find_value(f"./{ede}/{epid}/EpiRemittanceInfoIdentifier"),
+            _find_value(f"./{ede}/EpiIdentificationDetails/EpiReference"),
+            _find_value(f"./{ind}/SellersBuyerIdentifier"),
+        ]
+
+        # Prefer the first candidate that validates as a Finnish national
+        # reference or RF (ISO 11649) creditor reference; otherwise fall
+        # back to the first non-empty candidate so we still record what the
+        # sender provided.
+        payment_reference = next(
+            (r for r in ref_candidates if r and self._is_valid_payment_reference(r)),
+            None,
+        )
         if not payment_reference:
-            # Try to get payment reference from SellersBuyerIdentifier
-            # It's not officially for a payment reference,
-            # but is sometimes incorrectly used as it was
-            payment_reference = invoice.payment_reference = _find_value(
-                f"./{ind}/SellersBuyerIdentifier"
-            )
+            payment_reference = next((r for r in ref_candidates if r), None)
 
         invoice.payment_reference = payment_reference
 
@@ -465,9 +627,6 @@ class AccountMove(models.Model):
             invoice.partner_bank_id = partner_bank_id
         # endregion
 
-        if invoice.move_type == "in_invoice" and invoice_type == "in_refund":
-            invoice.action_switch_move_type()
-
         return invoice
 
     def _lookup_partner_by_vat_or_business_code(self, vat, business_code, company_id):
@@ -488,3 +647,31 @@ class AccountMove(models.Model):
         )
 
         return partners or Partner
+
+    @staticmethod
+    def _is_valid_finnish_reference(ref):
+        """Validate a Finnish national payment reference (4-20 digits, 7-3-1 check)."""
+        if not ref.isdigit() or not (4 <= len(ref) <= 20):
+            return False
+        base = ref[:-1]
+        check_digit = ref[-1]
+        total = sum(
+            (7, 3, 1)[idx % 3] * int(val) for idx, val in enumerate(base[::-1])
+        )
+        return check_digit == str((10 - (total % 10)) % 10)
+
+    @staticmethod
+    def _is_valid_rf_reference(ref):
+        """Validate an RF creditor reference (ISO 11649, mod 97 check)."""
+        ref_upper = ref.upper()
+        if not re.match(r"^RF\d{2}\d{4,20}$", ref_upper):
+            return False
+        rearranged = ref_upper[4:] + ref_upper[:4]
+        numeric_str = "".join(
+            str(ord(c) - 55) if c.isalpha() else c for c in rearranged
+        )
+        return int(numeric_str) % 97 == 1
+
+    def _is_valid_payment_reference(self, ref):
+        """Check if ref is a valid Finnish national or RF payment reference."""
+        return self._is_valid_finnish_reference(ref) or self._is_valid_rf_reference(ref)

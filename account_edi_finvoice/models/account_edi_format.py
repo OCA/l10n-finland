@@ -70,7 +70,7 @@ class AccountEdiFormat(models.Model):
             return super()._cancel_invoice_edi(invoice)
 
         # We could delete EDI documents here
-        return
+        return {invoice: {"success": True}}
 
     def _edi_content_invoice_edi_finvoice(self, invoice):
         xml_string = self.env["ir.qweb"]._render(
