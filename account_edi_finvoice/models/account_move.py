@@ -238,10 +238,51 @@ class AccountMove(models.Model):
         line_number = 0
         line_count = len(lines)
 
+        # Pre-pass: decide whether SubInvoiceRow elements should be imported
+        # as real invoice lines or skipped as decoration. Some senders use
+        # SubInvoiceRow to carry a real adjustment (e.g. a prior-payment
+        # credit on Ilmarinen pension invoices); others use SubInvoiceRow
+        # as decorative section headers and per-section subtotals that
+        # already exist as regular InvoiceRow elements (DNA telecom
+        # invoices). Reconcile: if the regular row totals already match
+        # what the header reports, sub rows are decorative and must not be
+        # imported, or amounts would be double-counted.
+        header_total_incl = edi_format._to_float(
+            _find_value(f"./{ind}/InvoiceTotalVatIncludedAmount")
+        )
+        header_total_vat = (
+            edi_format._to_float(_find_value(f"./{ind}/InvoiceTotalVatAmount")) or 0.0
+        )
+        real_row_sum = 0.0
+        for candidate in lines:
+            row_excl = edi_format._to_float(
+                _find_value("./RowVatExcludedAmount", candidate)
+            )
+            if not row_excl:
+                row_qty = (
+                    edi_format._to_float(_find_value("./InvoicedQuantity", candidate))
+                    or 1
+                )
+                row_unit = edi_format._to_float(
+                    _find_value("./UnitPriceAmount", candidate)
+                )
+                if row_unit:
+                    row_excl = row_unit * row_qty
+            if row_excl:
+                real_row_sum += row_excl
+        import_sub_rows = True
+        if header_total_incl:
+            target_excl = header_total_incl - header_total_vat
+            if abs(real_row_sum - target_excl) < 0.01:
+                import_sub_rows = False
+
         for line in lines:
             line_number += 1
             _logger.debug(f"Importing line {line_number}/{line_count}")
             line_values = {"move_id": invoice.id}
+
+            raw_sub_rows = line.xpath("./SubInvoiceRow", namespaces=ns)
+            sub_rows = raw_sub_rows if import_sub_rows else []
 
             if _find_value("./BuyerArticleIdentifier", line):
                 default_code = _find_value("./BuyerArticleIdentifier", line)
@@ -451,9 +492,88 @@ class AccountMove(models.Model):
 
                 line_values["tax_ids"] = tax
 
-            invoice.invoice_line_ids.create(line_values)
+            # Skip parent rows that are pure containers: no article identity
+            # of their own, but children to import. Some senders use the
+            # parent only as a section heading.
+            parent_is_container = (
+                not article_name and not default_code and bool(raw_sub_rows)
+            )
+            if not parent_is_container:
+                invoice.invoice_line_ids.create(line_values)
 
-            # TODO: handle SubInvoiceRows
+            for sub_row in sub_rows:
+                sub_name = _find_value("./SubArticleName", sub_row)
+                sub_description = _find_value("./SubArticleDescription", sub_row)
+                sub_free_text = edi_format._find_values_joined(
+                    "./SubRowFreeText", sub_row
+                )
+                if not sub_name:
+                    sub_name = sub_description or sub_free_text
+
+                sub_qty = (
+                    edi_format._to_float(_find_value("./SubInvoicedQuantity", sub_row))
+                    or 1
+                )
+
+                sub_price = edi_format._to_float(
+                    _find_value("./SubUnitPriceAmount", sub_row)
+                )
+                if not sub_price:
+                    sub_excl = edi_format._to_float(
+                        _find_value("./SubRowVatExcludedAmount", sub_row)
+                    )
+                    if sub_excl:
+                        sub_price = sub_excl / sub_qty
+                if not sub_price:
+                    sub_total = edi_format._to_float(
+                        _find_value("./SubRowAmount", sub_row)
+                    )
+                    if sub_total:
+                        sub_price = sub_total / sub_qty
+                if not sub_price:
+                    continue
+
+                # VAT rate: prefer sub-row's own, fall back to the parent
+                # row's RowVatRatePercent.
+                sub_vat_rate = _find_value("./SubRowVatRatePercent", sub_row)
+                if sub_vat_rate is None:
+                    sub_vat_rate = _find_value("./RowVatRatePercent", line)
+                sub_tax_amount = (
+                    edi_format._to_float(sub_vat_rate) if sub_vat_rate else None
+                )
+
+                sub_line_name_parts = []
+                if sub_name:
+                    sub_line_name_parts.append(sub_name)
+                if sub_description and sub_description != sub_name:
+                    sub_line_name_parts.append(sub_description)
+                if sub_free_text and sub_free_text != sub_name:
+                    sub_line_name_parts.append(sub_free_text)
+                sub_line_name = "\n".join(sub_line_name_parts)
+
+                sub_values = {
+                    "move_id": invoice.id,
+                    "name": sub_line_name,
+                    "quantity": sub_qty,
+                    "price_unit": sub_price,
+                }
+                if sub_tax_amount:
+                    sub_tax = self.env["account.tax"].search(
+                        [
+                            ("amount", "=", sub_tax_amount),
+                            ("type_tax_use", "=", invoice.journal_id.type),
+                            ("price_include", "=", False),
+                            ("company_id", "=", company_id),
+                        ],
+                        order="sequence ASC",
+                        limit=1,
+                    )
+                    if not sub_tax:
+                        raise ValidationError(
+                            _(f"Could not find a tax for {sub_tax_amount}")
+                        )
+                    sub_values["tax_ids"] = sub_tax
+                invoice.invoice_line_ids.create(sub_values)
 
         # endregion
 
