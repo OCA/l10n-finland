@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_edi_finvoice](account_edi_finvoice/) | 18.0.1.0.4 |  | Import/Export Finvoice 3.0 invoices
+[account_edi_finvoice](account_edi_finvoice/) | 18.0.1.0.6 |  | Import/Export Finvoice 3.0 invoices
 [connector_apix](connector_apix/) | 18.0.1.0.2 |  | APIX EDI connector for receiving and sending eInvoices
 [l10n_fi_banks](l10n_fi_banks/) | 18.0.1.0.0 |  | Finnish banks and their addresses
 [l10n_fi_edicode](l10n_fi_edicode/) | 18.0.1.0.1 |  | Adds EDI code field and operators
