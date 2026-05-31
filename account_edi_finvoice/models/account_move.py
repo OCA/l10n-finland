@@ -183,8 +183,9 @@ class AccountMove(models.Model):
                 or 1
             )
 
-            # Try to find UnitPriceAmount
+            # Try to find UnitPriceAmount (VAT-excluded)
             price_unit = _find_value("./UnitPriceAmount", line)
+            price_include = False
 
             if not price_unit or edi_format._to_float(price_unit) == 0:
                 # Didn't find UnitPriceAmount. Try RowVatExcludedAmount
@@ -192,6 +193,18 @@ class AccountMove(models.Model):
                 price_subtotal = edi_format._to_float(price_subtotal)
                 if price_subtotal:
                     price_unit = price_subtotal / quantity
+
+            if not price_unit or edi_format._to_float(price_unit) == 0:
+                # Still no price. Try VAT-included amounts
+                # (e.g. FedEx invoices that omit the excluded fields).
+                price_unit_incl = _find_value("./UnitPriceVatIncludedAmount", line)
+                if not price_unit_incl or edi_format._to_float(price_unit_incl) == 0:
+                    row_amount = edi_format._to_float(_find_value("./RowAmount", line))
+                    if row_amount:
+                        price_unit_incl = row_amount / quantity
+                if price_unit_incl and edi_format._to_float(price_unit_incl) != 0:
+                    price_unit = price_unit_incl
+                    price_include = True
 
             if not price_unit:
                 price_unit = 0
@@ -321,14 +334,34 @@ class AccountMove(models.Model):
                 tax_domain = [
                     ("amount", "=", tax_amount),
                     ("type_tax_use", "=", invoice.journal_id.type),
-                    # The subtotal will be saved as untaxed amount
-                    ("price_include", "=", False),
+                    ("price_include", "=", price_include),
                     ("company_id", "=", company_id),
                 ]
 
                 tax = self.env["account.tax"].search(
                     tax_domain, order="sequence ASC", limit=1
                 )
+
+                if not tax and price_include:
+                    # No price-included tax exists. Fall back to a
+                    # price-excluded tax and reverse-calculate the unit
+                    # price so the imported subtotal still matches.
+                    tax = self.env["account.tax"].search(
+                        [
+                            ("amount", "=", tax_amount),
+                            ("type_tax_use", "=", invoice.journal_id.type),
+                            ("price_include", "=", False),
+                            ("company_id", "=", company_id),
+                        ],
+                        order="sequence ASC",
+                        limit=1,
+                    )
+                    if tax and tax_amount:
+                        price_unit = edi_format._to_float(price_unit) / (
+                            1 + tax_amount / 100
+                        )
+                        line_values["price_unit"] = price_unit
+                        price_include = False
 
                 if not tax:
                     raise ValidationError(_(f"Could not find a tax for {tax_amount}"))
