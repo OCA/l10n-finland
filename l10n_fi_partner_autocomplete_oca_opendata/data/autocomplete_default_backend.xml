@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+        <record id="autocomplete_backend_default_fi" model="autocomplete.backend">
+            <field name="name">Default Autocomplete Backend (FI)</field>
+            <field name="default_country_id" ref="base.fi"/> 
+            <field name="country_environment_id" ref="env_fi_free"/> 
+            <field name="is_country_active" eval="True"/>
+            </record>
+    </data>
+</odoo>

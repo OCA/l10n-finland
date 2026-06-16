@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="1">
+        <record id="env_fi_free" model="autocomplete.country.environment">
+            <field name="country_id" ref="base.fi"/>
+            <field name="environment_type">free</field>
+            <field name="sequence">10</field>
+        </record>
+    </data>
+</odoo>
