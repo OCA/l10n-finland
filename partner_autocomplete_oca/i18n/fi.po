@@ -1,0 +1,211 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_autocomplete_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20251121\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-02 20:10+0000\n"
+"PO-Revision-Date: 2025-12-02 20:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__api_key
+msgid "Api Key"
+msgstr "Api-avain"
+
+#. module: partner_autocomplete_oca
+#: model:ir.ui.menu,name:partner_autocomplete_oca.menu_autocomplete_root
+msgid "Autocomplete"
+msgstr "Automaattinen täydennys"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model,name:partner_autocomplete_oca.model_autocomplete_backend
+#: model_terms:ir.ui.view,arch_db:partner_autocomplete_oca.view_autocomplete_backend_form
+msgid "Autocomplete Backend"
+msgstr "Automaattisen täydennyksen backend"
+
+#. module: partner_autocomplete_oca
+#: model:ir.actions.act_window,name:partner_autocomplete_oca.action_autocomplete_backend
+#: model_terms:ir.ui.view,arch_db:partner_autocomplete_oca.view_autocomplete_backend_tree
+msgid "Autocomplete Backends"
+msgstr "Automaattisen täydennyksen backendit"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__available_country_ids
+msgid "Available Countries"
+msgstr "Saatavilla olevat maat"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model,name:partner_autocomplete_oca.model_autocomplete_country_environment
+msgid "Available Environment for Country"
+msgstr "Maalle saatavissa oleva ympäristö"
+
+#. module: partner_autocomplete_oca
+#: model:ir.ui.menu,name:partner_autocomplete_oca.menu_autocomplete_backend
+msgid "Backends"
+msgstr "Backendit"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__company_id
+msgid "Company"
+msgstr "Yritys"
+
+#. module: partner_autocomplete_oca
+#. odoo-javascript
+#: code:addons/partner_autocomplete_oca/static/src/xml/autocomplete_templates.xml:0
+#, python-format
+msgid "Company name"
+msgstr "Yrityksen nimi"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__default_country_id
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__country_id
+msgid "Country"
+msgstr "Maa"
+
+#. module: partner_autocomplete_oca
+#: model_terms:ir.ui.view,arch_db:partner_autocomplete_oca.view_autocomplete_backend_form
+msgid "Country Settings"
+msgstr "Maan asetukset"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__create_uid
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__create_uid
+msgid "Created by"
+msgstr "Luonut"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__create_date
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__create_date
+msgid "Created on"
+msgstr "Luotu"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__is_country_active
+msgid "Default"
+msgstr "Oletus"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,help:partner_autocomplete_oca.field_autocomplete_backend__name
+msgid "Differentiate between your Connections saved in Odoo."
+msgstr "Erota Odoossa tallennetut yhteydet toisistaan."
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__display_name
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__display_name
+msgid "Display Name"
+msgstr "Näytettävä nimi"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__country_environment_id
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__environment_type
+#: model_terms:ir.ui.view,arch_db:partner_autocomplete_oca.view_autocomplete_backend_form
+msgid "Environment Type"
+msgstr "Ympäristötyyppi"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__environment_type_code
+msgid "Environment Type Code"
+msgstr "Ympäristötyypin koodi"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields.selection,name:partner_autocomplete_oca.selection__autocomplete_country_environment__environment_type__free
+msgid "Free: Open Data"
+msgstr "Ilmainen: Avoin Data"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__id
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__id
+msgid "ID"
+msgstr "Tunnus"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__write_uid
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__write_uid
+msgid "Last Updated by"
+msgstr "Viimeksi päivittänyt"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__write_date
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__write_date
+msgid "Last Updated on"
+msgstr "Viimeksi päivitetty"
+
+#. module: partner_autocomplete_oca
+#. odoo-python
+#: code:addons/partner_autocomplete_oca/models/ir_module_module.py:0
+#, python-format
+msgid ""
+"MODULE CONFLICT: INSTALLATION PREVENTED\n"
+"The module '%s' cannot be installed because it is incompatible with your already installed module '%s'.\n"
+"\n"
+"NOTE ON COMPATIBILITY: Installing the Odoo official Partner Autocomplete module will override the functionality of %s. Please uninstall this custom module first before attempting to install the official one."
+msgstr ""
+"MODUULIRISTIRIITA: ASENNUS ESTETTY\n"
+"Moduulia ‘%s’ ei voi asentaa, koska se ei ole yhteensopiva jo asennetun moduulin ‘%s’ kanssa.\n"
+"\n"
+"YHTEENSOPIVUUS: Odoon virallisen Partnerien tietojen automaattinen täydentäminen -moduulin asentaminen ohittaa %s:n toiminnallisuuden. Poista tämä mukautettu moduuli ensin, ennen kuin yrität asentaa virallista moduulia."
+
+#. module: partner_autocomplete_oca
+#: model:ir.model,name:partner_autocomplete_oca.model_ir_module_module
+msgid "Module"
+msgstr "Moduuli"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_backend__name
+msgid "Name"
+msgstr "Nimi"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields.selection,name:partner_autocomplete_oca.selection__autocomplete_country_environment__environment_type__paid
+msgid "Paid: IODO's Data"
+msgstr "Maksullinen: IODO:n data"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,help:partner_autocomplete_oca.field_autocomplete_backend__country_environment_id
+msgid "Select the data environment available for the chosen country."
+msgstr "Valitse valitulle maalle käytettävissä oleva dataympäristö."
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,field_description:partner_autocomplete_oca.field_autocomplete_country_environment__sequence
+msgid "Sequence"
+msgstr "Järjestys"
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,help:partner_autocomplete_oca.field_autocomplete_backend__is_country_active
+msgid ""
+"Sets this backend as the default fallback for OCA's Partner Autocomplete. If"
+" no country is specified in the search, this value will be used instead. "
+"Only one backend can be set as the active default at any time."
+msgstr "Asettaa tämän backendin OCA:n kumppanien automaattisen täydennyksen oletusarvoksi. Jos hakua varten ei ole määritetty maata, käytetään tämän sijaan tätä arvoa. Vain yksi backend voidaan asettaa aktiiviseksi oletusarvoksi kerrallaan."
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,help:partner_autocomplete_oca.field_autocomplete_backend__company_id
+msgid "The Company associated with this Autocomplete Backend."
+msgstr "Tähän automaattisen täydentämisen backendiin liittyvä yritys."
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.constraint,message:partner_autocomplete_oca.constraint_autocomplete_backend_unique_default_country_id
+msgid ""
+"The Default Country must be unique across all Autocomplete Backends. Only "
+"one Backend can be set per country."
+msgstr "Oletusmaa on oltava yksilöllinen kaikissa automaattisen täydennyksen backendeissa. Kullekin maalle voidaan asettaa vain yksi backend."
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.fields,help:partner_autocomplete_oca.field_autocomplete_backend__default_country_id
+msgid ""
+"The specific country configured for this Autocomplete backend. The backend "
+"will only return results relevant to this country."
+msgstr "Tälle automaattisen täydentämisen backendille määritetty maa. Backend palauttaa vain tähän maahan liittyvät tulokset."
+
+#. module: partner_autocomplete_oca
+#: model:ir.model.constraint,message:partner_autocomplete_oca.constraint_autocomplete_country_environment_unique_country_environment
+msgid "This environment type is already configured for this country."
+msgstr "Tämä ympäristötyyppi on jo määritetty tälle maalle."
