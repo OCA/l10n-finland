@@ -28,6 +28,7 @@ addon | version | maintainers | summary
 [l10n_fi_mis_templates](l10n_fi_mis_templates/) | 18.0.0.1.0 |  | Add subsections for MIS templates
 [l10n_fi_sale_refund_payment_reference](l10n_fi_sale_refund_payment_reference/) | 18.0.1.0.0 |  | Automatically generate payment references for sale refunds
 [mis_report_partner_details](mis_report_partner_details/) | 18.0.1.0.0 |  | Add partner detail expansion to MIS Reports
+[partner_autocomplete_oca](partner_autocomplete_oca/) | 18.0.1.0.0 |  | Autocomplete partner companies. Needs localization modules to work.
 
 [//]: # (end addons)
 
