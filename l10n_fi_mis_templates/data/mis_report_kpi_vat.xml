@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="style_default" model="mis.report.style">
+        <field name="name">VAT default</field>
+        <field name="dp_inherit">false</field>
+        <field name="dp">2</field>
+        <field name="hide_empty_inherit">false</field>
+        <field name="hide_empty">true</field>
+    </record>
+    <record id="style_header" model="mis.report.style">
+        <field name="name">VAT header</field>
+        <field name="font_weight_inherit">false</field>
+        <field name="font_weight">bold</field>
+    </record>
+    <record id="style_details_double_indent" model="mis.report.style">
+        <field name="name">VAT double indented details</field>
+        <field name="indent_level_inherit">false</field>
+        <field name="indent_level">2</field>
+    </record>
+    <record id="style_header_indent" model="mis.report.style">
+        <field name="name">VAT indented header</field>
+        <field name="font_weight_inherit">false</field>
+        <field name="font_weight">bold</field>
+        <field name="indent_level_inherit">false</field>
+        <field name="indent_level">1</field>
+    </record>
+    <record id="style_details" model="mis.report.style">
+        <field name="name">VAT details</field>
+        <field name="indent_level_inherit">false</field>
+        <field name="indent_level">1</field>
+    </record>
+
+    <!-- VAT Report Definition -->
+    <record id="report_vat" model="mis.report">
+        <field name="name">VAT Return (Arvonlisäveroilmoitus)</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_default" />
+    </record>
+
+    <!-- Arvonlisäveroilmoitus (VAT Return) KPIs -->
+
+    <!-- Main header -->
+    <record id="kpi_arvonlisaveroilmoitus" model="mis.report.kpi">
+        <field name="name">arvonlisaveroilmoitus</field>
+        <field name="description">Arvonlisäveroilmoitus</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_header" />
+        <field name="type">str</field>
+        <field name="compare_method">none</field>
+        <field name="accumulation_method">none</field>
+        <field name="sequence">100</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- Section: Vero kotimaan myynneistä verokannoittain -->
+    <record id="kpi_vero_kotimaan_myynneista_verokannoittain" model="mis.report.kpi">
+        <field name="name">vero_kotimaan_myynneista_verokannoittain</field>
+        <field name="description">Vero kotimaan myynneistä verokannoittain</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">101</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- Tax rates -->
+    <record id="kpi_vero_25_5" model="mis.report.kpi">
+        <field name="name">vero_25_5</field>
+        <field name="description">25,5 % vero</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_header_indent" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">102</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_vero_13_5" model="mis.report.kpi">
+        <field name="name">vero_13_5</field>
+        <field name="description">13,5 % vero</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_header_indent" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">103</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_vero_10" model="mis.report.kpi">
+        <field name="name">vero_10</field>
+        <field name="description">10 % vero</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_header_indent" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">104</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- EU purchases -->
+    <record id="kpi_vero_tavaraostoista_muista_eu_maista" model="mis.report.kpi">
+        <field name="name">vero_tavaraostoista_muista_eu_maista</field>
+        <field name="description">Vero tavaraostoista muista EU-maista</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">105</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_vero_palveluostoista_muista_eu_maista" model="mis.report.kpi">
+        <field name="name">vero_palveluostoista_muista_eu_maista</field>
+        <field name="description">Vero palveluostoista muista EU-maista</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">106</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- Import and reverse charge -->
+    <record
+        id="kpi_vero_tavaroiden_maahantuonneista_eu_ulkopuolelta"
+        model="mis.report.kpi"
+    >
+        <field name="name">vero_tavaroiden_maahantuonneista_eu_ulkopuolelta</field>
+        <field
+            name="description"
+        >Vero tavaroiden maahantuonneista EU:n ulkopuolelta</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">107</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record
+        id="kpi_vero_rakentamispalvelun_ja_metalliromun_ostoista_kaannetty_verovelvollisuus"
+        model="mis.report.kpi"
+    >
+        <field
+            name="name"
+        >vero_rakentamispalvelun_ja_metalliromun_ostoista_kaannetty_verovelvollisuus</field>
+        <field
+            name="description"
+        >Vero rakentamispalvelun ja metalliromun ostoista (käännetty verovelvollisuus)</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">108</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- Deductible and payable VAT -->
+    <record id="kpi_verokauden_vahennettava_vero" model="mis.report.kpi">
+        <field name="name">verokauden_vahennettava_vero</field>
+        <field name="description">Verokauden vähennettävä vero</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">109</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_alarajahuojennuksen_maara" model="mis.report.kpi">
+        <field name="name">alarajahuojennuksen_maara</field>
+        <field name="description">Alarajahuojennuksen määrä</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">110</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_maksettava_palautukseen_oikeuttava_vero" model="mis.report.kpi">
+        <field name="name">maksettava_palautukseen_oikeuttava_vero</field>
+        <field
+            name="description"
+        >Maksettava vero / Palautukseen oikeuttava vero (-)</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">111</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- Zero-rated and EU sales -->
+    <record id="kpi_verokannan_0_alainen_liikevaihto" model="mis.report.kpi">
+        <field name="name">verokannan_0_alainen_liikevaihto</field>
+        <field name="description">0-verokannan alainen liikevaihto</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">112</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_tavaroiden_myynnit_muihin_eu_maihin" model="mis.report.kpi">
+        <field name="name">tavaroiden_myynnit_muihin_eu_maihin</field>
+        <field name="description">Tavaroiden myynnit muihin EU-maihin</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">113</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_palvelujen_myynnit_muihin_eu_maihin" model="mis.report.kpi">
+        <field name="name">palvelujen_myynnit_muihin_eu_maihin</field>
+        <field name="description">Palvelujen myynnit muihin EU-maihin</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">114</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- EU purchases and imports -->
+    <record id="kpi_tavaraostot_muista_eu_maista" model="mis.report.kpi">
+        <field name="name">tavaraostot_muista_eu_maista</field>
+        <field name="description">Tavaraostot muista EU-maista</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">115</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_palveluostot_muista_eu_maista" model="mis.report.kpi">
+        <field name="name">palveluostot_muista_eu_maista</field>
+        <field name="description">Palveluostot muista EU-maista</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">116</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record id="kpi_tavaroiden_maahantuonnit_eu_ulkopuolelta" model="mis.report.kpi">
+        <field name="name">tavaroiden_maahantuonnit_eu_ulkopuolelta</field>
+        <field name="description">Tavaroiden maahantuonnit EU:n ulkopuolelta</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">117</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- Reverse charge sales and purchases -->
+    <record
+        id="kpi_rakentamispalvelun_ja_metalliromun_myynnit_kaannetty_verovelvollisuus"
+        model="mis.report.kpi"
+    >
+        <field
+            name="name"
+        >rakentamispalvelun_ja_metalliromun_myynnit_kaannetty_verovelvollisuus</field>
+        <field
+            name="description"
+        >Rakentamispalvelun ja metalliromun myynnit (käännetty verovelvollisuus)</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">118</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <record
+        id="kpi_rakentamispalvelun_ja_metalliromun_ostot_kaannetty_verovelvollisuus"
+        model="mis.report.kpi"
+    >
+        <field
+            name="name"
+        >rakentamispalvelun_ja_metalliromun_ostot_kaannetty_verovelvollisuus</field>
+        <field
+            name="description"
+        >Rakentamispalvelun ja metalliromun ostot (käännetty verovelvollisuus)</field>
+        <field name="style_id" ref="l10n_fi_mis_templates.style_details" />
+        <field name="type">num</field>
+        <field name="compare_method">pct</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">119</field>
+        <field name="report_id" ref="report_vat" />
+        <field name="multi">False</field>
+        <field name="auto_expand_accounts">False</field>
+    </record>
+
+    <!-- KPI Expressions -->
+
+    <record id="kpi_expression_arvonlisaveroilmoitus" model="mis.report.kpi.expression">
+        <field name="kpi_id" ref="kpi_arvonlisaveroilmoitus" />
+        <field name="name">AccountingNone</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_vero_kotimaan_myynneista_verokannoittain"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_vero_kotimaan_myynneista_verokannoittain" />
+        <field name="name">vero_25_5 + vero_13_5 + vero_10</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record id="kpi_expression_vero_25_5" model="mis.report.kpi.expression">
+        <field name="kpi_id" ref="kpi_vero_25_5" />
+        <field
+            name="name"
+        >-balp[][("tax_tag_ids.name", "=", "+fi_320")]-balp[][("tax_tag_ids.name", "=", "-fi_320")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record id="kpi_expression_vero_13_5" model="mis.report.kpi.expression">
+        <field name="kpi_id" ref="kpi_vero_13_5" />
+        <field
+            name="name"
+        >-balp[][("tax_tag_ids.name", "=", "+302")]-balp[][("tax_tag_ids.name", "=", "-302")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record id="kpi_expression_vero_10" model="mis.report.kpi.expression">
+        <field name="kpi_id" ref="kpi_vero_10" />
+        <field
+            name="name"
+        >-balp[][("tax_tag_ids.name", "=", "+303")]-balp[][("tax_tag_ids.name", "=", "-303")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_vero_tavaraostoista_muista_eu_maista"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_vero_tavaraostoista_muista_eu_maista" />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_305")]+balp[][("tax_tag_ids.name", "=", "-fi_305")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_vero_palveluostoista_muista_eu_maista"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_vero_palveluostoista_muista_eu_maista" />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_tax_306")]+balp[][("tax_tag_ids.name", "=", "-fi_tax_306")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_vero_tavaroiden_maahantuonneista_eu_ulkopuolelta"
+        model="mis.report.kpi.expression"
+    >
+        <field
+            name="kpi_id"
+            ref="kpi_vero_tavaroiden_maahantuonneista_eu_ulkopuolelta"
+        />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_340")]+balp[][("tax_tag_ids.name", "=", "-fi_340")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_vero_rakentamispalvelun_ja_metalliromun_ostoista_kaannetty_verovelvollisuus"
+        model="mis.report.kpi.expression"
+    >
+        <field
+            name="kpi_id"
+            ref="kpi_vero_rakentamispalvelun_ja_metalliromun_ostoista_kaannetty_verovelvollisuus"
+        />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "-fi_318")]+balp[][("tax_tag_ids.name", "=", "+fi_318")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_verokauden_vahennettava_vero"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_verokauden_vahennettava_vero" />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_307")]+balp[][("tax_tag_ids.name", "=", "-fi_307")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_alarajahuojennuksen_maara"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_alarajahuojennuksen_maara" />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_vat_relief")]+balp[][("tax_tag_ids.name", "=", "-fi_vat_relief")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_maksettava_palautukseen_oikeuttava_vero"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_maksettava_palautukseen_oikeuttava_vero" />
+        <field
+            name="name"
+        >vero_kotimaan_myynneista_verokannoittain + vero_tavaraostoista_muista_eu_maista + vero_palveluostoista_muista_eu_maista + vero_tavaroiden_maahantuonneista_eu_ulkopuolelta + vero_rakentamispalvelun_ja_metalliromun_ostoista_kaannetty_verovelvollisuus - verokauden_vahennettava_vero</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_verokannan_0_alainen_liikevaihto"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_verokannan_0_alainen_liikevaihto" />
+        <field
+            name="name"
+        >-balp[][("tax_tag_ids.name", "=", "+fi_304")]+balp[][("tax_tag_ids.name", "=", "-fi_304")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_tavaroiden_myynnit_muihin_eu_maihin"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_tavaroiden_myynnit_muihin_eu_maihin" />
+        <field
+            name="name"
+        >-balp[][("tax_tag_ids.name", "=", "+fi_311")]+balp[][("tax_tag_ids.name", "=", "-fi_311")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_palvelujen_myynnit_muihin_eu_maihin"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_palvelujen_myynnit_muihin_eu_maihin" />
+        <field
+            name="name"
+        >-balp[][("tax_tag_ids.name", "=", "+fi_312")]-balp[][("tax_tag_ids.name", "=", "-fi_312")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_tavaraostot_muista_eu_maista"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_tavaraostot_muista_eu_maista" />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_base_purchase_goods_eu")]+balp[][("tax_tag_ids.name", "=", "-fi_base_purchase_goods_eu")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_palveluostot_muista_eu_maista"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_palveluostot_muista_eu_maista" />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_base_306")]+balp[][("tax_tag_ids.name", "=", "-fi_base_306")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_tavaroiden_maahantuonnit_eu_ulkopuolelta"
+        model="mis.report.kpi.expression"
+    >
+        <field name="kpi_id" ref="kpi_tavaroiden_maahantuonnit_eu_ulkopuolelta" />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "+fi_base_340")]+balp[][("tax_tag_ids.name", "=", "-fi_base_340")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_rakentamispalvelun_ja_metalliromun_myynnit_kaannetty_verovelvollisuus"
+        model="mis.report.kpi.expression"
+    >
+        <field
+            name="kpi_id"
+            ref="kpi_rakentamispalvelun_ja_metalliromun_myynnit_kaannetty_verovelvollisuus"
+        />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "-fi_319")]+balp[][("tax_tag_ids.name", "=", "+fi_319")]</field>
+        <field name="sequence">0</field>
+    </record>
+
+    <record
+        id="kpi_expression_rakentamispalvelun_ja_metalliromun_ostot_kaannetty_verovelvollisuus"
+        model="mis.report.kpi.expression"
+    >
+        <field
+            name="kpi_id"
+            ref="kpi_rakentamispalvelun_ja_metalliromun_ostot_kaannetty_verovelvollisuus"
+        />
+        <field
+            name="name"
+        >+balp[][("tax_tag_ids.name", "=", "-fi_base_318")]+balp[][("tax_tag_ids.name", "=", "+fi_base_318")]</field>
+        <field name="sequence">0</field>
+    </record>
+</odoo>
