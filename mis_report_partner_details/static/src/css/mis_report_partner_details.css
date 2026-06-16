@@ -1,0 +1,75 @@
+.o_mis_report {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+/* Ensure header cells align properly */
+.o_list_table thead th {
+  vertical-align: bottom;
+  padding: 0.5rem;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.o_mis_kpi_description {
+  min-width: 200px;
+  max-width: 400px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  padding: 0.5rem;
+}
+
+.o_mis_kpi_vat_cc,
+.o_mis_kpi_vat {
+  width: 100px;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Ensure amount columns have consistent width */
+.mis_builder_amount {
+  min-width: 120px;
+  text-align: right;
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+
+.o_mis_kpi_row td {
+  vertical-align: middle;
+  padding: 0.5rem;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Fix for header alignment */
+.oe_list_header_char {
+  text-align: center;
+  font-weight: 600;
+}
+
+.mis_builder_collabel {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .o_mis_kpi_description {
+    min-width: 120px;
+    max-width: 250px;
+  }
+  
+  .o_mis_kpi_vat_cc,
+  .o_mis_kpi_vat {
+    width: 70px;
+    min-width: 60px;
+    font-size: 0.85rem;
+    padding: 0.25rem;
+  }
+  
+  .mis_builder_amount {
+    min-width: 100px;
+    font-size: 0.9rem;
+  }
+}

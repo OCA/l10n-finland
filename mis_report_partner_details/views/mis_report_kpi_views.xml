@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_mis_report_kpi_form_partner_detail" model="ir.ui.view">
+        <field name="name">mis.report.kpi.form.partner.detail</field>
+        <field name="model">mis.report.kpi</field>
+        <field name="inherit_id" ref="mis_builder.mis_report_view_kpi_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[field/@name='auto_expand_accounts']" position="replace">
+                <group col="4">
+                    <field name="auto_expand_accounts"/>
+                    <field name="auto_expand_accounts_style_id" colspan="3" style="width: 100%; min-width: 200px;" invisible="auto_expand_accounts != True"/>
+                    <field name="display_details_by_partner"/>
+                    <field name="style_id_for_partner_details" colspan="3" style="width: 100%; min-width: 200px;" invisible="display_details_by_partner != True"/>
+                    <field name="show_vat_columns" invisible="display_details_by_partner != True"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
