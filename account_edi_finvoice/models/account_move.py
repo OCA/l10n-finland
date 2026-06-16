@@ -13,7 +13,6 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     finvoice_expected_total = fields.Monetary(
-        string="Finvoice Expected Total",
         currency_field="currency_id",
         copy=False,
     )
@@ -225,9 +224,7 @@ class AccountMove(models.Model):
         # matched against a VatBaseAmount to recover its VAT rate.
         vat_spec_map = {}
         for vat_spec in tree.xpath(f"./{ind}/VatSpecificationDetails", namespaces=ns):
-            base_amount = edi_format._to_float(
-                _find_value("./VatBaseAmount", vat_spec)
-            )
+            base_amount = edi_format._to_float(_find_value("./VatBaseAmount", vat_spec))
             vat_rate = edi_format._to_float(_find_value("./VatRatePercent", vat_spec))
             if base_amount:
                 vat_spec_map[base_amount] = vat_rate
@@ -656,9 +653,7 @@ class AccountMove(models.Model):
             return False
         base = ref[:-1]
         check_digit = ref[-1]
-        total = sum(
-            (7, 3, 1)[idx % 3] * int(val) for idx, val in enumerate(base[::-1])
-        )
+        total = sum((7, 3, 1)[idx % 3] * int(val) for idx, val in enumerate(base[::-1]))
         return check_digit == str((10 - (total % 10)) % 10)
 
     @staticmethod
