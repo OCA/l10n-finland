@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-l10n-finland"
-version = "18.0.20260616.1"
+version = "18.0.20260616.2"
 dependencies = [
     "odoo-addon-account_edi_finvoice==18.0.*",
     "odoo-addon-connector_apix==18.0.*",
@@ -9,6 +9,7 @@ dependencies = [
     "odoo-addon-l10n_fi_mis_templates==18.0.*",
     "odoo-addon-l10n_fi_sale_refund_payment_reference==18.0.*",
     "odoo-addon-mis_report_partner_details==18.0.*",
+    "odoo-addon-partner_autocomplete_oca==18.0.*",
 ]
 classifiers=[
     "Programming Language :: Python",
