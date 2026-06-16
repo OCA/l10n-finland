@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="partner_autocomplete_oca.PartnerAutocompleteOCA">
+        <div class="o_partner_autocomplete_container position-relative">
+            <input
+                type="text"
+                class="o_input"
+                t-att-id="props.id"
+                t-att-value="state.inputValue"
+                t-att-readonly="props.readonly"
+                t-on-input="onInput"
+                t-on-blur="onBlur"
+                placeholder="Company name"
+            />
+            
+            <ul t-if="state.showResults" class="o_partner_autocomplete_results list-group position-absolute w-100" style="z-index: 1000;">
+                <t t-foreach="state.results" t-as="company" t-key="company_index">
+                    <li class="list-group-item list-group-item-action p-1"
+                        t-on-click="() => this.onResultClick(company)"
+                        t-on-mousedown="onResultMouseDown">
+                        <a href="#">
+                            <t t-esc="company.name"/>
+                        </a>
+                    </li>
+                </t>
+            </ul>
+        </div>
+    </t>
+
+</templates>

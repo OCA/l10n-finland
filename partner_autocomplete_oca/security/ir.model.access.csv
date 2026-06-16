@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_autocomplete_backend_manager,autocomplete.backend.manager,model_autocomplete_backend,connector.group_connector_manager,1,1,1,1
+access_autocomplete_backend_user,autocomplete.backend.user,model_autocomplete_backend,base.group_user,1,0,0,0
+access_autocomplete_env_manager,autocomplete.country.environment.manager,model_autocomplete_country_environment,base.group_system,1,1,1,1
+access_autocomplete_env_user,autocomplete.country.environment.user,model_autocomplete_country_environment,base.group_user,1,0,0,0
