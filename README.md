@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [l10n_fi_banks](l10n_fi_banks/) | 18.0.1.0.0 |  | Finnish banks and their addresses
 [l10n_fi_edicode](l10n_fi_edicode/) | 18.0.1.0.1 |  | Adds EDI code field and operators
 [l10n_fi_mis_templates](l10n_fi_mis_templates/) | 18.0.0.1.0 |  | Add subsections for MIS templates
+[l10n_fi_partner_autocomplete_oca_opendata](l10n_fi_partner_autocomplete_oca_opendata/) | 18.0.1.0.0 |  | Enables autocomplete of company information from Finnish Open Data (PRH Avoin Data).
 [l10n_fi_sale_refund_payment_reference](l10n_fi_sale_refund_payment_reference/) | 18.0.1.0.0 |  | Automatically generate payment references for sale refunds
 [mis_report_partner_details](mis_report_partner_details/) | 18.0.1.0.0 |  | Add partner detail expansion to MIS Reports
 [partner_autocomplete_oca](partner_autocomplete_oca/) | 18.0.1.0.0 |  | Autocomplete partner companies. Needs localization modules to work.
