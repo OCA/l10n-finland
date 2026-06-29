@@ -24,7 +24,12 @@ Usage
 
 Known issues / Roadmap
 ======================
-\-
+
+* The Balance Sheet template references 30 ``l10n_fi`` account tags that were
+  removed when Odoo consolidated the Finnish chart of accounts' long/short
+  liability tags in 19.0. The module installs and the Profit & Loss and VAT
+  reports compute correctly; the affected Balance Sheet KPI lines still need to
+  be remapped to their surviving 19.0 tags.
 
 Bug Tracker
 ===========
@@ -41,6 +46,7 @@ Contributors
 ------------
 
 * Jarmo Kortetjärvi <jarmo.kortetjarvi@futural.fi>
+* Alexander Stadnitski <alexander@goodahead.com>
 
 
 Maintainer
