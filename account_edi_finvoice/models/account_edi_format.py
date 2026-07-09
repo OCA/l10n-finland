@@ -5,7 +5,7 @@ from datetime import datetime
 
 from lxml import etree
 
-from odoo import _, api, models, tools
+from odoo import api, models, tools
 from odoo.exceptions import UserError
 from odoo.tools import float_repr, html2plaintext
 
@@ -195,12 +195,13 @@ class AccountEdiFormat(models.Model):
             _logger.info(xml)
             _logger.info(e)
 
-            msg = _(
+            msg = self.env._(
                 "The Finvoice XML file is not valid against the official "
                 "XML Schema Definition. The XML file and the "
                 "full error have been written in the server logs. "
                 "Here is the error, which may give you an idea on the "
-                f"cause of the problem : {e}."
+                "cause of the problem : %s.",
+                e,
             )
 
             _logger.info(msg)
@@ -253,7 +254,9 @@ class AccountEdiFormat(models.Model):
             # INV02 Refund (Hyvityslasku)
             inv_type = "in_refund"
         else:
-            raise UserError(_("This Finvoice XML file is not an invoice/refund file"))
+            raise UserError(
+                self.env._("This Finvoice XML file is not an invoice/refund file")
+            )
 
         return inv_type
 
@@ -269,9 +272,10 @@ class AccountEdiFormat(models.Model):
         elif isinstance(string_number, str):
             if "." in string_number and "," in string_number:
                 # TODO: Add support for comma as thousands separator (1,000.00)
-                msg = _(
-                    "Using comma as thousands separator not supported! ({})"
-                ).format(string_number)
+                msg = self.env._(
+                    "Using comma as thousands separator not supported! (%s)",
+                    string_number,
+                )
                 raise UserError(msg)
 
             # Replace comma with period
