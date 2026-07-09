@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_edi_finvoice](account_edi_finvoice/) | 19.0.1.0.0 |  | Import/Export Finvoice 3.0 invoices
 [l10n_fi_banks](l10n_fi_banks/) | 19.0.1.0.0 |  | Finnish banks and their addresses
 [l10n_fi_edicode](l10n_fi_edicode/) | 19.0.1.0.0 |  | Adds EDI code field and operators
 [l10n_fi_sale_refund_payment_reference](l10n_fi_sale_refund_payment_reference/) | 19.0.1.0.0 |  | Automatically generate payment references for sale refunds
