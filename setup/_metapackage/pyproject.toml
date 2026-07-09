@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-l10n-finland"
-version = "19.0.20251203.1"
+version = "19.0.20260709.0"
 dependencies = [
+    "odoo-addon-account_edi_finvoice==19.0.*",
     "odoo-addon-l10n_fi_banks==19.0.*",
     "odoo-addon-l10n_fi_edicode==19.0.*",
     "odoo-addon-l10n_fi_sale_refund_payment_reference==19.0.*",
