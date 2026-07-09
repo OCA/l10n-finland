@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="edi_finvoice_3_0" model="account.edi.format">
+        <field name="name">Finvoice 3.0</field>
+        <field name="code">finvoice_3_0</field>
+    </record>
+</odoo>
