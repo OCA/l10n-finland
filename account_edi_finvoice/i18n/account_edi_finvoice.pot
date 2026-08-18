@@ -22,6 +22,12 @@ msgid ""
 msgstr ""
 
 #. module: account_edi_finvoice
+#. odoo-python
+#: code:addons/account_edi_finvoice/models/account_move.py:0
+msgid "Could not find a tax for %s"
+msgstr ""
+
+#. module: account_edi_finvoice
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_edi_format__display_name
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__display_name
 msgid "Display Name"
@@ -82,7 +88,8 @@ msgstr ""
 msgid ""
 "The Finvoice XML file is not valid against the official XML Schema "
 "Definition. The XML file and the full error have been written in the server "
-"logs. Here is the error, which may give you an idea on the "
+"logs. Here is the error, which may give you an idea on the cause of the "
+"problem : %s."
 msgstr ""
 
 #. module: account_edi_finvoice
@@ -103,5 +110,5 @@ msgstr ""
 #. module: account_edi_finvoice
 #. odoo-python
 #: code:addons/account_edi_finvoice/models/account_edi_format.py:0
-msgid "Using comma as thousands separator not supported! ({})"
+msgid "Using comma as thousands separator not supported! (%s)"
 msgstr ""
