@@ -2,7 +2,7 @@ import logging
 import re
 from datetime import datetime
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.misc import formatLang
 
@@ -13,7 +13,6 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     finvoice_expected_total = fields.Monetary(
-        string="Finvoice Expected Total",
         currency_field="currency_id",
         copy=False,
     )
@@ -66,7 +65,7 @@ class AccountMove(models.Model):
                 continue
             expected = expected_excl or expected_incl
             diff = expected - untaxed
-            move.finvoice_total_warning = _(
+            move.finvoice_total_warning = self.env._(
                 "The Finvoice total is %(expected)s %(currency)s "
                 "but invoice lines total %(actual)s %(currency)s "
                 "(difference: %(diff)s %(currency)s). "
@@ -199,7 +198,7 @@ class AccountMove(models.Model):
             tree,
         )
         if seller_ref and invoice_number and seller_ref != invoice_number:
-            invoice.narration = (invoice.narration or "") + _(
+            invoice.narration = (invoice.narration or "") + self.env._(
                 "\nSeller Reference: %s", seller_ref
             )
 
@@ -222,9 +221,7 @@ class AccountMove(models.Model):
         # matched against a VatBaseAmount to recover its VAT rate.
         vat_spec_map = {}
         for vat_spec in tree.xpath(f"./{ind}/VatSpecificationDetails", namespaces=ns):
-            base_amount = edi_format._to_float(
-                _find_value("./VatBaseAmount", vat_spec)
-            )
+            base_amount = edi_format._to_float(_find_value("./VatBaseAmount", vat_spec))
             vat_rate = edi_format._to_float(_find_value("./VatRatePercent", vat_spec))
             if base_amount:
                 vat_spec_map[base_amount] = vat_rate
@@ -485,7 +482,9 @@ class AccountMove(models.Model):
                         price_include = False
 
                 if not tax:
-                    raise ValidationError(_(f"Could not find a tax for {tax_amount}"))
+                    raise ValidationError(
+                        self.env._("Could not find a tax for %s", tax_amount)
+                    )
 
                 line_values["tax_ids"] = tax
 
@@ -567,7 +566,7 @@ class AccountMove(models.Model):
                     )
                     if not sub_tax:
                         raise ValidationError(
-                            _(f"Could not find a tax for {sub_tax_amount}")
+                            self.env._("Could not find a tax for %s", sub_tax_amount)
                         )
                     sub_values["tax_ids"] = sub_tax
                 invoice.invoice_line_ids.create(sub_values)
@@ -653,9 +652,7 @@ class AccountMove(models.Model):
             return False
         base = ref[:-1]
         check_digit = ref[-1]
-        total = sum(
-            (7, 3, 1)[idx % 3] * int(val) for idx, val in enumerate(base[::-1])
-        )
+        total = sum((7, 3, 1)[idx % 3] * int(val) for idx, val in enumerate(base[::-1]))
         return check_digit == str((10 - (total % 10)) % 10)
 
     @staticmethod
