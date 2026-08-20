@@ -612,6 +612,6 @@ class ApixBackend(models.Model):
 
             raise ValidationError(msg)
 
-        elif response_status == "OK":
+        elif response_status.text == "OK":
             # Response is OK, no actions
             return
