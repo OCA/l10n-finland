@@ -4,7 +4,7 @@ from io import BytesIO
 
 from lxml import etree
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.safe_eval import safe_eval, time
 
@@ -27,7 +27,7 @@ class AccountMove(models.Model):
         self.ensure_one()
 
         if not self.company_id:
-            raise ValidationError(_("This invoice has no company."))
+            raise ValidationError(self.env._("This invoice has no company."))
 
         backend = self.env["apix.backend"].search(
             [
@@ -45,7 +45,7 @@ class AccountMove(models.Model):
             if len(self) > 1:
                 # Add sending to queue
                 job_kwargs = {
-                    "description": _("APIX send invoice '%s'") % record.number,
+                    "description": self.env._("APIX send invoice '%s'", record.name),
                     "channel": APIX_CHANNEL,
                 }
                 record.with_delay(**job_kwargs).einvoice_send()
@@ -130,7 +130,9 @@ class AccountMove(models.Model):
         )
 
         if not finvoice_xml:
-            raise ValidationError(_("Could not find a Finvoice document to export"))
+            raise ValidationError(
+                self.env._("Could not find a Finvoice document to export")
+            )
 
         # Use the latest document
         finvoice_xml = finvoice_xml[0].sudo()
@@ -199,14 +201,14 @@ class AccountMove(models.Model):
             # Transmit method name
             transmit_method = record.transmit_method_id.name
 
-            _logger.debug(_(f"Sending '{record.name}' as '{transmit_method}'"))
+            _logger.debug("Sending '%s' as '%s'", record.name, transmit_method)
 
             backend = record.get_apix_backend()
 
             if not backend:
-                raise Exception(_("No backend found"))
+                raise Exception(self.env._("No backend found"))
 
-            _logger.debug(f"Using backend {backend.name}")
+            _logger.debug("Using backend %s", backend.name)
 
             payload = record.get_apix_payload()
 
@@ -218,12 +220,9 @@ class AccountMove(models.Model):
                         "mimetype": "application/zip",
                     }
                 )
-            try:
-                response = backend.SendInvoiceZIP(payload)
-            except ValidationError as error:
-                raise error
+            response = backend.SendInvoiceZIP(payload)
 
-            _logger.debug(_(f"Response for '{record.name}': {response}"))
+            _logger.debug("Response for '%s': %s", record.name, response)
 
             record.date_einvoice_sent = fields.Date.today()
             record.is_move_sent = True
@@ -244,8 +243,6 @@ class AccountMove(models.Model):
             if apix_cost_in_credits is not None:
                 apix_cost_in_credits = apix_cost_in_credits.text
 
-            # response.find(".//Value[@type='BatchID']").text
-
             binding_values = dict(
                 backend_id=backend.id,
                 odoo_id=record.id,
@@ -254,11 +251,12 @@ class AccountMove(models.Model):
                 apix_cost_in_credits=apix_cost_in_credits,
             )
 
-            # Create a binding
             self.sudo().env["apix.account.invoice"].create(binding_values)
 
-            record.message_post(body=_(f"Invoice sent as '{transmit_method}'"))
-            _logger.debug(_(f"Sent '{record.name}' as '{transmit_method}'"))
+            record.message_post(
+                body=self.env._("Invoice sent as '%s'", transmit_method)
+            )
+            _logger.debug("Sent '%s' as '%s'", record.name, transmit_method)
 
     def validate_einvoice(self):
         result = False
@@ -267,45 +265,39 @@ class AccountMove(models.Model):
         # Invoice can be sent only when it is open or paid
         # open: normal invoice
         # paid: for resending (original invoice is not received or not paid)
-        if self.state not in ["posted"]:
-            msg = _("You can only send eInvoice after the invoice is posted")
+        if self.state != "posted":
+            msg = self.env._("You can only send eInvoice after the invoice is posted")
 
         # Check these only for eInvoice
         elif self.transmit_method_code in ["einvoice"]:
             # VAT number is missing
             if not self.partner_id.vat:
-                msg = (
-                    _(
-                        "Please set VAT number for the customer '%s' before "
-                        "sending an eInvoice."
-                    )
-                    % self.partner_id.name
+                msg = self.env._(
+                    "Please set VAT number for the customer '%s' before "
+                    "sending an eInvoice.",
+                    self.partner_id.name,
                 )
             # Edicode is missing
             elif not self.partner_id.edicode:
-                msg = (
-                    _(
-                        "Please set edicode for the customer '%s' "
-                        "before sending an eInvoice."
-                    )
-                    % self.partner_id.name
+                msg = self.env._(
+                    "Please set edicode for the customer '%s' "
+                    "before sending an eInvoice.",
+                    self.partner_id.name,
                 )
             # Operator is missing
             elif not self.partner_id.einvoice_operator_id:
-                msg = (
-                    _(
-                        "Please set eInvoice operator for the customer '%s' "
-                        "before sending an eInvoice."
-                    )
-                    % self.partner_id.name
+                msg = self.env._(
+                    "Please set eInvoice operator for the customer '%s' "
+                    "before sending an eInvoice.",
+                    self.partner_id.name,
                 )
 
         # Wrong invoice transmit type
         elif self.transmit_method_code not in ["einvoice", "printing_service"]:
-            msg = _("This invoice has been marked to be sent manually.")
+            msg = self.env._("This invoice has been marked to be sent manually.")
 
         elif not self.partner_bank_id:
-            msg = _("Please define a bank account for the invoice.")
+            msg = self.env._("Please define a bank account for the invoice.")
 
         else:
             result = True

@@ -10,7 +10,7 @@ from zipfile import ZipFile
 import requests
 from lxml import etree as ET
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import ValidationError
 
 from ..constants import APIX_CHANNEL
@@ -204,6 +204,9 @@ class ApixBackend(models.Model):
             record.state = "unconfirmed"
 
     def action_cron_einvoice_fetch(self):
+        # The cron has to sweep every backend. There is at most one backend per
+        # company (see the company_uniq constraint), so the set is bounded.
+        # pylint: disable=no-search-all
         for backend in self.search([]):
             backend.action_einvoice_fetch()
 
@@ -211,7 +214,7 @@ class ApixBackend(models.Model):
         for record in self:
             # Add fetching to queue
             job_kwargs = {
-                "description": _("APIX fetch invoices for '%s'") % record.name,
+                "description": self.env._("APIX fetch invoices for '%s'", record.name),
                 "channel": APIX_CHANNEL,
             }
             record.with_company(record.company_id.id).with_delay(
@@ -222,7 +225,9 @@ class ApixBackend(models.Model):
         for record in self:
             # Add fetching to queue
             job_kwargs = {
-                "description": _("APIX refetch invoices for '{}'").format(record.name),
+                "description": self.env._(
+                    "APIX refetch invoices for '%s'", record.name
+                ),
                 "channel": APIX_CHANNEL,
             }
             record.with_company(record.company_id.id).with_delay(
@@ -270,8 +275,10 @@ class ApixBackend(models.Model):
                 and storage_status == "RECEIVED"
             ):
                 job_kwargs = {
-                    "description": _(
-                        f'APIX import invoice "{document_id}" from {sender_name}'
+                    "description": self.env._(
+                        'APIX import invoice "%(document_id)s" from %(sender_name)s',
+                        document_id=document_id,
+                        sender_name=sender_name,
                     ),
                     "channel": APIX_CHANNEL,
                 }
@@ -285,7 +292,7 @@ class ApixBackend(models.Model):
         # Download invoice
         res = self.Download(storage_id, storage_key)
 
-        return _(f"Imported invoice with id '{res.id}'")
+        return self.env._("Imported invoice with id '%s'", res.id)
 
     # endregion
 
@@ -571,7 +578,7 @@ class ApixBackend(models.Model):
                 attachment_ids += ir_attachment.create(values)
 
         if not invoice:
-            raise ValidationError(_("Could not create invoice"))
+            raise ValidationError(self.env._("Could not create invoice"))
 
         attachment_ids.write({"res_id": invoice.id})
 
@@ -583,7 +590,9 @@ class ApixBackend(models.Model):
         response_status = response.find(".//Status")
 
         if response_status is None:
-            raise ValidationError(_("Invalid response: response status not found"))
+            raise ValidationError(
+                self.env._("Invalid response: response status not found")
+            )
 
         _logger.debug(f"Response status: '{response_status.text}'")
 
@@ -595,13 +604,13 @@ class ApixBackend(models.Model):
                 else:
                     error = ". ".join([r.text for r in response.findall(".//FreeText")])
             except Exception as e:
-                error = _("Unknown error")
+                error = self.env._("Unknown error")
                 _logger.error(e)
 
             try:
                 statuscode = response.find(".//StatusCode").text
             except Exception as e:
-                statuscode = _("Unknown status code")
+                statuscode = self.env._("Unknown status code")
                 _logger.error(e)
 
             msg = f"API Error ({statuscode}): {error}"
@@ -612,6 +621,6 @@ class ApixBackend(models.Model):
 
             raise ValidationError(msg)
 
-        elif response_status == "OK":
+        elif response_status.text == "OK":
             # Response is OK, no actions
             return

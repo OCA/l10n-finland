@@ -21,7 +21,7 @@
 {
     "name": "APIX Connector",
     "summary": "APIX EDI connector for receiving and sending eInvoices",
-    "version": "18.0.1.0.2",
+    "version": "19.0.1.0.0",
     "category": "Connector",
     "website": "https://github.com/OCA/l10n-finland",
     "author": "Odoo Community Association (OCA), Futural",
