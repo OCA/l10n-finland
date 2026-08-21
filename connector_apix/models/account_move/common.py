@@ -45,7 +45,7 @@ class AccountMove(models.Model):
             if len(self) > 1:
                 # Add sending to queue
                 job_kwargs = {
-                    "description": _("APIX send invoice '%s'") % record.number,
+                    "description": _("APIX send invoice '%s'") % record.name,
                     "channel": APIX_CHANNEL,
                 }
                 record.with_delay(**job_kwargs).einvoice_send()
