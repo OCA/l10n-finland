@@ -1,0 +1,4 @@
+- [Futural Oy](https://futural.fi):
+   - Jarmo Kortetjärvi <jarmo.kortetjarvi@futural.fi>
+- [Goodahead Oy](https://www.goodahead.com/):
+   - Alexander Stadnitski <alexander@goodahead.com>

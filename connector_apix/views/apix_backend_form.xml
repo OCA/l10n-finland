@@ -7,22 +7,6 @@
             <form>
                 <header>
                     <button
-                        name="action_authenticate"
-                        type="object"
-                        class="oe_highlight"
-                        string="Authenticate"
-                        invisible="state == 'confirmed'"
-                    />
-
-                    <button
-                        name="action_reset_authentication"
-                        type="object"
-                        class=""
-                        string="Reset authentication"
-                        invisible="state != 'confirmed'"
-                    />
-
-                    <button
                         name="action_einvoice_fetch"
                         type="object"
                         class="oe_highlight"
@@ -33,16 +17,30 @@
                     <button
                         name="action_einvoice_refetch"
                         type="object"
-                        class="oe_highlight"
+                        class=""
                         string="Refetch invoices"
                         invisible="state != 'confirmed'"
+                        confirm="Are you sure you want to refetch invoices? This will reprocess all previously fetched invoices and may result in duplicates."
                     />
 
                     <field name="state" widget="statusbar" />
                 </header>
 
                 <sheet>
-                    <div class="oe_button_box" name="button_box" />
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            name="action_open_schedulers"
+                            type="object"
+                            icon="fa-clock-o"
+                        >
+                            <field
+                                string="Schedulers"
+                                name="scheduler_count"
+                                widget="statinfo"
+                            />
+                        </button>
+                    </div>
 
                     <label for="name" class="oe_edit_only" />
                     <h1>
@@ -60,13 +58,32 @@
                             groups="base.group_erp_manager"
                             readonly="state == 'confirmed'"
                         >
-                            <field name="username" />
-                            <field name="password" password="1" />
-                            <field name="prefix" />
-                            <field name="company_id" />
-                            <field name="version" />
-                            <field name="environment" />
+                            <field name="username" readonly="state == 'confirmed'" />
+                            <field
+                                name="password"
+                                password="1"
+                                readonly="state == 'confirmed'"
+                            />
+                            <field name="prefix" readonly="state == 'confirmed'" />
+                            <field name="company_id" readonly="state == 'confirmed'" />
+                            <field name="environment" readonly="state == 'confirmed'" />
                             <field name="debug" widget="boolean_toggle" />
+                            <button
+                                name="action_authenticate"
+                                type="object"
+                                class="btn btn-primary"
+                                string="Authenticate"
+                                invisible="state == 'confirmed'"
+                            />
+
+                            <button
+                                name="action_reset_authentication"
+                                type="object"
+                                class="btn btn-danger"
+                                string="Deauthenticate"
+                                invisible="state != 'confirmed'"
+                                confirm="Are you sure you want to revoke the authentication? This will require re-authentication."
+                            />
                         </group>
                     </group>
 

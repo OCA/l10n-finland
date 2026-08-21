@@ -5,7 +5,7 @@ from io import BytesIO
 from lxml import etree
 
 from odoo import fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tools.safe_eval import safe_eval, time
 
 from ...constants import APIX_CHANNEL
@@ -40,8 +40,6 @@ class AccountMove(models.Model):
 
     def action_einvoice_send(self):
         for record in self:
-            record.validate_einvoice()
-
             if len(self) > 1:
                 # Add sending to queue
                 job_kwargs = {
@@ -49,6 +47,12 @@ class AccountMove(models.Model):
                     "channel": APIX_CHANNEL,
                 }
                 record.with_delay(**job_kwargs).einvoice_send()
+                # Set invoice as being sent
+                record.write(
+                    {
+                        "is_being_sent": True,
+                    }
+                )
             else:
                 # Send eInvoice now
                 record.einvoice_send()
@@ -198,6 +202,13 @@ class AccountMove(models.Model):
 
     def einvoice_send(self):
         for record in self:
+            if record.apix_bind_ids:
+                raise UserError(
+                    self.env._("This invoice has already been sent as an eInvoice")
+                )
+
+            record.validate_einvoice()
+
             # Transmit method name
             transmit_method = record.transmit_method_id.name
 
@@ -224,8 +235,13 @@ class AccountMove(models.Model):
 
             _logger.debug("Response for '%s': %s", record.name, response)
 
-            record.date_einvoice_sent = fields.Date.today()
-            record.is_move_sent = True
+            record.write(
+                {
+                    "date_einvoice_sent": fields.Date.today(),
+                    "is_move_sent": True,
+                    "is_being_sent": False,
+                }
+            )
 
             apix_batch_id = response.find(".//Value[@type='BatchID']")
             if apix_batch_id is not None:
@@ -261,6 +277,7 @@ class AccountMove(models.Model):
     def validate_einvoice(self):
         result = False
         msg = False
+        self.ensure_one()
 
         # Invoice can be sent only when it is open or paid
         # open: normal invoice

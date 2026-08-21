@@ -19,9 +19,9 @@
 ##############################################################################
 
 {
-    "name": "APIX Connector",
-    "summary": "APIX EDI connector for receiving and sending eInvoices",
-    "version": "19.0.1.0.0",
+    "name": "Apix eInvoice Connector",
+    "summary": "Apix EDI connector for receiving and sending eInvoices",
+    "version": "19.0.1.0.1",
     "category": "Connector",
     "website": "https://github.com/OCA/l10n-finland",
     "author": "Odoo Community Association (OCA), Futural",
@@ -43,6 +43,7 @@
         "data/ir_cron.xml",
         "security/ir.model.access.csv",
         "views/account_invoice_form.xml",
+        "views/account_invoice_list.xml",
         "views/apix_backend_form.xml",
         "views/apix_backend_menu.xml",
     ],

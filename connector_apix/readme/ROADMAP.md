@@ -1,0 +1,3 @@
+- Better utilization of core EDI functions/fields (like edi_state), and remove misleading "einvoice sent"-fields
+- Sending multiple invoices at once
+- An option to use Peppol-format instead of Finvoice
