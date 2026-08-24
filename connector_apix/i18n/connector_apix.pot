@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -25,7 +25,6 @@ msgid "APIX"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model,name:connector_apix.model_apix_backend
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__backend_id
 #: model:ir.model.fields,field_description:connector_apix.field_apix_binding__backend_id
 msgid "APIX Backend"
@@ -79,7 +78,13 @@ msgstr ""
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
-msgid "APIX refetch invoices for '{}'"
+msgid "APIX import invoice \"%(document_id)s\" from %(sender_name)s"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "APIX refetch invoices for '%s'"
 msgstr ""
 
 #. module: connector_apix
@@ -115,6 +120,11 @@ msgid "Access warning"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__account_fiscal_country_group_codes
+msgid "Account Fiscal Country Group Codes"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__message_needaction
 msgid "Action Needed"
 msgstr ""
@@ -140,6 +150,31 @@ msgid "Activity Type Icon"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__adjusting_entries_count
+msgid "Adjusting Entries Count"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__adjusting_entry_origin_label
+msgid "Adjusting Entry Origin Label"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__adjusting_entry_origin_move_ids
+msgid "Adjusting Entry Origin Moves"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__adjusting_entry_origin_moves_count
+msgid "Adjusting Entry Origin Moves Count"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__alerts
+msgid "Alerts"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__always_tax_exigible
 msgid "Always Tax Exigible"
 msgstr ""
@@ -155,23 +190,39 @@ msgid "Amount Due Signed"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__amount_paid
-msgid "Amount paid"
-msgstr ""
-
-#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__amount_total_words
 msgid "Amount total in words"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.constraint,message:connector_apix.constraint_apix_account_invoice_odoo_uniq
-msgid "An APIX binding for this invoice already exists."
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/binding.py:0
+msgid "An APIX binding for invoice '%s' already exists."
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model,name:connector_apix.model_apix_backend
+msgid "Apix Backend"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Apix Schedulers"
 msgstr ""
 
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
-msgid "Apix Backend"
+msgid ""
+"Are you sure you want to refetch invoices? This will reprocess all "
+"previously fetched invoices and may result in duplicates."
+msgstr ""
+
+#. module: connector_apix
+#: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
+msgid ""
+"Are you sure you want to revoke the authentication? This will require re-"
+"authentication."
 msgstr ""
 
 #. module: connector_apix
@@ -200,13 +251,8 @@ msgid "Authenticate"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__authorized_transaction_ids
-msgid "Authorized Transactions"
-msgstr ""
-
-#. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_account_invoice__invoice_vendor_bill_id
-msgid "Auto-complete from a past bill."
+msgid "Auto-complete from a previous bill or refund."
 msgstr ""
 
 #. module: connector_apix
@@ -263,11 +309,6 @@ msgid "Cash Rounding Method"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__checked
-msgid "Checked"
-msgstr ""
-
-#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__commercial_partner_id
 msgid "Commercial Entity"
 msgstr ""
@@ -289,8 +330,9 @@ msgid "Company UUID"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.constraint,message:connector_apix.constraint_apix_backend_company_uniq
-msgid "Company can have only one backend."
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Company can have only one Apix backend."
 msgstr ""
 
 #. module: connector_apix
@@ -316,6 +358,12 @@ msgstr ""
 
 #. module: connector_apix
 #. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Could not create invoice"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid "Could not find a Finvoice document to export"
 msgstr ""
@@ -323,6 +371,11 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__country_code
 msgid "Country Code"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__adjusting_entries_move_ids
+msgid "Created Adjusting Entries"
 msgstr ""
 
 #. module: connector_apix
@@ -378,6 +431,11 @@ msgid "Date"
 msgstr ""
 
 #. module: connector_apix
+#: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
+msgid "Deauthenticate"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__debug
 msgid "Debug mode"
 msgstr ""
@@ -422,14 +480,27 @@ msgid "Display Inactive Currency Warning"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__display_link_qr_code
+msgid "Display Link QR-code"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_account_move__display_name
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__display_name
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__display_name
+#: model:ir.model.fields,field_description:connector_apix.field_apix_binding__display_name
+#: model:ir.model.fields,field_description:connector_apix.field_transmit_method__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__display_qr_code
 msgid "Display QR-code"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__display_send_button
+msgid "Display Send Button"
 msgstr ""
 
 #. module: connector_apix
@@ -498,6 +569,11 @@ msgid "Environment"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,help:connector_apix.field_apix_account_invoice__no_followup
+msgid "Exclude this journal entry from follow-up reports."
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__expected_currency_rate
 msgid "Expected Currency Rate"
 msgstr ""
@@ -505,6 +581,12 @@ msgstr ""
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
 msgid "Fetch invoices"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Fetching invoices in the background..."
 msgstr ""
 
 #. module: connector_apix
@@ -520,12 +602,6 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__finvoice_total_warning
 msgid "Finvoice Total Warning"
-msgstr ""
-
-#. module: connector_apix
-#. odoo-python
-#: code:addons/connector_apix/models/account_move/importer.py:0
-msgid "Finvoice is mandatory information"
 msgstr ""
 
 #. module: connector_apix
@@ -587,13 +663,21 @@ msgid "Highest Name"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__highlight_send_button
+msgid "Highlight Send Button"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_account_invoice__edi_error_count
 msgid "How many EDIs are in error for this move?"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_account_move__id
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__id
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__id
+#: model:ir.model.fields,field_description:connector_apix.field_apix_binding__id
+#: model:ir.model.fields,field_description:connector_apix.field_transmit_method__id
 msgid "ID"
 msgstr ""
 
@@ -623,19 +707,17 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.fields,help:connector_apix.field_apix_account_invoice__checked
-msgid ""
-"If this checkbox is not ticked, it means that the user was not sure of all "
-"the related information at the time of the creation of the move and that the"
-" move needs to be checked again."
-msgstr ""
-
-#. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_account_invoice__restrict_mode_hash_table
 msgid ""
 "If ticked, when an entry is posted, we retroactively hash all moves in the "
 "sequence from the entry back to the last hashed entry. The hash can also be "
 "performed on demand by the Secure Entries wizard."
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Imported invoice with id '%s'"
 msgstr ""
 
 #. module: connector_apix
@@ -666,6 +748,12 @@ msgid ""
 msgstr ""
 
 #. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Invalid response: response status not found"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__odoo_id
 msgid "Invoice"
 msgstr ""
@@ -678,6 +766,11 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__invoice_has_outstanding
 msgid "Invoice Has Outstanding"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__invoice_incoterm_placeholder
+msgid "Invoice Incoterm Placeholder"
 msgstr ""
 
 #. module: connector_apix
@@ -706,6 +799,12 @@ msgid "Invoice lines"
 msgstr ""
 
 #. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid "Invoice sent as '%s'"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__invoice_template_id
 msgid "Invoice template"
 msgstr ""
@@ -721,6 +820,16 @@ msgid "Is Being Sent"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__is_draft_duplicated_ref_ids
+msgid "Is Draft Duplicated Ref"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__is_exact_move_duplicate
+msgid "Is Exact Move Duplicate"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__message_is_follower
 msgid "Is Follower"
 msgstr ""
@@ -733,6 +842,11 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__is_move_sent
 msgid "Is Move Sent"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__is_sale_installed
+msgid "Is Sale Installed"
 msgstr ""
 
 #. module: connector_apix
@@ -765,6 +879,16 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__line_ids
 msgid "Journal Items"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__journal_line_ids
+msgid "Journal Items (DEPRECATED)"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__sanitize_payment_reference
+msgid "Label sanitize"
 msgstr ""
 
 #. module: connector_apix
@@ -873,6 +997,17 @@ msgid "Next Payment Date"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__no_followup
+msgid "No Follow-Up"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid "No backend found"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__name
 msgid "Number"
 msgstr ""
@@ -932,11 +1067,6 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__partner_id
 msgid "Partner"
-msgstr ""
-
-#. module: connector_apix
-#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__partner_credit
-msgid "Partner Credit"
 msgstr ""
 
 #. module: connector_apix
@@ -1000,6 +1130,33 @@ msgid "Payments that have been reconciled with this invoice."
 msgstr ""
 
 #. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid "Please define a bank account for the invoice."
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid ""
+"Please set VAT number for the customer '%s' before sending an eInvoice."
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid ""
+"Please set eInvoice operator for the customer '%s' before sending an "
+"eInvoice."
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid "Please set edicode for the customer '%s' before sending an eInvoice."
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__access_url
 msgid "Portal Access URL"
 msgstr ""
@@ -1055,6 +1212,17 @@ msgid "Refetch invoices"
 msgstr ""
 
 #. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Refetching invoices in the background..."
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__exchange_diff_partial_ids
+msgid "Related reconciliation"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__support_email
 msgid "Replaces \"servicedesk@apix.fi\" with this address, if set"
 msgstr ""
@@ -1062,11 +1230,6 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__invoice_template_id
 msgid "Report template used when sending invoices via APIX"
-msgstr ""
-
-#. module: connector_apix
-#: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
-msgid "Reset authentication"
 msgstr ""
 
 #. module: connector_apix
@@ -1085,6 +1248,11 @@ msgid "Reversal of"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__checked
+msgid "Reviewed"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__invoice_user_id
 msgid "Salesperson"
 msgstr ""
@@ -1092,6 +1260,12 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__debug
 msgid "Save debugging data, like APIX payload as an attachment"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_backend__scheduler_count
+#: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
+msgid "Schedulers"
 msgstr ""
 
 #. module: connector_apix
@@ -1150,6 +1324,11 @@ msgid "Show Discount Details"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__show_journal
+msgid "Show Journal"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__show_name_warning
 msgid "Show Name Warning"
 msgstr ""
@@ -1162,6 +1341,11 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__show_reset_to_draft_button
 msgid "Show Reset To Draft Button"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__show_taxable_supply_date
+msgid "Show Taxable Supply Date"
 msgstr ""
 
 #. module: connector_apix
@@ -1226,6 +1410,12 @@ msgid "Support email"
 msgstr ""
 
 #. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Task started"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__amount_tax
 msgid "Tax"
 msgstr ""
@@ -1258,6 +1448,16 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__tax_calculation_rounding_method
 msgid "Tax calculation rounding method"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__taxable_supply_date
+msgid "Taxable Supply Date"
+msgstr ""
+
+#. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__taxable_supply_date_placeholder
+msgid "Taxable Supply Date Placeholder"
 msgstr ""
 
 #. module: connector_apix
@@ -1345,6 +1545,18 @@ msgstr ""
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
+msgid "This invoice has already been sent as an eInvoice"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid "This invoice has been marked to be sent manually."
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
 msgid "This invoice has no company."
 msgstr ""
 
@@ -1371,16 +1583,6 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__amount_total_in_currency_signed
 msgid "Total in Currency Signed"
-msgstr ""
-
-#. module: connector_apix
-#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__transaction_count
-msgid "Transaction Count"
-msgstr ""
-
-#. module: connector_apix
-#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__transaction_ids
-msgid "Transactions"
 msgstr ""
 
 #. module: connector_apix
@@ -1442,8 +1644,25 @@ msgid "UBL/CII File"
 msgstr ""
 
 #. module: connector_apix
+#: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__ubl_cii_xml_filename
+msgid "UBL/CII Filename"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields.selection,name:connector_apix.selection__apix_backend__state__unconfirmed
 msgid "Unconfirmed"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Unknown error"
+msgstr ""
+
+#. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "Unknown status code"
 msgstr ""
 
 #. module: connector_apix
@@ -1489,11 +1708,6 @@ msgid "Vendor Bill"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.fields,field_description:connector_apix.field_apix_backend__version
-msgid "Version"
-msgstr ""
-
-#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__website_message_ids
 msgid "Website Messages"
 msgstr ""
@@ -1504,6 +1718,12 @@ msgid "Website communication history"
 msgstr ""
 
 #. module: connector_apix
+#. odoo-python
+#: code:addons/connector_apix/models/account_move/common.py:0
+msgid "You can only send eInvoice after the invoice is posted"
+msgstr ""
+
+#. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_account_bank_statement_line__date_einvoice_sent
 #: model:ir.model.fields,field_description:connector_apix.field_account_move__date_einvoice_sent
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__date_einvoice_sent
@@ -1511,6 +1731,7 @@ msgid "eInvoice sent"
 msgstr ""
 
 #. module: connector_apix
-#: model:ir.model.fields.selection,name:connector_apix.selection__apix_backend__version__1_14
-msgid "v1.14"
+#. odoo-python
+#: code:addons/connector_apix/models/apix_backend.py:0
+msgid "id"
 msgstr ""
