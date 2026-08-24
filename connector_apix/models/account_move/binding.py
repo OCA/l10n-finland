@@ -1,8 +1,5 @@
-import logging
-
-from odoo import fields, models
-
-_logger = logging.getLogger(__name__)
+from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class ApixAccountInvoice(models.Model):
@@ -19,10 +16,22 @@ class ApixAccountInvoice(models.Model):
         ondelete="cascade",
     )
 
-    _sql_constraints = [
-        (
-            "odoo_uniq",
-            "unique(backend_id, odoo_id)",
-            "An APIX binding for this invoice already exists.",
-        ),
-    ]
+    @api.constrains("backend_id", "odoo_id")
+    def _check_odoo_uniq(self):
+        for record in self:
+            if (
+                self.search_count(
+                    [
+                        ("backend_id", "=", record.backend_id.id),
+                        ("odoo_id", "=", record.odoo_id.id),
+                        ("id", "!=", record.id),
+                    ]
+                )
+                > 0
+            ):
+                raise ValidationError(
+                    self.env._(
+                        "An APIX binding for invoice '%s' already exists.",
+                        record.odoo_id.name,
+                    ),
+                )

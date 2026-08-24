@@ -10,7 +10,7 @@ from zipfile import ZipFile
 import requests
 from lxml import etree as ET
 
-from odoo import fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 from ..constants import APIX_CHANNEL
@@ -21,12 +21,8 @@ _logger = logging.getLogger(__name__)
 class ApixBackend(models.Model):
     # region Private attributes
     _name = "apix.backend"
-    _description = "APIX Backend"
+    _description = "Apix Backend"
     _inherit = "connector.backend"
-
-    _sql_constraints = [
-        ("company_uniq", "unique(company_id)", "Company can have only one backend."),
-    ]
 
     _FIELD_STATES = {
         "confirmed": [("readonly", True)],
@@ -67,17 +63,10 @@ class ApixBackend(models.Model):
         help="Password used to login to laskumappi.fi",
     )
 
-    # Apix API version
-    version = fields.Selection(
-        selection=[("1.14", "v1.14")],
-        default="1.14",
-        required=True,
-    )
-
     # Apix environment
     environment = fields.Selection(
         selection=[("test", "Test"), ("production", "Production")],
-        default="test",
+        default="production",
         required=True,
     )
 
@@ -176,7 +165,26 @@ class ApixBackend(models.Model):
         required=True,
         default=lambda s: s.env.ref("account.account_invoices"),
     )
+
+    scheduler_count = fields.Integer(
+        string="Schedulers",
+        compute="_compute_scheduler_count",
+    )
     # endregion
+
+    # region Constraints and Compute methods
+    @api.constrains("company_id")
+    def _check_company_uniq(self):
+        for record in self:
+            if (
+                self.search_count(
+                    [("company_id", "=", record.company_id.id), ("id", "!=", record.id)]
+                )
+                > 0
+            ):
+                raise ValidationError(
+                    self.env._("Company can have only one Apix backend.")
+                )
 
     def _compute_business_id(self):
         for record in self:
@@ -184,6 +192,23 @@ class ApixBackend(models.Model):
             business_id = record.company_id.company_registry or ""
 
             record.business_id = prefix + business_id
+
+    def _compute_scheduler_count(self):
+        for record in self:
+            record.scheduler_count = len(record._get_schedulers())
+
+    def _get_schedulers(self):
+        return (
+            self.env["ir.cron"]
+            .with_context(active_test=False)
+            .search(
+                [
+                    ("name", "ilike", "Apix"),
+                ]
+            )
+        )
+
+    # endregion
 
     # region Action methods
     def action_authenticate(self):
@@ -221,6 +246,17 @@ class ApixBackend(models.Model):
                 **job_kwargs
             ).list_invoices(refetch=False)
 
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": self.env._("Task started"),
+                "message": self.env._("Fetching invoices in the background..."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
     def action_einvoice_refetch(self):
         for record in self:
             # Add fetching to queue
@@ -233,6 +269,36 @@ class ApixBackend(models.Model):
             record.with_company(record.company_id.id).with_delay(
                 **job_kwargs
             ).list_invoices(refetch=True)
+
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": self.env._("Task started"),
+                "message": self.env._("Refetching invoices in the background..."),
+                "type": "success",
+                "sticky": False,
+            },
+        }
+
+    def action_open_schedulers(self):
+        """
+        Open Apix-related cron jobs
+        """
+        cron_jobs = self._get_schedulers()
+        backend_model = self.env.ref("connector_apix.model_apix_backend")
+
+        return {
+            "name": self.env._("Apix Schedulers"),
+            "type": "ir.actions.act_window",
+            "res_model": "ir.cron",
+            "view_mode": "list,form",
+            "domain": [("id", "in", cron_jobs.ids)],
+            "context": {
+                "default_model_id": backend_model.id,
+                "search_default_all": True,
+            },
+        }
 
     def list_invoices(self, refetch=False):
         """
