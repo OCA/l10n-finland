@@ -8,10 +8,10 @@
 
     <menuitem
         id="menu_apix_root"
-        parent="connector.menu_connector_root"
+        parent="l10n_fi_edicode.account_einvoicing_menu"
         name="APIX"
         sequence="10"
-        groups="connector.group_connector_manager"
+        groups="account.group_account_manager"
     />
 
     <menuitem
