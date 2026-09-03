@@ -6,114 +6,116 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-09-03 07:46+0000\n"
+"Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__company_uuid
 msgid "A unique identifier assigned to the company"
-msgstr ""
+msgstr "Yritykselle annettu yksilöllinen tunniste"
 
 #. module: connector_apix
 #: model:ir.ui.menu,name:connector_apix.menu_apix_root
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_move_form_admin
 msgid "APIX"
-msgstr ""
+msgstr "APIX"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__backend_id
 #: model:ir.model.fields,field_description:connector_apix.field_apix_binding__backend_id
 msgid "APIX Backend"
-msgstr ""
+msgstr "APIX-asetukset"
 
 #. module: connector_apix
 #: model:ir.actions.act_window,name:connector_apix.action_apix_backend
 msgid "APIX Backends"
-msgstr ""
+msgstr "APIX-asetukset"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__apix_batch_id
 #: model:ir.model.fields,field_description:connector_apix.field_apix_binding__apix_batch_id
 msgid "APIX Batch ID"
-msgstr ""
+msgstr "APIX Erän ID"
 
 #. module: connector_apix
 #: model:ir.model,name:connector_apix.model_apix_binding
 msgid "APIX Binding (abstract)"
-msgstr ""
+msgstr "APIX-sidos"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_account_bank_statement_line__apix_bind_ids
 #: model:ir.model.fields,field_description:connector_apix.field_account_move__apix_bind_ids
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__apix_bind_ids
 msgid "APIX Bindings"
-msgstr ""
+msgstr "APIX-sidokset"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__apix_accepted_document_id
 #: model:ir.model.fields,field_description:connector_apix.field_apix_binding__apix_accepted_document_id
 msgid "APIX ID"
-msgstr ""
+msgstr "APIX ID"
 
 #. module: connector_apix
 #: model:ir.model,name:connector_apix.model_apix_account_invoice
 msgid "APIX Invoice"
-msgstr ""
+msgstr "APIX Lasku"
 
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
 msgid "APIX configuration"
-msgstr ""
+msgstr "APIX-asetukset"
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
 msgid "APIX fetch invoices for '%s'"
-msgstr ""
+msgstr "APIX hae laskut kohteelle '%s'"
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
 msgid "APIX import invoice \"%(document_id)s\" from %(sender_name)s"
-msgstr ""
+msgstr "APIX tuo laskut \"%(document_id)s\" lähteestä %(sender_name)s"
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
 msgid "APIX refetch invoices for '%s'"
-msgstr ""
+msgstr "APIX hae laskut uudelleen kohteelle '%s'"
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid "APIX send invoice '%s'"
-msgstr ""
+msgstr "APIX lähetä lasku '%s'"
 
 #. module: connector_apix
 #: model:ir.actions.server,name:connector_apix.ir_cron_apix_purchase_invoice_import_ir_actions_server
 msgid "APIX: Import purchase invoices"
-msgstr ""
+msgstr "APIX: Tuo ostolaskut"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__abnormal_amount_warning
 msgid "Abnormal Amount Warning"
-msgstr ""
+msgstr "Varoitus epätavallisesta summasta"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__abnormal_date_warning
 msgid "Abnormal Date Warning"
-msgstr ""
+msgstr "Poikkeava päivämäärä -varoitus"
 
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_account_invoice__apix_accepted_document_id
 #: model:ir.model.fields,help:connector_apix.field_apix_binding__apix_accepted_document_id
 msgid "AcceptedDocumentID of this record in APIX"
-msgstr ""
+msgstr "Tämän tietueen AcceptedDocumentID APIX-järjestelmässä"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__access_warning
@@ -199,18 +201,18 @@ msgstr ""
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/binding.py:0
 msgid "An APIX binding for invoice '%s' already exists."
-msgstr ""
+msgstr "Laskulle ”%s” on jo olemassa APIX-sidos."
 
 #. module: connector_apix
 #: model:ir.model,name:connector_apix.model_apix_backend
 msgid "Apix Backend"
-msgstr ""
+msgstr "Apix-asetukset"
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
 msgid "Apix Schedulers"
-msgstr ""
+msgstr "APIX-automaatiot"
 
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
@@ -218,6 +220,8 @@ msgid ""
 "Are you sure you want to refetch invoices? This will reprocess all "
 "previously fetched invoices and may result in duplicates."
 msgstr ""
+"Haluatko varmasti hakea laskut uudelleen? Tämä käsittelee kaikki aiemmin "
+"haetut laskut uudelleen, mikä voi johtaa päällekkäisiin laskuihin."
 
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
@@ -225,6 +229,8 @@ msgid ""
 "Are you sure you want to revoke the authentication? This will require re-"
 "authentication."
 msgstr ""
+"Haluatko varmasti peruuttaa todennuksen? Tämä tulee vaatimaan uuden "
+"todennuksen."
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__ubl_cii_xml_id
@@ -292,7 +298,7 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__business_id
 msgid "Business code"
-msgstr ""
+msgstr "Yritystunnus"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__tax_cash_basis_created_move_ids
@@ -334,7 +340,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
 msgid "Company can have only one Apix backend."
-msgstr ""
+msgstr "Yrityksellä voi olla vain yhdet APIX-asetukset."
 
 #. module: connector_apix
 #: model:ir.model.fields.selection,name:connector_apix.selection__apix_backend__state__confirmed
@@ -367,7 +373,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid "Could not find a Finvoice document to export"
-msgstr ""
+msgstr "Vientiä varten tarkoitettua Finvoice-asiakirjaa ei löytynyt"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__country_code
@@ -562,12 +568,12 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__edi_state
 msgid "Electronic invoicing"
-msgstr ""
+msgstr "Sähköinen laskutus"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__environment
 msgid "Environment"
-msgstr ""
+msgstr "Ympäristö"
 
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_account_invoice__no_followup
@@ -582,28 +588,28 @@ msgstr ""
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
 msgid "Fetch invoices"
-msgstr ""
+msgstr "Hae laskut"
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
 msgid "Fetching invoices in the background..."
-msgstr ""
+msgstr "Laskuja haetaan taustalla..."
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__finvoice_expected_total
 msgid "Finvoice Expected Total"
-msgstr ""
+msgstr "Finvoice odotettu summa"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__finvoice_expected_total_incl
 msgid "Finvoice Expected Total (incl. VAT)"
-msgstr ""
+msgstr "Finvoice odotettu verollinen summa"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__finvoice_total_warning
 msgid "Finvoice Total Warning"
-msgstr ""
+msgstr "Finvoice summan varoitus"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__auto_post_origin_id
@@ -803,7 +809,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid "Invoice sent as '%s'"
-msgstr ""
+msgstr "Lasku lähetetty lähetystavalla '%s'"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__invoice_template_id
@@ -1036,7 +1042,7 @@ msgstr ""
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
 msgid "Odoo configuration"
-msgstr ""
+msgstr "Odoo-asetukset"
 
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__prefix
@@ -1044,6 +1050,8 @@ msgid ""
 "Optional business code prefix. Some virtual operators use these. If you "
 "don't know what this is, leave it empty"
 msgstr ""
+"Valinnainen yrityskoodin etuliite. Jotkut virtuaalioperaattorit käyttävät "
+"näitä. Jos et tiedä, mikä tämä on, jätä kenttä tyhjäksi"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__invoice_origin
@@ -1053,17 +1061,17 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__owner_id
 msgid "Owner ID"
-msgstr ""
+msgstr "Omistajan ID"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__invoice_pdf_report_id
 msgid "PDF Attachment"
-msgstr ""
+msgstr "PDF-liite"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__invoice_pdf_report_file
 msgid "PDF File"
-msgstr ""
+msgstr "PDF-tiedosto"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__partner_id
@@ -1078,12 +1086,12 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__password
 msgid "Password"
-msgstr ""
+msgstr "Salasana"
 
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__password
 msgid "Password used to login to laskumappi.fi"
-msgstr ""
+msgstr "Salasana, jota käytetään laskumappi.fi-sivustolle kirjautumiseen"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__origin_payment_id
@@ -1134,14 +1142,14 @@ msgstr ""
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid "Please define a bank account for the invoice."
-msgstr ""
+msgstr "Määritä laskulle pankkitili."
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid ""
 "Please set VAT number for the customer '%s' before sending an eInvoice."
-msgstr ""
+msgstr "Määritä asiakkaalle '%s' ALV-numero ennen laskun lähetystä."
 
 #. module: connector_apix
 #. odoo-python
@@ -1149,13 +1157,13 @@ msgstr ""
 msgid ""
 "Please set eInvoice operator for the customer '%s' before sending an "
 "eInvoice."
-msgstr ""
+msgstr "Määritä asiakkaalle '%s' verkkolaskuoperaattori ennen laskun lähetystä."
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid "Please set edicode for the customer '%s' before sending an eInvoice."
-msgstr ""
+msgstr "Määritä asiakkaalle '%s' verkkolaskuosoite ennen laskun lähetystä."
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__access_url
@@ -1175,12 +1183,12 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__prefix
 msgid "Prefix"
-msgstr ""
+msgstr "Etuliite"
 
 #. module: connector_apix
 #: model:ir.model.fields.selection,name:connector_apix.selection__apix_backend__environment__production
 msgid "Production"
-msgstr ""
+msgstr "Tuotanto"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__quick_edit_mode
@@ -1195,7 +1203,7 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__partner_bank_id
 msgid "Recipient Bank"
-msgstr ""
+msgstr "Vastaanottajan pankki"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__reconciled_payment_ids
@@ -1210,13 +1218,13 @@ msgstr ""
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
 msgid "Refetch invoices"
-msgstr ""
+msgstr "Hae laskut uudelleen"
 
 #. module: connector_apix
 #. odoo-python
 #: code:addons/connector_apix/models/apix_backend.py:0
 msgid "Refetching invoices in the background..."
-msgstr ""
+msgstr "Laskuja haetaan uudelleen taustalla..."
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__exchange_diff_partial_ids
@@ -1226,17 +1234,17 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__support_email
 msgid "Replaces \"servicedesk@apix.fi\" with this address, if set"
-msgstr ""
+msgstr "Korvaa ”servicedesk@apix.fi” tällä osoitteella, jos asetettu"
 
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__invoice_template_id
 msgid "Report template used when sending invoices via APIX"
-msgstr ""
+msgstr "APIX-rajapinnan kautta lähetettävien laskujen laskupohja"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Vastuullinen"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__reversal_move_ids
@@ -1261,13 +1269,13 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__debug
 msgid "Save debugging data, like APIX payload as an attachment"
-msgstr ""
+msgstr "Tallenna virheenkorjaustiedot, kuten APIX-payload, liitetiedostona"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__scheduler_count
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_apix_backend_form
 msgid "Schedulers"
-msgstr ""
+msgstr "Aikatauluttajat"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__restrict_mode_hash_table
@@ -1604,17 +1612,17 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__transmit_method_id
 msgid "Transmission Method"
-msgstr ""
+msgstr "Lähetystapa"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__transmit_method_code
 msgid "Transmission Method Code"
-msgstr ""
+msgstr "Lähetystavan koodi"
 
 #. module: connector_apix
 #: model:ir.model,name:connector_apix.model_transmit_method
 msgid "Transmit Method of a document"
-msgstr ""
+msgstr "Asiakirjan lähetystapa"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__move_type
@@ -1696,12 +1704,12 @@ msgstr ""
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_backend__username
 msgid "Username"
-msgstr ""
+msgstr "Käyttäjätunnus"
 
 #. module: connector_apix
 #: model:ir.model.fields,help:connector_apix.field_apix_backend__username
 msgid "Username used to login to laskumappi.fi"
-msgstr ""
+msgstr "Käyttäjätunnus, jolla kirjaudutaan laskumappi.fi-sivustolle"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__invoice_vendor_bill_id
@@ -1722,14 +1730,14 @@ msgstr ""
 #. odoo-python
 #: code:addons/connector_apix/models/account_move/common.py:0
 msgid "You can only send eInvoice after the invoice is posted"
-msgstr ""
+msgstr "Voit lähettää verkkolaskun vasta sen jälkeen, kun lasku on hyväksytty"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_account_bank_statement_line__date_einvoice_sent
 #: model:ir.model.fields,field_description:connector_apix.field_account_move__date_einvoice_sent
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__date_einvoice_sent
 msgid "eInvoice sent"
-msgstr ""
+msgstr "Verkkolasku lähetetty"
 
 #. module: connector_apix
 #. odoo-python
