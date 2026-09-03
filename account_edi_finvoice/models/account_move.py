@@ -77,11 +77,22 @@ class AccountMove(models.Model):
             )
 
     def _get_edi_decoder(self, file_data, new=False):
-        if file_data["type"] == "xml":
-            if self._is_finvoice(file_data["xml_tree"]):
-                self._import_finvoice(file_data["xml_tree"], self)
-
+        if file_data["import_file_type"] == "finvoice":
+            return {
+                "priority": 20,
+                "decoder": self._import_finvoice_document,
+            }
         return super()._get_edi_decoder(file_data, new=new)
+
+    @api.model
+    def _get_import_file_type(self, file_data):
+        tree = file_data["xml_tree"]
+        if tree is not None and self._is_finvoice(tree):
+            return "finvoice"
+        return super()._get_import_file_type(file_data)
+
+    def _import_finvoice_document(self, invoice, file_data, new=False):
+        self._import_finvoice(file_data["xml_tree"], invoice)
 
     def _is_finvoice(self, tree):
         return tree.tag == "Finvoice"
