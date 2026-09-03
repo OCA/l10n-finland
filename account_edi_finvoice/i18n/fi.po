@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-09-03 07:46+0000\n"
+"Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_edi_finvoice
 #. odoo-python
@@ -21,67 +23,69 @@ msgid ""
 "\n"
 "Seller Reference: %s"
 msgstr ""
+"\n"
+"Myyjän viite: %s"
 
 #. module: account_edi_finvoice
 #. odoo-python
 #: code:addons/account_edi_finvoice/models/account_move.py:0
 msgid "Could not find a tax for %s"
-msgstr ""
+msgstr "Arvolle %s ei löytynyt veroa"
 
 #. module: account_edi_finvoice
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_edi_format__display_name
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Näyttönimi"
 
 #. module: account_edi_finvoice
 #: model:ir.model,name:account_edi_finvoice.model_account_edi_format
 msgid "EDI format"
-msgstr ""
+msgstr "Verkkolaskuformaatti"
 
 #. module: account_edi_finvoice
 #: model_terms:ir.ui.view,arch_db:account_edi_finvoice.export_finvoice
 msgid "EN16931"
-msgstr ""
+msgstr "EN16931"
 
 #. module: account_edi_finvoice
 #: model_terms:ir.ui.view,arch_db:account_edi_finvoice.export_finvoice
 msgid "FI"
-msgstr ""
+msgstr "FI"
 
 #. module: account_edi_finvoice
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_bank_statement_line__finvoice_expected_total
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__finvoice_expected_total
 msgid "Finvoice Expected Total"
-msgstr ""
+msgstr "Finvoicen odotettu summa"
 
 #. module: account_edi_finvoice
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_bank_statement_line__finvoice_expected_total_incl
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__finvoice_expected_total_incl
 msgid "Finvoice Expected Total (incl. VAT)"
-msgstr ""
+msgstr "Finvoicen odotettu verollinen summa"
 
 #. module: account_edi_finvoice
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_bank_statement_line__finvoice_total_warning
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__finvoice_total_warning
 msgid "Finvoice Total Warning"
-msgstr ""
+msgstr "Finvoicen summan varoitus"
 
 #. module: account_edi_finvoice
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_edi_format__id
 #: model:ir.model.fields,field_description:account_edi_finvoice.field_account_move__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_edi_finvoice
 #: model:ir.model,name:account_edi_finvoice.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Päiväkirjamerkintä"
 
 #. module: account_edi_finvoice
 #: model_terms:ir.ui.view,arch_db:account_edi_finvoice.export_finvoice
 msgid "SHA"
-msgstr ""
+msgstr "SHA"
 
 #. module: account_edi_finvoice
 #. odoo-python
@@ -92,6 +96,9 @@ msgid ""
 "logs. Here is the error, which may give you an idea on the cause of the "
 "problem : %s."
 msgstr ""
+"Finvoicen XML-tiedosto ei ole virallisen XML-skeeman mukainen. XML-tiedosto "
+"ja virheviesti on kirjattu palvelinlogiin. Tässä on virhe, joka saattaa "
+"kertoa ongelman syystä: %s."
 
 #. module: account_edi_finvoice
 #. odoo-python
@@ -101,15 +108,18 @@ msgid ""
 "%(actual)s %(currency)s (difference: %(diff)s %(currency)s). Check for "
 "missing charges (e.g. shipping, handling)."
 msgstr ""
+"Finvoicen summa on %(expected)s %(currency)s mutta rivien summa on %(actual)"
+"s %(currency)s (erotus: %(diff)s %(currency)s). Tarkista puuttuuko jotain "
+"rivejä (esim. toimitus- tai käsittelymaksu)."
 
 #. module: account_edi_finvoice
 #. odoo-python
 #: code:addons/account_edi_finvoice/models/account_edi_format.py:0
 msgid "This Finvoice XML file is not an invoice/refund file"
-msgstr ""
+msgstr "Tämä Finvoice XML-tiedosto ei näyttäisi olevan lasku/hyvitys"
 
 #. module: account_edi_finvoice
 #. odoo-python
 #: code:addons/account_edi_finvoice/models/account_edi_format.py:0
 msgid "Using comma as thousands separator not supported! (%s)"
-msgstr ""
+msgstr "Pilkun käyttö tuhaterottimena ei ole tuettu! (%s)"
