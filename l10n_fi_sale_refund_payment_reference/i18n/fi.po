@@ -6,25 +6,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-09-03 07:46+0000\n"
+"Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: l10n_fi_sale_refund_payment_reference
 #: model:ir.model.fields,field_description:l10n_fi_sale_refund_payment_reference.field_account_move__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Näyttönimi"
 
 #. module: l10n_fi_sale_refund_payment_reference
 #: model:ir.model.fields,field_description:l10n_fi_sale_refund_payment_reference.field_account_move__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: l10n_fi_sale_refund_payment_reference
 #: model:ir.model,name:l10n_fi_sale_refund_payment_reference.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Päiväkirjamerkintä"
