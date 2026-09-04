@@ -98,6 +98,7 @@ Contributors
 - `Futural <https://futural.fi>`__:
 
   - Jarmo Kortetjärvi jarmo.kortetjarvi@futural.fi
+  - Timo Talvitie timo.talvitie@futural.fi
 
 - `Goodahead <https://www.goodahead.com/>`__
 
