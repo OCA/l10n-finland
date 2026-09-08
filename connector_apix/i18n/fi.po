@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-09-03 07:46+0000\n"
+"PO-Revision-Date: 2026-09-08 14:46+0000\n"
 "Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -1295,12 +1295,12 @@ msgstr ""
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_move_form
 msgid "Send eInvoice"
-msgstr ""
+msgstr "Lähetä verkkolasku"
 
 #. module: connector_apix
 #: model_terms:ir.ui.view,arch_db:connector_apix.view_move_form
 msgid "Send via printing service"
-msgstr ""
+msgstr "Lähetä tulostuspalvelulla"
 
 #. module: connector_apix
 #: model:ir.model.fields,field_description:connector_apix.field_apix_account_invoice__sending_data
