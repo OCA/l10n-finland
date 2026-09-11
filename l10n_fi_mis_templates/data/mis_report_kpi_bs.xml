@@ -1,0 +1,323 @@
+<odoo>
+    <!-- VASTAAVAA -->
+
+    <record id="mis_template_financial_report.kpi_assets" model="mis.report.kpi">
+        <field
+            name="expression"
+        >account_tag_intangible_assets + account_tag_tangible_assets + account_tag_investments + account_tag_inventory + account_tag_receivables_long_term + account_tag_receivables + account_tag_financial_assets + account_tag_liquidity</field>
+        <field name="auto_expand_accounts">false</field>
+    </record>
+
+    <!-- Pysyvät vastaavat -->
+    <!-- region Aineettomat hyödykkeet -->
+    <record id="kpi_account_tag_intangible_assets" model="mis.report.kpi">
+        <field name="name">account_tag_intangible_assets</field>
+        <field name="description">Aineettomat hyödykkeet</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_development_costs').id,ref('l10n_fi.account_tag_immaterial_rights').id,ref('l10n_fi.account_tag_goodwill').id,ref('l10n_fi.account_tag_other_long_term_expenses').id,ref('l10n_fi.account_tag_advance_payments_intangible').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">10</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Aineelliset hyödykkeet -->
+    <record id="kpi_account_tag_tangible_assets" model="mis.report.kpi">
+        <field name="name">account_tag_tangible_assets</field>
+        <field name="description">Aineelliset hyödykkeet</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_land_and_water_areas_owned').id,ref('l10n_fi.account_tag_immaterial_rights').id,ref('l10n_fi.account_tag_land_and_water_rights_lease').id,ref('l10n_fi.account_tag_buildings_owned').id,ref('l10n_fi.account_tag_building_leases').id,ref('l10n_fi.account_tag_machines_and_hardware').id,ref('l10n_fi.account_tag_other_tangible_assets').id,ref('l10n_fi.account_tag_payments_on_account_tangible').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">11</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Sijoitukset -->
+    <record id="kpi_account_tag_investments" model="mis.report.kpi">
+        <field name="name">account_tag_investments</field>
+        <field name="description">Sijoitukset</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_shares_in_group_companies').id,ref('l10n_fi.account_tag_receivables_from_associated_companies_investments').id,ref('l10n_fi.account_tag_shares_in_associated_companies').id,ref('l10n_fi.account_tag_other_shares_and_participations').id,ref('l10n_fi.account_tag_other_receivables_investments').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">12</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- Vaihtuvat vastaavat -->
+    <!-- region Vaihto-omaisuus -->
+    <record id="kpi_account_tag_inventory" model="mis.report.kpi">
+        <field name="name">account_tag_inventory</field>
+        <field name="description">Vaihto-omaisuus</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_materials_and_supplies_inventories').id,ref('l10n_fi.account_tag_work_in_progress').id,ref('l10n_fi.account_tag_finished_goods_inventories').id,ref('l10n_fi.account_tag_goods_in_transit').id,ref('l10n_fi.account_tag_other_current_assets').id,ref('l10n_fi.account_tag_advance_payments_for_property').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">13</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Pitkäaikaiset saamiset -->
+    <record id="kpi_account_tag_receivables_long_term" model="mis.report.kpi">
+        <field name="name">account_tag_receivables_long_term</field>
+        <field name="description">Pitkäaikaiset saamiset</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_trade_receivables_long-term').id,ref('l10n_fi.account_tag_receivables_from_group_long-term').id,ref('l10n_fi.account_tag_receivables_from_associated_companies_non-current').id,ref('l10n_fi.account_tag_loan_receivables_long-term').id,ref('l10n_fi.account_tag_deferred_tax_assets_are_long-term').id,ref('l10n_fi.account_tag_other_long-term_receivables').id,ref('l10n_fi.account_tag_unpaid_shares_of_long-term').id,ref('l10n_fi.account_tag_prepaid_expenses_and_long-term').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">14</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Lyhytaikaiset saamiset -->
+    <record id="kpi_account_tag_receivables" model="mis.report.kpi">
+        <field name="name">account_tag_receivables</field>
+        <field name="description">Lyhytaikaiset saamiset</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_accounts_receivable').id,ref('l10n_fi.account_tag_trade_group').id,ref('l10n_fi.account_tag_receivables_from_group').id,ref('l10n_fi.account_tag_accounts_receivable_from_associated_companies').id,ref('l10n_fi.account_tag_receivables_from_associated_companies').id,ref('l10n_fi.account_tag_loans').id,ref('l10n_fi.account_tag_deferred_tax_assets').id,ref('l10n_fi.account_tag_other_receivables').id,ref('l10n_fi.account_tag_unpaid_contributions').id,ref('l10n_fi.account_tag_prepayments_and_accrued_income').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">15</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Rahoitusarvopaperit -->
+    <record id="kpi_account_tag_financial_assets" model="mis.report.kpi">
+        <field name="name">account_tag_financial_assets</field>
+        <field name="description">Rahoitusarvopaperit</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_shares_in_the_consolidated_financial_securities').id,ref('l10n_fi.account_tag_other_shares_and_marketable_securities').id,ref('l10n_fi.account_tag_other_financial_assets').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">16</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Rahat ja pankkisaamiset -->
+    <record id="kpi_account_tag_liquidity" model="mis.report.kpi">
+        <field name="name">account_tag_liquidity</field>
+        <field name="description">Rahat ja pankkisaamiset</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_liquidity').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">16</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- VASTATTAVAA -->
+    <record
+        id="mis_template_financial_report.kpi_liability_total"
+        model="mis.report.kpi"
+    >
+        <field
+            name="expression"
+        >account_tag_capital + account_tag_reservations + account_tag_long_term + account_tag_short_term</field>
+    </record>
+
+    <record id="mis_template_financial_report.kpi_liability" model="mis.report.kpi">
+        <field name="expression">False</field>
+    </record>
+
+    <record
+        id="mis_template_financial_report.kpi_liability_pl_subreport"
+        model="mis.report.kpi"
+    >
+        <field name="expression">False</field>
+    </record>
+
+    <!-- Oma pääoma -->
+    <!-- region Oma pääoma -->
+    <record id="kpi_account_tag_capital" model="mis.report.kpi">
+        <field name="name">account_tag_capital</field>
+        <field name="description">Oma pääoma</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_stock_capital').id,ref('l10n_fi.account_tag_share_premium_account').id,ref('l10n_fi.account_tag_revaluation_reserve').id,ref('l10n_fi.account_tag_the_invested_unrestricted_equity_fund').id,ref('l10n_fi.account_tag_reserve').id,ref('l10n_fi.account_tag_the_articles_of_association_or_fund_under_the_rules').id,ref('l10n_fi.account_tag_the_fair_value_reserve').id,ref('l10n_fi.account_tag_other_reserves').id,ref('l10n_fi.account_tag_retained_earnings').id,ref('l10n_fi.account_tag_profit_for_the_period').id,ref('l10n_fi.account_tag_depreciation_difference').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">110</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- Vieras pääoma -->
+    <!-- region Pakolliset varaukset -->
+    <record id="kpi_account_tag_reservations" model="mis.report.kpi">
+        <field name="name">account_tag_reservations</field>
+        <field name="description">Pakolliset varaukset</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_tax_based_reservations').id,ref('l10n_fi.account_tag_provisions_for_pensions').id,ref('l10n_fi.account_tag_tax_provisions').id,ref('l10n_fi.account_tag_other_provisions').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">111</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Pitkäaikainen -->
+    <record id="kpi_account_tag_long_term" model="mis.report.kpi">
+        <field name="name">account_tag_long_term</field>
+        <field name="description">Pitkäaikainen</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_subordinated_loans_long-term').id,ref('l10n_fi.account_tag_bonds_are_long-term').id,ref('l10n_fi.account_tag_convertible_bonds_long-term').id,ref('l10n_fi.account_tag_loans_from_financial_institutions_long-term').id,ref('l10n_fi.account_tag_pension_loans_long-term').id,ref('l10n_fi.account_tag_advances_received_long-term').id,ref('l10n_fi.account_tag_accounts_payable-current').id,ref('l10n_fi.account_tag_bills_of_long-term').id,ref('l10n_fi.account_tag_consolidated_long-term_liabilities').id,ref('l10n_fi.account_tag_payables_to_associated_companies_non-current').id,ref('l10n_fi.account_tag_deferred_tax_liabilities_are_long-term').id,ref('l10n_fi.account_tag_other_long-term_liabilities').id,ref('l10n_fi.account_tag_accrued_long-term').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">112</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+
+    <!-- region Lyhytaikainen -->
+    <record id="kpi_account_tag_short_term" model="mis.report.kpi">
+        <field name="name">account_tag_short_term</field>
+        <field name="description">Lyhytaikainen</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_capital_loans_are_short-term').id,ref('l10n_fi.account_tag_bonds_short-term').id,ref('l10n_fi.account_tag_convertible_bonds_short-term').id,ref('l10n_fi.account_tag_loans_from_financial_institutions_short-term').id,ref('l10n_fi.account_tag_pension_loans_short-term').id,ref('l10n_fi.account_tag_advances_received_short-term').id,ref('l10n_fi.account_tag_accounts_payable').id,ref('l10n_fi.account_tag_bills_of_short-term').id,ref('l10n_fi.account_tag_trade_payables_to_group').id,ref('l10n_fi.account_tag_group_short-term_liabilities').id,ref('l10n_fi.account_tag_trade_payables_to_associated_companies').id,ref('l10n_fi.account_tag_payables_to_associated_companies').id,ref('l10n_fi.account_tag_deferred_tax_liabilities_are_short-term').id,ref('l10n_fi.account_tag_other_short-term_liabilities').id,ref('l10n_fi.account_tag_accrued_liabilities_short-term').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">113</field>
+        <field name="report_id" ref="mis_template_financial_report.report_bs" />
+    </record>
+    <!-- endregion -->
+</odoo>
