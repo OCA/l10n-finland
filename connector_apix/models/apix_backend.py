@@ -84,6 +84,19 @@ class ApixBackend(models.Model):
         "If you don't know what this is, leave it empty",
     )
 
+    software_name = fields.Selection(
+        selection=[
+            ("Standard", "Standard"),
+            ("Standard3WithFactoring", "Standard3WithFactoring"),
+        ],
+        string="Software name",
+        default="Standard",
+        required=True,
+        help="'Standard' for normal invoices. 'Standard3WithFactoring' for "
+        "connections used for factoring invoices. Sent as the 'soft' "
+        "parameter on every request.",
+    )
+
     transfer_id = fields.Char(
         string="Transfer id",
         readonly=True,
@@ -523,7 +536,7 @@ class ApixBackend(models.Model):
         values = OrderedDict()
 
         if show_soft:
-            values["soft"] = "Standard"
+            values["soft"] = self.software_name
 
         if show_ver:
             values["ver"] = "1.0"
