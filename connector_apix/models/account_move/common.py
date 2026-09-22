@@ -57,6 +57,14 @@ class AccountMove(models.Model):
                 # Send eInvoice now
                 record.einvoice_send()
 
+    def _get_apix_to_factoring(self) -> bool:
+        """
+        Overridable method for marking an invoice to factoring.
+        Return True if the invoice should be marked for factoring
+        """
+        self.ensure_one()
+        return False
+
     def _get_finvoice_object(self):
         finvoice_object = super()._get_finvoice_object()
 
@@ -231,7 +239,9 @@ class AccountMove(models.Model):
                         "mimetype": "application/zip",
                     }
                 )
-            response = backend.SendInvoiceZIP(payload)
+
+            to_factoring = self._get_apix_to_factoring()
+            response = backend.SendInvoiceZIP(payload, to_factoring=to_factoring)
 
             _logger.debug("Response for '%s': %s", record.name, response)
 
