@@ -65,7 +65,10 @@
                                 readonly="state == 'confirmed'"
                             />
                             <field name="prefix" readonly="state == 'confirmed'" />
-                            <field name="software_name" readonly="state == 'confirmed'" />
+                            <field
+                                name="software_name"
+                                readonly="state == 'confirmed'"
+                            />
                             <field name="company_id" readonly="state == 'confirmed'" />
                             <field name="environment" readonly="state == 'confirmed'" />
                             <field name="debug" widget="boolean_toggle" />
