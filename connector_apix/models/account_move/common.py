@@ -231,7 +231,8 @@ class AccountMove(models.Model):
                         "mimetype": "application/zip",
                     }
                 )
-            response = backend.SendInvoiceZIP(payload)
+            is_factoring = bool(getattr(record, "factoring_contract_id", False))
+            response = backend.SendInvoiceZIP(payload, is_factoring=is_factoring)
 
             _logger.debug("Response for '%s': %s", record.name, response)
 

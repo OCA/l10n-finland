@@ -84,19 +84,6 @@ class ApixBackend(models.Model):
         "If you don't know what this is, leave it empty",
     )
 
-    software_name = fields.Selection(
-        selection=[
-            ("Standard", "Standard"),
-            ("Standard3WithFactoring", "Standard3WithFactoring"),
-        ],
-        string="Software name",
-        default="Standard",
-        required=True,
-        help="'Standard' for normal invoices. 'Standard3WithFactoring' for "
-        "connections used for factoring invoices. Sent as the 'soft' "
-        "parameter on every request.",
-    )
-
     transfer_id = fields.Char(
         string="Transfer id",
         readonly=True,
@@ -532,14 +519,15 @@ class ApixBackend(models.Model):
         storage_id=False,  # StorageID
         storage_key=False,  # StorageKey
         mark_received=False,  # Mark invoice as received
+        is_factoring=False,  # Whether the invoice being sent is factored
     ):
         values = OrderedDict()
 
         if show_soft:
-            values["soft"] = self.software_name
+            values["soft"] = "Standard3WithFactoring" if is_factoring else "Standard3"
 
         if show_ver:
-            values["ver"] = "1.0"
+            values["ver"] = "1.0" if is_factoring else "2.0"
 
         if mark_received:
             values["markReceived"] = "yes"
@@ -568,9 +556,9 @@ class ApixBackend(models.Model):
 
         return values
 
-    def SendInvoiceZIP(self, payload):
+    def SendInvoiceZIP(self, payload, is_factoring=False):
         _logger.debug("APIX SendInvoiceZIP")
-        values = self.get_default_url_attributes()
+        values = self.get_default_url_attributes(is_factoring=is_factoring)
 
         command = "invoices"
         url = self.get_url(command, values)
