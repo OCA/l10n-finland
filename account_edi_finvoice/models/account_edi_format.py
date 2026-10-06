@@ -120,7 +120,7 @@ class AccountEdiFormat(models.Model):
 
         if hasattr(invoice, "overdue_interest"):
             # Allows implementing overdue fine percent
-            overdue_fine_percent = invoice.overdue_interest
+            overdue_fine_percent = str(invoice.overdue_interest).replace(".", ",")
         else:
             overdue_fine_percent = False
 
