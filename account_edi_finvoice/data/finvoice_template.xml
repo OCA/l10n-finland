@@ -197,7 +197,10 @@
 
                 <RowFreeText t-esc="line.name" />
 
-                <RowDiscountPercent t-if="line.discount" t-esc="line.discount" />
+                <RowDiscountPercent
+                    t-if="line.discount"
+                    t-esc="str(line.discount).replace('.',',')"
+                />
 
                 <RowVatRatePercent
                     t-esc="format_monetary(sum(line.tax_ids.mapped('amount')))"
