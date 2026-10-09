@@ -1,0 +1,322 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_fi_mis_templates
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_verokannan_0_alainen_liikevaihto
+msgid "0-verokannan alainen liikevaihto"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_10
+msgid "10 % vero"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_13_5
+msgid "13,5 % vero"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_25_5
+msgid "25,5 % vero"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_tangible_assets
+msgid "Aineelliset hyödykkeet"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_intangible_assets
+msgid "Aineettomat hyödykkeet"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_alarajahuojennuksen_maara
+msgid "Alarajahuojennuksen määrä"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_impairment_losses
+msgid "Arvonalentumiset"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_impairment
+msgid "Arvonalentumiset pysyvien vastaavien hyödykkeistä"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_arvonlisaveroilmoitus
+msgid "Arvonlisäveroilmoitus"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_pension_costs_of_production
+msgid "Henkilöstösivukulut"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_group_contribution
+msgid "Konserniavustus"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_financial_expenses
+msgid "Korkokulut ja muut rahoituskulut"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_expenses_other
+msgid "Liiketoiminnan muut kulut"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_income_other
+msgid "Liiketoiminnan muut tuotot"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_short_term
+msgid "Lyhytaikainen"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_receivables
+msgid "Lyhytaikaiset saamiset"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_maksettava_palautukseen_oikeuttava_vero
+msgid "Maksettava vero / Palautukseen oikeuttava vero (-)"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_other_additional_expenses
+msgid "Muut henkilösivukulut"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_other_interest_and_financial_income
+msgid "Muut korko- ja rahoitustuotot"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_other_tax
+msgid "Muut välittömät verot"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_sales_adjustment_items
+msgid "Myynnin oikaisuerät"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_sales
+msgid "Myynti"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_capital
+msgid "Oma pääoma"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_purchases_adjustment_items
+msgid "Ostojen oikaisuerät"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_purchases
+msgid "Ostot"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_reservations
+msgid "Pakolliset varaukset"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_wages_and_salaries_in_production
+msgid "Palkat ja palkkiot"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_palvelujen_myynnit_muihin_eu_maihin
+msgid "Palvelujen myynnit muihin EU-maihin"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_palveluostot_muista_eu_maista
+msgid "Palveluostot muista EU-maista"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_long_term
+msgid "Pitkäaikainen"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_receivables_long_term
+msgid "Pitkäaikaiset saamiset"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_change_in_depreciation_difference
+msgid "Poistoeron muutos"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_liquidity
+msgid "Rahat ja pankkisaamiset"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_financial_assets
+msgid "Rahoitusarvopaperit"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_rakentamispalvelun_ja_metalliromun_myynnit_kaannetty_verovelvollisuus
+msgid ""
+"Rakentamispalvelun ja metalliromun myynnit (käännetty verovelvollisuus)"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_rakentamispalvelun_ja_metalliromun_ostot_kaannetty_verovelvollisuus
+msgid "Rakentamispalvelun ja metalliromun ostot (käännetty verovelvollisuus)"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_investments
+msgid "Sijoitukset"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_depreciation
+msgid "Suunnitelman mukaiset poistot"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_profit_loss_after_taxes
+msgid "TILIKAUDEN VOITTO (TAPPIO)"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_tavaraostot_muista_eu_maista
+msgid "Tavaraostot muista EU-maista"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_tavaroiden_maahantuonnit_eu_ulkopuolelta
+msgid "Tavaroiden maahantuonnit EU:n ulkopuolelta"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_tavaroiden_myynnit_muihin_eu_maihin
+msgid "Tavaroiden myynnit muihin EU-maihin"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_taxes_for_the_period
+msgid "Tuloverot"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_investment_income_other_current_assets_group
+msgid "Tuotot muista pysyvien vastaavien sijoituksista"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_income_from_associated_company
+msgid "Tuotot osuuksista omistusyhteysyrityksissä"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_income_from_shares_in_group
+msgid "Tuotot osuuksista saman konsernin yrityksissä"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_external_services
+msgid "Ulkopuoliset palvelut"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report,name:l10n_fi_mis_templates.report_vat
+msgid "VAT Return (Arvonlisäveroilmoitus)"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_profit_loss_before_taxes
+msgid "VOITTO (TAPPIO) ENNEN TILINPÄÄTÖSSIIRTOJA JA VEROJA"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_inventory
+msgid "Vaihto-omaisuus"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_manufacturing_warehouse_change
+msgid "Valmiiden ja keskeneräisten tuotteiden varastojen muutos"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_manufacturing_own_use
+msgid "Valmistus omaan käyttöön"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_change_in_provisions
+msgid "Vapaaehtoisten varausten muutos"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_account_tag_change_in_inventories
+msgid "Varastojen muutos"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_kotimaan_myynneista_verokannoittain
+msgid "Vero kotimaan myynneistä verokannoittain"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_palveluostoista_muista_eu_maista
+msgid "Vero palveluostoista muista EU-maista"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_rakentamispalvelun_ja_metalliromun_ostoista_kaannetty_verovelvollisuus
+msgid ""
+"Vero rakentamispalvelun ja metalliromun ostoista (käännetty "
+"verovelvollisuus)"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_tavaraostoista_muista_eu_maista
+msgid "Vero tavaraostoista muista EU-maista"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_vero_tavaroiden_maahantuonneista_eu_ulkopuolelta
+msgid "Vero tavaroiden maahantuonneista EU:n ulkopuolelta"
+msgstr ""
+
+#. module: l10n_fi_mis_templates
+#: model:mis.report.kpi,description:l10n_fi_mis_templates.kpi_verokauden_vahennettava_vero
+msgid "Verokauden vähennettävä vero"
+msgstr ""
