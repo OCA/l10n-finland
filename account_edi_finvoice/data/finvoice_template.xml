@@ -46,6 +46,11 @@
                 </SellerPostalAddressDetails>
             </SellerPartyDetails>
 
+            <SellerOrganisationUnitNumber
+                t-if="company.edicode"
+                t-esc="company.edicode"
+            />
+
             <SellerContactPersonName t-esc="record.invoice_user_id.name" />
 
             <SellerCommunicationDetails>
@@ -81,6 +86,12 @@
                     <CountryName t-esc="partner.country_id.name" />
                 </InvoiceRecipientPostalAddressDetails>
             </InvoiceRecipientPartyDetails>
+
+            <InvoiceRecipientOrganisationUnitNumber
+                t-if="partner.edicode"
+                t-esc="partner.edicode"
+            />
+
             <InvoiceRecipientLanguageCode>FI</InvoiceRecipientLanguageCode>
             <!-- endregion -->
 
@@ -99,6 +110,11 @@
                     <CountryName t-esc="partner.country_id.name" />
                 </BuyerPostalAddressDetails>
             </BuyerPartyDetails>
+
+            <BuyerOrganisationUnitNumber
+                t-if="partner.edicode"
+                t-esc="partner.edicode"
+            />
 
             <BuyerCommunicationDetails>
                 <BuyerPhoneNumberIdentifier t-esc="partner.phone" />
@@ -121,6 +137,11 @@
                     <CountryName t-esc="delivery.country_id.name" />
                 </DeliveryPostalAddressDetails>
             </DeliveryPartyDetails>
+
+            <DeliveryOrganisationUnitNumber
+                t-if="delivery.edicode"
+                t-esc="delivery.edicode"
+            />
 
             <DeliveryCommunicationDetails>
                 <DeliveryPhoneNumberIdentifier t-esc="delivery.phone" />
