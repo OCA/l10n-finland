@@ -45,7 +45,8 @@
     </record>
 
     <record id="mis_template_financial_report.kpi_profit" model="mis.report.kpi">
-        <field name="description">LIIKEVAIHTO</field>
+        <field name="name">Liikevaihto</field>
+        <field name="description">Liikevaihto</field>
         <field name="auto_expand_accounts">false</field>
         <field
             name="expression"
@@ -146,7 +147,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">110</field>
+        <field name="sequence">112</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -168,29 +169,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">111</field>
-        <field name="report_id" ref="mis_template_financial_report.report_pl" />
-    </record>
-
-    <record id="kpi_account_tag_change_in_inventories" model="mis.report.kpi">
-        <field name="name">account_tag_change_in_inventories</field>
-        <field name="description">Varastojen muutos</field>
-        <field
-            name="expression"
-        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_change_in_inventories').id))][]</field>
-        <field name="auto_expand_accounts">true</field>
-        <field
-            name="auto_expand_accounts_style_id"
-            ref="mis_template_financial_report.style_details"
-        />
-        <field
-            name="style_id"
-            ref="mis_template_financial_report.style_header_indent"
-        />
-        <field name="type">num</field>
-        <field name="compare_method">diff</field>
-        <field name="accumulation_method">sum</field>
-        <field name="sequence">112</field>
+        <field name="sequence">113</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -212,7 +191,29 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">113</field>
+        <field name="sequence">114</field>
+        <field name="report_id" ref="mis_template_financial_report.report_pl" />
+    </record>
+
+    <record id="kpi_account_tag_change_in_inventories" model="mis.report.kpi">
+        <field name="name">account_tag_change_in_inventories</field>
+        <field name="description">Varastojen muutos</field>
+        <field
+            name="expression"
+        >-balp[('tag_ids', 'in', (ref('l10n_fi.account_tag_change_in_inventories').id))][]</field>
+        <field name="auto_expand_accounts">true</field>
+        <field
+            name="auto_expand_accounts_style_id"
+            ref="mis_template_financial_report.style_details"
+        />
+        <field
+            name="style_id"
+            ref="mis_template_financial_report.style_header_indent"
+        />
+        <field name="type">num</field>
+        <field name="compare_method">diff</field>
+        <field name="accumulation_method">sum</field>
+        <field name="sequence">115</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -239,7 +240,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">114</field>
+        <field name="sequence">116</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -261,7 +262,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">115</field>
+        <field name="sequence">117</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -283,7 +284,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">116</field>
+        <field name="sequence">118</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -307,7 +308,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">117</field>
+        <field name="sequence">119</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -331,7 +332,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">118</field>
+        <field name="sequence">120</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -355,13 +356,15 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">119</field>
+        <field name="sequence">121</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
 
     <!-- region LIIKEVOITTO (-TAPPIO) -->
     <record id="mis_template_financial_report.kpi_loss" model="mis.report.kpi">
+        <field name="name">kulut</field>
+        <field name="description">Kulut</field>
         <field name="auto_expand_accounts">false</field>
         <field
             name="expression"
@@ -369,9 +372,9 @@
     </record>
 
     <record id="mis_template_financial_report.kpi_pl_to_report" model="mis.report.kpi">
-        <field name="description">LIIKEVOITTO (-TAPPIO)</field>
-        <field name="sequence">200</field>
-        <field name="expression">profit + loss</field>
+        <field name="description">Liikevoitto (-Tappio)</field>
+        <field name="sequence">122</field>
+        <field name="expression">Liikevaihto + kulut</field>
     </record>
     <!-- endregion -->
 
@@ -394,7 +397,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">201</field>
+        <field name="sequence">123</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -416,7 +419,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">202</field>
+        <field name="sequence">124</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -445,7 +448,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">203</field>
+        <field name="sequence">125</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -470,7 +473,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">204</field>
+        <field name="sequence">126</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -492,7 +495,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">205</field>
+        <field name="sequence">127</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -514,7 +517,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">206</field>
+        <field name="sequence">128</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -537,7 +540,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">none</field>
-        <field name="sequence">300</field>
+        <field name="sequence">129</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -564,7 +567,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">301</field>
+        <field name="sequence">130</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -586,7 +589,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">302</field>
+        <field name="sequence">131</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
 
@@ -608,7 +611,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">303</field>
+        <field name="sequence">132</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -632,7 +635,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">304</field>
+        <field name="sequence">133</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -656,7 +659,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">sum</field>
-        <field name="sequence">305</field>
+        <field name="sequence">134</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
@@ -677,7 +680,7 @@
         <field name="type">num</field>
         <field name="compare_method">diff</field>
         <field name="accumulation_method">none</field>
-        <field name="sequence">400</field>
+        <field name="sequence">135</field>
         <field name="report_id" ref="mis_template_financial_report.report_pl" />
     </record>
     <!-- endregion -->
