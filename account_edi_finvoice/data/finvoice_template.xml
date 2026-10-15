@@ -8,6 +8,13 @@
             <t t-set="company" t-value="record.company_id" />
             <t t-set="partner" t-value="record.partner_id" />
             <t t-set="delivery" t-value="record.partner_id" />
+            <!--
+            Direction sign is
+            +1 for 'in_invoice', 'out_refund', 'in_receipt'
+            -1 for others
+            For our purposes, we want to invert that, so refunds etc. have negative sign
+            -->
+            <t t-set="reverse_sign" t-value="-int(record.direction_sign)" />
 
             <!-- region Message information -->
             <MessageTransmissionDetails>
@@ -182,11 +189,11 @@
                 <EanCode t-esc="line.product_id.barcode" />
                 <DeliveredQuantity
                     t-att-QuantityUnitCode="line.product_uom_id.name"
-                    t-esc="format_monetary(line.quantity)"
+                    t-esc="format_monetary(reverse_sign * line.quantity)"
                 />
                 <InvoicedQuantity
                     t-att-QuantityUnitCode="line.product_uom_id.name"
-                    t-esc="format_monetary(line.quantity)"
+                    t-esc="format_monetary(reverse_sign * line.quantity)"
                 />
                 <UnitPriceAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
@@ -207,15 +214,15 @@
                 />
                 <RowVatAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
-                    t-esc="format_monetary(line.price_total-line.price_subtotal)"
+                    t-esc="format_monetary(reverse_sign * (line.price_total-line.price_subtotal))"
                 />
                 <RowVatExcludedAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
-                    t-esc="format_monetary(line.price_subtotal)"
+                    t-esc="format_monetary(reverse_sign * line.price_subtotal)"
                 />
                 <RowAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
-                    t-esc="format_monetary(line.price_total)"
+                    t-esc="format_monetary(reverse_sign * line.price_total)"
                 />
             </InvoiceRow>
             <!-- endregion -->
