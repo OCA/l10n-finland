@@ -7,7 +7,10 @@
         <Finvoice t-att-Version="3.0">
             <t t-set="company" t-value="record.company_id" />
             <t t-set="partner" t-value="record.partner_id" />
-            <t t-set="delivery" t-value="record.partner_id" />
+            <t
+                t-set="delivery"
+                t-value="record.partner_shipping_id or record.partner_id"
+            />
             <!--
             Direction sign is
             +1 for 'in_invoice', 'out_refund', 'in_receipt'
@@ -132,7 +135,7 @@
             <!-- region Delivery information -->
             <DeliveryPartyDetails>
                 <DeliveryPartyIdentifier t-esc="delivery.company_registry" />
-                <DeliveryOrganisationName t-esc="delivery.name[0:35]" />
+                <DeliveryOrganisationName t-esc="(delivery.name or '')[0:35]" />
                 <DeliveryOrganisationTaxCode t-esc="delivery.vat" />
 
                 <DeliveryPostalAddressDetails>
