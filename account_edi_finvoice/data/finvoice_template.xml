@@ -11,6 +11,13 @@
                 t-set="delivery"
                 t-value="record.partner_shipping_id or record.partner_id"
             />
+            <!--
+            Direction sign is
+            +1 for 'in_invoice', 'out_refund', 'in_receipt'
+            -1 for others
+            For our purposes, we want to invert that, so refunds etc. have negative sign
+            -->
+            <t t-set="reverse_sign" t-value="-int(record.direction_sign)" />
 
             <!-- region Message information -->
             <MessageTransmissionDetails>
@@ -49,6 +56,11 @@
                 </SellerPostalAddressDetails>
             </SellerPartyDetails>
 
+            <SellerOrganisationUnitNumber
+                t-if="company.edicode"
+                t-esc="company.edicode"
+            />
+
             <SellerContactPersonName t-esc="record.invoice_user_id.name" />
 
             <SellerCommunicationDetails>
@@ -84,6 +96,12 @@
                     <CountryName t-esc="partner.country_id.name" />
                 </InvoiceRecipientPostalAddressDetails>
             </InvoiceRecipientPartyDetails>
+
+            <InvoiceRecipientOrganisationUnitNumber
+                t-if="partner.edicode"
+                t-esc="partner.edicode"
+            />
+
             <InvoiceRecipientLanguageCode>FI</InvoiceRecipientLanguageCode>
             <!-- endregion -->
 
@@ -102,6 +120,11 @@
                     <CountryName t-esc="partner.country_id.name" />
                 </BuyerPostalAddressDetails>
             </BuyerPartyDetails>
+
+            <BuyerOrganisationUnitNumber
+                t-if="partner.edicode"
+                t-esc="partner.edicode"
+            />
 
             <BuyerCommunicationDetails>
                 <BuyerPhoneNumberIdentifier t-esc="partner.phone" />
@@ -124,6 +147,11 @@
                     <CountryName t-esc="delivery.country_id.name" />
                 </DeliveryPostalAddressDetails>
             </DeliveryPartyDetails>
+
+            <DeliveryOrganisationUnitNumber
+                t-if="delivery.edicode"
+                t-esc="delivery.edicode"
+            />
 
             <DeliveryCommunicationDetails>
                 <DeliveryPhoneNumberIdentifier t-esc="delivery.phone" />
@@ -185,11 +213,11 @@
                 <EanCode t-esc="line.product_id.barcode" />
                 <DeliveredQuantity
                     t-att-QuantityUnitCode="line.product_uom_id.name"
-                    t-esc="format_monetary(line.quantity)"
+                    t-esc="format_monetary(reverse_sign * line.quantity)"
                 />
                 <InvoicedQuantity
                     t-att-QuantityUnitCode="line.product_uom_id.name"
-                    t-esc="format_monetary(line.quantity)"
+                    t-esc="format_monetary(reverse_sign * line.quantity)"
                 />
                 <UnitPriceAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
@@ -210,15 +238,15 @@
                 />
                 <RowVatAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
-                    t-esc="format_monetary(line.price_total-line.price_subtotal)"
+                    t-esc="format_monetary(reverse_sign * (line.price_total-line.price_subtotal))"
                 />
                 <RowVatExcludedAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
-                    t-esc="format_monetary(line.price_subtotal)"
+                    t-esc="format_monetary(reverse_sign * line.price_subtotal)"
                 />
                 <RowAmount
                     t-att-AmountCurrencyIdentifier="line.currency_id.name"
-                    t-esc="format_monetary(line.price_total)"
+                    t-esc="format_monetary(reverse_sign * line.price_total)"
                 />
             </InvoiceRow>
             <!-- endregion -->
