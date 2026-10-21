@@ -20,4 +20,12 @@
         parent="menu_apix_root"
         action="action_apix_backend"
     />
+
+    <menuitem
+        id="menu_apix_einvoicing_backend"
+        name="APIX backends"
+        parent="l10n_fi_edicode.account_einvoicing_menu"
+        action="action_apix_backend"
+        groups="account.group_account_manager"
+    />
 </odoo>
