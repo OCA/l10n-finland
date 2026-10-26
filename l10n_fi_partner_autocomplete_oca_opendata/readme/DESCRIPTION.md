@@ -1,0 +1,1 @@
+Allows you to autocomplete partner data from Finnish "Patentti- ja rekisterihallitus" (PRH)
