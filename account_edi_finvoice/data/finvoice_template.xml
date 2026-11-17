@@ -19,6 +19,17 @@
             -->
             <t t-set="reverse_sign" t-value="-int(record.direction_sign)" />
 
+            <!-- Inbound invoices (out invoice, in refund) use partner_bank_id -->
+            <t
+                t-if="record.is_inbound() and record.partner_bank_id"
+                t-set="bank"
+                t-value="record.partner_bank_id"
+            />
+            <!-- Others use the company's first bank account -->
+            <t t-elif="company.bank_ids" t-set="bank" t-value="company.bank_ids[0]" />
+            <!-- If no bank is found, leave it blank -->
+            <t t-else="" t-set="bank" t-value="record.env['res.partner.bank']" />
+
             <!-- region Message information -->
             <MessageTransmissionDetails>
                 <MessageSenderDetails>
@@ -72,12 +83,9 @@
                 <SellerAccountDetails>
                     <SellerAccountID
                         IdentificationSchemeName="IBAN"
-                        t-esc="record.partner_bank_id.sanitized_acc_number"
+                        t-esc="bank.sanitized_acc_number"
                     />
-                    <SellerBic
-                        IdentificationSchemeName="BIC"
-                        t-esc="record.partner_bank_id.bank_bic"
-                    />
+                    <SellerBic IdentificationSchemeName="BIC" t-esc="bank.bank_bic" />
                 </SellerAccountDetails>
             </SellerInformationDetails>
             <!-- endregion -->
@@ -257,11 +265,12 @@
                     <EpiDate Format="CCYYMMDD" t-esc="format_date()" />
                     <EpiReference />
                 </EpiIdentificationDetails>
-                <EpiPartyDetails>
+
+                <EpiPartyDetails t-if="bank">
                     <EpiBfiPartyDetails>
                         <EpiBfiIdentifier
                             IdentificationSchemeName="BIC"
-                            t-esc="record.partner_bank_id.bank_bic"
+                            t-esc="bank.bank_bic"
                         />
                     </EpiBfiPartyDetails>
                     <EpiBeneficiaryPartyDetails>
@@ -269,13 +278,7 @@
                         <EpiBei t-esc="company.company_registry" />
                         <EpiAccountID
                             IdentificationSchemeName="IBAN"
-                            t-if="record.partner_bank_id"
-                            t-esc="record.partner_bank_id.sanitized_acc_number"
-                        />
-                        <EpiAccountID
-                            IdentificationSchemeName="IBAN"
-                            t-if="not record.partner_bank_id and company.bank_ids"
-                            t-esc="company.bank_ids[0].sanitized_acc_number"
+                            t-esc="bank.sanitized_acc_number"
                         />
                     </EpiBeneficiaryPartyDetails>
                 </EpiPartyDetails>
