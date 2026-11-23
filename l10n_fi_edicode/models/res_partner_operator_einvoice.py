@@ -5,6 +5,7 @@ class ResPartnerOperatorEinvoice(models.Model):
     _name = "res.partner.operator.einvoice"
     _description = "eInvoice Operator"
     _order = "sequence, id"
+    _rec_names_search = ["identifier", "name"]
 
     name = fields.Char(string="Operator", required=True)
     active = fields.Boolean(default=True)
@@ -40,21 +41,3 @@ class ResPartnerOperatorEinvoice(models.Model):
             name = operator.name or ""
             operator.display_name = f"{identifier} - {name}".strip(" -")
         return res
-
-    @api.model
-    def _search_display_name(self, operator, value):
-        if not value:
-            return super()._search_display_name(operator, value)
-        if operator in fields.Domain.NEGATIVE_OPERATORS:
-            domain = [
-                "&",
-                ("identifier", "not ilike", value + "%"),
-                ("name", operator, value),
-            ]
-        else:
-            domain = [
-                "|",
-                ("identifier", "=ilike", value + "%"),
-                ("name", operator, value),
-            ]
-        return domain
