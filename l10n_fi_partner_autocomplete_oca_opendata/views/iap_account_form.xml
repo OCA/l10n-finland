@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="iap_account_view_form" model="ir.ui.view">
+        <field name="name">iap.account.form.prh</field>
+        <field name="model">iap.account</field>
+        <field name="inherit_id" ref="iap.iap_account_view_form" />
+        <field name="arch" type="xml">
+            <field name="company_ids" position="after">
+                <field name="prh_use_industry" invisible="provider != 'prh'" />
+                <field name="prh_language_code" invisible="provider != 'prh'" />
+            </field>
+        </field>
+    </record>
+</odoo>

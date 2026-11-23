@@ -1,0 +1,20 @@
+{
+    "name": "Partner Autocomplete: Finnish PRH Open Data",
+    "summary": "Autocomplete company information from PRH Avoin Data",
+    "version": "19.0.1.0.0",
+    "category": "Accounting",
+    "website": "https://github.com/OCA/l10n-finland",
+    "author": ("IODO Oy, Odoo Community Association (OCA)"),
+    "license": "AGPL-3",
+    "application": False,
+    "installable": True,
+    "external_dependencies": {"python": [], "bin": []},
+    "depends": ["iap_alternative_provider", "partner_autocomplete"],
+    "data": [
+        # "data/environment_data.xml",
+        # "data/autocomplete_default_backend.xml",
+        "views/iap_account_form.xml",
+    ],
+    "demo": [],
+    "qweb": [],
+}

@@ -25,6 +25,7 @@ addon | version | maintainers | summary
 [connector_apix](connector_apix/) | 19.0.1.0.1 |  | Apix EDI connector for receiving and sending eInvoices
 [l10n_fi_banks](l10n_fi_banks/) | 19.0.1.0.0 |  | Finnish banks and their addresses
 [l10n_fi_edicode](l10n_fi_edicode/) | 19.0.1.0.0 |  | Adds EDI code field and operators
+[l10n_fi_partner_autocomplete_oca_opendata](l10n_fi_partner_autocomplete_oca_opendata/) | 19.0.1.0.0 |  | Autocomplete company information from PRH Avoin Data
 [l10n_fi_sale_refund_payment_reference](l10n_fi_sale_refund_payment_reference/) | 19.0.1.0.0 |  | Automatically generate payment references for sale refunds
 
 [//]: # (end addons)
