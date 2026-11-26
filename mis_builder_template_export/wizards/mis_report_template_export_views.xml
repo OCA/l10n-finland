@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Cetmix Nordic Ltd
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="mis_report_template_export_view_form" model="ir.ui.view">
+        <field name="name">mis.report.template.export.view.form</field>
+        <field name="model">mis.report.template.export</field>
+        <field name="arch" type="xml">
+            <form string="Export MIS Report Template">
+                <group>
+                    <field name="report_id" readonly="1" />
+                    <field name="module_name" placeholder="e.g. my_mis_templates" />
+                    <field
+                        name="instance_ids"
+                        widget="many2many_tags"
+                        options="{'no_create': True}"
+                    />
+                    <field name="export_report" invisible="not instance_ids" />
+                    <field name="lang" />
+                    <field name="link_records" />
+                </group>
+                <footer>
+                    <button
+                        name="action_export"
+                        string="Export"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="mis_report_template_export_action" model="ir.actions.act_window">
+        <field name="name">Export as XML</field>
+        <field name="res_model">mis.report.template.export</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
