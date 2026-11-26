@@ -21,4 +21,25 @@
             </xpath>
         </field>
     </record>
+
+    <record id="mis_report_instance_view_form" model="ir.ui.view">
+        <field name="name">mis.report.instance.view.form (template export)</field>
+        <field name="model">mis.report.instance</field>
+        <field name="inherit_id" ref="mis_builder.mis_report_instance_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <field name="temporary" invisible="1" />
+                    <button
+                        name="%(mis_report_template_export_action)d"
+                        string="Export as XML"
+                        type="action"
+                        context="{'default_instance_ids': [id], 'default_report_id': report_id}"
+                        groups="account.group_account_manager"
+                        invisible="not id or temporary"
+                    />
+                </header>
+            </xpath>
+        </field>
+    </record>
 </odoo>

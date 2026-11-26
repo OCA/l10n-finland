@@ -10,6 +10,12 @@
                 <group>
                     <field name="report_id" readonly="1" />
                     <field name="module_name" placeholder="e.g. my_mis_templates" />
+                    <field
+                        name="instance_ids"
+                        widget="many2many_tags"
+                        options="{'no_create': True}"
+                    />
+                    <field name="export_report" invisible="not instance_ids" />
                     <field name="lang" />
                     <field name="link_records" />
                 </group>

@@ -18,6 +18,27 @@ SKIP_FIELDS = {
     "write_date",
 }
 
+# Fields of a model that are not written to the exported XML.
+SKIP_MODEL_FIELDS = {
+    # Follows from the periods and dates; writing it would replace the
+    # periods with a default one.
+    "mis.report.instance": {"comparison_mode", "temporary"},
+}
+
+# Records of these models are referenced from the exported records but not
+# written to the file: company relations, so that the records belong to the
+# company that installs the module, and date ranges, which only fill in the
+# dates that are exported themselves.
+SKIP_COMODELS = {"res.company", "date.range"}
+
+# Models of records exported along with the records that use them, when they
+# have no XML id of their own (or one in the target module), and the prefix
+# of their generated XML ids.
+SHARED_MODELS = {
+    "mis.report.style": "style",
+    "date.range.type": "date_range_type",
+}
+
 
 def _slug(text):
     text = unicodedata.normalize("NFKD", text or "")
@@ -32,33 +53,78 @@ class MisReport(models.Model):
         self.ensure_one()
         return _slug(self.with_context(lang="en_US").name)
 
-    def _template_export_xml(self, module, link=False):
+    def _template_export_owned(self, module):
+        """Whether an export for ``module`` must contain this template: it has
+        no XML id, or one in ``module``."""
+        self.ensure_one()
+        xmlid = _TemplateExporter.stable_xmlid(self, module)
+        return not xmlid or xmlid.startswith(module + ".")
+
+    def _template_export_xml(
+        self, module, link=False, instances=None, with_report=True
+    ):
         """Return the report template as Odoo data XML.
 
         The XML contains the report, its sub-KPIs, queries, KPIs, KPI
-        expressions of multi KPIs and subreports, and the styles they use that
-        have no XML id. Records with an XML id in ``module`` keep it, the
-        others get ids derived from the report name. Translatable fields are
+        expressions of multi KPIs and subreports, the ``instances`` of the
+        report with their periods, and the styles and date range types they
+        use that have no XML id. Records with an XML id in ``module`` keep it,
+        the others get ids derived from their names. Translatable fields are
         written in the language of the context.
 
         With ``link``, the exported records that had no XML id get the ids
         used in the file, so that installing or updating ``module`` in this
         database updates them instead of creating copies (a copied style would
         also violate the unique style name).
+
+        Without ``with_report`` only the instances are exported, and they
+        refer to the report by its XML id.
         """
         self.ensure_one()
-        exporter = _TemplateExporter(self, module)
+        exporter = _TemplateExporter(
+            self, module, instances=instances, with_report=with_report
+        )
         xml = exporter.export()
         if link:
             exporter.link()
         return xml
 
 
+class MisReportInstance(models.Model):
+    _inherit = "mis.report.instance"
+
+    def _template_export_slug(self):
+        self.ensure_one()
+        return _slug(self.with_context(lang="en_US").name)
+
+    def _template_export_xml(self, module, link=False, with_report=None):
+        """Return the report instances as Odoo data XML.
+
+        The report template is exported with them when ``with_report`` is
+        true. By default it is, unless the template has an XML id of another
+        module: then the instances refer to it.
+        """
+        report = self.report_id
+        if len(report) != 1:
+            raise UserError(
+                self.env._("Only instances of one report template can be exported.")
+            )
+        if with_report is None:
+            with_report = report._template_export_owned(module)
+        return report.with_env(self.env)._template_export_xml(
+            module, link=link, instances=self, with_report=with_report
+        )
+
+
 class _TemplateExporter:
-    def __init__(self, report, module):
+    def __init__(self, report, module, instances=None, with_report=True):
         self.report = report
         self.env = report.env
         self.module = module
+        self.with_report = with_report
+        instances = instances or report.env["mis.report.instance"]
+        # read the instances in the language of the export
+        self.instances = report.env["mis.report.instance"].browse(instances.ids)
         self.ids = {}  # record -> XML id used in the exported file
         self.generated = set()  # records whose XML id is generated
         # names already used by the module, so generated ids do not clash
@@ -72,8 +138,9 @@ class _TemplateExporter:
 
     # --- XML ids -----------------------------------------------------------
 
-    def _stable_xmlid(self, record):
-        """XML id that a module can reference, preferring the target module.
+    @staticmethod
+    def stable_xmlid(record, module):
+        """XML id that a module can reference, preferring ``module``.
 
         Returns '' when the record has none (ids of data exports, which start
         with '__', do not count).
@@ -83,8 +150,11 @@ class _TemplateExporter:
             for xmlid in record._get_external_ids().get(record.id, [])
             if not xmlid.startswith("__")
         ]
-        own = [x for x in xmlids if x.startswith(self.module + ".")]
+        own = [x for x in xmlids if x.startswith(module + ".")]
         return (own or xmlids or [""])[0]
+
+    def _stable_xmlid(self, record):
+        return self.stable_xmlid(record, self.module)
 
     def _local(self, xmlid):
         prefix = self.module + "."
@@ -118,14 +188,21 @@ class _TemplateExporter:
 
     @staticmethod
     def _exported_fields(record):
+        skip = SKIP_MODEL_FIELDS.get(record._name, set())
         for fname, field in record._fields.items():
-            if fname in SKIP_FIELDS or field.type in ("one2many", "binary"):
+            if fname in SKIP_FIELDS or fname in skip:
+                continue
+            if field.type in ("one2many", "binary"):
                 continue
             if field.related or field.company_dependent:
                 continue
             if field.compute and not field.inverse:
-                continue
+                # computed fields that users can edit are kept
+                if field.readonly or not field.store:
+                    continue
             if not field.store and not field.inverse:
+                continue
+            if field.relational and field.comodel_name in SKIP_COMODELS:
                 continue
             if (
                 record._name == "mis.report.kpi"
@@ -184,9 +261,8 @@ class _TemplateExporter:
                 }
             )
 
-    def export(self):
+    def _report_records(self, rslug):
         report = self.report
-        rslug = report._template_export_slug()
         self._assign(report, f"report_{rslug}")
         subkpis = report.subkpi_ids.sorted(lambda s: (s.sequence, s.id))
         for subkpi in subkpis:
@@ -206,35 +282,85 @@ class _TemplateExporter:
         subreports = report.subreport_ids.sorted("id")
         for subreport in subreports:
             self._assign(subreport, f"subreport_{rslug}_{subreport.name}")
+        return [report, *subkpis, *queries, *kpis, *expressions, *subreports]
 
-        # Styles without an XML id, or owned by the target module, are
-        # exported with the report (a module drops records it no longer
-        # declares, so its own styles must stay in the file).
-        styles = self.env["mis.report.style"]
-        for record in [report, *subkpis, *queries, *kpis, *expressions]:
+    @staticmethod
+    def _sorted_periods(instance):
+        """Periods in sequence order, but a period compared or summed by
+        another one first: a record can only refer to records above it."""
+        periods = instance.period_ids.sorted(lambda p: (p.sequence, p.id))
+        done, result = set(), []
+
+        def add(period, path=()):
+            if period in done or period in path:
+                return
+            depends = (
+                period.source_cmpcol_from_id
+                | period.source_cmpcol_to_id
+                | period.source_sumcol_ids.period_to_sum_id
+            ) & periods
+            for other in depends.sorted(lambda p: (p.sequence, p.id)):
+                add(other, (*path, period))
+            done.add(period)
+            result.append(period)
+
+        for period in periods:
+            add(period)
+        return result
+
+    def _instance_records(self):
+        records = []
+        for instance in self.instances:
+            if instance.temporary:
+                raise UserError(
+                    self.env._(
+                        "The report instance %(name)s is temporary and cannot "
+                        "be exported.",
+                        name=instance.display_name,
+                    )
+                )
+            islug = instance._template_export_slug()
+            self._assign(instance, f"instance_{islug}")
+            periods = self._sorted_periods(instance)
+            sums = []
+            for period in periods:
+                pslug = _slug(period.with_context(lang="en_US").name)
+                self._assign(period, f"instance_{islug}_{pslug}")
+                for n, colsum in enumerate(
+                    period.source_sumcol_ids.sorted("id"), start=1
+                ):
+                    self._assign(colsum, f"instance_{islug}_{pslug}_sum_{n}")
+                    sums.append(colsum)
+            records += [instance, *periods, *sums]
+        return records
+
+    def _shared_records(self, records):
+        """Styles and date range types used by ``records`` that have no XML
+        id, or one in the target module (a module drops records it no longer
+        declares, so its own ones must stay in the file)."""
+        shared = []
+        for record in records:
             for fname, field in self._exported_fields(record):
-                if field.type != "many2one":
+                if field.type != "many2one" or field.comodel_name not in SHARED_MODELS:
                     continue
-                if field.comodel_name != "mis.report.style":
+                target = record[fname]
+                if not target or target in self.ids or target in shared:
                     continue
-                style = record[fname]
-                if not style or style in self.ids:
-                    continue
-                xmlid = self._stable_xmlid(style)
+                xmlid = self._stable_xmlid(target)
                 if not xmlid or xmlid.startswith(self.module + "."):
-                    styles |= style
-        for style in styles:
-            self._assign(style, f"style_{_slug(style.name)}")
+                    shared.append(target)
+        for target in shared:
+            prefix = SHARED_MODELS[target._name]
+            self._assign(target, f"{prefix}_{_slug(target.name)}")
+        return shared
 
-        records = [
-            *styles,
-            report,
-            *subkpis,
-            *queries,
-            *kpis,
-            *expressions,
-            *subreports,
-        ]
+    def export(self):
+        report = self.report
+        records = []
+        if self.with_report:
+            records += self._report_records(report._template_export_slug())
+        records += self._instance_records()
+        records = self._shared_records(records) + records
         body = "\n".join(self._record_xml(record) for record in records)
         if self.missing:
             raise UserError(
@@ -245,8 +371,9 @@ class _TemplateExporter:
                 )
             )
         title = escape(report.name.replace("--", "- -"))
+        what = "MIS report template" if self.with_report else "MIS report instances of"
         return (
             '<?xml version="1.0" encoding="utf-8" ?>\n'
-            f"<!-- MIS report template: {title} -->\n"
+            f"<!-- {what}: {title} -->\n"
             f"<odoo>\n{body}\n</odoo>\n"
         )
