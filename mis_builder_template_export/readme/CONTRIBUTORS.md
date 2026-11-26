@@ -1,0 +1,2 @@
+- [Cetmix](https://cetmix.fi):
+  - Jussi Lehto
